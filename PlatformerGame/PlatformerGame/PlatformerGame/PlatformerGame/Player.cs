@@ -37,6 +37,21 @@ namespace PlatformerGame
 
         #region Gameplay Data
 
+        TimeSpan damageTimer;
+
+        public float Health
+        {
+            get { return health; }
+            set { health = value; }
+        }
+        float health;
+
+        public int NumLives
+        {
+            get { return numLives; }
+        }
+        int numLives;
+
         public Level Level
         {
             get { return level; }
@@ -94,7 +109,7 @@ namespace PlatformerGame
 
         #region Initialization
 
-        public Player(Level level, Vector2 startPos)
+        public Player(Level level, Vector2 startPos, Texture2D texture)
         {
             this.level = level;
 

@@ -4,3 +4,12 @@ C:\Users\Matthew\Desktop\PlatformerGame\PlatformerGame\PlatformerGame\Platformer
 C:\Users\Matthew\Desktop\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\PlatformerGame.pdb
 C:\Users\Matthew\Desktop\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\obj\x86\Debug\PlatformerGame.exe
 C:\Users\Matthew\Desktop\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\obj\x86\Debug\PlatformerGame.pdb
+C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\obj\x86\Debug\PlatformerGame.exe
+C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\splash.xnb
+C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\PlatformerGame.exe
+C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\PlatformerGame.pdb
+C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\obj\x86\Debug\PlatformerGame.pdb
+C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\gameFont.xnb
+C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\blank.xnb
