@@ -20,26 +20,12 @@ namespace PlatformerGame
         public const int MaxInputs = 4;
 
         public readonly KeyboardState[] CurrentKeyboardStates;
-        public readonly GamePadState[] CurrentGamePadStates;
-
         public readonly KeyboardState[] LastKeyboardStates;
-        public readonly GamePadState[] LastGamePadStates;
-
-        public readonly bool[] GamePadWasConnected;
-
-        //#if !XBOX360
-        //        public MouseState MouseState { get; private set; }
-        //#endif
 
         public InputManager()
         {
             CurrentKeyboardStates = new KeyboardState[MaxInputs];
-            CurrentGamePadStates = new GamePadState[MaxInputs];
-
             LastKeyboardStates = new KeyboardState[MaxInputs];
-            LastGamePadStates = new GamePadState[MaxInputs];
-
-            GamePadWasConnected = new bool[MaxInputs];
         }
 
         public void Update(GameTime gameTime)
@@ -47,17 +33,8 @@ namespace PlatformerGame
             for (int i = 0; i < MaxInputs; i++)
             {
                 LastKeyboardStates[i] = CurrentKeyboardStates[i];
-                LastGamePadStates[i] = CurrentGamePadStates[i];
 
                 CurrentKeyboardStates[i] = Keyboard.GetState((PlayerIndex)i);
-                CurrentGamePadStates[i] = GamePad.GetState((PlayerIndex)i);
-
-                // Keep track of whether a gamepad has ever been
-                // connected, so we can detect if it is unplugged.
-                if (CurrentGamePadStates[i].IsConnected)
-                {
-                    GamePadWasConnected[i] = true;
-                }
             }
         }
 
@@ -86,69 +63,70 @@ namespace PlatformerGame
             }
         }
 
-        /// <summary>
-        /// Checks if the button is currently down
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="controllingPlayer"></param>
-        /// <param name="playerIndex"></param>
-        /// <returns></returns>
-        public bool IsButtonDown(Buttons button, PlayerIndex? controllingPlayer, out PlayerIndex playerIndex)
-        {
-            if (controllingPlayer.HasValue)
-            {
-                playerIndex = controllingPlayer.Value;
-                int i = (int)playerIndex;
-                if (CurrentGamePadStates[i].IsButtonDown(button)) return true;
-                else return false;
-            }
-            else
-            {
-                // accept input from any player
-                return (IsButtonDown(button, PlayerIndex.One, out playerIndex) ||
-                        IsButtonDown(button, PlayerIndex.Two, out playerIndex) ||
-                        IsButtonDown(button, PlayerIndex.Three, out playerIndex) ||
-                        IsButtonDown(button, PlayerIndex.Four, out playerIndex));
-            }
-        }
 
         /// <summary>
-        /// Checks for a "Forward" input action.
+        /// Checks for a "Right" input action.
         /// </summary>
         /// <param name="controllingPlayer"></param>
         /// <returns></returns>
-        public bool IsForward(PlayerIndex? controllingPlayer)
+        public bool IsRight(PlayerIndex? controllingPlayer)
         {
             PlayerIndex playerIndex;
 
-            return (IsKeyDown(Keys.Up, controllingPlayer, out playerIndex) || IsButtonDown(Buttons.LeftThumbstickUp, controllingPlayer, out playerIndex) ||
-                    IsKeyDown(Keys.W, controllingPlayer, out playerIndex) || IsButtonDown(Buttons.DPadUp, controllingPlayer, out playerIndex));
+            return (IsKeyDown(Keys.Right, controllingPlayer, out playerIndex) ||
+                    IsKeyDown(Keys.D, controllingPlayer, out playerIndex));
         }
 
         /// <summary>
-        /// Checks for a "Backward" input action.
+        /// Checks for a "Left" input action.
         /// </summary>
         /// <param name="controllingPlayer"></param>
         /// <returns></returns>
-        public bool IsBackward(PlayerIndex? controllingPlayer)
+        public bool IsLeft(PlayerIndex? controllingPlayer)
         {
             PlayerIndex playerIndex;
 
-            return (IsKeyDown(Keys.Down, controllingPlayer, out playerIndex) || IsButtonDown(Buttons.LeftThumbstickDown, controllingPlayer, out playerIndex) ||
-                    IsKeyDown(Keys.S, controllingPlayer, out playerIndex) || IsButtonDown(Buttons.DPadDown, controllingPlayer, out playerIndex));
+            return (IsKeyDown(Keys.Left, controllingPlayer, out playerIndex) ||
+                    IsKeyDown(Keys.A, controllingPlayer, out playerIndex));
         }
 
         /// <summary>
-        /// Checks for a "Turn Left" input action.
+        /// Checks for a "Jump" input action.
         /// </summary>
         /// <param name="controllingPlayer"></param>
         /// <returns></returns>
-        public bool IsTurnLeft(PlayerIndex? controllingPlayer)
+        public bool IsJump(PlayerIndex? controllingPlayer)
         {
             PlayerIndex playerIndex;
 
-            return (IsKeyDown(Keys.Left, controllingPlayer, out playerIndex) || IsButtonDown(Buttons.LeftThumbstickLeft, controllingPlayer, out playerIndex) ||
-                    IsKeyDown(Keys.A, controllingPlayer, out playerIndex) || IsButtonDown(Buttons.DPadLeft, controllingPlayer, out playerIndex));
+            return (IsKeyDown(Keys.Up, controllingPlayer, out playerIndex) ||
+                    IsKeyDown(Keys.W, controllingPlayer, out playerIndex) ||
+                    IsKeyDown(Keys.Space, controllingPlayer, out playerIndex));
+        }
+
+        /// <summary>
+        /// Checks for a "Crouch" input action.
+        /// </summary>
+        /// <param name="controllingPlayer"></param>
+        /// <returns></returns>
+        public bool IsCrouch(PlayerIndex? controllingPlayer)
+        {
+            PlayerIndex playerIndex;
+
+            return (IsKeyDown(Keys.Down, controllingPlayer, out playerIndex)||
+                    IsKeyDown(Keys.S, controllingPlayer, out playerIndex));
+        }
+
+        /// <summary>
+        /// Checks for a "Run" input action.
+        /// </summary>
+        /// <param name="controllingPlayer"></param>
+        /// <returns></returns>
+        public bool IsRun(PlayerIndex? controllingPlayer)
+        {
+            PlayerIndex playerIndex;
+
+            return (IsKeyDown(Keys.LeftShift, controllingPlayer, out playerIndex));
         }
     }
 }

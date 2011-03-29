@@ -38,7 +38,19 @@ namespace PlatformerGame
 
         #region Gameplay Data
 
-        TimeSpan damageTimer;
+        public struct PlayerInput
+        {
+            public bool Right;
+            public bool Left;
+            public bool Jump;
+            public bool Crouch;
+            public bool Run;
+        }
+
+        PlayerInput playerInput;
+        InputManager inputManager;
+
+        TimeSpan lastHurt;
         SpriteEffects flip = SpriteEffects.None;
         Texture2D sprite;
 
@@ -73,6 +85,7 @@ namespace PlatformerGame
             set { position = value; }
         }
         Vector2 position;
+        Vector2 startPosition;
 
         public Vector2 Velocity
         {
@@ -120,6 +133,9 @@ namespace PlatformerGame
         {
             this.level = level;
 
+            startPosition = startPos;
+            position = startPosition;
+
             LoadContent();
         }
 
@@ -142,13 +158,39 @@ namespace PlatformerGame
 
         #region Update and Draw
 
+        public void AddHealth(int value)
+        {
+            health += value;
+            health = (int)MathHelper.Clamp(health, 0, 100);
+        }
+
+        public void RemoveHealth(int value, Enemy hurtBy)
+        {
+            if (lastHurt > TimeSpan.FromSeconds(1))
+            {
+                health -= value;
+                health = (int)MathHelper.Clamp(health, 0, 100);
+                lastHurt = TimeSpan.Zero;
+
+                if (health <= 0)
+                {
+                    Die(hurtBy);
+                }
+            }
+        }
+
         public void HandleInput(GameTime gameTime)
         {
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             Vector2 prevPos = position;
 
             // Get the input from the player
-
+            playerInput.Right = inputManager.IsRight(null);
+            playerInput.Left = inputManager.IsLeft(null);
+            playerInput.Jump = inputManager.IsJump(null);
+            playerInput.Crouch = inputManager.IsCrouch(null);
+            playerInput.Run = inputManager.IsRun(null);
+            isJumping = playerInput.Jump;
 
 
             // Update velocity based on the input
@@ -185,6 +227,9 @@ namespace PlatformerGame
 
         public void Update(GameTime gameTime)
         {
+            inputManager.Update(gameTime);
+            lastHurt += gameTime.ElapsedGameTime;
+
             HandleInput(gameTime);
 
             // TODO: update animation if necessary
@@ -246,6 +291,9 @@ namespace PlatformerGame
 
         public void Reset(Vector2 position)
         {
+            position = startPosition;
+            isAlive = true;
+
         }
 
         public void Die(Enemy killedBy)

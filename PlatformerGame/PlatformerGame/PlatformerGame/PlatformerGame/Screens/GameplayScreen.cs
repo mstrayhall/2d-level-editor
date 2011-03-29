@@ -60,6 +60,7 @@ namespace PlatformerGame
         // generate list of levels so we know where to go next
         int levelIndex;
         List<string> allLevels;
+        Level level;
 
         public GameplayScreen(int levelIndex)
         {
@@ -76,6 +77,11 @@ namespace PlatformerGame
 
             spriteBatch = ScreenManager.SpriteBatch;
 
+
+            allLevels.Add("Levels/level0");
+
+            level = new Level(allLevels[levelIndex], ScreenManager.Game.Services);
+            
             /*
             // populate list of levels
             allLevels = new List<string>();
@@ -122,7 +128,6 @@ namespace PlatformerGame
         public override void HandleInput(InputState input)
         {
             PlayerIndex playerIndex;
-
 
             base.HandleInput(input);
         }
@@ -193,8 +198,8 @@ namespace PlatformerGame
 
             spriteBatch.End();
             */
-            
 
+            level.Draw(gameTime, spriteBatch);
 
             base.Draw(gameTime);
         }
