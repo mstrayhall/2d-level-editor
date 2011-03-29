@@ -84,7 +84,7 @@ namespace PlatformerGame
 
             // Load the background(s)
             layers = new Texture2D[1];
-            layers[0] = content.Load<Texture2D>("splash");
+            layers[0] = content.Load<Texture2D>("background");
 
 
         }
@@ -119,9 +119,9 @@ namespace PlatformerGame
             // Loop over every tile position and load each tile
             for (int y = 0; y < Height; ++y)
             {
-                for (int x = 0; x < width; ++x)
+                for (int x = 0; x < Width; ++x)
                 {
-                    char tileType = lines[x][y];
+                    char tileType = lines[y][x];
                     tiles[x, y] = LoadTile(tileType, x, y);
                 }
             }

@@ -78,7 +78,12 @@ namespace PlatformerGame
             spriteBatch = ScreenManager.SpriteBatch;
 
 
-            allLevels.Add("Levels/level0");
+            // TODO: search for all levels in this directory, add all?
+            // Or do the starter kit method. But I think I wanna add all so I can do a level select screen.
+            allLevels = new List<string>();
+            string levelPath = "Levels/level0.txt";
+            levelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Content/" + levelPath); // had to change for 4.0
+            allLevels.Add(levelPath);
 
             level = new Level(allLevels[levelIndex], ScreenManager.Game.Services);
             
@@ -198,8 +203,12 @@ namespace PlatformerGame
 
             spriteBatch.End();
             */
+            
+            spriteBatch.Begin();
 
             level.Draw(gameTime, spriteBatch);
+
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }

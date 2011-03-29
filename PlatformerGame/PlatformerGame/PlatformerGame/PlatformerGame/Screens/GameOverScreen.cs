@@ -67,7 +67,7 @@ namespace PlatformerGame
             PlayerIndex playerIndex;
 
             // If the user preses the space bar, start a new game
-            if (input.IsNewButtonPress(Buttons.Start, ControllingPlayer, out playerIndex) || input.IsNewKeyPress(Keys.Space, ControllingPlayer, out playerIndex))
+            if (input.IsNewKeyPress(Keys.Space, ControllingPlayer, out playerIndex))
             {
                 ScreenManager.RemoveScreen(this);
             }

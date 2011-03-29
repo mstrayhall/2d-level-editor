@@ -136,6 +136,10 @@ namespace PlatformerGame
             startPosition = startPos;
             position = startPosition;
 
+            inputManager = new InputManager();
+
+            numLives = 5;
+
             LoadContent();
         }
 
@@ -150,7 +154,7 @@ namespace PlatformerGame
 
             origin = new Vector2(width / 2, height);
 
-            sprite = level.Content.Load<Texture2D>("splash");
+            sprite = level.Content.Load<Texture2D>("player");
         }
 
         #endregion
@@ -184,14 +188,19 @@ namespace PlatformerGame
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             Vector2 prevPos = position;
 
+            // Clear old input
+            movement = 0f;
+
             // Get the input from the player
             playerInput.Right = inputManager.IsRight(null);
             playerInput.Left = inputManager.IsLeft(null);
             playerInput.Jump = inputManager.IsJump(null);
             playerInput.Crouch = inputManager.IsCrouch(null);
             playerInput.Run = inputManager.IsRun(null);
+            
             isJumping = playerInput.Jump;
-
+            if (playerInput.Left) movement = -1f;
+            if (playerInput.Right) movement = 1f;
 
             // Update velocity based on the input
             velocity.X += movement * MoveAccel * elapsed;
