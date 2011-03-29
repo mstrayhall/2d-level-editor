@@ -24,5 +24,26 @@ namespace PlatformerGame
     class Enemy
     {
 
+
+        public Enemy(Level level, Vector2 pos, string spriteSet)
+        {
+
+        }
+
+        public void LoadContent(string spriteSet)
+        {
+
+        }
+
+        public void Update(GameTime gameTime)
+        {
+
+        }
+
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+
+        }
+
     }
 }

@@ -31,6 +31,7 @@ namespace PlatformerGame
         private const float JumpLaunchSpeed = -5000f;
         private const float GravityAccel = 4000f;
         private const float MaxFallSpeed = 1000f;
+        private const float JumpControlPower = 0.15f;
 
         #endregion
 
@@ -38,6 +39,8 @@ namespace PlatformerGame
         #region Gameplay Data
 
         TimeSpan damageTimer;
+        SpriteEffects flip = SpriteEffects.None;
+        Texture2D sprite;
 
         public float Health
         {
@@ -89,6 +92,10 @@ namespace PlatformerGame
         bool wasJumping;
         float jumpTime;
 
+        float movement = 0f;
+
+        // The "origin" of the player, the bottom center of the sprite
+        Vector2 origin;
         // The local bounds of this player 
         Rectangle localBounds;
         // Gets the bounding rectangle for the player in world space
@@ -125,6 +132,9 @@ namespace PlatformerGame
             int top = -(height / 3);
             localBounds = new Rectangle(left, top, width, height);
 
+            origin = new Vector2(width / 2, height);
+
+            sprite = level.Content.Load<Texture2D>("splash");
         }
 
         #endregion
@@ -132,8 +142,41 @@ namespace PlatformerGame
 
         #region Update and Draw
 
-        public void HandleInput()
+        public void HandleInput(GameTime gameTime)
         {
+            float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            Vector2 prevPos = position;
+
+            // Get the input from the player
+
+
+
+            // Update velocity based on the input
+            velocity.X += movement * MoveAccel * elapsed;
+            velocity.Y += GravityAccel * elapsed;
+
+            velocity.X = MathHelper.Clamp(velocity.X, -MaxMoveSpeed, MaxMoveSpeed);
+            velocity.Y = MathHelper.Clamp(velocity.Y, -MaxFallSpeed, MaxFallSpeed);
+
+            velocity.Y = Jump(velocity.Y, gameTime);
+
+            // Apply the velocity to the position
+            position += velocity * elapsed;
+            position = new Vector2((float)Math.Round(position.X), (float)Math.Round(position.Y));
+
+
+            // If player has moved into some object, move them out of it
+            HandleCollisions();
+
+            // If we were unable to move, stop velocity in that direction
+            if (prevPos.X == position.X)
+            {
+                velocity.X = 0;
+            }
+            if (prevPos.Y == position.Y)
+            {
+                velocity.Y = 0;
+            }
         }
 
         private void HandleCollisions()
@@ -142,25 +185,76 @@ namespace PlatformerGame
 
         public void Update(GameTime gameTime)
         {
+            HandleInput(gameTime);
+
+            // TODO: update animation if necessary
+
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
+            if (velocity.X > 0)
+            {
+                flip = SpriteEffects.FlipHorizontally;
+            }
+            else if (velocity.X < 0)
+            {
+                flip = SpriteEffects.None;
+            }
+
+            spriteBatch.Draw(sprite, Vector2.Zero, localBounds, Color.White, 0f, origin, 1f, flip, 1f);
         }
         
-        private void Jump()
+        private float Jump(float velocityY, GameTime gameTime)
         {
+            // If the player wants to jump
+            if (isJumping)
+            {
+                // Begin or continue a jump
+                if ((!wasJumping && IsOnGround) || jumpTime > 0.0f)
+                {
+                    if (jumpTime == 0.0f)
+                    {
+                        //jumpSound.Play();
+                    }
+
+                    jumpTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    //sprite.PlayAnimation(jumpAnimation);
+                }
+
+                // If we are in the ascent of the jump
+                if (0.0f < jumpTime && jumpTime <= MaxJumpTime)
+                {
+                    // Fully override the vertical velocity with a power curve that gives players more control over the top of the jump
+                    velocityY = JumpLaunchSpeed * (1.0f - (float)Math.Pow(jumpTime / MaxJumpTime, JumpControlPower));
+                }
+                else
+                {
+                    // Reached the apex of the jump
+                    jumpTime = 0.0f;
+                }
+            }
+            else
+            {
+                // Continues not jumping or cancels a jump in progress
+                jumpTime = 0.0f;
+            }
+            wasJumping = isJumping;
+
+            return velocityY;
         }
 
         public void Reset(Vector2 position)
         {
         }
 
-        private void Die()
+        public void Die(Enemy killedBy)
         {
+            isAlive = false;
+
         }
 
-        private void BeatLevel()
+        public void BeatLevel()
         {
         }
 

@@ -24,9 +24,7 @@ namespace PlatformerGame
     class Level : IDisposable
     {
         #region Gameplay Variables
-
-        ContentManager content;
-
+        
         // 2D tilemap of tiles in the level
         Tile[,] tiles;
         // Various layers that make up the level
@@ -60,25 +58,34 @@ namespace PlatformerGame
             get { return timeRemaining; }
         }
         TimeSpan timeRemaining;
-        
+
+        public ContentManager Content
+        {
+            get { return content; }
+        }
+        ContentManager content;
+
         #endregion
 
 
         #region Initialization
 
-        public Level(string path)
+        public Level(string path, IServiceProvider services)
         {
             if (content == null)
             {
-                //content = new ContentManager(ScreenManager.Game.Services, "Content");
+                content = new ContentManager(services, "Content");
             }
 
             timeRemaining = TimeSpan.FromMinutes(1);
 
             // Load the tiles
-
+            LoadTiles(path);
 
             // Load the background(s)
+            layers = new Texture2D[1];
+            layers[0] = content.Load<Texture2D>("splash");
+
 
         }
 
@@ -197,21 +204,62 @@ namespace PlatformerGame
 
         public void Update(GameTime gameTime)
         {
+            if (!Player.IsAlive || TimeRemaining == TimeSpan.Zero)
+            {
 
+            }
+            else if (ReachedExit)
+            {
+
+            }
+            else
+            {
+                timeRemaining -= gameTime.ElapsedGameTime;
+
+                player.Update(gameTime);
+
+                UpdateEnemies(gameTime);
+
+                // Check if the player fell down a pit
+                if (Player.BoundingRectangle.Top >= Height * Tile.Height)
+                {
+                    PlayerDeath(null);
+                }
+
+                // Check if they reached the exit
+                if (player.IsAlive && player.BoundingRectangle.Contains(exitPos))
+                {
+                    ExitReached();
+                }
+            }
+
+            if (timeRemaining < TimeSpan.Zero)
+            {
+                timeRemaining = TimeSpan.Zero;
+            }
         }
 
         private void UpdateEnemies(GameTime gameTime)
         {
+            foreach (Enemy e in enemies)
+            {
+                e.Update(gameTime);
 
+                // TODO: see if an enemy hits a player
+
+            }
         }
 
         private void PlayerDeath(Enemy killer)
         {
+            player.Die(killer);
         }
 
         private void ExitReached()
         {
+            player.BeatLevel();
 
+            reachedExit = true;
         }
 
         public void StartNewLife()
@@ -226,7 +274,19 @@ namespace PlatformerGame
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
+            foreach (Texture2D layer in layers)
+            {
+                spriteBatch.Draw(layer, Vector2.Zero, Color.White);
+            }
 
+            DrawTiles(spriteBatch);
+
+            foreach (Enemy e in enemies)
+            {
+                e.Draw(gameTime, spriteBatch);
+            }
+
+            player.Draw(gameTime, spriteBatch);
         }
 
         private void DrawTiles(SpriteBatch spriteBatch)
