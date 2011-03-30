@@ -54,7 +54,7 @@ namespace PlatformerGame
             // Default to the directory which contains our content files.
             string executingPath = AppDomain.CurrentDomain.BaseDirectory;
             string gameContentPath = Path.Combine(executingPath, "../../../../PlatformerGameContent");
-            
+
             fbd.SelectedPath = gameContentPath;
             fbd.Description = "Select a folder containing level files";
 
@@ -75,6 +75,12 @@ namespace PlatformerGame
             {
                 ScreenManager.AddScreen(new GameplayScreen(0, directoryPath), null);
                 this.ExitScreen();
+            }
+            else
+            {
+                // We exited the dialog box or something bad happened
+                this.ExitScreen();
+                return;
             }
             
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);

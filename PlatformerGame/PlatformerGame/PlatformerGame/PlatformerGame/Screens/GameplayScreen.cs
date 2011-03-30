@@ -82,19 +82,33 @@ namespace PlatformerGame
             spriteBatch = ScreenManager.SpriteBatch;
 
 
-            // TODO: search for all levels in this directory, add all?
-
-            DirectoryInfo di = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
-            
+            // Given the folder path specified by the user, load all levels in that folder
             allLevels = new List<string>();
-            string levelPath = "Levels/level0.txt";
-            allLevels.Add(levelPath);
 
-            levelPath = "Levels/level1.txt";
-            allLevels.Add(levelPath);
+            DirectoryInfo di = new DirectoryInfo(baseLevelsPath);
+            if (!di.Exists)
+            {
+                this.ExitScreen();
+                return;
+            }
 
-            LoadLevelName("Levels/level0.txt");
+            FileInfo[] files = di.GetFiles();
+            foreach (FileInfo file in files)
+            {
+                // Add all the txt files to the level list
+                if (file.Extension == ".txt")
+                {
+                    allLevels.Add(file.ToString());
+                }
+            }
 
+            // Load the first level from allLevels
+            levelIndex--;
+            LoadNextLevel();
+            //LoadLevelName("level0.txt");
+
+
+            // Set the number of lives for the player
             numLives = 3;
             
            
@@ -144,16 +158,15 @@ namespace PlatformerGame
                 if (level != null) level.Dispose();
 
                 // Load the new level
-                string levelPath = allLevels[levelIndex];
-                levelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Content/" + levelPath);
+                string levelName = allLevels[levelIndex];
+                string levelPath = Path.Combine(baseLevelsPath, levelName);
                 level = new Level(levelPath, ScreenManager.Game.Services, ScreenManager.GraphicsDevice);
             }
         }
 
         public void LoadLevelName(string levelName)
         {
-            string levelPath = levelName;
-            levelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Content/" + levelPath);
+            string levelPath = Path.Combine(baseLevelsPath, levelName);
 
             // Unload old level first
             if (level != null) level.Dispose();
