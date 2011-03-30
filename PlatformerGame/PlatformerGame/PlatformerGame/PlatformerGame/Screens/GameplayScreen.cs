@@ -176,6 +176,14 @@ namespace PlatformerGame
         {
             PlayerIndex playerIndex;
 
+            if (input.IsPauseGame(null))
+            {
+                // TODO: Actually pause and ask if they want to return to title screen instead of just doing it.
+
+                this.ExitScreen();
+            }
+
+
             base.HandleInput(input);
         }
 

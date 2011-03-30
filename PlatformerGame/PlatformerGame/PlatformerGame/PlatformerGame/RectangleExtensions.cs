@@ -1,4 +1,14 @@
-﻿using System;
+﻿#region File Description
+/* RectangleExtensions.cs
+ * 
+ * Contains useful functions for operations on Rectangles.
+ * 
+ * Code from XNA 3.0 Platformer Starter Kit used under the Microsoft Permissive Liscense.
+ * 
+ */
+#endregion
+
+using System;
 using Microsoft.Xna.Framework;
 
 namespace PlatformerGame

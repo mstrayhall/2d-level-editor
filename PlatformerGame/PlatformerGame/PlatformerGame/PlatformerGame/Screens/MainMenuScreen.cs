@@ -51,8 +51,8 @@ namespace PlatformerGame
             MenuEntries.Add(creditsMenuEntry);
             MenuEntries.Add(exitMenuEntry);
 
-            TransitionOnTime = TimeSpan.FromSeconds(1.5);
-            TransitionOffTime = TimeSpan.FromSeconds(3.0);
+            TransitionOnTime = TimeSpan.FromSeconds(0.5);
+            TransitionOffTime = TimeSpan.FromSeconds(1.0);
         }
 
         public override void LoadContent()
