@@ -306,7 +306,7 @@ namespace PlatformerGame
             }
         }
 
-        private void PlayerDeath(Enemy killer)
+        public void PlayerDeath(Enemy killer)
         {
             player.Die(killer);
         }

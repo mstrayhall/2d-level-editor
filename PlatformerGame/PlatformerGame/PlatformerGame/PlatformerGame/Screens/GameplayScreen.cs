@@ -62,6 +62,8 @@ namespace PlatformerGame
         List<string> allLevels;
         Level level;
 
+        int numLives;
+
         public GameplayScreen(int levelIndex)
         {
             this.levelIndex = levelIndex;
@@ -82,19 +84,17 @@ namespace PlatformerGame
             // Or do the starter kit method. But I think I wanna add all so I can do a level select screen.
             allLevels = new List<string>();
             string levelPath = "Levels/level0.txt";
-            levelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Content/" + levelPath); // had to change for 4.0
             allLevels.Add(levelPath);
 
-            level = new Level(allLevels[levelIndex], ScreenManager.Game.Services);
-            
-            /*
-            // populate list of levels
-            allLevels = new List<string>();
-            allLevels.Add("level0.txt");
-            //allLevels.Add("level1.txt");
-            allLevels.Add("level2.txt");
-            allLevels.Add("level3.txt");
+            levelPath = "Levels/level1.txt";
+            allLevels.Add(levelPath);
 
+            LoadLevelName("Levels/level0.txt");
+
+            numLives = 3;
+            
+           
+            /*
             // level stuff
             curLevel = new Level(allLevels[levelIndex]);
             curLevel.LoadLevel(content, ScreenManager.GraphicsDevice);
@@ -119,7 +119,6 @@ namespace PlatformerGame
             levelMusic = content.Load<Song>("HeatVision");
             MediaPlayer.Play(levelMusic);
             MediaPlayer.IsRepeating = true;
-
             */
 
 
@@ -129,11 +128,10 @@ namespace PlatformerGame
         public void LoadNextLevel()
         {
             levelIndex++;
-            if (levelIndex >= allLevels.Count - 1)
+            if (levelIndex >= allLevels.Count)
             {
                 // That was the last level
-                // TODO: tell them they win or take them back to the main menu
-
+                ScreenManager.AddScreen(new WinGameScreen(), null);
                 this.ExitScreen();
             }
             else
@@ -142,7 +140,9 @@ namespace PlatformerGame
                 if (level != null) level.Dispose();
 
                 // Load the new level
-                level = new Level(allLevels[levelIndex], ScreenManager.Game.Services);
+                string levelPath = allLevels[levelIndex];
+                levelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Content/" + levelPath);
+                level = new Level(levelPath, ScreenManager.Game.Services);
             }
         }
 
@@ -164,8 +164,10 @@ namespace PlatformerGame
             // Unload old level first
             if (level != null) level.Dispose();
 
-            // Load the new level
-            level = new Level(allLevels[levelIndex], ScreenManager.Game.Services);
+            // Reload the current level
+            string levelPath = allLevels[levelIndex];
+            levelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Content/" + levelPath);
+            level = new Level(levelPath, ScreenManager.Game.Services);
         }
 
         /// <summary>
@@ -183,44 +185,37 @@ namespace PlatformerGame
                 this.ExitScreen();
             }
 
+            if (input.IsNewKeyPress(Keys.E, null, out playerIndex))
+            {
+                level.PlayerDeath(null);
+            }
 
             base.HandleInput(input);
         }
 
-        /*
-        public bool RectCollision(float l1, float t1, float r1, float b1, float l2, float t2, float r2, float b2)
-        {
-            if (!(l1 > r2 || r1 < l2 || t1 < b2 || b1 > t2)) return true;
-            return false;
-        }
-        */
-
-        /*
-        public void WinLevelLogic(PlayerIndex playerIndex)
-        {
-            if (levelIndex >= allLevels.Count - 1)
-            {
-                // if we are on the last level right now and we beat it, we win!
-                ScreenManager.AddScreen(new WinGameScreen(), playerIndex);
-            }
-            else
-            {
-                levelIndex++;
-                ScreenManager.AddScreen(new GameplayScreen(levelIndex), playerIndex);
-            }
-            this.ExitScreen();
-        }
-
-
-        public void GameOverLogic(PlayerIndex playerIndex)
-        {
-           
-        }
-         * */
-
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
             level.Update(gameTime);
+
+            if (level.TimeRemaining == TimeSpan.Zero || !level.Player.IsAlive)
+            {
+                // if the Player is dead or time ran out, see if they can respawn
+                numLives--;
+                if (numLives >= 0)
+                {
+                    ReloadCurrentLevel();
+
+                }
+                else
+                {
+                    ScreenManager.AddScreen(new GameOverScreen(), null);
+                    this.ExitScreen();
+                }
+            }
+            else if (level.ReachedExit)
+            {
+                LoadNextLevel();
+            }
 
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
         }
