@@ -53,7 +53,7 @@ namespace PlatformerGame
              // Add our elapsed time to the total time we've been displaying
             displayTime += gameTime.ElapsedGameTime;
 
-            // If we've reached three seconds, transition to the next screen
+            // If we've reached five seconds, transition to the next screen
             if (displayTime > TimeSpan.FromSeconds(5.0))
             {
                 ScreenManager.RemoveScreen(this);
@@ -66,7 +66,7 @@ namespace PlatformerGame
         {
             PlayerIndex playerIndex;
 
-            // If the user preses the space bar, start a new game
+            // If the user presses the space bar, start a new game
             if (input.IsNewKeyPress(Keys.Space, ControllingPlayer, out playerIndex))
             {
                 ScreenManager.RemoveScreen(this);
