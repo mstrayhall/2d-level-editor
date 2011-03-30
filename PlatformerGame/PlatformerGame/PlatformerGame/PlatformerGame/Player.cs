@@ -147,10 +147,10 @@ namespace PlatformerGame
             //int left = (64 - width) / 2;
             //int top = 64 - height;
 
-            int width = (int)(64 * 1.0);
-            int height = (int)(64 * 1.0);
-            int left = (64 - width) / 2;
-            int top = (64 - height) / 2;
+            int width = (int)(32 * 1.0);
+            int height = (int)(32 * 1.0);
+            int left = (32 - width) / 2;
+            int top = (32 - height) / 2;
             localBounds = new Rectangle(left, top, width, height);
 
             origin = new Vector2(width / 2, height);

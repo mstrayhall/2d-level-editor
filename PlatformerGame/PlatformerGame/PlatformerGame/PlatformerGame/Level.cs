@@ -65,17 +65,25 @@ namespace PlatformerGame
         }
         ContentManager content;
 
+        public GraphicsDevice GraphicsDevice
+        {
+            get { return graphicsDevice; }
+        }
+        GraphicsDevice graphicsDevice;
+
         #endregion
 
 
         #region Initialization
 
-        public Level(string path, IServiceProvider services)
+        public Level(string path, IServiceProvider services, GraphicsDevice graphicsDevice)
         {
             if (content == null)
             {
                 content = new ContentManager(services, "Content");
             }
+
+            this.graphicsDevice = graphicsDevice;
 
             timeRemaining = TimeSpan.FromMinutes(1);
 
@@ -333,6 +341,7 @@ namespace PlatformerGame
             foreach (Texture2D layer in layers)
             {
                 //spriteBatch.Draw(layer, Vector2.Zero, Color.White);
+                spriteBatch.Draw(layer, graphicsDevice.Viewport.Bounds, Color.White);
             }
 
             DrawTiles(spriteBatch);

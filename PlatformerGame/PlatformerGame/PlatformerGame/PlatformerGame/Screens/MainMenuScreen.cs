@@ -75,7 +75,7 @@ namespace PlatformerGame
         /// </summary>
         void OnPlayGame(object sender, PlayerIndexEventArgs e)
         {
-            ScreenManager.AddScreen(new GameplayScreen(0), e.PlayerIndex);
+            ScreenManager.AddScreen(new LoadGameScreen(), e.PlayerIndex);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace PlatformerGame
         /// </summary>
         void OnEditLevels(object sender, PlayerIndexEventArgs e)
         {
-            ScreenManager.AddScreen(new GameplayScreen(0), e.PlayerIndex);
+            ScreenManager.AddScreen(new LoadGameScreen(), e.PlayerIndex);
         }
 
         /// <summary>

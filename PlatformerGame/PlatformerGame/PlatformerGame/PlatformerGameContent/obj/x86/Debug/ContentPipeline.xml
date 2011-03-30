@@ -29,24 +29,6 @@
       <Time>2011-03-29T17:15:25.6562214-05:00</Time>
     </Item>
     <Item>
-      <Source>enemy.png</Source>
-      <Name>enemy</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\enemy.xnb</Output>
-      <Time>2011-03-29T19:59:52.3985668-05:00</Time>
-    </Item>
-    <Item>
-      <Source>player.png</Source>
-      <Name>player</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\player.xnb</Output>
-      <Time>2011-03-29T20:00:13.3267638-05:00</Time>
-    </Item>
-    <Item>
       <Source>Exit.png</Source>
       <Name>Exit</Name>
       <Importer>TextureImporter</Importer>
@@ -65,15 +47,6 @@
       <Time>2011-03-29T19:59:41.1669244-05:00</Time>
     </Item>
     <Item>
-      <Source>gameFont.spritefont</Source>
-      <Name>gameFont</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\gameFont.xnb</Output>
-      <Time>2011-03-26T01:35:58.2759828-05:00</Time>
-    </Item>
-    <Item>
       <Source>Platform.png</Source>
       <Name>Platform</Name>
       <Importer>TextureImporter</Importer>
@@ -81,6 +54,33 @@
       <Options>None</Options>
       <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Platform.xnb</Output>
       <Time>2011-03-29T19:53:00.5490103-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Enemy.png</Source>
+      <Name>Enemy</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Enemy.xnb</Output>
+      <Time>2011-03-29T19:59:52.3985668-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Player.png</Source>
+      <Name>Player</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Player.xnb</Output>
+      <Time>2011-03-29T20:00:13.3267638-05:00</Time>
+    </Item>
+    <Item>
+      <Source>gameFont.spritefont</Source>
+      <Name>gameFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\gameFont.xnb</Output>
+      <Time>2011-03-26T01:35:58.2759828-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

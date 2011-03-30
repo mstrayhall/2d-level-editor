@@ -93,6 +93,7 @@
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml">
       <Private>False</Private>
     </Reference>
@@ -122,6 +123,7 @@
     <Compile Include="Screens\CreditsScreen.cs" />
     <Compile Include="Screens\GameOverScreen.cs" />
     <Compile Include="Screens\GameplayScreen.cs" />
+    <Compile Include="Screens\LoadGameScreen.cs" />
     <Compile Include="Screens\MainMenuScreen.cs" />
     <Compile Include="Screens\MenuEntry.cs" />
     <Compile Include="Screens\MenuScreen.cs" />

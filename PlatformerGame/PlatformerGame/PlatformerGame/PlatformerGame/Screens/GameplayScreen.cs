@@ -2,7 +2,7 @@
 //-----------------------------------------------------------------------------
 // GameplayScreen.cs
 //
-// The atual game
+// The actual game
 //-----------------------------------------------------------------------------
 #endregion
 
@@ -58,16 +58,18 @@ namespace PlatformerGame
          * */
 
         // generate list of levels so we know where to go next
+        // Store the folder containing all the levels for this game
+        string baseLevelsPath;
         int levelIndex;
         List<string> allLevels;
         Level level;
 
         int numLives;
 
-        public GameplayScreen(int levelIndex)
+        public GameplayScreen(int levelIndex, string gameLevelsPath)
         {
             this.levelIndex = levelIndex;
-
+            baseLevelsPath = gameLevelsPath;
         }
 
         public override void LoadContent()
@@ -81,7 +83,9 @@ namespace PlatformerGame
 
 
             // TODO: search for all levels in this directory, add all?
-            // Or do the starter kit method. But I think I wanna add all so I can do a level select screen.
+
+            DirectoryInfo di = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
+            
             allLevels = new List<string>();
             string levelPath = "Levels/level0.txt";
             allLevels.Add(levelPath);
@@ -142,7 +146,7 @@ namespace PlatformerGame
                 // Load the new level
                 string levelPath = allLevels[levelIndex];
                 levelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Content/" + levelPath);
-                level = new Level(levelPath, ScreenManager.Game.Services);
+                level = new Level(levelPath, ScreenManager.Game.Services, ScreenManager.GraphicsDevice);
             }
         }
 
@@ -155,7 +159,7 @@ namespace PlatformerGame
             if (level != null) level.Dispose();
 
             // Load the new level
-            level = new Level(levelPath, ScreenManager.Game.Services);
+            level = new Level(levelPath, ScreenManager.Game.Services, ScreenManager.GraphicsDevice);
         }
 
         public void ReloadCurrentLevel()
@@ -167,7 +171,7 @@ namespace PlatformerGame
             // Reload the current level
             string levelPath = allLevels[levelIndex];
             levelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Content/" + levelPath);
-            level = new Level(levelPath, ScreenManager.Game.Services);
+            level = new Level(levelPath, ScreenManager.Game.Services, ScreenManager.GraphicsDevice);
         }
 
         /// <summary>
