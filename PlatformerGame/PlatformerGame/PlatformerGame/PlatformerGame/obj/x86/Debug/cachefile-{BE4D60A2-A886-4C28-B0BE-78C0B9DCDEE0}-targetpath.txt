@@ -1,3 +1,9 @@
 Content\splash.xnb
 Content\blank.xnb
+Content\background.xnb
+Content\enemy.xnb
+Content\player.xnb
+Content\Exit.xnb
+Content\Block.xnb
 Content\gameFont.xnb
+Content\Platform.xnb

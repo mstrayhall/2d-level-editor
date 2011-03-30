@@ -122,7 +122,7 @@ namespace PlatformerGame
                 for (int x = 0; x < Width; ++x)
                 {
                     char tileType = lines[y][x];
-                    tiles[x, y] = LoadTile(tileType, x, y);
+                    tiles[x, y] = LoadTileType(tileType, x, y);
                 }
             }
 
@@ -138,11 +138,67 @@ namespace PlatformerGame
 
         }
 
-        private Tile LoadTile(char tileType, int x, int y)
+        private Tile LoadTileType(char tileType, int x, int y)
         {
-            //This will need to handle loading of all tile types, loading each type appropriately
+            // TODO: This will need to handle loading of all tile types, loading each type appropriately
+
+            switch (tileType)
+            {
+                // Blank space
+                case '.':
+                    return new Tile(null, TileCollision.Passable, false);
+
+                // Platform
+                case '-':
+                    return LoadTile("Platform", TileCollision.Platform, false);
+
+                // Player 1
+                case '1':
+                    return LoadStartTile(x, y);
+
+                // Exit
+                case 'X':
+                    return LoadExitTile(x, y);
+
+                // Solid block
+                case '#':
+                    return LoadTile("Block", TileCollision.Impassable, false);
+
+                // Error for unsupported tile found
+                default:
+                    throw new Exception("Invalid tile character in level");
+            }
+        }
+
+        private Tile LoadTile(string name, TileCollision collision, bool isDamage)
+        {
+            // TODO: for multiple tilesets, add in "Tiles/" + the tileset name we're using..add this variable
+            return new Tile(content.Load<Texture2D>(name), collision, isDamage);
+        }
+
+        private Tile LoadStartTile(int x, int y)
+        {
+            if (Player != null)
+            {
+                throw new Exception("A level may not have multiple players");
+            }
+
+            startPos = RectangleExtensions.GetBottomCenter(GetBounds(x, y));
+            player = new Player(this, startPos, "Player");
 
             return new Tile(null, TileCollision.Passable, false);
+        }
+
+        private Tile LoadExitTile(int x, int y)
+        {
+            if (exitPos != InvalidPosition)
+            {
+                throw new Exception("A level may not have multiple exits");
+            }
+
+            exitPos = GetBounds(x, y).Center;
+
+            return LoadTile("Exit", TileCollision.Passable, false);
         }
 
 
@@ -276,7 +332,7 @@ namespace PlatformerGame
         {
             foreach (Texture2D layer in layers)
             {
-                spriteBatch.Draw(layer, Vector2.Zero, Color.White);
+                //spriteBatch.Draw(layer, Vector2.Zero, Color.White);
             }
 
             DrawTiles(spriteBatch);
@@ -291,7 +347,20 @@ namespace PlatformerGame
 
         private void DrawTiles(SpriteBatch spriteBatch)
         {
-
+            for (int y = 0; y < Height; y++)
+            {
+                for (int x = 0; x < Width; x++)
+                {
+                    // If there is a visible tile here
+                    Texture2D tex = tiles[x, y].Texture;
+                    if (tex != null)
+                    {
+                        // Draw it
+                        Vector2 pos = new Vector2(x, y) * Tile.Size;
+                        spriteBatch.Draw(tex, pos, Color.White);
+                    }
+                }
+            }
         }
 
         #endregion

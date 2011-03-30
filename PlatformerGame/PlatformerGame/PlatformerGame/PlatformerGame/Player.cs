@@ -24,8 +24,8 @@ namespace PlatformerGame
     {
         #region Constants
 
-        private const float MaxMoveSpeed = 1000f;
-        private const float MoveAccel = 10000f;
+        private const float WalkSpeed = 400f;
+        private const float RunSpeed = 600f;
 
         private const float MaxJumpTime = 0.5f;
         private const float JumpLaunchSpeed = -5000f;
@@ -129,7 +129,7 @@ namespace PlatformerGame
 
         #region Initialization
 
-        public Player(Level level, Vector2 startPos, Texture2D texture)
+        public Player(Level level, Vector2 startPos, string textureName)
         {
             this.level = level;
 
@@ -140,21 +140,28 @@ namespace PlatformerGame
 
             numLives = 5;
 
-            LoadContent();
+            LoadContent(textureName);
+
+            Reset(position);
         }
 
-        public void LoadContent()
+        public void LoadContent(string textureName)
         {
             // Calculate the local edges of the texture
-            int width = 10;
-            int height = 10;
-            int left = -(width / 3);
-            int top = -(height / 3);
+            //int width = (int)(64 * 0.4);
+            //int height = (int)(64 * 0.4);
+            //int left = (64 - width) / 2;
+            //int top = 64 - height;
+
+            int width = 64;
+            int height = 64;
+            int left = 0;
+            int top = 0;
             localBounds = new Rectangle(left, top, width, height);
 
             origin = new Vector2(width / 2, height);
 
-            sprite = level.Content.Load<Texture2D>("player");
+            sprite = level.Content.Load<Texture2D>(textureName);
         }
 
         #endregion
@@ -188,7 +195,7 @@ namespace PlatformerGame
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             Vector2 prevPos = position;
 
-            // Clear old input
+            // Clear old input and x velocity
             movement = 0f;
 
             // Get the input from the player
@@ -203,18 +210,26 @@ namespace PlatformerGame
             if (playerInput.Right) movement = 1f;
 
             // Update velocity based on the input
-            velocity.X += movement * MoveAccel * elapsed;
-            velocity.Y += GravityAccel * elapsed;
+            if (playerInput.Run)
+            {
+                 velocity.X = movement * RunSpeed;
+            }
+            else
+            {
+                velocity.X = movement * WalkSpeed;
+            }
+            //velocity.Y += GravityAccel * elapsed;
 
-            velocity.X = MathHelper.Clamp(velocity.X, -MaxMoveSpeed, MaxMoveSpeed);
             velocity.Y = MathHelper.Clamp(velocity.Y, -MaxFallSpeed, MaxFallSpeed);
 
             velocity.Y = Jump(velocity.Y, gameTime);
 
+            velocity.X = MathHelper.Clamp(velocity.X, -RunSpeed, RunSpeed);
+
             // Apply the velocity to the position
             position += velocity * elapsed;
             position = new Vector2((float)Math.Round(position.X), (float)Math.Round(position.Y));
-
+            
 
             // If player has moved into some object, move them out of it
             HandleCollisions();
@@ -256,7 +271,8 @@ namespace PlatformerGame
                 flip = SpriteEffects.None;
             }
 
-            spriteBatch.Draw(sprite, Vector2.Zero, localBounds, Color.White, 0f, origin, 1f, flip, 1f);
+            //spriteBatch.Draw(sprite, position, Color.White);
+            spriteBatch.Draw(sprite, position, localBounds, Color.White, 0f, origin, 1f, flip, 0f);
         }
         
         private float Jump(float velocityY, GameTime gameTime)
@@ -300,8 +316,10 @@ namespace PlatformerGame
 
         public void Reset(Vector2 position)
         {
-            position = startPosition;
+            Position = startPosition;
+            Velocity = Vector2.Zero;
             isAlive = true;
+
 
         }
 

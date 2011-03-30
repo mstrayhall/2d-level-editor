@@ -126,6 +126,48 @@ namespace PlatformerGame
             base.LoadContent();
         }
 
+        public void LoadNextLevel()
+        {
+            levelIndex++;
+            if (levelIndex >= allLevels.Count - 1)
+            {
+                // That was the last level
+                // TODO: tell them they win or take them back to the main menu
+
+                this.ExitScreen();
+            }
+            else
+            {
+                // Unload old level first
+                if (level != null) level.Dispose();
+
+                // Load the new level
+                level = new Level(allLevels[levelIndex], ScreenManager.Game.Services);
+            }
+        }
+
+        public void LoadLevelName(string levelName)
+        {
+            string levelPath = levelName;
+            levelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Content/" + levelPath);
+
+            // Unload old level first
+            if (level != null) level.Dispose();
+
+            // Load the new level
+            level = new Level(levelPath, ScreenManager.Game.Services);
+        }
+
+        public void ReloadCurrentLevel()
+        {
+            // Just build the level again
+            // Unload old level first
+            if (level != null) level.Dispose();
+
+            // Load the new level
+            level = new Level(allLevels[levelIndex], ScreenManager.Game.Services);
+        }
+
         /// <summary>
         /// Processes the user's input, to skip the splash screen.
         /// </summary>
@@ -170,7 +212,7 @@ namespace PlatformerGame
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
-            
+            level.Update(gameTime);
 
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
         }
