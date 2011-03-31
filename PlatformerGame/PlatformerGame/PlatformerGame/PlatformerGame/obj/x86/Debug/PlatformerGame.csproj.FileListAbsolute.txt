@@ -15,9 +15,6 @@ C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\Platformer
 C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Enemy.xnb
 C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Player.xnb
 C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\gameFont.xnb
-C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Levels\level0.txt
-C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Levels\level1.txt
-C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Levels\level2.txt
 C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\PlatformerGame.exe
 C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\PlatformerGame.pdb
 C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\obj\x86\Debug\PlatformerGame.exe
