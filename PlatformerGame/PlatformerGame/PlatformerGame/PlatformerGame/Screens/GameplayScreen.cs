@@ -237,6 +237,15 @@ namespace PlatformerGame
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
         }
 
+
+
+        // TODO: Implement
+        public void DrawHUD()
+        {
+        }
+
+
+
         /// <summary>
         /// Draw the game.
         /// </summary>
