@@ -182,8 +182,8 @@ namespace PlatformerGame
             if (level != null) level.Dispose();
 
             // Reload the current level
-            string levelPath = allLevels[levelIndex];
-            levelPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Content/" + levelPath);
+            string levelName = allLevels[levelIndex];
+            string levelPath = Path.Combine(baseLevelsPath, levelName);
             level = new Level(levelPath, ScreenManager.Game.Services, ScreenManager.GraphicsDevice);
         }
 

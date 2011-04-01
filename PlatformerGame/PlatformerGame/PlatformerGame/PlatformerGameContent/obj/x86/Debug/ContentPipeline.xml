@@ -8,7 +8,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\splash.xnb</Output>
-      <Time>2011-03-27T19:37:25.2194103-05:00</Time>
+      <Time>2011-03-26T01:10:48.0346019-05:00</Time>
     </Item>
     <Item>
       <Source>blank.png</Source>
@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\blank.xnb</Output>
-      <Time>2011-03-27T19:37:25.1794093-05:00</Time>
+      <Time>2010-11-22T20:36:04-06:00</Time>
     </Item>
     <Item>
       <Source>background.png</Source>
@@ -26,7 +26,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\background.xnb</Output>
-      <Time>2011-03-29T10:30:04.1537511-05:00</Time>
+      <Time>2011-03-29T17:15:25.6562214-05:00</Time>
     </Item>
     <Item>
       <Source>Exit.png</Source>
@@ -35,7 +35,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Exit.xnb</Output>
-      <Time>2011-03-31T09:15:01.9652568-05:00</Time>
+      <Time>2011-03-29T20:00:00.8340492-05:00</Time>
     </Item>
     <Item>
       <Source>Block.png</Source>
@@ -44,7 +44,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Block.xnb</Output>
-      <Time>2011-03-31T09:15:01.9762571-05:00</Time>
+      <Time>2011-03-29T19:59:41.1669244-05:00</Time>
     </Item>
     <Item>
       <Source>Platform.png</Source>
@@ -53,7 +53,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Platform.xnb</Output>
-      <Time>2011-03-31T09:15:01.9452564-05:00</Time>
+      <Time>2011-03-29T19:53:00.5490103-05:00</Time>
     </Item>
     <Item>
       <Source>Enemy.png</Source>
@@ -62,7 +62,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Enemy.xnb</Output>
-      <Time>2011-03-31T09:15:01.9272559-05:00</Time>
+      <Time>2011-03-29T19:59:52.3985668-05:00</Time>
     </Item>
     <Item>
       <Source>Player.png</Source>
@@ -71,7 +71,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Player.xnb</Output>
-      <Time>2011-03-31T09:15:01.9162557-05:00</Time>
+      <Time>2011-03-29T20:00:13.3267638-05:00</Time>
     </Item>
     <Item>
       <Source>gameFont.spritefont</Source>
@@ -80,7 +80,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\gameFont.xnb</Output>
-      <Time>2011-03-27T19:37:25.1844095-05:00</Time>
+      <Time>2011-04-01T12:43:29.7420258-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -120,7 +120,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2010-11-19T17:33:10.1216277-06:00</Value>
+        <Value>2011-01-21T14:04:32.4723669-06:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>
