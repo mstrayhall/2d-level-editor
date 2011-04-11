@@ -1,0 +1,43 @@
+Basic XML Concept
+
+<XnaContent>
+	<Asset Type="LevelPipeline.LevelContent">
+		<Name>LevelName</Name>
+		<Background>
+			<Layer>
+				<Texture>#External0</Texture>
+			</Layer>
+		</Background>
+		<Tiles>
+			<Item>
+				<Name>0 0</Name>
+				<Texture>#External1</Texture>
+			</Item>
+			<Item>
+				<Name>2 0</Name>
+				<Texture>#External2</Texture>
+			</Item>
+		</Tiles>
+		<Array>
+			<Item>
+				<Name>0 0</Name>
+				<Position>
+					<Row>0</Row>
+					<Column>0</Column>
+				</Position>
+			</Item>
+		</Array>
+		<ExternalReferences>
+			<ExternalReference ID="#External1" TargetType="Microsoft.Xna.Framework.Content.Pipeline.Graphics.Texture2DContent">C:\Users\Matthew\Desktop\Monster Bash\AnimationExample\AnimationExample\GameStateExampleContent\homestar\body.png</ExternalReference>
+		</ExternalReferences>
+	</Asset>
+</XnaContent>
+
+Player - 0
+	Player - 0
+Block - 1
+	End Level - 0
+	Ground - 1
+	Platform - 2
+Enemy - 2
+	Walking - 0
