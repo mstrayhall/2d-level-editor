@@ -10,17 +10,17 @@ Basic XML Concept
 		</Background>
 		<Tiles>
 			<Item>
-				<Name>0 0</Name>
+				<Type>0 0</Type>
 				<Texture>#External1</Texture>
 			</Item>
 			<Item>
-				<Name>2 0</Name>
+				<Type>2 0</Type>
 				<Texture>#External2</Texture>
 			</Item>
 		</Tiles>
 		<TileMap>
 			<Item>
-				<Name>0 0</Name>
+				<Type>0 0</Type>
 				<Position>
 					<Row>0</Row>
 					<Column>0</Column>
