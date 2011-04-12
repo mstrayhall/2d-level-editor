@@ -16,11 +16,38 @@ namespace PlatformerGame
 {
     class CreditsScreen : GameScreen
     {
-         SpriteFont gameOverFont;
+        #region Fields
 
         ContentManager content;
+        SpriteBatch spriteBatch;
 
-        TimeSpan displayTime;
+        string creditText;
+        float scrollSpeed;
+
+        Vector2 textPos;
+        SpriteFont font;
+
+        int numLines;
+        int textHeight;
+
+        bool paused;
+
+        #endregion
+
+        #region Initialization
+
+        public CreditsScreen()
+        {
+            // Sets how fast the credits will scroll
+            scrollSpeed = 0.1f;
+
+            // Build the credit text here
+            creditText = "CREDITS\n\n" +
+                         "Matthew Strayhall -- Platformer Game\n\n"
+                         + "\n\n"
+                         + "Other Sound Credits go here\n\n";
+
+        }
 
         public override void LoadContent()
         {
@@ -29,10 +56,17 @@ namespace PlatformerGame
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
 
-            gameOverFont = content.Load<SpriteFont>("gameFont");
+            // Grab the spriteBatch from the screenManager
+            spriteBatch = ScreenManager.SpriteBatch;
 
-            displayTime = TimeSpan.FromSeconds(0);
+            // Set the initial text position
+            textPos = new Vector2(100, ScreenManager.GraphicsDevice.Viewport.Height);
+            font = content.Load<SpriteFont>("creditFont");
 
+            // See how many lines we have so we know how long to scroll before returning to menu
+            string[] tokens = creditText.Split('\n');
+            numLines = tokens.Length;
+            textHeight = numLines * font.LineSpacing;
             base.LoadContent();
         }
 
@@ -42,52 +76,76 @@ namespace PlatformerGame
             base.UnloadContent();
         }
 
-        public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
-        {
-             // Add our elapsed time to the total time we've been displaying
-            displayTime += gameTime.ElapsedGameTime;
+        #endregion
 
-            // If we've reached three seconds, transition to the next screen
-            if (displayTime > TimeSpan.FromSeconds(20.0))
-            {
-                ScreenManager.RemoveScreen(this);
-            }
 
-            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
-        }
+        #region Update and Draw
 
+        /// <summary>
+        /// Allow the user to pause the credits or exit them early.
+        /// </summary>
+        /// <param name="input"></param>
         public override void HandleInput(InputState input)
         {
+            // Allow player to return to main menu at any time.
             PlayerIndex playerIndex;
 
-            // If the user preses the space bar, exit the credits
-            if (input.IsNewButtonPress(Buttons.Start, ControllingPlayer, out playerIndex) || input.IsNewKeyPress(Keys.Space, ControllingPlayer, out playerIndex))
+            // If the user presses the ESCAPE key or the back button, back out of this screen
+            if (input.IsNewKeyPress(Keys.Escape, null, out playerIndex) || input.IsNewButtonPress(Buttons.Back, null, out playerIndex))
             {
-                ScreenManager.RemoveScreen(this);
+                this.ExitScreen();
+            }
+
+            // If the user presses the SPACE key or the A button, pause the credits
+            if (input.IsNewKeyPress(Keys.Space, null, out playerIndex) || input.IsNewButtonPress(Buttons.A, null, out playerIndex))
+            {
+                if (paused == false) paused = true;
+                else paused = false;
             }
 
             base.HandleInput(input);
         }
 
-        public override void Draw(GameTime gameTime)
+        /// <summary>
+        /// Scroll the text until we are off the top of the screen.
+        /// </summary>
+        /// <param name="gameTime"></param>
+        /// <param name="otherScreenHasFocus"></param>
+        /// <param name="coveredByOtherScreen"></param>
+        public override void Update(Microsoft.Xna.Framework.GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
-            SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
+            if (!paused)
+            {
+                // Update the text position if we aren't paused.
+                textPos.Y -= scrollSpeed * gameTime.ElapsedGameTime.Milliseconds;
+            }
 
-            // Clear to black
+            if (textPos.Y + textHeight < 0)
+            {
+                // We have scrolled through all credits off the top of the screen
+                // so we can return to the main menu.
+                this.ExitScreen();
+            }
+
+            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
+        }
+
+        /// <summary>
+        /// Draw the credit text
+        /// </summary>
+        /// <param name="gameTime"></param>
+        public override void Draw(Microsoft.Xna.Framework.GameTime gameTime)
+        {
             ScreenManager.GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();
-
-            spriteBatch.DrawString(gameOverFont, "CREDITS", new Vector2((ScreenManager.GraphicsDevice.Viewport.Width / 2) - 100, 50), Color.Snow);
-
-            
-            spriteBatch.DrawString(gameOverFont, "All other assets and game created by Matthew Strayhall", new Vector2(100, 450), Color.Snow);
-
+            spriteBatch.DrawString(font, creditText, textPos, Color.Wheat);
             spriteBatch.End();
 
             base.Draw(gameTime);
         }
 
+        #endregion
     
     }
 }

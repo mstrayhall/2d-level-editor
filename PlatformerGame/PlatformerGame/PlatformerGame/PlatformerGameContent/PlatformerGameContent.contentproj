@@ -103,6 +103,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="creditFont.spritefont">
+      <Name>creditFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
     <None Include="Levels\level0.txt">
       <Name>level0</Name>
     </None>

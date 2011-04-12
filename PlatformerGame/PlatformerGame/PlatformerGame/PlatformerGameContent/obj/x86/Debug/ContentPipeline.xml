@@ -80,7 +80,16 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\gameFont.xnb</Output>
-      <Time>2011-04-01T12:43:29.7420258-05:00</Time>
+      <Time>2011-04-11T16:53:31.6026909-05:00</Time>
+    </Item>
+    <Item>
+      <Source>creditFont.spritefont</Source>
+      <Name>creditFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\creditFont.xnb</Output>
+      <Time>2011-04-11T16:53:44.9704555-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
