@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformerGame", "PlatformerGame\PlatformerGame\PlatformerGame.csproj", "{F159A4F0-25CB-4064-B2A6-9927A6C837C0}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "PlatformerGameContent", "PlatformerGame\PlatformerGameContent\PlatformerGameContent.contentproj", "{BE4D60A2-A886-4C28-B0BE-78C0B9DCDEE0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformerGameContent", "PlatformerGame\PlatformerGameContent\PlatformerGameContent.contentproj", "{BE4D60A2-A886-4C28-B0BE-78C0B9DCDEE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlatformerGamePipeline", "ContentPipelineExtension1\PlatformerGamePipeline.csproj", "{F3F113C7-86F7-4D80-A090-2D428AC22581}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +19,10 @@ Global
 		{F159A4F0-25CB-4064-B2A6-9927A6C837C0}.Release|x86.Build.0 = Release|x86
 		{BE4D60A2-A886-4C28-B0BE-78C0B9DCDEE0}.Debug|x86.ActiveCfg = Debug|x86
 		{BE4D60A2-A886-4C28-B0BE-78C0B9DCDEE0}.Release|x86.ActiveCfg = Release|x86
+		{F3F113C7-86F7-4D80-A090-2D428AC22581}.Debug|x86.ActiveCfg = Debug|x86
+		{F3F113C7-86F7-4D80-A090-2D428AC22581}.Debug|x86.Build.0 = Debug|x86
+		{F3F113C7-86F7-4D80-A090-2D428AC22581}.Release|x86.ActiveCfg = Debug|x86
+		{F3F113C7-86F7-4D80-A090-2D428AC22581}.Release|x86.Build.0 = Debug|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

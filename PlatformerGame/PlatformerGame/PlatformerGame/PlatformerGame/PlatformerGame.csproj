@@ -138,8 +138,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PlatformerGameContent\PlatformerGameContent.contentproj">
-      <Name>PlatformerGameContent</Name>
+      <Name>PlatformerGameContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
+      <Project>{BE4D60A2-A886-4C28-B0BE-78C0B9DCDEE0}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
