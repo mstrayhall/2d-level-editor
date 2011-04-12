@@ -20,7 +20,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace PlatformerGame
 {
-    enum TileCollision
+    public enum TileCollision
     {
         // player can completely pass through
         Passable = 0,
@@ -32,7 +32,7 @@ namespace PlatformerGame
         Platform = 2,
     }
 
-    struct Tile
+    public struct Tile
     {
         public Texture2D Texture;
         public TileCollision Collision;
