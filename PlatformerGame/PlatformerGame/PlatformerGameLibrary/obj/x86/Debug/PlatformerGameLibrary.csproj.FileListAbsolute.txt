@@ -1,0 +1,6 @@
+C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGameLibrary\bin\x86\Debug\PlatformerGameLibrary.dll
+C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGameLibrary\bin\x86\Debug\PlatformerGameLibrary.pdb
+C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGameLibrary\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGameLibrary\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGameLibrary\obj\x86\Debug\PlatformerGameLibrary.dll
+C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGameLibrary\obj\x86\Debug\PlatformerGameLibrary.pdb

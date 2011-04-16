@@ -17,7 +17,7 @@ using Microsoft.Xna.Framework.Content.Pipeline.Graphics;
 using Microsoft.Xna.Framework.Content.Pipeline.Processors;
 #endregion
 
-using Tile = PlatformerGame.Tile;
+using Tile = PlatformerGameLibrary.Tile;
 
 namespace PlatformerGamePipeline
 {
@@ -28,7 +28,7 @@ namespace PlatformerGamePipeline
         [ContentSerializer]
         public string Name;
 
-        [ContentSerializer]
+        [ContentSerializer(Optional=true)]
         public ExternalReference<Texture2DContent> Background;
 
         [ContentSerializer]
@@ -43,7 +43,7 @@ namespace PlatformerGamePipeline
     public class TileContent
     {
         [ContentSerializer]
-        public Vector2 Type;
+        public string Name;
 
         [ContentSerializer]
         public ExternalReference<Texture2DContent> Texture;
@@ -54,7 +54,7 @@ namespace PlatformerGamePipeline
     public class TileMapContent
     {
         [ContentSerializer]
-        public Vector2 Type;
+        public string Name;
 
         [ContentSerializer]
         public Vector2 Position;

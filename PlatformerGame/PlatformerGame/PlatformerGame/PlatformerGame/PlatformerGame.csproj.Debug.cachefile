@@ -6,5 +6,16 @@ Content\Block.xnb
 Content\Platform.xnb
 Content\Enemy.xnb
 Content\Player.xnb
+Content\Tiles\black.xnb
+Content\Tiles\blue.xnb
+Content\Tiles\gray.xnb
+Content\Tiles\green.xnb
+Content\Tiles\level image.xnb
+Content\Tiles\orange.xnb
+Content\Tiles\pink.xnb
+Content\Tiles\purple.xnb
+Content\Tiles\red.xnb
+Content\Tiles\white.xnb
+Content\Tiles\yellow.xnb
 Content\gameFont.xnb
 Content\creditFont.xnb

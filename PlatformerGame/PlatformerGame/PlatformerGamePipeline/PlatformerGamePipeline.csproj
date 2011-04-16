@@ -54,9 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PlatformerGame\PlatformerGame\PlatformerGame.csproj">
-      <Project>{F159A4F0-25CB-4064-B2A6-9927A6C837C0}</Project>
-      <Name>PlatformerGame</Name>
+    <ProjectReference Include="..\PlatformerGameLibrary\PlatformerGameLibrary.csproj">
+      <Project>{FA5D71C4-87E3-442B-8945-A15DE1BA0E6D}</Project>
+      <Name>PlatformerGameLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

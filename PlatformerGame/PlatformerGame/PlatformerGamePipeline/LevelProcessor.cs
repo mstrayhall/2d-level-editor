@@ -42,7 +42,7 @@ namespace PlatformerGamePipeline
             input.Background = context.BuildAsset<Texture2DContent, Texture2DContent>(input.Background, null);
 
             // Cycle through all LevelTilesContents contained in LevelContent
-            foreach (LevelTilesContent tile in input.Tiles)
+            foreach (TileContent tile in input.TileTypes)
             {
                 // Build the texture associated with each tile so it can be included in the .xnb file
                 // to be created by the Content Pipeline.

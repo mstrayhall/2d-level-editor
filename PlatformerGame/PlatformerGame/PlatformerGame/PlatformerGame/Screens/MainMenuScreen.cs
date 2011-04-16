@@ -11,6 +11,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Threading;
+using System.Windows.Forms;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -83,7 +84,12 @@ namespace PlatformerGame
         /// </summary>
         void OnEditLevels(object sender, PlayerIndexEventArgs e)
         {
-            ScreenManager.AddScreen(new LoadGameScreen(), e.PlayerIndex);
+            //ScreenManager.AddScreen(new LoadGameScreen(), e.PlayerIndex);
+
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            Form1 form = new Form1();
+            form.ShowDialog();
         }
 
         /// <summary>
