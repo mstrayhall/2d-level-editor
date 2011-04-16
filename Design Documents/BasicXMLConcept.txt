@@ -8,7 +8,7 @@ Basic XML Concept
 				<Texture>#External0</Texture>
 			</Layer>
 		</Background>
-		<Tiles>
+		<TileTypes>
 			<Item>
 				<Type>0 0</Type>
 				<Texture>#External1</Texture>
@@ -17,7 +17,7 @@ Basic XML Concept
 				<Type>2 0</Type>
 				<Texture>#External2</Texture>
 			</Item>
-		</Tiles>
+		</TileTypes>
 		<TileMap>
 			<Item>
 				<Type>0 0</Type>
