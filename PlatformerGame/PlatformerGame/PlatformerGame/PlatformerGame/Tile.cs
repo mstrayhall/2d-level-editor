@@ -34,14 +34,21 @@ namespace PlatformerGame
 
     public struct Tile
     {
+        [ContentSerializer]
         public Texture2D Texture;
+
+        [ContentSerializer]
         public TileCollision Collision;
 
+        [ContentSerializerIgnore]
         public bool IsDamage;
 
+        [ContentSerializerIgnore]
         public const int Width = 64;
+        [ContentSerializerIgnore]
         public const int Height = 64;
 
+        [ContentSerializerIgnore]
         public static readonly Vector2 Size = new Vector2(Width, Height);
 
         public Tile(Texture2D texture, TileCollision collision, bool damageTile)

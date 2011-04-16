@@ -38,6 +38,9 @@ namespace PlatformerGamePipeline
     {
         public override TOutput Process(TInput input, ContentProcessorContext context)
         {
+            // Build the background texture
+            input.Background = context.BuildAsset<Texture2DContent, Texture2DContent>(input.Background, null);
+
             // Cycle through all LevelTilesContents contained in LevelContent
             foreach (LevelTilesContent tile in input.Tiles)
             {

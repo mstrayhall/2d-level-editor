@@ -32,18 +32,18 @@ namespace PlatformerGamePipeline
         public ExternalReference<Texture2DContent> Background;
 
         [ContentSerializer]
-        public LevelTilesContent[] Tiles;
+        public TileContent[] TileTypes;
 
         [ContentSerializer]
-        public Tile[,] TileMap;
+        public TileMapContent[] TileMap;
         
     }
 
     [ContentSerializerRuntimeType("PlatformerGame.Level, PlatformerGame")]
-    public class LevelTilesContent
+    public class TileContent
     {
         [ContentSerializer]
-        public Matrix Type;
+        public Vector2 Type;
 
         [ContentSerializer]
         public ExternalReference<Texture2DContent> Texture;
@@ -51,10 +51,10 @@ namespace PlatformerGamePipeline
     }
 
     [ContentSerializerRuntimeType("PlatformerGame.Level, PlatformerGame")]
-    public class LevelArrayContent
+    public class TileMapContent
     {
         [ContentSerializer]
-        public Matrix Type;
+        public Vector2 Type;
 
         [ContentSerializer]
         public Vector2 Position;

@@ -23,14 +23,29 @@ namespace PlatformerGame
 {
     class Level : IDisposable
     {
-        #region Gameplay Variables
-        
+        #region Fields and Properties
+
+        [ContentSerializer]
+        public string Name;
+
+        [ContentSerializer]
+        public Texture2D Background;
+
+        // Keep track of all the types of tiles in this level
+        [ContentSerializer]
+        public Tile[] TileTypes;
+
+        // Store the locations and tile type for every tile location
+        [ContentSerializer]
+        public TileMap[] TileMap;
+
         // 2D tilemap of tiles in the level
         Tile[,] tiles;
         // Various layers that make up the level
         Texture2D[] layers;
 
         // Player, enemies, and items in the level
+        [ContentSerializerIgnore]
         public Player Player
         {
             get { return player; }
@@ -38,6 +53,7 @@ namespace PlatformerGame
         }
         Player player;
 
+        [ContentSerializerIgnore]
         List<Enemy> enemies = new List<Enemy>();
 
 
@@ -47,24 +63,28 @@ namespace PlatformerGame
         private static readonly Point InvalidPosition = new Point(-1, -1);
 
          // Level completion properties
+        [ContentSerializerIgnore]
         public bool ReachedExit
         {
             get { return reachedExit; }
         }
         bool reachedExit;
 
+        [ContentSerializerIgnore]
         public TimeSpan TimeRemaining
         {
             get { return timeRemaining; }
         }
         TimeSpan timeRemaining;
 
+        [ContentSerializerIgnore]
         public ContentManager Content
         {
             get { return content; }
         }
         ContentManager content;
 
+        [ContentSerializerIgnore]
         public GraphicsDevice GraphicsDevice
         {
             get { return graphicsDevice; }
@@ -373,5 +393,36 @@ namespace PlatformerGame
         }
 
         #endregion
+
+
+        public class TileMap
+        {
+            #region Fields
+
+            [ContentSerializer]
+            Vector2 TileType;
+
+            [ContentSerializer]
+            Vector2 Position;
+
+            // grab texture from tiletype dict in level class
+            Texture2D texture;
+            [ContentSerializerIgnore]
+            public Texture2D Texture
+            {
+                get { return texture; }
+            }
+
+            #endregion
+
+            #region Initialization
+
+            public void Initialize(GraphicsDevice device)
+            {
+
+            }
+
+            #endregion
+        }
     }
 }
