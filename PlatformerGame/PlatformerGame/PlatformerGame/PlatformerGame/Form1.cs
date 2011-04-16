@@ -201,5 +201,34 @@ namespace PlatformerGame
             Cursor = Cursors.Arrow;
         }
 
+        private void OpenMenuClicked(object sender, EventArgs e)
+        {
+            // Let the user specify a level to load and make a new form with this data.
+            // This includes the level dimensions, name displayed somewhere, background, tiles
+
+
+            // Get the file to load
+            string filename = "";
+            LoadLevel(filename);
+
+        }
+
+        private void LoadLevel(string filename)
+        {
+            Cursor = Cursors.WaitCursor;
+
+            // Read in the level specification
+            LevelContent levelSpec;
+            XmlReaderSettings settingsReader = new XmlReaderSettings();
+            using (XmlReader reader = XmlReader.Create(filename, settingsReader))
+            {
+                levelSpec = IntermediateSerializer.Deserialize<LevelContent>(reader, null);
+            }
+
+
+
+            Cursor = Cursors.Arrow;
+        }
+
     }
 }
