@@ -29,25 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Stationary Enemy");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Walking Enemy");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Jumping Enemy");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Tough Enemy");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Enemies", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Walking Enemy");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Enemies", new System.Windows.Forms.TreeNode[] {
+            treeNode1});
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Ground");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Platform");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("End Level");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Block", new System.Windows.Forms.TreeNode[] {
             treeNode3,
-            treeNode4});
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Solid Platform");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Passthrough Platform");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("End Level Platform");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Platforms", new System.Windows.Forms.TreeNode[] {
-            treeNode6,
-            treeNode7,
-            treeNode8});
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Player");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Player", new System.Windows.Forms.TreeNode[] {
-            treeNode10});
+            treeNode4,
+            treeNode5});
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Player");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Player", new System.Windows.Forms.TreeNode[] {
+            treeNode7});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,26 +91,26 @@
             // newLevelToolStripMenuItem
             // 
             this.newLevelToolStripMenuItem.Name = "newLevelToolStripMenuItem";
-            this.newLevelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newLevelToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.newLevelToolStripMenuItem.Text = "New Level";
             this.newLevelToolStripMenuItem.Click += new System.EventHandler(this.newLevelToolStripMenuItem_Click);
             // 
             // openLevelToolStripMenuItem
             // 
             this.openLevelToolStripMenuItem.Name = "openLevelToolStripMenuItem";
-            this.openLevelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openLevelToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.openLevelToolStripMenuItem.Text = "Open Level";
             // 
             // saveLevelToolStripMenuItem
             // 
             this.saveLevelToolStripMenuItem.Name = "saveLevelToolStripMenuItem";
-            this.saveLevelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveLevelToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.saveLevelToolStripMenuItem.Text = "Save Level";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // editToolStripMenuItem
@@ -151,54 +145,42 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(963, 24);
             this.treeView1.Name = "treeView1";
-            treeNode1.ImageKey = "pink.png";
-            treeNode1.Name = "StationaryEnemy";
-            treeNode1.SelectedImageKey = "pink.png";
-            treeNode1.Text = "Stationary Enemy";
-            treeNode2.ImageKey = "yellow.png";
-            treeNode2.Name = "WalkingEnemy";
-            treeNode2.SelectedImageKey = "yellow.png";
-            treeNode2.Text = "Walking Enemy";
-            treeNode3.ImageKey = "orange.png";
-            treeNode3.Name = "JumpingEnemy";
-            treeNode3.SelectedImageKey = "orange.png";
-            treeNode3.Text = "Jumping Enemy";
-            treeNode4.ImageKey = "red.png";
-            treeNode4.Name = "ToughEnemy";
-            treeNode4.SelectedImageKey = "red.png";
-            treeNode4.Text = "Tough Enemy";
-            treeNode5.ImageKey = "red.png";
-            treeNode5.Name = "Enemies";
-            treeNode5.SelectedImageKey = "red.png";
-            treeNode5.Text = "Enemies";
+            treeNode1.ImageKey = "yellow.png";
+            treeNode1.Name = "WalkingEnemy";
+            treeNode1.SelectedImageKey = "yellow.png";
+            treeNode1.Text = "Walking Enemy";
+            treeNode2.ImageKey = "red.png";
+            treeNode2.Name = "Enemies";
+            treeNode2.SelectedImageKey = "red.png";
+            treeNode2.Text = "Enemies";
+            treeNode3.ImageKey = "black.png";
+            treeNode3.Name = "Ground";
+            treeNode3.SelectedImageKey = "black.png";
+            treeNode3.Text = "Ground";
+            treeNode4.ImageKey = "blue.png";
+            treeNode4.Name = "Platform";
+            treeNode4.SelectedImageKey = "blue.png";
+            treeNode4.Text = "Platform";
+            treeNode5.ImageKey = "green.png";
+            treeNode5.Name = "EndLevel";
+            treeNode5.SelectedImageKey = "green.png";
+            treeNode5.Text = "End Level";
             treeNode6.ImageKey = "black.png";
-            treeNode6.Name = "SolidPlatform";
+            treeNode6.Name = "Block";
             treeNode6.SelectedImageKey = "black.png";
-            treeNode6.Text = "Solid Platform";
-            treeNode7.ImageKey = "blue.png";
-            treeNode7.Name = "PassthroughPlatform";
-            treeNode7.SelectedImageKey = "blue.png";
-            treeNode7.Text = "Passthrough Platform";
-            treeNode8.ImageKey = "green.png";
-            treeNode8.Name = "EndLevelPlatform";
-            treeNode8.SelectedImageKey = "green.png";
-            treeNode8.Text = "End Level Platform";
-            treeNode9.ImageKey = "black.png";
-            treeNode9.Name = "Platforms";
-            treeNode9.SelectedImageKey = "black.png";
-            treeNode9.Text = "Platforms";
-            treeNode10.ImageKey = "purple.png";
-            treeNode10.Name = "Player";
-            treeNode10.SelectedImageKey = "purple.png";
-            treeNode10.Text = "Player";
-            treeNode11.ImageKey = "purple.png";
-            treeNode11.Name = "Player";
-            treeNode11.SelectedImageKey = "purple.png";
-            treeNode11.Text = "Player";
+            treeNode6.Text = "Block";
+            treeNode7.ImageKey = "purple.png";
+            treeNode7.Name = "Player";
+            treeNode7.SelectedImageKey = "purple.png";
+            treeNode7.Text = "Player";
+            treeNode8.ImageKey = "purple.png";
+            treeNode8.Name = "Player";
+            treeNode8.SelectedImageKey = "purple.png";
+            treeNode8.Text = "Player";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode5,
-            treeNode9,
-            treeNode11});
+            treeNode2,
+            treeNode6,
+            treeNode8});
             this.treeView1.SelectedImageIndex = 0;
             this.treeView1.Size = new System.Drawing.Size(168, 638);
             this.treeView1.TabIndex = 3;

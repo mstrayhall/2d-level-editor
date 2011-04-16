@@ -79,6 +79,7 @@ namespace _2DLevelEditor
                 }
                 this.Text = newlevel.FindName;
                 FormSet(width*32, height*32);
+                pictureBox1.Image = new Bitmap(width * 32, height * 32);
             }
         }
 
