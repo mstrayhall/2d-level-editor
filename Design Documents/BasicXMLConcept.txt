@@ -18,7 +18,8 @@ Basic XML Concept
 				<Texture>#External2</Texture>
 			</Item>
 		</TileTypes>
-		<TileMap>
+		<MapSize>20 30</MapSize>
+		<TileArray>
 			<Item>
 				<Name>0 0</Name>
 				<Position>
@@ -26,7 +27,7 @@ Basic XML Concept
 					<Column>0</Column>
 				</Position>
 			</Item>
-		</TileMap>
+		</TileArray>
 		<ExternalReferences>
 			<ExternalReference ID="#External1" TargetType="Microsoft.Xna.Framework.Content.Pipeline.Graphics.Texture2DContent">C:\Users\Matthew\Desktop\Monster Bash\AnimationExample\AnimationExample\GameStateExampleContent\homestar\body.png</ExternalReference>
 		</ExternalReferences>
