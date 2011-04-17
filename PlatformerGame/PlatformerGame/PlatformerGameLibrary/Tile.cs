@@ -47,9 +47,9 @@ namespace PlatformerGameLibrary
         public bool IsDamage;
 
         [ContentSerializerIgnore]
-        public const int Width = 64;
+        public const int Width = 32;
         [ContentSerializerIgnore]
-        public const int Height = 64;
+        public const int Height = 32;
 
         [ContentSerializerIgnore]
         public static readonly Vector2 Size = new Vector2(Width, Height);

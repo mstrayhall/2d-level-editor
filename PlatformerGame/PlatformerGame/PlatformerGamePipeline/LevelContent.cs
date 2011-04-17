@@ -22,7 +22,7 @@ using Tile = PlatformerGameLibrary.Tile;
 namespace PlatformerGamePipeline
 {
 
-    [ContentSerializerRuntimeType("PlatformerGame.Level, PlatformerGame")]
+    [ContentSerializerRuntimeType("PlatformerGameLibrary.Level, PlatformerGameLibrary")]
     public class LevelContent
     {
         [ContentSerializer]
@@ -35,11 +35,14 @@ namespace PlatformerGamePipeline
         public TileContent[] TileTypes;
 
         [ContentSerializer]
-        public TileMapContent[] TileMap;
+        public Vector2 MapSize;
+
+        [ContentSerializer]
+        public TileMapContent[] TileArray;
         
     }
 
-    [ContentSerializerRuntimeType("PlatformerGame.Level, PlatformerGame")]
+    [ContentSerializerRuntimeType("PlatformerGameLibrary.Tile, PlatformerGameLibrary")]
     public class TileContent
     {
         [ContentSerializer]
@@ -50,7 +53,7 @@ namespace PlatformerGamePipeline
 
     }
 
-    [ContentSerializerRuntimeType("PlatformerGame.Level, PlatformerGame")]
+    [ContentSerializerRuntimeType("PlatformerGameLibrary.TileMap, PlatformerGameLibrary")]
     public class TileMapContent
     {
         [ContentSerializer]

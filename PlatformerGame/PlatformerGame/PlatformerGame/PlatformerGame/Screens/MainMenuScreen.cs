@@ -84,10 +84,6 @@ namespace PlatformerGame
         /// </summary>
         void OnEditLevels(object sender, PlayerIndexEventArgs e)
         {
-            //ScreenManager.AddScreen(new LoadGameScreen(), e.PlayerIndex);
-
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
             Form1 form = new Form1();
             form.ShowDialog();
         }

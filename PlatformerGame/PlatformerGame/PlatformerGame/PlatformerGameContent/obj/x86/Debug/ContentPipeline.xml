@@ -190,6 +190,79 @@
       <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\creditFont.xnb</Output>
       <Time>2011-04-11T23:01:52.3790493-05:00</Time>
     </Item>
+    <Item>
+      <Source>Levels\bob.xml</Source>
+      <Name>Levels\bob</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>LevelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Levels\bob.xnb</Output>
+      <Time>2011-04-16T23:38:51.8810956-05:00</Time>
+      <Request>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Tiles\pink_0.xnb</Request>
+      <Request>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Tiles\yellow_0.xnb</Request>
+      <Request>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Tiles\orange_0.xnb</Request>
+      <Request>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Tiles\red_0.xnb</Request>
+      <Request>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Tiles\black_0.xnb</Request>
+      <Request>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Tiles\blue_0.xnb</Request>
+      <Request>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Tiles\green_0.xnb</Request>
+      <Request>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Tiles\purple_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Tiles\pink.png</Source>
+      <Importer>TextureImporter</Importer>
+      <Options>None</Options>
+      <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Tiles\pink_0.xnb</Output>
+      <Time>2011-04-16T12:38:54.54182-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Tiles\yellow.png</Source>
+      <Importer>TextureImporter</Importer>
+      <Options>None</Options>
+      <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Tiles\yellow_0.xnb</Output>
+      <Time>2011-04-16T12:38:54.5918213-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Tiles\orange.png</Source>
+      <Importer>TextureImporter</Importer>
+      <Options>None</Options>
+      <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Tiles\orange_0.xnb</Output>
+      <Time>2011-04-16T12:38:54.5838211-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Tiles\red.png</Source>
+      <Importer>TextureImporter</Importer>
+      <Options>None</Options>
+      <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Tiles\red_0.xnb</Output>
+      <Time>2011-04-16T12:38:54.5768209-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Tiles\black.png</Source>
+      <Importer>TextureImporter</Importer>
+      <Options>None</Options>
+      <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Tiles\black_0.xnb</Output>
+      <Time>2011-04-16T12:38:54.6018215-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Tiles\blue.png</Source>
+      <Importer>TextureImporter</Importer>
+      <Options>None</Options>
+      <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Tiles\blue_0.xnb</Output>
+      <Time>2011-04-16T12:38:54.6278222-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Tiles\green.png</Source>
+      <Importer>TextureImporter</Importer>
+      <Options>None</Options>
+      <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Tiles\green_0.xnb</Output>
+      <Time>2011-04-16T12:38:54.5338198-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Tiles\purple.png</Source>
+      <Importer>TextureImporter</Importer>
+      <Options>None</Options>
+      <Output>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\Tiles\purple_0.xnb</Output>
+      <Time>2011-04-16T12:38:54.5618205-05:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
@@ -202,6 +275,14 @@
       <OutputDirectory>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
+      <Assembly>
+        <Key>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGamePipeline\bin\x86\Debug\PlatformerGamePipeline.dll</Key>
+        <Value>2011-04-16T23:54:10.7085724-05:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGameLibrary\bin\x86\Debug\PlatformerGameLibrary.dll</Key>
+        <Value>2011-04-16T23:54:10.2735616-05:00</Value>
+      </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
         <Value>2010-08-23T13:41:18-05:00</Value>

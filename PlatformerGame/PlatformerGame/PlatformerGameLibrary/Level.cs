@@ -35,6 +35,9 @@ namespace PlatformerGameLibrary
         [ContentSerializer]
         public Tile[] TileTypes;
 
+        [ContentSerializer]
+        public Vector2 MapSize;
+
         // Store the locations and tile type for every tile location
         [ContentSerializer]
         public TileMap[] TileArray;
@@ -96,61 +99,48 @@ namespace PlatformerGameLibrary
 
         #region Initialization
 
-        public Level(string path, IServiceProvider services, GraphicsDevice graphicsDevice)
+        public void Initialize(GraphicsDevice device, IServiceProvider services)
         {
             if (content == null)
             {
                 content = new ContentManager(services, "Content");
             }
 
-            this.graphicsDevice = graphicsDevice;
+            graphicsDevice = device;
 
             timeRemaining = TimeSpan.FromMinutes(1);
 
-            // Load the tiles
-            LoadTiles(path);
-
             // Load the background(s)
-            layers = new Texture2D[1];
-            layers[0] = content.Load<Texture2D>("background");
+            if (Background != null)
+            {
+                layers = new Texture2D[1];
+                layers[0] = Background;
+            }
+            else layers = new Texture2D[0];
 
-
+            // Load the tiles
+            LoadTiles();
         }
 
         /// <summary>
         /// TODO: MODIFY TO LOAD BASED ON XML
         /// </summary>
         /// <param name="path"></param>
-        private void LoadTiles(string path)
+        private void LoadTiles()
         {
-            // Load level and ensure all lines are of the same length
-            int width;
-            List<string> lines = new List<string>();
-            using (StreamReader reader = new StreamReader(path))
-            {
-                string line = reader.ReadLine();
-                width = line.Length;
-                while (line != null)
-                {
-                    lines.Add(line);
-                    if (line.Length != width)
-                    {
-                        throw new Exception("Level lines are of different widths");
-                    }
-                    line = reader.ReadLine();
-                }
-            }
+            int height = (int)MapSize.X;
+            int width = (int)MapSize.Y;
 
             // Create the tile grid
-            tiles = new Tile[width, lines.Count];
+            tiles = new Tile[width, height];
 
             // Loop over every tile position and load each tile
-            for (int y = 0; y < Height; ++y)
+            for (int y = 0; y < height; ++y)
             {
-                for (int x = 0; x < Width; ++x)
+                for (int x = 0; x < width; ++x)
                 {
-                    char tileType = lines[y][x];
-                    tiles[x, y] = LoadTileType(tileType, x, y);
+                    TileMap curTile = TileArray[y * (width) + x];
+                    tiles[x, y] = LoadTileType(curTile);
                 }
             }
 
@@ -166,31 +156,52 @@ namespace PlatformerGameLibrary
 
         }
 
-        private Tile LoadTileType(char tileType, int x, int y)
+        private Tile LoadTileType(TileMap curTile)
         {
             // TODO: This will need to handle loading of all tile types, loading each type appropriately
 
-            switch (tileType)
+            int y = (int)curTile.Position.X;
+            int x = (int)curTile.Position.Y;
+
+            switch (curTile.Name)
             {
                 // Blank space
-                case '.':
+                case "Blank Tile":
                     return new Tile(null, TileCollision.Passable, false);
 
-                // Platform
-                case '-':
-                    return LoadTile("Platform", TileCollision.Platform, false);
-
-                // Player 1
-                case '1':
+                // Player
+                case "Player":
                     return LoadStartTile(x, y);
 
+                //-------------- PLATFORMS --------------//
+                // Solid block
+                case "Solid Platform":
+                    return LoadTile("Block", TileCollision.Impassable, false);
+
+                // Platform
+                case "Passthrough Platform":
+                    return LoadTile("Platform", TileCollision.Platform, false);
+
                 // Exit
-                case 'X':
+                case "End Level Platform":
                     return LoadExitTile(x, y);
 
-                // Solid block
-                case '#':
-                    return LoadTile("Block", TileCollision.Impassable, false);
+                //-------------- ENEMIES --------------//
+                //
+                case "Stationary Enemy":
+                    return LoadTile(curTile.Name, TileCollision.Passable, true);
+
+                //
+                case "Walking Enemy":
+                    return LoadTile(curTile.Name, TileCollision.Passable, true);
+
+                //
+                case "Jumping Enemy":
+                    return LoadTile(curTile.Name, TileCollision.Passable, true);
+
+                //
+                case "Tough Enemy":
+                    return LoadTile(curTile.Name, TileCollision.Passable, true);
 
                 // Error for unsupported tile found
                 default:
@@ -360,7 +371,6 @@ namespace PlatformerGameLibrary
         {
             foreach (Texture2D layer in layers)
             {
-                //spriteBatch.Draw(layer, Vector2.Zero, Color.White);
                 spriteBatch.Draw(layer, graphicsDevice.Viewport.Bounds, Color.White);
             }
 
@@ -386,43 +396,43 @@ namespace PlatformerGameLibrary
                     {
                         // Draw it
                         Vector2 pos = new Vector2(x, y) * Tile.Size;
-                        spriteBatch.Draw(tex, pos, Color.White);
+                        Rectangle dest = new Rectangle((int)pos.X, (int)pos.Y, (int)Tile.Size.X, (int)Tile.Size.Y);
+                        spriteBatch.Draw(tex, dest, Color.White);
                     }
                 }
             }
         }
 
         #endregion
+    }
 
+    public class TileMap
+    {
+        #region Fields
 
-        public class TileMap
+        [ContentSerializer]
+        public string Name;
+
+        [ContentSerializer]
+        public Vector2 Position;
+
+        // grab texture from tiletype dict in level class
+        Texture2D texture;
+        [ContentSerializerIgnore]
+        public Texture2D Texture
         {
-            #region Fields
-
-            [ContentSerializer]
-            string Name;
-
-            [ContentSerializer]
-            Vector2 Position;
-
-            // grab texture from tiletype dict in level class
-            Texture2D texture;
-            [ContentSerializerIgnore]
-            public Texture2D Texture
-            {
-                get { return texture; }
-            }
-
-            #endregion
-
-            #region Initialization
-
-            public void Initialize(GraphicsDevice device)
-            {
-
-            }
-
-            #endregion
+            get { return texture; }
         }
+
+        #endregion
+
+        #region Initialization
+
+        public void Initialize(GraphicsDevice device)
+        {
+
+        }
+
+        #endregion
     }
 }

@@ -147,6 +147,9 @@ namespace PlatformerGame
             LevelContent levelSpec = new LevelContent();
             levelSpec.Name = levelName;
 
+            levelSpec.MapSize.X = height;
+            levelSpec.MapSize.Y = width;
+
             // Set the background
             // TODO: implement a background field somewhere for this optional attribute
 
@@ -169,12 +172,12 @@ namespace PlatformerGame
             {
                 TileContent tileContent = new TileContent();
                 tileContent.Name = tileName;
-                tileContent.Texture = new ExternalReference<Texture2DContent>("Content/Tiles/" + tileToTextureDict[tileName]);
+                tileContent.Texture = new ExternalReference<Texture2DContent>("../../../../PlatformerGameContent/Tiles/" + tileToTextureDict[tileName]);
                 levelSpec.TileTypes[index++] = tileContent;
             }
 
             // Create the TileMap of all tiles that make up the level
-            levelSpec.TileMap = new TileMapContent[board.Length];
+            levelSpec.TileArray = new TileMapContent[board.Length];
             index = 0;
             for (int i = 0; i < height; i++)
             {
@@ -186,7 +189,7 @@ namespace PlatformerGame
                     // TODO: get rid of tileType everywhere and replace it with Name field
                     tileMapContent.Position.X = i;
                     tileMapContent.Position.Y = j;
-                    levelSpec.TileMap[index++] = tileMapContent;
+                    levelSpec.TileArray[index++] = tileMapContent;
                 }
             }
 
@@ -239,16 +242,15 @@ namespace PlatformerGame
             // Set the level name, background image, and size
             // TODO: Should we also repopulate the TreeView based on the tiles included in the XML?
             NewLevel level = new NewLevel();
+            levelName = levelSpec.Name;
+            level.Name = levelName;
+            height = (int)levelSpec.MapSize.X;
+            width = (int)levelSpec.MapSize.Y;
 
             // Reset the background image so we can draw over it.
             pictureBox1.Image = new Bitmap(width * 32, height * 32);
 
             // Get the rest of the level information
-            levelName = levelSpec.Name;
-            level.Name = levelName;
-            // TODO: get the correct width from the XML later
-            width = level.FindWidth;
-            height = level.FindHeight;
             string bgimage = "";
             if (levelSpec.Background != null)
             {
@@ -272,7 +274,7 @@ namespace PlatformerGame
             // TODO: add Blank Tile to official list when saving the data?
 
             // Load in the tile information and draw them.
-            foreach (TileMapContent tileMapSpec in levelSpec.TileMap)
+            foreach (TileMapContent tileMapSpec in levelSpec.TileArray)
             {
                 Tile tile = new Tile();
                 tile.Name = tileMapSpec.Name;

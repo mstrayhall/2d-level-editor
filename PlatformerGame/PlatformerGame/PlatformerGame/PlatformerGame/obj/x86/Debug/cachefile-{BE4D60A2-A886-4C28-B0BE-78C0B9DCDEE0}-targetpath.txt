@@ -19,14 +19,12 @@ Content\Tiles\white.xnb
 Content\Tiles\yellow.xnb
 Content\gameFont.xnb
 Content\creditFont.xnb
-Content\Tiles\black.png
-Content\Tiles\blue.png
-Content\Tiles\gray.png
-Content\Tiles\green.png
-Content\Tiles\level image.png
-Content\Tiles\orange.png
-Content\Tiles\pink.png
-Content\Tiles\purple.png
-Content\Tiles\red.png
-Content\Tiles\white.png
-Content\Tiles\yellow.png
+Content\Levels\bob.xnb
+Content\Tiles\pink_0.xnb
+Content\Tiles\yellow_0.xnb
+Content\Tiles\orange_0.xnb
+Content\Tiles\red_0.xnb
+Content\Tiles\black_0.xnb
+Content\Tiles\blue_0.xnb
+Content\Tiles\green_0.xnb
+Content\Tiles\purple_0.xnb

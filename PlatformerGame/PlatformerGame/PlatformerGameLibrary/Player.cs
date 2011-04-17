@@ -146,8 +146,8 @@ namespace PlatformerGameLibrary
             //int height = (int)(64 * 0.4);
             //int left = (64 - width) / 2;
             //int top = 64 - height;
-            int sizeX = 64;
-            int sizeY = 64;
+            int sizeX = 32;
+            int sizeY = 32;
 
             int width = (int)(sizeX * 1.0);
             int height = (int)(sizeY * 1.0);

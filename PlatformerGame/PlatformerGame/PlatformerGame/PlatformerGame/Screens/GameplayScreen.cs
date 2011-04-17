@@ -97,7 +97,7 @@ namespace PlatformerGame
             foreach (FileInfo file in files)
             {
                 // Add all the txt files to the level list
-                if (file.Extension == ".txt")
+                if (file.Extension == ".xml")
                 {
                     allLevels.Add(file.ToString());
                 }
@@ -161,7 +161,10 @@ namespace PlatformerGame
                 // Load the new level
                 string levelName = allLevels[levelIndex];
                 string levelPath = Path.Combine(baseLevelsPath, levelName);
-                level = new Level(levelPath, ScreenManager.Game.Services, ScreenManager.GraphicsDevice);
+                //level = new Level(levelPath, ScreenManager.Game.Services, ScreenManager.GraphicsDevice);
+                //level = content.Load<Level>(levelPath);
+                level = content.Load<Level>("Levels\\bob");
+                level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services);
             }
         }
 
@@ -173,7 +176,9 @@ namespace PlatformerGame
             if (level != null) level.Dispose();
 
             // Load the new level
-            level = new Level(levelPath, ScreenManager.Game.Services, ScreenManager.GraphicsDevice);
+            //level = new Level(levelPath, ScreenManager.Game.Services, ScreenManager.GraphicsDevice);
+            level = content.Load<Level>(levelPath);
+            level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services);
         }
 
         public void ReloadCurrentLevel()
@@ -185,7 +190,9 @@ namespace PlatformerGame
             // Reload the current level
             string levelName = allLevels[levelIndex];
             string levelPath = Path.Combine(baseLevelsPath, levelName);
-            level = new Level(levelPath, ScreenManager.Game.Services, ScreenManager.GraphicsDevice);
+            level = content.Load<Level>(levelPath);
+            level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services);
+            // TODO: not sure if we clear the ref correctly, may need to call Reset() in the level
         }
 
         /// <summary>
