@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Content.Pipeline;
 using Microsoft.Xna.Framework.Content.Pipeline.Graphics;
@@ -81,7 +82,7 @@ namespace PlatformerGame
             string contentPath = Path.GetFullPath(relativePath);
             Bitmap tile = new Bitmap(contentPath + current.SelectedImageKey);
             //Bitmap tile = new Bitmap("../../../../PlatformerGameContent/Tiles" + current.SelectedImageKey);
-            Rectangle area = new Rectangle(X*32, Y*32, 32, 32);
+            System.Drawing.Rectangle area = new System.Drawing.Rectangle(X*32, Y*32, 32, 32);
             level.DrawImage(tile, area);
             pictureBox1.Image = pic;
         }
@@ -154,11 +155,10 @@ namespace PlatformerGame
             Dictionary<string, string> tileToTextureDict = new Dictionary<string, string>();
             foreach (TreeNode node in treeView1.Nodes)
             {
-                //if (node.Parent != null)
                 foreach (TreeNode childNode in node.Nodes)
                 {
                     // Then this is a child of someone and we want to add its info
-                    tileToTextureDict.Add(childNode.Name, childNode.ImageKey);
+                    tileToTextureDict.Add(childNode.Text, childNode.ImageKey);
                 }
             }
             levelSpec.TileTypes = new TileContent[tileToTextureDict.Keys.Count];
@@ -204,13 +204,24 @@ namespace PlatformerGame
         private void OpenMenuClicked(object sender, EventArgs e)
         {
             // Let the user specify a level to load and make a new form with this data.
-            // This includes the level dimensions, name displayed somewhere, background, tiles
+            OpenFileDialog fileDialog = new OpenFileDialog();
 
+            // Default to the directory which contains our content files.
+            string assemblyLocation = Assembly.GetExecutingAssembly().Location;
+            string relativePath = Path.Combine(assemblyLocation, "../../../../Content");
+            string contentPath = Path.GetFullPath(relativePath);
 
-            // Get the file to load
-            string filename = "";
-            LoadLevel(filename);
+            fileDialog.InitialDirectory = contentPath;
 
+            fileDialog.Title = "Load Level";
+
+            fileDialog.Filter = "Level Files (*.xml)|*.xml|" +
+                                "All Files (*.*)|*.*";
+
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                LoadLevel(fileDialog.FileName);
+            }
         }
 
         private void LoadLevel(string filename)
@@ -225,6 +236,119 @@ namespace PlatformerGame
                 levelSpec = IntermediateSerializer.Deserialize<LevelContent>(reader, null);
             }
 
+            // Set the level name, background image, and size
+            // TODO: Should we also repopulate the TreeView based on the tiles included in the XML?
+            NewLevel level = new NewLevel();
+
+            // Reset the background image so we can draw over it.
+            pictureBox1.Image = new Bitmap(width * 32, height * 32);
+
+            // Get the rest of the level information
+            levelName = levelSpec.Name;
+            level.Name = levelName;
+            // TODO: get the correct width from the XML later
+            width = level.FindWidth;
+            height = level.FindHeight;
+            string bgimage = "";
+            if (levelSpec.Background != null)
+            {
+                // if we even have a background texture, store it here
+                bgimage = levelSpec.Background.Filename;
+            }
+            if (bgimage != "")
+            {
+                pictureBox1.BackgroundImage = new Bitmap(bgimage);
+            }
+            FormSet(width * 32, height * 32);
+
+
+            // Create the list of all tile types
+            Dictionary<string, string> tileToTextureDict = new Dictionary<string, string>();
+            foreach (TileContent tileSpec in levelSpec.TileTypes)
+            {
+                tileToTextureDict.Add(tileSpec.Name, tileSpec.Texture.Filename);
+            }
+            tileToTextureDict.Add("Blank Tile", "");
+            // TODO: add Blank Tile to official list when saving the data?
+
+            // Load in the tile information and draw them.
+            foreach (TileMapContent tileMapSpec in levelSpec.TileMap)
+            {
+                Tile tile = new Tile();
+                tile.Name = tileMapSpec.Name;
+                tile.TileType = tileMapSpec.Name;
+                tile.ImageFile = tileToTextureDict[tile.Name];
+
+                Vector2 position = tileMapSpec.Position;
+                int posX = (int)position.X;
+                int posY = (int)position.Y;
+                board[posX, posY] = tile;
+
+                if (tile.ImageFile != "")
+                {
+                    // only bother drawing if we actually have an image to draw, not blank.
+                    Image pic = pictureBox1.Image;
+                    if (pic == null)
+                    {
+                        pic = new Bitmap(width * 32, height * 32);
+                    }
+                    Graphics levelPic = Graphics.FromImage(pic);
+                    Bitmap tileToDraw = new Bitmap(tile.ImageFile);
+                    System.Drawing.Rectangle area = new System.Drawing.Rectangle(posY * 32, posX * 32, 32, 32);
+                    levelPic.DrawImage(tileToDraw, area);
+                    pictureBox1.Image = pic;
+                    // TODO: Loop through tiles again to draw this stuff all at once?
+                }
+            }
+
+            /*
+            
+            // Load the MonsterParts list from the MonsterContent's Parts array
+            MonsterParts.Clear();
+            partNames.Clear();
+            foreach (MonsterPartContent partSpec in monsterSpec.Parts)
+            {
+                // Create a new monster part
+                Texture2D texture = LoadTexture2D(partSpec.Texture.Filename);
+                MonsterPart part = new MonsterPart(partSpec.Name, monsterControl1.GraphicsDevice, texture);
+
+                // Set the part variables
+                part.ParentIndex = partSpec.ParentIndex;
+            }
+
+            // Clear the heirarchy tree
+            heirarchyTreeView.Nodes.Clear();
+
+            // Populate the hierarchy tree from the MonsterPart list
+            foreach (MonsterPart part in MonsterParts)
+            {
+                // Create the TreeView node
+                TreeNode node = new TreeNode(part.Name);
+                node.Name = part.Name;
+                node.Tag = part;
+
+                // Add the new part to the heirarchy treeview
+                if (part.ParentIndex != -1)
+                {
+                    // Add the new part under the parent in the heirarchy
+                    TreeNode[] nodeArr = heirarchyTreeView.Nodes.Find(MonsterParts[part.ParentIndex].Name, true);
+                    if (nodeArr.Length > 0)
+                        nodeArr[0].Nodes.Add(node);
+                }
+                else
+                {
+                    // add the part at the root
+                    heirarchyTreeView.Nodes.Add(node);
+                }
+            }
+
+            // Expand the heirarchy list
+            heirarchyTreeView.ExpandAll();
+
+            // Refresh the controls
+            monsterControl1.Invalidate();
+            timelineControl1.Invalidate();
+             */
 
 
             Cursor = Cursors.Arrow;
