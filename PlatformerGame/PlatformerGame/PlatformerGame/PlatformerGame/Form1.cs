@@ -36,12 +36,12 @@ namespace PlatformerGame
 
         string levelName;
 
-        public Form1()
+        public Form1(IServiceProvider services)
         {
             InitializeComponent();
 
             contentBuilder = new ContentBuilder();
-            contentManager = new ContentManager(monsterControl1.Services,
+            contentManager = new ContentManager(services,
                                                 contentBuilder.OutputDirectory);
 
             width = 30;
@@ -145,16 +145,21 @@ namespace PlatformerGame
 
             if (fileDialog.ShowDialog() == DialogResult.OK)
             {
-                SaveLevel(fileDialog.FileName);
+                string fileNameOnly = Path.GetFileNameWithoutExtension(fileDialog.FileName);
+                SaveLevel(fileDialog.FileName, fileNameOnly);
             }
         }
 
-        private void SaveLevel(string filename)
+        private void SaveLevel(string fileName, string fileNameOnly)
         {
             Cursor = Cursors.WaitCursor;
 
             // Create the LevelContent object
             LevelContent levelSpec = new LevelContent();
+            if (String.IsNullOrEmpty(levelName))
+            {
+                levelName = fileNameOnly;
+            }
             levelSpec.Name = levelName;
 
             levelSpec.MapSize.X = height;
@@ -206,12 +211,39 @@ namespace PlatformerGame
             // Write the level specification
             XmlWriterSettings settingsWriter = new XmlWriterSettings();
             settingsWriter.Indent = true;
-            using (XmlWriter writer = XmlWriter.Create(filename, settingsWriter))
+            using (XmlWriter writer = XmlWriter.Create(fileName, settingsWriter))
             {
                 IntermediateSerializer.Serialize<LevelContent>(writer, levelSpec, null);
             }
 
+
+            // After we have made the xml, go ahead and create a .xnb file right now so it's ready to load later
+            Level level = CreateLevelXNB(fileName, fileNameOnly);
+
+
             Cursor = Cursors.Arrow;
+        }
+
+        private Level CreateLevelXNB(string fileName, string assetName)
+        {
+            // Tell the ContentBuilder what to build.
+            contentBuilder.Clear();
+            contentBuilder.Add(fileName, assetName, null, "LevelProcessor");
+
+            // Build this data.
+            string buildError = contentBuilder.Build();
+
+            if (string.IsNullOrEmpty(buildError))
+            {
+                // Load the texture
+                return contentManager.Load<Level>(assetName);
+            }
+            else
+            {
+                // Show the error
+                MessageBox.Show(buildError, "Build Error");
+                return null;
+            }
         }
 
         private void OpenMenuClicked(object sender, EventArgs e)

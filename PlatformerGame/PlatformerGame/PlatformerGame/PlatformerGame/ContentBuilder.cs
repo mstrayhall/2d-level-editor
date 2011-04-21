@@ -32,19 +32,20 @@ namespace PlatformerGame
     {
         #region Fields
 
-
+        
         // What importers or processors should we load?
         const string xnaVersion = ", Version=4.0.0.0, PublicKeyToken=842cf8be1de50553";
 
         static string[] pipelineAssemblies =
         {
-            "Microsoft.Xna.Framework.Content.Pipeline.FBXImporter" + xnaVersion,
-            "Microsoft.Xna.Framework.Content.Pipeline.XImporter" + xnaVersion,
+            //"Microsoft.Xna.Framework.Content.Pipeline.FBXImporter" + xnaVersion,
+            //"Microsoft.Xna.Framework.Content.Pipeline.XImporter" + xnaVersion,
             "Microsoft.Xna.Framework.Content.Pipeline.TextureImporter" + xnaVersion,
-            "Microsoft.Xna.Framework.Content.Pipeline.EffectImporter" + xnaVersion,
+            //"Microsoft.Xna.Framework.Content.Pipeline.EffectImporter" + xnaVersion,
+            "Microsoft.Xna.Framework.Content.Pipeline.XmlImporter" + xnaVersion,
 
             // Add our MonsterSpecification
-            "C:/Users/nhb7817/Documents/Teaching/Fundamentals of Game Programming/Examples/XNA/MonsterBashPipeline.dll" + xnaVersion,
+            "C:/Users/Matthew/Desktop/cis598/Project/PlatformerGame/PlatformerGame/PlatformerGamePipeline/bin/x86/Debug/PlatformerGamePipeline.dll" + xnaVersion,
 
             // If you want to use custom importers or processors from
             // a Content Pipeline Extension Library, add them here.
