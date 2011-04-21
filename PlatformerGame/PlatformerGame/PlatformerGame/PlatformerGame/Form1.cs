@@ -25,6 +25,11 @@ namespace PlatformerGame
 
     public partial class Form1 : Form
     {
+        // The Content Builder and Content Manager are used to load textures
+        // at runtime through the Content Pipeline
+        ContentBuilder contentBuilder;
+        ContentManager contentManager;
+
         int width;
         int height;
         Tile[,] board;
@@ -34,6 +39,11 @@ namespace PlatformerGame
         public Form1()
         {
             InitializeComponent();
+
+            contentBuilder = new ContentBuilder();
+            contentManager = new ContentManager(monsterControl1.Services,
+                                                contentBuilder.OutputDirectory);
+
             width = 30;
             height = 20;
             board = new Tile[height, width];
