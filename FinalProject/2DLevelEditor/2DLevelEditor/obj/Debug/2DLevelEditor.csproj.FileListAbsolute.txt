@@ -26,3 +26,14 @@ C:\Code\CIS598\FinalProject\2DLevelEditor\2DLevelEditor\obj\Debug\_2DLevelEditor
 C:\Code\CIS598\FinalProject\2DLevelEditor\2DLevelEditor\obj\Debug\GenerateResource.read.1.tlog
 C:\Code\CIS598\FinalProject\2DLevelEditor\2DLevelEditor\obj\Debug\GenerateResource.write.1.tlog
 C:\Code\CIS598\FinalProject\2DLevelEditor\2DLevelEditor\obj\Debug\_2DLevelEditor.NewLevel.resources
+C:\Code\2d-level-editor\FinalProject\2DLevelEditor\2DLevelEditor\obj\Debug\2DLevelEditor.exe
+C:\Code\2d-level-editor\FinalProject\2DLevelEditor\2DLevelEditor\obj\Debug\2DLevelEditor.pdb
+C:\Code\2d-level-editor\FinalProject\2DLevelEditor\2DLevelEditor\bin\Debug\2DLevelEditor.exe
+C:\Code\2d-level-editor\FinalProject\2DLevelEditor\2DLevelEditor\bin\Debug\2DLevelEditor.pdb
+C:\Code\2d-level-editor\FinalProject\2DLevelEditor\2DLevelEditor\obj\Debug\ResolveAssemblyReference.cache
+C:\Code\2d-level-editor\FinalProject\2DLevelEditor\2DLevelEditor\obj\Debug\_2DLevelEditor.Form1.resources
+C:\Code\2d-level-editor\FinalProject\2DLevelEditor\2DLevelEditor\obj\Debug\_2DLevelEditor.NewLevel.resources
+C:\Code\2d-level-editor\FinalProject\2DLevelEditor\2DLevelEditor\obj\Debug\_2DLevelEditor.Properties.Resources.resources
+C:\Code\2d-level-editor\FinalProject\2DLevelEditor\2DLevelEditor\obj\Debug\GenerateResource.read.1.tlog
+C:\Code\2d-level-editor\FinalProject\2DLevelEditor\2DLevelEditor\obj\Debug\GenerateResource.write.1.tlog
+C:\Code\2d-level-editor\FinalProject\2DLevelEditor\2DLevelEditor\obj\Debug\_2DLevelEditor.SetImages.resources

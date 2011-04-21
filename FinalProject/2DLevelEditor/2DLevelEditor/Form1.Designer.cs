@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Walking Enemy");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Walking Enemy", 4, 4);
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Enemies", new System.Windows.Forms.TreeNode[] {
             treeNode1});
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Ground");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Platform");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("End Level");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Ground", 2, 2);
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Platform", 3, 3);
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("End Level", 1, 1);
             System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Block", new System.Windows.Forms.TreeNode[] {
             treeNode3,
             treeNode4,
             treeNode5});
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Player");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Player", 0, 0);
             System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Player", new System.Windows.Forms.TreeNode[] {
             treeNode7});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
@@ -50,6 +50,7 @@
             this.saveLevelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uxSetImages = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -115,9 +116,18 @@
             // 
             // editToolStripMenuItem
             // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.uxSetImages});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "Edit";
+            // 
+            // uxSetImages
+            // 
+            this.uxSetImages.Name = "uxSetImages";
+            this.uxSetImages.Size = new System.Drawing.Size(152, 22);
+            this.uxSetImages.Text = "Set Images";
+            this.uxSetImages.Click += new System.EventHandler(this.setImagesToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
@@ -145,37 +155,37 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(963, 24);
             this.treeView1.Name = "treeView1";
-            treeNode1.ImageKey = "yellow.png";
+            treeNode1.ImageIndex = 4;
             treeNode1.Name = "WalkingEnemy";
-            treeNode1.SelectedImageKey = "yellow.png";
+            treeNode1.SelectedImageIndex = 4;
             treeNode1.Text = "Walking Enemy";
-            treeNode2.ImageKey = "red.png";
+            treeNode2.ImageKey = "(default)";
             treeNode2.Name = "Enemies";
-            treeNode2.SelectedImageKey = "red.png";
+            treeNode2.SelectedImageKey = "(default)";
             treeNode2.Text = "Enemies";
-            treeNode3.ImageKey = "black.png";
+            treeNode3.ImageIndex = 2;
             treeNode3.Name = "Ground";
-            treeNode3.SelectedImageKey = "black.png";
+            treeNode3.SelectedImageIndex = 2;
             treeNode3.Text = "Ground";
-            treeNode4.ImageKey = "blue.png";
+            treeNode4.ImageIndex = 3;
             treeNode4.Name = "Platform";
-            treeNode4.SelectedImageKey = "blue.png";
+            treeNode4.SelectedImageIndex = 3;
             treeNode4.Text = "Platform";
-            treeNode5.ImageKey = "green.png";
+            treeNode5.ImageIndex = 1;
             treeNode5.Name = "EndLevel";
-            treeNode5.SelectedImageKey = "green.png";
+            treeNode5.SelectedImageIndex = 1;
             treeNode5.Text = "End Level";
-            treeNode6.ImageKey = "black.png";
+            treeNode6.ImageKey = "(default)";
             treeNode6.Name = "Block";
-            treeNode6.SelectedImageKey = "black.png";
+            treeNode6.SelectedImageKey = "(default)";
             treeNode6.Text = "Block";
-            treeNode7.ImageKey = "purple.png";
+            treeNode7.ImageIndex = 0;
             treeNode7.Name = "Player";
-            treeNode7.SelectedImageKey = "purple.png";
+            treeNode7.SelectedImageIndex = 0;
             treeNode7.Text = "Player";
-            treeNode8.ImageKey = "purple.png";
+            treeNode8.ImageKey = "(default)";
             treeNode8.Name = "Player";
-            treeNode8.SelectedImageKey = "purple.png";
+            treeNode8.SelectedImageKey = "(default)";
             treeNode8.Text = "Player";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode2,
@@ -262,6 +272,7 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem uxSetImages;
     }
 }
 

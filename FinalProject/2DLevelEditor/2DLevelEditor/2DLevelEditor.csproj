@@ -59,6 +59,12 @@
     <Compile Include="NewLevel.Designer.cs">
       <DependentUpon>NewLevel.cs</DependentUpon>
     </Compile>
+    <Compile Include="SetImages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetImages.Designer.cs">
+      <DependentUpon>SetImages.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tile.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -84,6 +90,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SetImages.resx">
+      <DependentUpon>SetImages.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
