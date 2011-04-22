@@ -16,6 +16,8 @@ using Microsoft.Build.Construction;
 using Microsoft.Build.Evaluation;
 using Microsoft.Build.Execution;
 using Microsoft.Build.Framework;
+using PlatformerGamePipeline;
+using PlatformerGameLibrary;
 #endregion
 
 namespace PlatformerGame
@@ -38,14 +40,15 @@ namespace PlatformerGame
 
         static string[] pipelineAssemblies =
         {
-            //"Microsoft.Xna.Framework.Content.Pipeline.FBXImporter" + xnaVersion,
-            //"Microsoft.Xna.Framework.Content.Pipeline.XImporter" + xnaVersion,
+            "Microsoft.Xna.Framework.Content.Pipeline.FBXImporter" + xnaVersion,
+            "Microsoft.Xna.Framework.Content.Pipeline.XImporter" + xnaVersion,
             "Microsoft.Xna.Framework.Content.Pipeline.TextureImporter" + xnaVersion,
-            //"Microsoft.Xna.Framework.Content.Pipeline.EffectImporter" + xnaVersion,
+            "Microsoft.Xna.Framework.Content.Pipeline.EffectImporter" + xnaVersion,
             "Microsoft.Xna.Framework.Content.Pipeline.XmlImporter" + xnaVersion,
 
             // Add our MonsterSpecification
             "C:/Users/Matthew/Desktop/cis598/Project/PlatformerGame/PlatformerGame/PlatformerGamePipeline/bin/x86/Debug/PlatformerGamePipeline.dll" + xnaVersion,
+            "C:/Users/Matthew/Desktop/cis598/Project/PlatformerGame/PlatformerGame/PlatformerGamePipeline/bin/x86/Debug/PlatformerGameLibrary.dll" + xnaVersion,
 
             // If you want to use custom importers or processors from
             // a Content Pipeline Extension Library, add them here.

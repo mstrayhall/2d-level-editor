@@ -218,17 +218,18 @@ namespace PlatformerGame
 
 
             // After we have made the xml, go ahead and create a .xnb file right now so it's ready to load later
-            Level level = CreateLevelXNB(fileName, fileNameOnly);
+            CreateLevelXNB(fileName, fileNameOnly);
+            //Level level = CreateLevelXNB(fileName, fileNameOnly);
 
 
             Cursor = Cursors.Arrow;
         }
 
-        private Level CreateLevelXNB(string fileName, string assetName)
+        private void CreateLevelXNB(string fileName, string assetName)
         {
             // Tell the ContentBuilder what to build.
             contentBuilder.Clear();
-            contentBuilder.Add(fileName, assetName, null, "LevelProcessor");
+            contentBuilder.Add(fileName, assetName, null, "Level Processor");
 
             // Build this data.
             string buildError = contentBuilder.Build();
@@ -236,13 +237,13 @@ namespace PlatformerGame
             if (string.IsNullOrEmpty(buildError))
             {
                 // Load the texture
-                return contentManager.Load<Level>(assetName);
+                //return contentManager.Load<Level>(assetName);
             }
             else
             {
                 // Show the error
                 MessageBox.Show(buildError, "Build Error");
-                return null;
+                //return null;
             }
         }
 
