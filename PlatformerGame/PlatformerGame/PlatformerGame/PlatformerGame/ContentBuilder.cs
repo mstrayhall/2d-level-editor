@@ -46,7 +46,7 @@ namespace PlatformerGame
             "Microsoft.Xna.Framework.Content.Pipeline.EffectImporter" + xnaVersion,
             "Microsoft.Xna.Framework.Content.Pipeline.XmlImporter" + xnaVersion,
 
-            // Add our MonsterSpecification
+            // Add our Level Specification
             "C:/Users/Matthew/Desktop/cis598/Project/PlatformerGame/PlatformerGame/PlatformerGamePipeline/bin/x86/Debug/PlatformerGamePipeline.dll" + xnaVersion,
             "C:/Users/Matthew/Desktop/cis598/Project/PlatformerGame/PlatformerGame/PlatformerGamePipeline/bin/x86/Debug/PlatformerGameLibrary.dll" + xnaVersion,
 
