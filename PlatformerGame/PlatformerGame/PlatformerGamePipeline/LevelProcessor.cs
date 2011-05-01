@@ -33,7 +33,7 @@ namespace PlatformerGamePipeline
     /// TODO: change the ContentProcessor attribute to specify the correct
     /// display name for this processor.
     /// </summary>
-    [ContentProcessor(DisplayName = "Level Processor")]
+    [ContentProcessor(DisplayName = "LevelProcessor")]
     public class LevelProcessor : ContentProcessor<TInput, TOutput>
     {
         public override TOutput Process(TInput input, ContentProcessorContext context)

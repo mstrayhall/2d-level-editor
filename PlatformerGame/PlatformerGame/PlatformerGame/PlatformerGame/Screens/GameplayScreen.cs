@@ -28,6 +28,10 @@ namespace PlatformerGame
         ContentManager content;
         SpriteBatch spriteBatch;
 
+        // The Content Builder and Content Manager are used to load textures
+        // at runtime through the Content Pipeline
+        ContentBuilder contentBuilder;
+
         /*
         // health bars
         Texture2D healthBar;
@@ -61,6 +65,7 @@ namespace PlatformerGame
         // generate list of levels so we know where to go next
         // Store the folder containing all the levels for this game
         string baseLevelsPath;
+        string tempLevelXNBPath;
         int levelIndex;
         List<string> allLevels;
         Level level;
@@ -75,13 +80,18 @@ namespace PlatformerGame
 
         public override void LoadContent()
         {
+            contentBuilder = new ContentBuilder();
+
             // If we don't yet have a reference to the content manager, 
             // grab one from the game
             if (content == null)
-                content = new ContentManager(ScreenManager.Game.Services, "Content");
+                content = new ContentManager(ScreenManager.Game.Services, contentBuilder.OutputDirectory);
+            tempLevelXNBPath = contentBuilder.OutputDirectory;
 
             spriteBatch = ScreenManager.SpriteBatch;
-
+            //string assemblyLocation = Assembly.GetExecutingAssembly().Location;
+            //string relativePath = Path.Combine(assemblyLocation, "../../../../../PlatformerGameContent/Tiles/");
+            //string contentPath = Path.GetFullPath(relativePath);
 
             // Given the folder path specified by the user, load all levels in that folder
             allLevels = new List<string>();
@@ -99,9 +109,11 @@ namespace PlatformerGame
                 // Add all the txt files to the level list
                 if (file.Extension == ".xml")
                 {
-                    allLevels.Add(file.ToString());
+                    allLevels.Add(Path.GetFileNameWithoutExtension(file.FullName));
                 }
             }
+
+            CreateLevelXNB();
 
             // Load the first level from allLevels
             levelIndex--;
@@ -144,6 +156,30 @@ namespace PlatformerGame
             base.LoadContent();
         }
 
+        private void CreateLevelXNB()
+        {
+            contentBuilder.Clear();
+
+            foreach (string file in allLevels)
+            {
+                string levelName = file;
+                string levelPath = baseLevelsPath + file + ".xml";
+                contentBuilder.Add(levelPath, levelName, null, "LevelProcessor");
+            }
+            string buildError = contentBuilder.Build();
+
+            if (string.IsNullOrEmpty(buildError))
+            {
+                // We're good to game.
+            }
+            else
+            {
+                // Show the error
+                // TODO: SHOW ERROR
+                //MessageBox.Show(buildError, "Build Error");
+            }
+        }
+
         public void LoadNextLevel()
         {
             levelIndex++;
@@ -160,23 +196,22 @@ namespace PlatformerGame
 
                 // Load the new level
                 string levelName = allLevels[levelIndex];
-                string levelPath = Path.Combine(baseLevelsPath, levelName);
-                //level = new Level(levelPath, ScreenManager.Game.Services, ScreenManager.GraphicsDevice);
-                //level = content.Load<Level>(levelPath);
-                level = content.Load<Level>("Levels\\bob");
+                string levelPath = Path.Combine(tempLevelXNBPath, levelName);
+                string fileNameOnly = Path.GetFileNameWithoutExtension(levelPath);
+                level = content.Load<Level>(levelPath);
                 level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services);
             }
         }
 
         public void LoadLevelName(string levelName)
         {
-            string levelPath = Path.Combine(baseLevelsPath, levelName);
+            string levelPath = Path.Combine(tempLevelXNBPath, levelName);
+            string fileNameOnly = Path.GetFileNameWithoutExtension(levelPath);
 
             // Unload old level first
             if (level != null) level.Dispose();
 
             // Load the new level
-            //level = new Level(levelPath, ScreenManager.Game.Services, ScreenManager.GraphicsDevice);
             level = content.Load<Level>(levelPath);
             level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services);
         }
@@ -189,10 +224,11 @@ namespace PlatformerGame
 
             // Reload the current level
             string levelName = allLevels[levelIndex];
-            string levelPath = Path.Combine(baseLevelsPath, levelName);
+            string levelPath = Path.Combine(tempLevelXNBPath, levelName);
+            string fileNameOnly = Path.GetFileNameWithoutExtension(levelPath);
+
             level = content.Load<Level>(levelPath);
             level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services);
-            // TODO: not sure if we clear the ref correctly, may need to call Reset() in the level
         }
 
         /// <summary>

@@ -25,11 +25,6 @@ namespace PlatformerGame
 
     public partial class Form1 : Form
     {
-        // The Content Builder and Content Manager are used to load textures
-        // at runtime through the Content Pipeline
-        ContentBuilder contentBuilder;
-        ContentManager contentManager;
-
         int width;
         int height;
         Tile[,] board;
@@ -39,11 +34,7 @@ namespace PlatformerGame
         public Form1(IServiceProvider services)
         {
             InitializeComponent();
-
-            contentBuilder = new ContentBuilder();
-            contentManager = new ContentManager(services,
-                                                contentBuilder.OutputDirectory);
-
+            
             width = 30;
             height = 20;
             board = new Tile[height, width];
@@ -91,7 +82,6 @@ namespace PlatformerGame
             string relativePath = Path.Combine(assemblyLocation, "../../../../../PlatformerGameContent/Tiles/");
             string contentPath = Path.GetFullPath(relativePath);
             Bitmap tile = new Bitmap(contentPath + current.SelectedImageKey);
-            //Bitmap tile = new Bitmap("../../../../PlatformerGameContent/Tiles" + current.SelectedImageKey);
             System.Drawing.Rectangle area = new System.Drawing.Rectangle(X*32, Y*32, 32, 32);
             level.DrawImage(tile, area);
             pictureBox1.Image = pic;
@@ -216,35 +206,7 @@ namespace PlatformerGame
                 IntermediateSerializer.Serialize<LevelContent>(writer, levelSpec, null);
             }
 
-
-            // After we have made the xml, go ahead and create a .xnb file right now so it's ready to load later
-            CreateLevelXNB(fileName, fileNameOnly);
-            //Level level = CreateLevelXNB(fileName, fileNameOnly);
-
-
             Cursor = Cursors.Arrow;
-        }
-
-        private void CreateLevelXNB(string fileName, string assetName)
-        {
-            // Tell the ContentBuilder what to build.
-            contentBuilder.Clear();
-            contentBuilder.Add(fileName, assetName, null, "Level Processor");
-
-            // Build this data.
-            string buildError = contentBuilder.Build();
-
-            if (string.IsNullOrEmpty(buildError))
-            {
-                // Load the texture
-                //return contentManager.Load<Level>(assetName);
-            }
-            else
-            {
-                // Show the error
-                MessageBox.Show(buildError, "Build Error");
-                //return null;
-            }
         }
 
         private void OpenMenuClicked(object sender, EventArgs e)
@@ -345,56 +307,6 @@ namespace PlatformerGame
                     // TODO: Loop through tiles again to draw this stuff all at once?
                 }
             }
-
-            /*
-            
-            // Load the MonsterParts list from the MonsterContent's Parts array
-            MonsterParts.Clear();
-            partNames.Clear();
-            foreach (MonsterPartContent partSpec in monsterSpec.Parts)
-            {
-                // Create a new monster part
-                Texture2D texture = LoadTexture2D(partSpec.Texture.Filename);
-                MonsterPart part = new MonsterPart(partSpec.Name, monsterControl1.GraphicsDevice, texture);
-
-                // Set the part variables
-                part.ParentIndex = partSpec.ParentIndex;
-            }
-
-            // Clear the heirarchy tree
-            heirarchyTreeView.Nodes.Clear();
-
-            // Populate the hierarchy tree from the MonsterPart list
-            foreach (MonsterPart part in MonsterParts)
-            {
-                // Create the TreeView node
-                TreeNode node = new TreeNode(part.Name);
-                node.Name = part.Name;
-                node.Tag = part;
-
-                // Add the new part to the heirarchy treeview
-                if (part.ParentIndex != -1)
-                {
-                    // Add the new part under the parent in the heirarchy
-                    TreeNode[] nodeArr = heirarchyTreeView.Nodes.Find(MonsterParts[part.ParentIndex].Name, true);
-                    if (nodeArr.Length > 0)
-                        nodeArr[0].Nodes.Add(node);
-                }
-                else
-                {
-                    // add the part at the root
-                    heirarchyTreeView.Nodes.Add(node);
-                }
-            }
-
-            // Expand the heirarchy list
-            heirarchyTreeView.ExpandAll();
-
-            // Refresh the controls
-            monsterControl1.Invalidate();
-            timelineControl1.Invalidate();
-             */
-
 
             Cursor = Cursors.Arrow;
         }

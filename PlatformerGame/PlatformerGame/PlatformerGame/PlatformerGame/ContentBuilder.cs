@@ -47,8 +47,8 @@ namespace PlatformerGame
             "Microsoft.Xna.Framework.Content.Pipeline.XmlImporter" + xnaVersion,
 
             // Add our Level Specification
-            "C:/Users/Matthew/Desktop/cis598/Project/PlatformerGame/PlatformerGame/PlatformerGamePipeline/bin/x86/Debug/PlatformerGamePipeline.dll" + xnaVersion,
-            "C:/Users/Matthew/Desktop/cis598/Project/PlatformerGame/PlatformerGame/PlatformerGamePipeline/bin/x86/Debug/PlatformerGameLibrary.dll" + xnaVersion,
+            "C:/Users/Matthew/Desktop/cis598/Project/PlatformerGame/PlatformerGame/PlatformerGamePipeline/bin/x86/Debug/PlatformerGamePipeline.dll",
+            "C:/Users/Matthew/Desktop/cis598/Project/PlatformerGame/PlatformerGame/PlatformerGamePipeline/bin/x86/Debug/PlatformerGameLibrary.dll",
 
             // If you want to use custom importers or processors from
             // a Content Pipeline Extension Library, add them here.

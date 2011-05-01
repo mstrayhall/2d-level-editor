@@ -60,7 +60,7 @@ namespace PlatformerGame
 
             if (fbd.ShowDialog() == DialogResult.OK)
             {
-                string folderPath = fbd.SelectedPath;
+                string folderPath = fbd.SelectedPath + "/";
                 directoryFound = true;
                 return folderPath;
             }

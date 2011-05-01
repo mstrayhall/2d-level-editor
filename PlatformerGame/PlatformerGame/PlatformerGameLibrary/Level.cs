@@ -101,10 +101,7 @@ namespace PlatformerGameLibrary
 
         public void Initialize(GraphicsDevice device, IServiceProvider services)
         {
-            if (content == null)
-            {
-                content = new ContentManager(services, "Content");
-            }
+            content = new ContentManager(services, "Content");
 
             graphicsDevice = device;
 
@@ -243,6 +240,10 @@ namespace PlatformerGameLibrary
 
         public void Dispose()
         {
+            // TODO: make sure we RESET backgrounds, timer, and everything else correctly
+            player = null;
+            exitPos = InvalidPosition;
+
             content.Unload();
         }
 
