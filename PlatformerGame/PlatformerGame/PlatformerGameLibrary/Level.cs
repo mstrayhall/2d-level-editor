@@ -94,6 +94,14 @@ namespace PlatformerGameLibrary
         }
         GraphicsDevice graphicsDevice;
 
+
+        Vector2 cameraPos;
+        Vector2 maxCameraPos;
+        int scrollBoundaryLeft;
+        int scrollBoundaryRight;
+        int scrollBoundaryTop;
+        int scrollBoundaryBottom;
+        
         #endregion
 
 
@@ -117,6 +125,17 @@ namespace PlatformerGameLibrary
 
             // Load the tiles
             LoadTiles();
+
+
+            cameraPos = new Vector2(Player.Position.X, Player.Position.Y);
+            float maxCamX = Tile.Width * Width - graphicsDevice.Viewport.Width;
+            float maxCamY = Tile.Height * Height - graphicsDevice.Viewport.Height;
+            maxCameraPos = new Vector2(maxCamX, maxCamY);
+
+            scrollBoundaryLeft = 250;
+            scrollBoundaryRight = graphicsDevice.Viewport.Width - scrollBoundaryLeft;
+            scrollBoundaryTop = 200;
+            scrollBoundaryBottom = graphicsDevice.Viewport.Height - scrollBoundaryTop;
         }
 
         /// <summary>
@@ -363,6 +382,27 @@ namespace PlatformerGameLibrary
             Player.Reset(startPos);
         }
 
+
+        private void UpdateCamera(Viewport viewport)
+        {
+            // Calculate the boundaries outside which we will scroll
+            float boundLeft = cameraPos.X + scrollBoundaryLeft;
+            float boundRight = cameraPos.X + scrollBoundaryRight;
+            float boundTop = cameraPos.Y + scrollBoundaryTop;
+            float boundBottom = cameraPos.Y + scrollBoundaryBottom;
+
+            // Calculate how much to update the camera scroll
+            Vector2 cameraUpdate = Vector2.Zero;
+            if (Player.Position.X < boundLeft) cameraUpdate.X = Player.Position.X - boundLeft;
+            else if (Player.Position.X > boundRight) cameraUpdate.X = Player.Position.X - boundRight;
+            if (Player.Position.Y < boundTop) cameraUpdate.Y = Player.Position.Y - boundTop;
+            else if (Player.Position.Y > boundBottom) cameraUpdate.Y = Player.Position.Y - boundBottom;
+
+            // Update the camera position, but keep it within the bounds of the level
+            cameraPos.X = MathHelper.Clamp(cameraPos.X + cameraUpdate.X, 0f, maxCameraPos.X);
+            cameraPos.Y = MathHelper.Clamp(cameraPos.Y + cameraUpdate.Y, 0f, maxCameraPos.Y);
+        }
+
         #endregion
 
 
@@ -370,10 +410,17 @@ namespace PlatformerGameLibrary
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
+            spriteBatch.Begin();
             foreach (Texture2D layer in layers)
             {
                 spriteBatch.Draw(layer, graphicsDevice.Viewport.Bounds, Color.White);
             }
+            spriteBatch.End();
+
+            // Scroll the camera if needed.
+            UpdateCamera(spriteBatch.GraphicsDevice.Viewport);
+            Matrix cameraTransform = Matrix.CreateTranslation(-cameraPos.X, -cameraPos.Y, 0f);
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, null, null, null, null, cameraTransform);
 
             DrawTiles(spriteBatch);
 
@@ -383,13 +430,20 @@ namespace PlatformerGameLibrary
             }
 
             player.Draw(gameTime, spriteBatch);
+
+            spriteBatch.End();
         }
 
         private void DrawTiles(SpriteBatch spriteBatch)
         {
+            // Culling so that we only draw the visible tiles.
+            int left = (int)Math.Floor(cameraPos.X / Tile.Width);
+            int right = left + (graphicsDevice.Viewport.Width / Tile.Width) + 1;
+            right = Math.Min(right, Width);
+            // TODO: Culling for top and bottom
             for (int y = 0; y < Height; y++)
             {
-                for (int x = 0; x < Width; x++)
+                for (int x = left; x < right; x++)
                 {
                     // If there is a visible tile here
                     Texture2D tex = tiles[x, y].Texture;

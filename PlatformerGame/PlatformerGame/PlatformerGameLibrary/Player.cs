@@ -28,7 +28,7 @@ namespace PlatformerGameLibrary
         private const float RunSpeed = 600f;
 
         private const float MaxJumpTime = 0.5f;
-        private const float JumpLaunchSpeed = -5000f;
+        private const float JumpLaunchSpeed = -4000f;
         private const float GravityAccel = 4000f;
         private const float MaxFallSpeed = 1000f;
         private const float JumpControlPower = 0.15f;

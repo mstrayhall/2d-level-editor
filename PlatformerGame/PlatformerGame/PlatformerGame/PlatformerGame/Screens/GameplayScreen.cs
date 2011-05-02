@@ -319,11 +319,11 @@ namespace PlatformerGame
             spriteBatch.End();
             */
             
-            spriteBatch.Begin();
+            //spriteBatch.Begin();
 
             level.Draw(gameTime, spriteBatch);
 
-            spriteBatch.End();
+            //spriteBatch.End();
 
             base.Draw(gameTime);
         }
