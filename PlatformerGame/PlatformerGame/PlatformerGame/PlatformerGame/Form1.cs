@@ -115,6 +115,16 @@ namespace PlatformerGame
             pictureBox1.Width = w;
             treeView1.Height = h;
             treeView1.Left = w + 1;
+
+            board = new Tile[height, width];
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    board[i, j] = new Tile();
+                    board[i, j].TileType = "Blank Tile";
+                }
+            }
         }
 
         // TODO: add credit for this code

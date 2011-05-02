@@ -117,7 +117,7 @@ namespace PlatformerGame
 
             // Load the first level from allLevels
             levelIndex--;
-            LoadNextLevel();
+            //LoadNextLevel();
             //LoadLevelName("level0.txt");
 
 
@@ -180,14 +180,22 @@ namespace PlatformerGame
             }
         }
 
-        public void LoadNextLevel()
+        // Returns true if a new level was successfully loaded
+        public bool LoadNextLevel()
         {
             levelIndex++;
-            if (levelIndex >= allLevels.Count)
+            if (allLevels.Count == 0)
+            {
+                // We never had any levels to load
+                ScreenManager.RemoveScreen(this);
+                return false;
+            }
+            else if (levelIndex >= allLevels.Count)
             {
                 // That was the last level
                 ScreenManager.AddScreen(new WinGameScreen(), null);
-                this.ExitScreen();
+                ScreenManager.RemoveScreen(this);
+                return false;
             }
             else
             {
@@ -200,6 +208,7 @@ namespace PlatformerGame
                 string fileNameOnly = Path.GetFileNameWithoutExtension(levelPath);
                 level = content.Load<Level>(levelPath);
                 level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services);
+                return true;
             }
         }
 
@@ -256,6 +265,12 @@ namespace PlatformerGame
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
+            if (level == null)
+            {
+                bool haveNewLevel = LoadNextLevel();
+                if (!haveNewLevel) return;
+            }
+
             level.Update(gameTime);
 
             if (level.TimeRemaining == TimeSpan.Zero || !level.Player.IsAlive)
