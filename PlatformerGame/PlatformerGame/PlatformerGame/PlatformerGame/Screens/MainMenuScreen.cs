@@ -37,23 +37,26 @@ namespace PlatformerGame
             // Create our menu entries
             MenuEntry playGameMenuEntry = new MenuEntry("Play Game");
             MenuEntry editLevelsMenuEntry = new MenuEntry("Create/Modify Levels");
+            MenuEntry optionsMenuEntry = new MenuEntry("Options");            
             MenuEntry creditsMenuEntry = new MenuEntry("Credits");
             MenuEntry exitMenuEntry = new MenuEntry("Exit");
 
             // Add event handlers to menu entries
             playGameMenuEntry.Selected += OnPlayGame;
             editLevelsMenuEntry.Selected += OnEditLevels;
+            optionsMenuEntry.Selected += OptionsMenuEntrySelected;
             creditsMenuEntry.Selected += OnViewCredits;
             exitMenuEntry.Selected += OnCancel;
 
             // Add entries to the menu
             MenuEntries.Add(playGameMenuEntry);
             MenuEntries.Add(editLevelsMenuEntry);
+            //MenuEntries.Add(optionsMenuEntry);
             MenuEntries.Add(creditsMenuEntry);
             MenuEntries.Add(exitMenuEntry);
 
-            TransitionOnTime = TimeSpan.FromSeconds(0.5);
-            TransitionOffTime = TimeSpan.FromSeconds(1.0);
+            TransitionOnTime = TimeSpan.FromSeconds(0.3);
+            TransitionOffTime = TimeSpan.FromSeconds(0.3);
         }
 
         public override void LoadContent()
@@ -86,6 +89,14 @@ namespace PlatformerGame
         {
             Form1 form = new Form1(ScreenManager.Game.Services);
             form.ShowDialog();
+        }
+
+        /// <summary>
+        /// Event handler for when the Options menu entry is selected.
+        /// </summary>
+        void OptionsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        {
+            ScreenManager.AddScreen(new OptionsMenuScreen(), e.PlayerIndex);
         }
 
         /// <summary>

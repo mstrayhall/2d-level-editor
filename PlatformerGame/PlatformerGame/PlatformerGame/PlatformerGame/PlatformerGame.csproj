@@ -145,6 +145,7 @@
     <Compile Include="Screens\MainMenuScreen.cs" />
     <Compile Include="Screens\MenuEntry.cs" />
     <Compile Include="Screens\MenuScreen.cs" />
+    <Compile Include="Screens\OptionsMenuScreen.cs" />
     <Compile Include="Screens\PlayerIndexEventArgs.cs" />
     <Compile Include="Screens\SplashScreen.cs" />
     <Compile Include="Screens\WinGameScreen.cs" />

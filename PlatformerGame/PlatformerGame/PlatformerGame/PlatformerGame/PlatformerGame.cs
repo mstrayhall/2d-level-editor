@@ -56,6 +56,11 @@ namespace PlatformerGame
             // Activate the first screen
             screenManager.AddScreen(new SplashScreen(), null);
 
+            // Set the ScreenManager's graphics properties to be used throughout the game
+            screenManager.GraphicsDeviceManager = graphics;
+            screenManager.WindowedWidth = graphics.PreferredBackBufferWidth;
+            screenManager.WindowedHeight = graphics.PreferredBackBufferHeight;
+          
             base.Initialize();
         }
 

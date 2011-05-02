@@ -26,7 +26,31 @@ namespace PlatformerGame
     /// </summary>
     public class ScreenManager : DrawableGameComponent
     {
-        #region Fields
+        #region Fields and Properties
+
+        // GraphicsDeviceManager holds settings for game window size and resolution
+        private GraphicsDeviceManager graphicsDeviceManager;
+        public GraphicsDeviceManager GraphicsDeviceManager
+        {
+            get { return graphicsDeviceManager; }
+            set { graphicsDeviceManager = value; }
+        }
+
+        // Maintain the original desired windowed width
+        private int windowedWidth;
+        public int WindowedWidth
+        {
+            get { return windowedWidth; }
+            set { windowedWidth = value; }
+        }
+
+        // Maintain the original desired windowed height
+        private int windowedHeight;
+        public int WindowedHeight
+        {
+            get { return windowedHeight; }
+            set { windowedHeight = value; }
+        }
 
         List<GameScreen> screens = new List<GameScreen>();
         List<GameScreen> screensToUpdate = new List<GameScreen>();
@@ -40,10 +64,6 @@ namespace PlatformerGame
         bool isInitialized;
 
         bool traceEnabled;
-
-        #endregion
-
-        #region Properties
 
 
         /// <summary>
