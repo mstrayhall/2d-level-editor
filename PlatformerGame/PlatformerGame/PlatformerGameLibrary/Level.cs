@@ -46,6 +46,10 @@ namespace PlatformerGameLibrary
         Tile[,] tiles;
         // Various layers that make up the level
         Texture2D[] layers;
+        // Blank Texture to serve as the background if none are provided
+        Texture2D blankLayer;
+        // Rectangle representing the entire level size (not the viewport size)
+        Rectangle levelRectangle;
 
         // Player, enemies, and items in the level
         [ContentSerializerIgnore]
@@ -123,11 +127,16 @@ namespace PlatformerGameLibrary
                 layers = new Texture2D[1];
                 layers[0] = Background;
             }
-            else layers = new Texture2D[0];
-
+            else
+            {
+                layers = new Texture2D[0];
+                blankLayer = content.Load<Texture2D>("blank");
+            }
+            
             // Load the tiles
             LoadTiles();
 
+            levelRectangle = new Rectangle(0, 0, Tile.Width * Width, graphicsDevice.Viewport.Height);
 
             cameraPos = new Vector2(Player.Position.X, Player.Position.Y);
             float maxCamX = Tile.Width * Width - graphicsDevice.Viewport.Width;
@@ -413,9 +422,18 @@ namespace PlatformerGameLibrary
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
-            foreach (Texture2D layer in layers)
+            // If they have provided one or more backgrounds, draw them
+            // Otherwise clear the screen to white
+            if (layers.Length > 0)
             {
-                spriteBatch.Draw(layer, graphicsDevice.Viewport.Bounds, Color.White);
+                foreach (Texture2D layer in layers)
+                {
+                    spriteBatch.Draw(layer, graphicsDevice.Viewport.Bounds, Color.White);
+                }
+            }
+            else
+            {
+                spriteBatch.Draw(blankLayer, levelRectangle, Color.White);
             }
             spriteBatch.End();
 
