@@ -50,3 +50,4 @@ C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\Platformer
 C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\obj\x86\Debug\PlatformerGame.exe
 C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\obj\x86\Debug\PlatformerGame.pdb
 C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\hudFont.xnb
+C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\menuFont.xnb

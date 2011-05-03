@@ -66,7 +66,8 @@ namespace PlatformerGame
         InputState input = new InputState();
 
         SpriteBatch spriteBatch;
-        SpriteFont font;
+        SpriteFont gameFont;
+        SpriteFont menuFont;
         Texture2D blankTexture;
 
         bool isInitialized;
@@ -85,12 +86,20 @@ namespace PlatformerGame
 
 
         /// <summary>
-        /// A default font shared by all the screens. This saves
+        /// A game font shared by all the screens. This saves
         /// each screen having to bother loading their own local copy.
         /// </summary>
-        public SpriteFont Font
+        public SpriteFont GameFont
         {
-            get { return font; }
+            get { return gameFont; }
+        }
+        /// <summary>
+        /// A menu font shared by all the screens. This saves
+        /// each screen having to bother loading their own local copy.
+        /// </summary>
+        public SpriteFont MenuFont
+        {
+            get { return menuFont; }
         }
 
 
@@ -140,7 +149,8 @@ namespace PlatformerGame
             ContentManager content = Game.Content;
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            font = content.Load<SpriteFont>("gameFont");
+            gameFont = content.Load<SpriteFont>("gameFont");
+            menuFont = content.Load<SpriteFont>("menuFont");
             blankTexture = content.Load<Texture2D>("blank");
 
             // Tell each of the screens to load their content.

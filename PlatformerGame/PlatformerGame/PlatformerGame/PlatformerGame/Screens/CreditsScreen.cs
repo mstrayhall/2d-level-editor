@@ -42,10 +42,18 @@ namespace PlatformerGame
             scrollSpeed = 0.1f;
 
             // Build the credit text here
-            creditText = "CREDITS\n\n" +
-                         "Matthew Strayhall -- Platformer Game\n\n"
+            creditText = "CREDITS\n\n" 
+                         + "Matt Hudson\n"
+                         + "--Level Editor\n\n"
+                         + "Matthew Strayhall\n"
+                         + "--Platformer Game\n\n"
                          + "\n\n"
-                         + "Other Sound Credits go here\n\n";
+                         + "XNA Creator's Club Tutorials\n"
+                         + "--Starter code for menu system\n"
+                         + "--Inspiration for level and player class base structure"
+                         + "\n\n"
+                         + "Sound Effects and Music\n"
+                         + "--\n";
 
         }
 
@@ -136,10 +144,10 @@ namespace PlatformerGame
         /// <param name="gameTime"></param>
         public override void Draw(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            ScreenManager.GraphicsDevice.Clear(Color.Black);
+            ScreenManager.GraphicsDevice.Clear(Color.White);
 
             spriteBatch.Begin();
-            spriteBatch.DrawString(font, creditText, textPos, Color.Wheat);
+            spriteBatch.DrawString(font, creditText, textPos, Color.Black);
             spriteBatch.End();
 
             base.Draw(gameTime);

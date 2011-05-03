@@ -144,14 +144,14 @@ namespace PlatformerGame
 #endif
 
             // Draw the selected entry in yellow, otherwise white.
-            Color color = isSelected ? Color.Yellow : Color.White;
+            Color color = isSelected ? Color.Black : Color.Gray;
 
             // Pulsate the size of the selected menu entry.
             double time = gameTime.TotalGameTime.TotalSeconds;
 
-            float pulsate = (float)Math.Sin(time * 6) + 1;
+            float pulsate = (float)Math.Sin(time * 1) + 1;
 
-            float scale = 1 + pulsate * 0.05f * selectionFade;
+            float scale = 1 + pulsate * 0.01f * selectionFade;
 
             // Modify the alpha to fade text out during transitions.
             color *= screen.TransitionAlpha;
@@ -159,7 +159,9 @@ namespace PlatformerGame
             // Draw text, centered on the middle of each line.
             ScreenManager screenManager = screen.ScreenManager;
             SpriteBatch spriteBatch = screenManager.SpriteBatch;
-            SpriteFont font = screenManager.Font;
+            SpriteFont font = screenManager.MenuFont;
+
+            screenManager.GraphicsDevice.Clear(Color.White);
 
             Vector2 origin = new Vector2(0, font.LineSpacing / 2);
 
@@ -173,7 +175,7 @@ namespace PlatformerGame
         /// </summary>
         public virtual int GetHeight(MenuScreen screen)
         {
-            return screen.ScreenManager.Font.LineSpacing;
+            return screen.ScreenManager.MenuFont.LineSpacing;
         }
 
 
@@ -182,7 +184,7 @@ namespace PlatformerGame
         /// </summary>
         public virtual int GetWidth(MenuScreen screen)
         {
-            return (int)screen.ScreenManager.Font.MeasureString(Text).X;
+            return (int)screen.ScreenManager.MenuFont.MeasureString(Text).X;
         }
 
 
