@@ -29,6 +29,13 @@ namespace PlatformerGame
         bool directoryFound;
         string directoryPath;
 
+        ContentManager content;
+        SpriteBatch spriteBatch;
+        SpriteFont font;
+        Vector2 messagePos;
+
+        TimeSpan waitTimer;
+
         public LoadGameScreen()
         {
             directoryFound = false;
@@ -36,7 +43,14 @@ namespace PlatformerGame
 
         public override void LoadContent()
         {
-            directoryPath = LoadGame();
+            directoryPath = "";
+
+            content = new ContentManager(ScreenManager.Game.Services, "Content");
+            spriteBatch = ScreenManager.SpriteBatch;
+            font = content.Load<SpriteFont>("hudFont");
+            messagePos = new Vector2(20, 20);
+
+            waitTimer = TimeSpan.FromMilliseconds(30);
 
             base.LoadContent();
         }
@@ -64,31 +78,46 @@ namespace PlatformerGame
                 directoryFound = true;
                 return folderPath;
             }
-            else return "";
+            else return "error";
 
         }
 
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
-            if (directoryFound)
+            waitTimer -= gameTime.ElapsedGameTime;
+            if (waitTimer < TimeSpan.FromMilliseconds(0))
             {
-                ScreenManager.AddScreen(new GameplayScreen(0, directoryPath), null);
-                this.ExitScreen();
+                if (!directoryFound && directoryPath == "")
+                {
+                    directoryPath = LoadGame();
+                }
+                else if (directoryFound)
+                {
+                    ScreenManager.AddScreen(new GameplayScreen(0, directoryPath), null);
+                    this.ExitScreen();
+                }
+                else
+                {
+                    // We exited the dialog box or something bad happened
+                    this.ExitScreen();
+                    return;
+                }
             }
-            else
-            {
-                // We exited the dialog box or something bad happened
-                this.ExitScreen();
-                return;
-            }
-            
+
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
         }
 
         public override void Draw(GameTime gameTime)
         {
             ScreenManager.GraphicsDevice.Clear(Color.Black);
+            
+            spriteBatch.Begin();
+
+            if (directoryFound) spriteBatch.DrawString(font, "Loading...", messagePos, Color.White);
+            else spriteBatch.DrawString(font, "Select a folder containing the levels you would like to play.", messagePos, Color.White);
+
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
