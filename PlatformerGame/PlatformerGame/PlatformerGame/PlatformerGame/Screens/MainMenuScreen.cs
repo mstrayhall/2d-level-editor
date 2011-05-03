@@ -51,7 +51,7 @@ namespace PlatformerGame
             // Add entries to the menu
             MenuEntries.Add(playGameMenuEntry);
             MenuEntries.Add(editLevelsMenuEntry);
-            //MenuEntries.Add(optionsMenuEntry);
+            MenuEntries.Add(optionsMenuEntry);
             MenuEntries.Add(creditsMenuEntry);
             MenuEntries.Add(exitMenuEntry);
 

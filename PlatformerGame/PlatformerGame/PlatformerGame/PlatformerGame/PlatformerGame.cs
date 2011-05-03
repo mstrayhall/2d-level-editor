@@ -60,7 +60,8 @@ namespace PlatformerGame
             screenManager.GraphicsDeviceManager = graphics;
             screenManager.WindowedWidth = graphics.PreferredBackBufferWidth;
             screenManager.WindowedHeight = graphics.PreferredBackBufferHeight;
-          
+            screenManager.IsTimeLimit = true;
+            
             base.Initialize();
         }
 

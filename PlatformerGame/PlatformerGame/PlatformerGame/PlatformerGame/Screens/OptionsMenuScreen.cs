@@ -29,8 +29,11 @@ namespace PlatformerGame
     {
         #region Fields
                 
-        bool isFullscreen;
-        MenuEntry fullscreenMenuEntry;
+        //bool isFullscreen;
+        //MenuEntry fullscreenMenuEntry;
+
+        bool isLevelTimed;
+        MenuEntry timeLimitMenuEntry;
         MenuEntry backMenuEntry;
 
         #endregion
@@ -42,17 +45,20 @@ namespace PlatformerGame
         {
             
             // Create our menu entries
-            fullscreenMenuEntry = new MenuEntry(String.Empty);
+            //fullscreenMenuEntry = new MenuEntry(String.Empty);
+            timeLimitMenuEntry = new MenuEntry(String.Empty);
             backMenuEntry = new MenuEntry("Back");
 
             SetMenuEntryText();
 
             // Hook up menu event handlers
-            fullscreenMenuEntry.Selected += FullscreenMenuEntrySelected;
+            //fullscreenMenuEntry.Selected += FullscreenMenuEntrySelected;
+            timeLimitMenuEntry.Selected += TimeLimitMenuEntrySelected;
             backMenuEntry.Selected += OnCancel;
 
             // Add entries to the menu
-            MenuEntries.Add(fullscreenMenuEntry);
+            //MenuEntries.Add(fullscreenMenuEntry);
+            MenuEntries.Add(timeLimitMenuEntry);
             MenuEntries.Add(backMenuEntry);
 
             TransitionOnTime = TimeSpan.FromSeconds(0.3);
@@ -63,8 +69,10 @@ namespace PlatformerGame
         public override void LoadContent()
         {
             // Grab the current fullscreen state
-            isFullscreen = ScreenManager.GraphicsDeviceManager.IsFullScreen;
-            
+            //isFullscreen = ScreenManager.GraphicsDeviceManager.IsFullScreen;
+
+            isLevelTimed = ScreenManager.IsTimeLimit;
+
             // Update the menu entry text
             SetMenuEntryText();
              
@@ -80,9 +88,25 @@ namespace PlatformerGame
         /// </summary>
         void SetMenuEntryText()
         {
-            fullscreenMenuEntry.Text = "Fullscreen: " + (isFullscreen ? "Enabled" : "Disabled");
+            //fullscreenMenuEntry.Text = "Fullscreen: " + (isFullscreen ? "Enabled" : "Disabled");
+            timeLimitMenuEntry.Text = "Time Limit: " + (isLevelTimed ? "On" : "Off");
         }
 
+        /// <summary>
+        /// Event handler for when the TimeLimit menu entry is selected.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void TimeLimitMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        {
+            // Toggle the time limit boolean
+            isLevelTimed = !isLevelTimed;
+            ScreenManager.IsTimeLimit = isLevelTimed;
+
+            SetMenuEntryText();
+        }
+
+        /*
         /// <summary>
         /// Event handler for when the Fullscreen menu entry is selected.
         /// </summary>
@@ -114,6 +138,7 @@ namespace PlatformerGame
             // Update the the menu text to reflect the change
             SetMenuEntryText();
         }
+        */
 
         #endregion
 

@@ -79,6 +79,7 @@ namespace PlatformerGameLibrary
             get { return timeRemaining; }
         }
         TimeSpan timeRemaining;
+        bool isTimed; // Do we want a time limit for this level?
 
         [ContentSerializerIgnore]
         public ContentManager Content
@@ -107,13 +108,14 @@ namespace PlatformerGameLibrary
 
         #region Initialization
 
-        public void Initialize(GraphicsDevice device, IServiceProvider services)
+        public void Initialize(GraphicsDevice device, IServiceProvider services, bool isTimeLimit)
         {
             content = new ContentManager(services, "Content");
 
             graphicsDevice = device;
 
-            timeRemaining = TimeSpan.FromMinutes(1);
+            isTimed = isTimeLimit;
+            timeRemaining = TimeSpan.FromSeconds(100);
 
             // Load the background(s)
             if (Background != null)
@@ -329,7 +331,7 @@ namespace PlatformerGameLibrary
             }
             else
             {
-                timeRemaining -= gameTime.ElapsedGameTime;
+                if (isTimed) timeRemaining -= gameTime.ElapsedGameTime;
 
                 player.Update(gameTime);
 

@@ -60,6 +60,7 @@ namespace PlatformerGame
 
         // Timer
         Vector2 timerPos;
+        bool isTimed;
 
         // Level name
         Vector2 levelNamePos;
@@ -124,6 +125,7 @@ namespace PlatformerGame
 
             // Position for timer on the HUD
             timerPos = new Vector2(200, 15);
+            isTimed = ScreenManager.IsTimeLimit;
 
             // Position for level name on HUD
             levelNamePos = new Vector2(400, 15);
@@ -193,7 +195,7 @@ namespace PlatformerGame
                 string levelPath = Path.Combine(tempLevelXNBPath, levelName);
                 string fileNameOnly = Path.GetFileNameWithoutExtension(levelPath);
                 level = content.Load<Level>(levelPath);
-                level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services);
+                level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services, isTimed);
                 return true;
             }
         }
@@ -208,7 +210,7 @@ namespace PlatformerGame
 
             // Load the new level
             level = content.Load<Level>(levelPath);
-            level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services);
+            level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services, isTimed);
         }
 
         public void ReloadCurrentLevel()
@@ -223,7 +225,7 @@ namespace PlatformerGame
             string fileNameOnly = Path.GetFileNameWithoutExtension(levelPath);
 
             level = content.Load<Level>(levelPath);
-            level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services);
+            level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services, isTimed);
         }
 
         /// <summary>
@@ -289,8 +291,12 @@ namespace PlatformerGame
         public void DrawHUD(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
+
             spriteBatch.DrawString(hudFont, "Lives\n" + numLives, livesPos, Color.Black);
-            spriteBatch.DrawString(hudFont, "Time Left\n" + level.TimeRemaining.Seconds.ToString(), timerPos, Color.Black);
+
+            if (isTimed) spriteBatch.DrawString(hudFont, "Time Left\n" + (int)(level.TimeRemaining.TotalSeconds), timerPos, Color.Black);
+            else spriteBatch.DrawString(hudFont, "Time Left\n" + "Unlimited", timerPos, Color.Black);
+
             spriteBatch.DrawString(hudFont, "Level Name\n" + allLevels[levelIndex], levelNamePos, Color.Black);
 
             spriteBatch.End();

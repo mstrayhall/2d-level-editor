@@ -28,6 +28,14 @@ namespace PlatformerGame
     {
         #region Fields and Properties
 
+        // Keeps track of if our levels are timed or not
+        private bool isTimeLimit;
+        public bool IsTimeLimit
+        {
+            get { return isTimeLimit; }
+            set { isTimeLimit = value; }
+        }
+
         // GraphicsDeviceManager holds settings for game window size and resolution
         private GraphicsDeviceManager graphicsDeviceManager;
         public GraphicsDeviceManager GraphicsDeviceManager
