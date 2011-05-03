@@ -25,8 +25,11 @@ namespace PlatformerGame
 {
     class GameplayScreen : GameScreen
     {
+        // TODO: MERGE CONTENTS TO USE SAME PATH (or at least know how to navigate to both)
+        ContentManager content2;
         ContentManager content;
         SpriteBatch spriteBatch;
+        SpriteFont hudFont;
 
         // The Content Builder and Content Manager are used to load textures
         // at runtime through the Content Pipeline
@@ -39,26 +42,6 @@ namespace PlatformerGame
         // audio
         Song levelMusic;
 
-        // timer
-        TimeSpan countdownTimer;
-        Vector2 timerPos;
-        SpriteFont timerFont;
-
-        // scrolling backgrounds
-        float scrollSpeed;
-
-        float scrollBoundaryLeft;
-        float scrollBoundaryRight;
-        float scrollBoundaryTop;
-        float scrollBoundaryBottom;
-        bool scrolledX;
-        bool scrolledY;
-
-        Level curLevel;
-        int curLives;
-        Vector2 livesPos;
-
-        
         bool checkpointHit;
          * */
 
@@ -70,7 +53,17 @@ namespace PlatformerGame
         List<string> allLevels;
         Level level;
 
+
+        // HUD Stuff: lives
+        Vector2 livesPos;
         int numLives;
+
+        // Timer
+        Vector2 timerPos;
+
+        // Level name
+        Vector2 levelNamePos;
+
 
         public GameplayScreen(int levelIndex, string gameLevelsPath)
         {
@@ -82,6 +75,8 @@ namespace PlatformerGame
         {
             contentBuilder = new ContentBuilder();
 
+            content2 = new ContentManager(ScreenManager.Game.Services, "Content");
+
             // If we don't yet have a reference to the content manager, 
             // grab one from the game
             if (content == null)
@@ -92,6 +87,8 @@ namespace PlatformerGame
             //string assemblyLocation = Assembly.GetExecutingAssembly().Location;
             //string relativePath = Path.Combine(assemblyLocation, "../../../../../PlatformerGameContent/Tiles/");
             //string contentPath = Path.GetFullPath(relativePath);
+
+            hudFont = content2.Load<SpriteFont>("hudFont");
 
             // Given the folder path specified by the user, load all levels in that folder
             allLevels = new List<string>();
@@ -121,30 +118,19 @@ namespace PlatformerGame
             //LoadLevelName("level0.txt");
 
 
-            // Set the number of lives for the player
+            // Set the number of lives for the player and the position for lives on the HUD
             numLives = 3;
-            
+            livesPos = new Vector2(20, 15);
+
+            // Position for timer on the HUD
+            timerPos = new Vector2(200, 15);
+
+            // Position for level name on HUD
+            levelNamePos = new Vector2(400, 15);
            
             /*
-            // level stuff
-            curLevel = new Level(allLevels[levelIndex]);
-            curLevel.LoadLevel(content, ScreenManager.GraphicsDevice);
-            scrollBoundaryLeft = -(ScreenManager.GraphicsDevice.Viewport.Width / 5);
-            scrollBoundaryRight = (ScreenManager.GraphicsDevice.Viewport.Width / 5);
-            scrollBoundaryTop = (ScreenManager.GraphicsDevice.Viewport.Height / 5);
-            scrollBoundaryBottom= -(ScreenManager.GraphicsDevice.Viewport.Height / 5);
-            scrolledX = false;
-            scrolledY = false;
-
             // timer stuff
             countdownTimer = new TimeSpan(0, 0, 60);
-            timerPos = new Vector2((ScreenManager.GraphicsDevice.Viewport.Width / 2) - 30, 24);
-            timerFont = content.Load<SpriteFont>("gameFont");
-
-            // lives stuff
-            livesPos = new Vector2((3 * ScreenManager.GraphicsDevice.Viewport.Width / 4), 24);
-
-            scrollSpeed = raptor.runSpeed;
 
             // music
             levelMusic = content.Load<Song>("HeatVision");
@@ -251,6 +237,7 @@ namespace PlatformerGame
             if (input.IsPauseGame(null))
             {
                 // TODO: Actually pause and ask if they want to return to title screen instead of just doing it.
+                // TODO: Also, dont decrement the timer if we do this. Need to tell the Level that we're paused.
 
                 this.ExitScreen();
             }
@@ -299,8 +286,14 @@ namespace PlatformerGame
 
 
         // TODO: Implement
-        public void DrawHUD()
+        public void DrawHUD(SpriteBatch spriteBatch)
         {
+            spriteBatch.Begin();
+            spriteBatch.DrawString(hudFont, "Lives\n" + numLives, livesPos, Color.Black);
+            spriteBatch.DrawString(hudFont, "Time Left\n" + level.TimeRemaining.Seconds.ToString(), timerPos, Color.Black);
+            spriteBatch.DrawString(hudFont, "Level Name\n" + allLevels[levelIndex], levelNamePos, Color.Black);
+
+            spriteBatch.End();
         }
 
 
@@ -333,12 +326,11 @@ namespace PlatformerGame
 
             spriteBatch.End();
             */
-            
-            //spriteBatch.Begin();
+
+            DrawHUD(spriteBatch);
 
             level.Draw(gameTime, spriteBatch);
 
-            //spriteBatch.End();
 
             base.Draw(gameTime);
         }
