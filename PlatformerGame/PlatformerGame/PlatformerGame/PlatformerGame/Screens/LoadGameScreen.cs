@@ -114,8 +114,14 @@ namespace PlatformerGame
             
             spriteBatch.Begin();
 
-            if (directoryFound) spriteBatch.DrawString(font, "Loading...", messagePos, Color.Black);
-            else spriteBatch.DrawString(font, "Select a folder containing the levels you would like to play.", messagePos, Color.Black);
+            if (directoryFound)
+            {
+                spriteBatch.DrawString(font, "Loading...", messagePos, Color.Black);
+            }
+            else
+            {
+                spriteBatch.DrawString(font, "Select a folder containing the levels you would like to play.", messagePos, Color.Black);
+            }
 
             spriteBatch.End();
 

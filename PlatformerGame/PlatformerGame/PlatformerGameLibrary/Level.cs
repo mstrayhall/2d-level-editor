@@ -42,6 +42,9 @@ namespace PlatformerGameLibrary
         [ContentSerializer]
         public TileMap[] TileArray;
 
+
+        Dictionary<string, Texture2D> tileTextureDict;
+
         // 2D tilemap of tiles in the level
         Tile[,] tiles;
         // Various layers that make up the level
@@ -133,6 +136,13 @@ namespace PlatformerGameLibrary
                 blankLayer = content.Load<Texture2D>("blank");
             }
             
+            // Build a dictionary of all tile names and their texture locations
+            tileTextureDict = new Dictionary<string, Texture2D>();
+            foreach (Tile tile in TileTypes)
+            {
+                tileTextureDict.Add(tile.Name, tile.Texture);
+            }
+
             // Load the tiles
             LoadTiles();
 
@@ -198,20 +208,20 @@ namespace PlatformerGameLibrary
 
                 // Player
                 case "Player":
-                    return LoadStartTile(x, y);
+                    return LoadStartTile(curTile.Name, x, y);
 
                 //-------------- PLATFORMS --------------//
                 // Solid block
                 case "Solid Platform":
-                    return LoadTile("Block", TileCollision.Impassable, false);
+                    return LoadTile(curTile.Name, TileCollision.Impassable, false);
 
                 // Platform
                 case "Passthrough Platform":
-                    return LoadTile("Platform", TileCollision.Platform, false);
+                    return LoadTile(curTile.Name, TileCollision.Platform, false);
 
                 // Exit
                 case "End Level Platform":
-                    return LoadExitTile(x, y);
+                    return LoadExitTile(curTile.Name, x, y);
 
                 //-------------- ENEMIES --------------//
                 //
@@ -239,10 +249,11 @@ namespace PlatformerGameLibrary
         private Tile LoadTile(string name, TileCollision collision, bool isDamage)
         {
             // TODO: for multiple tilesets, add in "Tiles/" + the tileset name we're using..add this variable
-            return new Tile(content.Load<Texture2D>(name), collision, isDamage);
+            return new Tile(tileTextureDict[name], collision, isDamage);            
+            //return new Tile(content.Load<Texture2D>(name), collision, isDamage);
         }
 
-        private Tile LoadStartTile(int x, int y)
+        private Tile LoadStartTile(string name, int x, int y)
         {
             if (Player != null)
             {
@@ -250,12 +261,12 @@ namespace PlatformerGameLibrary
             }
 
             startPos = RectangleExtensions.GetBottomCenter(GetBounds(x, y));
-            player = new Player(this, startPos, "Player");
+            player = new Player(this, startPos, tileTextureDict[name]);
 
             return new Tile(null, TileCollision.Passable, false);
         }
 
-        private Tile LoadExitTile(int x, int y)
+        private Tile LoadExitTile(string name, int x, int y)
         {
             if (exitPos != InvalidPosition)
             {
@@ -264,7 +275,7 @@ namespace PlatformerGameLibrary
 
             exitPos = GetBounds(x, y).Center;
 
-            return LoadTile("Exit", TileCollision.Passable, false);
+            return LoadTile(name, TileCollision.Passable, false);
         }
 
 

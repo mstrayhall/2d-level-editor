@@ -125,7 +125,7 @@ namespace PlatformerGameLibrary
 
         #region Initialization
 
-        public Player(Level level, Vector2 startPos, string textureName)
+        public Player(Level level, Vector2 startPos, Texture2D textureName)
         {
             this.level = level;
 
@@ -139,7 +139,7 @@ namespace PlatformerGameLibrary
             Reset(position);
         }
 
-        public void LoadContent(string textureName)
+        public void LoadContent(Texture2D textureName)
         {
             // Calculate the local edges of the texture
             //int width = (int)(64 * 0.4);
@@ -157,7 +157,8 @@ namespace PlatformerGameLibrary
 
             origin = new Vector2(width / 2, height);
 
-            sprite = level.Content.Load<Texture2D>(textureName);
+            sprite = textureName;
+            //sprite = level.Content.Load<Texture2D>(textureName);
         }
 
         #endregion

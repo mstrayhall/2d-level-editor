@@ -58,8 +58,9 @@ namespace PlatformerGame
         {
             PlayerIndex playerIndex;
 
-            // If the user preses the space bar, start a new game
-            if (input.IsNewButtonPress(Buttons.Start, ControllingPlayer, out playerIndex) || input.IsNewKeyPress(Keys.Space, ControllingPlayer, out playerIndex))
+            // If the user preses the space bar, exit the screen to return to the menu
+            if (input.IsNewKeyPress(Keys.Space, ControllingPlayer, out playerIndex)
+                || input.IsNewKeyPress(Keys.Escape, ControllingPlayer, out playerIndex))
             {
                 ScreenManager.RemoveScreen(this);
             }
@@ -72,11 +73,11 @@ namespace PlatformerGame
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
 
             // Clear to black
-            ScreenManager.GraphicsDevice.Clear(Color.Black);
+            ScreenManager.GraphicsDevice.Clear(Color.White);
 
             spriteBatch.Begin();
 
-            spriteBatch.DrawString(gameOverFont, "You Win!!!!", new Vector2((ScreenManager.GraphicsDevice.Viewport.Width / 2) - 100, (ScreenManager.GraphicsDevice.Viewport.Height / 3)), Color.Snow);
+            spriteBatch.DrawString(gameOverFont, "You Win!!!!", new Vector2((ScreenManager.GraphicsDevice.Viewport.Width / 2) - 100, (ScreenManager.GraphicsDevice.Viewport.Height / 3)), Color.Black);
 
             spriteBatch.End();
 

@@ -290,6 +290,12 @@ namespace PlatformerGame
         // TODO: Implement
         public void DrawHUD(SpriteBatch spriteBatch)
         {
+            if (level == null)
+            {
+                bool haveNewLevel = LoadNextLevel();
+                if (!haveNewLevel) return;
+            }
+
             spriteBatch.Begin();
 
             spriteBatch.DrawString(hudFont, "Lives\n" + numLives, livesPos, Color.Black);
