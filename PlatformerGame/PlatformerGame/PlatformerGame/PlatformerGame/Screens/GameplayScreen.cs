@@ -68,12 +68,19 @@ namespace PlatformerGame
         // Overlays
         Texture2D winOverlay;
         Texture2D dieOverlay;
+        Vector2 winOverlaySize;
+        Vector2 winOverlayPos;
+        Vector2 dieOverlaySize;
+        Vector2 dieOverlayPos;
 
+        InputManager playerInput;
 
         public GameplayScreen(int levelIndex, string gameLevelsPath)
         {
             this.levelIndex = levelIndex;
             baseLevelsPath = gameLevelsPath;
+
+            playerInput = new InputManager();
         }
 
         public override void LoadContent()
@@ -146,7 +153,12 @@ namespace PlatformerGame
 
             winOverlay = content2.Load<Texture2D>("winOverlay");
             dieOverlay = content2.Load<Texture2D>("dieOverlay");
-
+            winOverlaySize = new Vector2(winOverlay.Width, winOverlay.Height);
+            dieOverlaySize = new Vector2(dieOverlay.Width, dieOverlay.Height);
+            Vector2 screenCenter = new Vector2(ScreenManager.GraphicsDevice.Viewport.Width / 2,
+                                                ScreenManager.GraphicsDevice.Viewport.Height / 2);
+            winOverlayPos = screenCenter - (winOverlaySize / 2);
+            dieOverlayPos = screenCenter - (dieOverlaySize / 2);
 
             base.LoadContent();
         }
@@ -261,6 +273,9 @@ namespace PlatformerGame
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
+            PlayerIndex playerIndex;
+            playerInput.Update(gameTime);
+
             if (level == null)
             {
                 bool haveNewLevel = LoadNextLevel();
@@ -272,11 +287,16 @@ namespace PlatformerGame
             if (level.TimeRemaining == TimeSpan.Zero || !level.Player.IsAlive)
             {
                 // if the Player is dead or time ran out, see if they can respawn
-                numLives--;
                 if (numLives >= 0)
                 {
-                    ReloadCurrentLevel();
-
+                    spriteBatch.Begin();
+                    spriteBatch.Draw(dieOverlay, dieOverlayPos, Color.White);
+                    spriteBatch.End();
+                    if (playerInput.IsKeyDown(Keys.Space, null, out playerIndex))
+                    {
+                        numLives--;
+                        ReloadCurrentLevel();
+                    }
                 }
                 else
                 {
@@ -286,7 +306,13 @@ namespace PlatformerGame
             }
             else if (level.ReachedExit)
             {
-                LoadNextLevel();
+                spriteBatch.Begin();
+                spriteBatch.Draw(winOverlay, winOverlayPos, Color.White);
+                spriteBatch.End();
+                if (playerInput.IsKeyDown(Keys.Space, null, out playerIndex))
+                {
+                    LoadNextLevel();
+                }
             }
 
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);

@@ -15,7 +15,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace PlatformerGameLibrary
 {
-    class InputManager
+    public class InputManager
     {
         public const int MaxInputs = 4;
 
