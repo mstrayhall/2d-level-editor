@@ -109,6 +109,7 @@ namespace PlatformerGameLibrary
         int scrollBoundaryRight;
         int scrollBoundaryTop;
         int scrollBoundaryBottom;
+
         
         #endregion
 
@@ -432,6 +433,7 @@ namespace PlatformerGameLibrary
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
+            // Draw the background
             spriteBatch.Begin();
             // If they have provided one or more backgrounds, draw them
             // Otherwise clear the screen to white
@@ -455,14 +457,17 @@ namespace PlatformerGameLibrary
 
             DrawTiles(spriteBatch);
 
+            spriteBatch.End();
+        }
+
+        public void DrawPlayerAndEnemies(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+            player.Draw(gameTime, spriteBatch);
+
             foreach (Enemy e in enemies)
             {
                 e.Draw(gameTime, spriteBatch);
             }
-
-            player.Draw(gameTime, spriteBatch);
-
-            spriteBatch.End();
         }
 
         private void DrawTiles(SpriteBatch spriteBatch)

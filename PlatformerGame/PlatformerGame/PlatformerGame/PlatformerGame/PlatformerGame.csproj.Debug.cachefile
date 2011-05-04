@@ -17,6 +17,8 @@ Content\Tiles\purple.xnb
 Content\Tiles\red.xnb
 Content\Tiles\white.xnb
 Content\Tiles\yellow.xnb
+Content\dieOverlay.xnb
+Content\winOverlay.xnb
 Content\gameFont.xnb
 Content\creditFont.xnb
 Content\hudFont.xnb

@@ -65,6 +65,10 @@ namespace PlatformerGame
         // Level name
         Vector2 levelNamePos;
 
+        // Overlays
+        Texture2D winOverlay;
+        Texture2D dieOverlay;
+
 
         public GameplayScreen(int levelIndex, string gameLevelsPath)
         {
@@ -139,6 +143,9 @@ namespace PlatformerGame
             MediaPlayer.Play(levelMusic);
             MediaPlayer.IsRepeating = true;
             */
+
+            winOverlay = content2.Load<Texture2D>("winOverlay");
+            dieOverlay = content2.Load<Texture2D>("dieOverlay");
 
 
             base.LoadContent();
@@ -339,10 +346,26 @@ namespace PlatformerGame
             spriteBatch.End();
             */
 
-            DrawHUD(spriteBatch);
-
             level.Draw(gameTime, spriteBatch);
 
+            DrawHUD(spriteBatch);
+
+            spriteBatch.Begin();
+
+            level.DrawPlayerAndEnemies(gameTime, spriteBatch);
+
+            // If player reached the exit or died, show an overlay
+            if (!level.Player.IsAlive)
+            {
+                Vector2 overlaySize = new Vector2(dieOverlay.Width, dieOverlay.Height);
+                spriteBatch.Draw(dieOverlay, new Vector2((ScreenManager.GraphicsDevice.Viewport.Width / 2), (ScreenManager.GraphicsDevice.Viewport.Height / 2)) - overlaySize, Color.White);
+            }
+            else if (level.ReachedExit)
+            {
+                Vector2 overlaySize = new Vector2(winOverlay.Width, winOverlay.Height);
+                spriteBatch.Draw(winOverlay, new Vector2((ScreenManager.GraphicsDevice.Viewport.Width / 2), (ScreenManager.GraphicsDevice.Viewport.Height / 2)) - overlaySize, Color.White);
+            }
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
