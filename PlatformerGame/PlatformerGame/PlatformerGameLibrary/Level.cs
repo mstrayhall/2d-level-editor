@@ -416,10 +416,22 @@ namespace PlatformerGameLibrary
 
             // Calculate how much to update the camera scroll
             Vector2 cameraUpdate = Vector2.Zero;
-            if (Player.Position.X < boundLeft) cameraUpdate.X = Player.Position.X - boundLeft;
-            else if (Player.Position.X > boundRight) cameraUpdate.X = Player.Position.X - boundRight;
-            if (Player.Position.Y < boundTop) cameraUpdate.Y = Player.Position.Y - boundTop;
-            else if (Player.Position.Y > boundBottom) cameraUpdate.Y = Player.Position.Y - boundBottom;
+            if (Player.Position.X < boundLeft)
+            {
+                cameraUpdate.X = Player.Position.X - boundLeft;
+            }
+            else if (Player.Position.X > boundRight)
+            {
+                cameraUpdate.X = Player.Position.X - boundRight;
+            }
+            if (Player.Position.Y < boundTop)
+            {
+                cameraUpdate.Y = Player.Position.Y - boundTop;
+            }
+            else if (Player.Position.Y > boundBottom)
+            {
+                cameraUpdate.Y = Player.Position.Y - boundBottom;
+            }
 
             // Update the camera position, but keep it within the bounds of the level
             cameraPos.X = MathHelper.Clamp(cameraPos.X + cameraUpdate.X, 0f, maxCameraPos.X);

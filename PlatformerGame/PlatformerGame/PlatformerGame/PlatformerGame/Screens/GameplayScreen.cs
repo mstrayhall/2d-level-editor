@@ -323,12 +323,6 @@ namespace PlatformerGame
         // TODO: Implement
         public void DrawHUD(SpriteBatch spriteBatch)
         {
-            if (level == null)
-            {
-                bool haveNewLevel = LoadNextLevel();
-                if (!haveNewLevel) return;
-            }
-
             spriteBatch.Begin();
 
             spriteBatch.DrawString(hudFont, "Lives\n" + numLives, livesPos, Color.Black);
@@ -349,9 +343,15 @@ namespace PlatformerGame
         /// <param name="gameTime"></param>
         public override void Draw(Microsoft.Xna.Framework.GameTime gameTime)
         {
+            if (level == null)
+            {
+                bool haveNewLevel = LoadNextLevel();
+                if (!haveNewLevel) return;
+            }
+
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
             
-            // Clear to white
+            // Clear to Black
             ScreenManager.GraphicsDevice.Clear(Color.Black);
 
             ScreenManager.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
@@ -380,17 +380,6 @@ namespace PlatformerGame
 
             level.DrawPlayerAndEnemies(gameTime, spriteBatch);
 
-            // If player reached the exit or died, show an overlay
-            if (!level.Player.IsAlive)
-            {
-                Vector2 overlaySize = new Vector2(dieOverlay.Width, dieOverlay.Height);
-                spriteBatch.Draw(dieOverlay, new Vector2((ScreenManager.GraphicsDevice.Viewport.Width / 2), (ScreenManager.GraphicsDevice.Viewport.Height / 2)) - overlaySize, Color.White);
-            }
-            else if (level.ReachedExit)
-            {
-                Vector2 overlaySize = new Vector2(winOverlay.Width, winOverlay.Height);
-                spriteBatch.Draw(winOverlay, new Vector2((ScreenManager.GraphicsDevice.Viewport.Width / 2), (ScreenManager.GraphicsDevice.Viewport.Height / 2)) - overlaySize, Color.White);
-            }
             spriteBatch.End();
 
             base.Draw(gameTime);
