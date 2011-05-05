@@ -283,7 +283,7 @@ namespace PlatformerGame
                 {
                     string fileName = Path.GetFileNameWithoutExtension(file);
                     string filePath = Path.GetFullPath(file);
-                    File.Copy(filePath, baseOutputDirectory + "/" + fileName + ".xnb");
+                    File.Copy(filePath, baseOutputDirectory + "/" + fileName + ".xnb", true);
                 }
             }
         }

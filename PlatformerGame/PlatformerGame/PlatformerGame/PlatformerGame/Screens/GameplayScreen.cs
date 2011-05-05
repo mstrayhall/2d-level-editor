@@ -245,7 +245,17 @@ namespace PlatformerGame
                 string levelName = allLevels[levelIndex];
                 string levelPath = Path.Combine(tempLevelXNBPath, levelName);
                 string fileNameOnly = Path.GetFileNameWithoutExtension(levelPath);
-                level = content.Load<Level>(levelPath);
+                try
+                {
+                    level = content.Load<Level>(levelPath);
+                }
+                catch (Exception e)
+                {
+                    contentBuilder.Clear();
+                    contentBuilder.Add(baseLevelsPath + levelName + ".xml", levelName, null, "LevelProcessor");
+                    contentBuilder.Build();
+                    level = content.Load<Level>(levelPath);
+                }
                 level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services, isTimed);
                 return true;
             }
@@ -260,7 +270,17 @@ namespace PlatformerGame
             if (level != null) level.Dispose();
 
             // Load the new level
-            level = content.Load<Level>(levelPath);
+            try
+            {
+                level = content.Load<Level>(levelPath);
+            }
+            catch (Exception e)
+            {
+                contentBuilder.Clear();
+                contentBuilder.Add(baseLevelsPath + levelName + ".xml", levelName, null, "LevelProcessor");
+                contentBuilder.Build();
+                level = content.Load<Level>(levelPath);
+            }
             level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services, isTimed);
         }
 
@@ -274,8 +294,17 @@ namespace PlatformerGame
             string levelName = allLevels[levelIndex];
             string levelPath = Path.Combine(tempLevelXNBPath, levelName);
             string fileNameOnly = Path.GetFileNameWithoutExtension(levelPath);
-
-            level = content.Load<Level>(levelPath);
+            try
+            {
+                level = content.Load<Level>(levelPath);
+            }
+            catch (Exception e)
+            {
+                contentBuilder.Clear();
+                contentBuilder.Add(baseLevelsPath + levelName + ".xml", levelName, null, "LevelProcessor");
+                contentBuilder.Build();
+                level = content.Load<Level>(levelPath);
+            }
             level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services, isTimed);
         }
 
