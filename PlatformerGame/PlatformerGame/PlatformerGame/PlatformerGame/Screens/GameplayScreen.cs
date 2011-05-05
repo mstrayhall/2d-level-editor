@@ -286,12 +286,9 @@ namespace PlatformerGame
 
             if (level.TimeRemaining == TimeSpan.Zero || !level.Player.IsAlive)
             {
-                // if the Player is dead or time ran out, see if they can respawn
+                // if the Player is dead or time ran out, see if they can respawn (and wait for their input)
                 if (numLives >= 0)
                 {
-                    spriteBatch.Begin();
-                    spriteBatch.Draw(dieOverlay, dieOverlayPos, Color.White);
-                    spriteBatch.End();
                     if (playerInput.IsKeyDown(Keys.Space, null, out playerIndex))
                     {
                         numLives--;
@@ -306,9 +303,7 @@ namespace PlatformerGame
             }
             else if (level.ReachedExit)
             {
-                spriteBatch.Begin();
-                spriteBatch.Draw(winOverlay, winOverlayPos, Color.White);
-                spriteBatch.End();
+                // If player reached the exit, pause until they choose to continue
                 if (playerInput.IsKeyDown(Keys.Space, null, out playerIndex))
                 {
                     LoadNextLevel();
@@ -376,10 +371,17 @@ namespace PlatformerGame
 
             DrawHUD(spriteBatch);
 
-            spriteBatch.Begin();
-
             level.DrawPlayerAndEnemies(gameTime, spriteBatch);
 
+            spriteBatch.Begin();
+            if (!level.Player.IsAlive)
+            {
+                spriteBatch.Draw(dieOverlay, dieOverlayPos, Color.White);
+            }
+            else if (level.ReachedExit)
+            {
+                spriteBatch.Draw(winOverlay, winOverlayPos, Color.White);
+            }
             spriteBatch.End();
 
             base.Draw(gameTime);

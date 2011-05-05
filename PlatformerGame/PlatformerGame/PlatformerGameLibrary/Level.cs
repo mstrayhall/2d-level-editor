@@ -109,7 +109,7 @@ namespace PlatformerGameLibrary
         int scrollBoundaryRight;
         int scrollBoundaryTop;
         int scrollBoundaryBottom;
-
+        Matrix cameraTransform;
         
         #endregion
 
@@ -153,6 +153,8 @@ namespace PlatformerGameLibrary
             float maxCamX = Tile.Width * Width - graphicsDevice.Viewport.Width;
             float maxCamY = Tile.Height * Height - graphicsDevice.Viewport.Height;
             maxCameraPos = new Vector2(maxCamX, maxCamY);
+
+            cameraTransform = Matrix.CreateTranslation(-cameraPos.X, -cameraPos.Y, 0f);
 
             scrollBoundaryLeft = 250;
             scrollBoundaryRight = graphicsDevice.Viewport.Width - scrollBoundaryLeft;
@@ -464,7 +466,7 @@ namespace PlatformerGameLibrary
 
             // Scroll the camera if needed.
             UpdateCamera(spriteBatch.GraphicsDevice.Viewport);
-            Matrix cameraTransform = Matrix.CreateTranslation(-cameraPos.X, -cameraPos.Y, 0f);
+            cameraTransform = Matrix.CreateTranslation(-cameraPos.X, -cameraPos.Y, 0f);
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, null, null, null, null, cameraTransform);
 
             DrawTiles(spriteBatch);
@@ -474,12 +476,16 @@ namespace PlatformerGameLibrary
 
         public void DrawPlayerAndEnemies(GameTime gameTime, SpriteBatch spriteBatch)
         {
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, null, null, null, null, cameraTransform);
+
             player.Draw(gameTime, spriteBatch);
 
             foreach (Enemy e in enemies)
             {
                 e.Draw(gameTime, spriteBatch);
             }
+
+            spriteBatch.End();
         }
 
         private void DrawTiles(SpriteBatch spriteBatch)
