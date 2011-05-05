@@ -85,15 +85,15 @@ namespace PlatformerGame
 
         public override void LoadContent()
         {
-            contentBuilder = new ContentBuilder();
+            contentBuilder = new ContentBuilder(baseLevelsPath);
 
             content2 = new ContentManager(ScreenManager.Game.Services, "Content");
 
             // If we don't yet have a reference to the content manager, 
             // grab one from the game
             if (content == null)
-                content = new ContentManager(ScreenManager.Game.Services, contentBuilder.OutputDirectory);
-            tempLevelXNBPath = contentBuilder.OutputDirectory;
+                content = new ContentManager(ScreenManager.Game.Services, contentBuilder.BaseOutputDirectory);
+            tempLevelXNBPath = contentBuilder.BaseOutputDirectory;
 
             spriteBatch = ScreenManager.SpriteBatch;
             //string assemblyLocation = Assembly.GetExecutingAssembly().Location;
@@ -163,26 +163,58 @@ namespace PlatformerGame
             base.LoadContent();
         }
 
+        public override void UnloadContent()
+        {
+            contentBuilder.Dispose();
+
+            base.UnloadContent();
+        }
+
         private void CreateLevelXNB()
         {
             contentBuilder.Clear();
+
+            string dirPath = Path.Combine(baseLevelsPath, "XNB_Files");
+            List<string> dirFileNames = new List<string>();
+            if (Directory.Exists(dirPath))
+            {
+                string[] dirFiles = Directory.GetFiles(dirPath, "*.xnb", SearchOption.AllDirectories);
+                foreach (string file in dirFiles)
+                {
+                    dirFileNames.Add(Path.GetFileNameWithoutExtension(file));
+                }
+            }
+            bool foundXNBFiles = false;
+            if (dirFileNames.Count > 0) foundXNBFiles = true;
 
             foreach (string file in allLevels)
             {
                 string levelName = file;
                 string levelPath = baseLevelsPath + file + ".xml";
-                contentBuilder.Add(levelPath, levelName, null, "LevelProcessor");
+                if (foundXNBFiles)
+                {
+                    if (!dirFileNames.Contains(file))
+                    {
+                        // If we don't have the xnb of this xml file here, go ahead and build it
+                        contentBuilder.Add(levelPath, levelName, null, "LevelProcessor");
+                    }
+                }
+                else
+                {
+                    // If we found no xnb files, just build everything
+                    contentBuilder.Add(levelPath, levelName, null, "LevelProcessor");
+                }
             }
             string buildError = contentBuilder.Build();
-
             if (string.IsNullOrEmpty(buildError))
             {
                 // We're good to game.
             }
             else
             {
+                buildError = "Error building level XNB files. All .xml files in the selected directory must be in a format compatible with this level editor.";
                 // Show the error
-                // TODO: SHOW ERROR
+                //TODO: SHOW ERROR
                 //MessageBox.Show(buildError, "Build Error");
             }
         }

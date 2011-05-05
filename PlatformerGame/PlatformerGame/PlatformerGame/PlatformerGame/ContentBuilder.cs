@@ -68,12 +68,13 @@ namespace PlatformerGame
         List<ProjectItem> projectItems = new List<ProjectItem>();
         ErrorLogger errorLogger;
 
+        // Base directory we are pulling files from to build
+        string baseOutputDirectory;
 
         // Temporary directories used by the content build.
         string buildDirectory;
         string processDirectory;
         string baseDirectory;
-
 
         // Generate unique directory names if there is more than one ContentBuilder.
         static int directorySalt;
@@ -94,8 +95,17 @@ namespace PlatformerGame
         public string OutputDirectory
         {
             get { return Path.Combine(buildDirectory, "bin/Content"); }
+            //get { return baseOutputDirectory; }
         }
 
+        /// <summary>
+        /// Gets the output directory, which will contain the generated .xnb files.
+        /// </summary>
+        public string BaseOutputDirectory
+        {
+            //get { return Path.Combine(buildDirectory, "bin/Content"); }
+            get { return baseOutputDirectory; }
+        }
 
         #endregion
 
@@ -105,8 +115,13 @@ namespace PlatformerGame
         /// <summary>
         /// Creates a new content builder.
         /// </summary>
-        public ContentBuilder()
+        public ContentBuilder(string buildPath)
         {
+            baseOutputDirectory = Path.Combine(buildPath, "XNB_Files");
+
+            //baseDirectory = buildPath;
+            //buildDirectory = Path.Combine(buildPath, "XNB_Files");
+
             CreateTempDirectory();
             CreateBuildProject();
         }
@@ -142,6 +157,7 @@ namespace PlatformerGame
                 isDisposed = true;
 
                 DeleteTempDirectory();
+                //DeleteUnusedDirectories();
             }
         }
 
@@ -251,9 +267,26 @@ namespace PlatformerGame
                 return string.Join("\n", errorLogger.Errors.ToArray());
             }
 
+            CopyToOutputDirectory();
+
             return null;
         }
 
+        void CopyToOutputDirectory()
+        {
+            Directory.CreateDirectory(baseOutputDirectory);
+            string outputDir = Path.Combine(buildDirectory, "bin/Content");
+            if (Directory.Exists(outputDir))
+            {
+                string[] files = Directory.GetFiles(outputDir);
+                foreach (string file in files)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(file);
+                    string filePath = Path.GetFullPath(file);
+                    File.Copy(filePath, baseOutputDirectory + "/" + fileName + ".xnb");
+                }
+            }
+        }
 
         #endregion
 
@@ -295,7 +328,27 @@ namespace PlatformerGame
             PurgeStaleTempDirectories();
         }
 
+        /// <summary>
+        /// Delete all the files and directories we created except the xnb files and containing folders
+        /// </summary>
+        void DeleteUnusedDirectories()
+        {
+            string[] directories = Directory.GetDirectories(buildDirectory);
+            foreach (string dir in directories)
+            {
+                if (dir != Path.Combine(buildDirectory, "bin"))
+                {
+                    Directory.Delete(dir, true);
+                }
+            }
+            string[] files = Directory.GetFiles(buildDirectory);
+            foreach (string file in files)
+            {
+                File.Delete(file);
+            }
+        }
 
+        
         /// <summary>
         /// Deletes our temporary directory when we are finished with it.
         /// </summary>
@@ -317,8 +370,9 @@ namespace PlatformerGame
                 }
             }
         }
+        
 
-
+        
         /// <summary>
         /// Ideally, we want to delete our temp directory when we are finished using
         /// it. The DeleteTempDirectory method (called by whichever happens first out
@@ -353,8 +407,8 @@ namespace PlatformerGame
                 }
             }
         }
-
         
+
         #endregion
     }
 }
