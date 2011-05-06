@@ -13,6 +13,7 @@ using System.Xml;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Content.Pipeline;
+using Microsoft.Xna.Framework.Content.Pipeline.Audio;
 using Microsoft.Xna.Framework.Content.Pipeline.Graphics;
 using Microsoft.Xna.Framework.Content.Pipeline.Processors;
 using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Intermediate;
@@ -30,6 +31,7 @@ namespace PlatformerGame
         Tile[,] board;
 
         string levelName;
+        string levelSong;
 
         public Form1(IServiceProvider services)
         {
@@ -100,6 +102,8 @@ namespace PlatformerGame
                 {
                     pictureBox1.BackgroundImage = new Bitmap(bgimage);
                 }
+                // TODO: set the song as well
+                levelSong = "";
                 // TODO: do we need this?
                 //this.Text = newlevel.FindName;
                 levelName = newlevel.FindName;
@@ -167,7 +171,22 @@ namespace PlatformerGame
 
             // Set the background
             // TODO: implement a background field somewhere for this optional attribute
+            if (pictureBox1.BackgroundImage != null)
+            {
+                string bgImage = pictureBox1.BackgroundImage.ToString();
+                if (!String.IsNullOrEmpty(bgImage))
+                {
+                    levelSpec.Background = new ExternalReference<Texture2DContent>(bgImage);
+                }
+            }
 
+            // Set the music
+            // TODO: not hardcoded..
+            levelSong = @"C:\Users\Matthew\Desktop\One.mp3";
+            if (!String.IsNullOrEmpty(levelSong))
+            {
+                levelSpec.LevelSong = new ExternalReference<SongContent>(levelSong);
+            }
 
             // Create the list of all tile types
             Dictionary<string, string> tileToTextureDict = new Dictionary<string, string>();

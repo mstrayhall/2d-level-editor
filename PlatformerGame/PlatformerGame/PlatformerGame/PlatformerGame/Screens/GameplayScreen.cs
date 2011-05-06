@@ -38,14 +38,15 @@ namespace PlatformerGame
         /*
         // health bars
         Texture2D healthBar;
+        */
 
-        // audio
+        // Audio
         Song levelMusic;
 
-        bool checkpointHit;
-         * */
+        //bool checkpointHit;
+        
 
-        // generate list of levels so we know where to go next
+        // Generate list of levels so we know where to go next.
         // Store the folder containing all the levels for this game
         string baseLevelsPath;
         string tempLevelXNBPath;
@@ -141,15 +142,6 @@ namespace PlatformerGame
             // Position for level name on HUD
             levelNamePos = new Vector2(400, 15);
            
-            /*
-            // timer stuff
-            countdownTimer = new TimeSpan(0, 0, 60);
-
-            // music
-            levelMusic = content.Load<Song>("HeatVision");
-            MediaPlayer.Play(levelMusic);
-            MediaPlayer.IsRepeating = true;
-            */
 
             winOverlay = content2.Load<Texture2D>("winOverlay");
             dieOverlay = content2.Load<Texture2D>("dieOverlay");
@@ -166,6 +158,8 @@ namespace PlatformerGame
         public override void UnloadContent()
         {
             contentBuilder.Dispose();
+
+            MediaPlayer.Stop();
 
             base.UnloadContent();
         }
@@ -205,6 +199,7 @@ namespace PlatformerGame
                     contentBuilder.Add(levelPath, levelName, null, "LevelProcessor");
                 }
             }
+
             string buildError = contentBuilder.Build();
             if (string.IsNullOrEmpty(buildError))
             {
@@ -217,6 +212,36 @@ namespace PlatformerGame
                 //TODO: SHOW ERROR
                 //MessageBox.Show(buildError, "Build Error");
             }
+        }
+
+        private void SetLevelMusic()
+        {
+            // If this level had any music listed to play
+            if (level.LevelSong != null)
+            {
+                Song songName = level.LevelSong;
+                // If we dont have any music playing yet 
+                if (levelMusic == null)
+                {
+                    levelMusic = songName;
+                    MediaPlayer.Play(levelMusic);
+                    MediaPlayer.IsRepeating = true;
+                }
+                // If we want to play a different song than the one playing, do so.
+                else if (levelMusic != null)
+                {
+                    string curLevelSongName = Path.GetFileNameWithoutExtension(levelMusic.Name); 
+                    string curPlayingSongName = Path.GetFileNameWithoutExtension(songName.Name);
+                    if (curLevelSongName != curPlayingSongName)
+                    {
+                        levelMusic = songName;
+                        MediaPlayer.Play(levelMusic);
+                        MediaPlayer.IsRepeating = true;
+                    }
+                }
+                // Else just continue playing the same song
+            }
+            // Else continue playing any music we had playing
         }
 
         // Returns true if a new level was successfully loaded
@@ -247,7 +272,7 @@ namespace PlatformerGame
                 string fileNameOnly = Path.GetFileNameWithoutExtension(levelPath);
                 try
                 {
-                    level = content.Load<Level>(levelPath);
+                    level = content.Load<Level>(fileNameOnly);
                 }
                 catch (Exception e)
                 {
@@ -257,6 +282,7 @@ namespace PlatformerGame
                     level = content.Load<Level>(levelPath);
                 }
                 level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services, isTimed);
+                SetLevelMusic();
                 return true;
             }
         }
@@ -282,6 +308,7 @@ namespace PlatformerGame
                 level = content.Load<Level>(levelPath);
             }
             level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services, isTimed);
+            SetLevelMusic();
         }
 
         public void ReloadCurrentLevel()
@@ -306,6 +333,7 @@ namespace PlatformerGame
                 level = content.Load<Level>(levelPath);
             }
             level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services, isTimed);
+            SetLevelMusic();
         }
 
         /// <summary>

@@ -17,6 +17,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 #endregion
 
 namespace PlatformerGameLibrary
@@ -28,8 +29,15 @@ namespace PlatformerGameLibrary
         [ContentSerializer]
         public string Name;
 
-        [ContentSerializer]
+        [ContentSerializer(Optional = true)]
         public Texture2D Background;
+
+        //[ContentSerializer(Optional = true)]
+        //public string LevelMusic;
+//        public Song LevelMusic;
+
+        [ContentSerializer(Optional = true)]
+        public Song LevelSong;
 
         // Keep track of all the types of tiles in this level
         [ContentSerializer]
@@ -63,14 +71,13 @@ namespace PlatformerGameLibrary
         }
         Player player;
 
-        [ContentSerializerIgnore]
-        List<Enemy> enemies = new List<Enemy>();
+        List<Enemy> enemies;
 
 
         // Key positions in the level
-        Vector2 startPos;
-        Point exitPos = InvalidPosition;
         private static readonly Point InvalidPosition = new Point(-1, -1);
+        Vector2 startPos;
+        Point exitPos;
 
          // Level completion properties
         [ContentSerializerIgnore]
@@ -121,6 +128,9 @@ namespace PlatformerGameLibrary
             content = new ContentManager(services, "Content");
 
             graphicsDevice = device;
+
+            enemies = new List<Enemy>();
+            exitPos = InvalidPosition;
 
             isTimed = isTimeLimit;
             timeRemaining = TimeSpan.FromSeconds(100);

@@ -12,6 +12,7 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content.Pipeline;
+using Microsoft.Xna.Framework.Content.Pipeline.Audio;
 using Microsoft.Xna.Framework.Content.Pipeline.Graphics;
 using Microsoft.Xna.Framework.Content.Pipeline.Processors;
 #endregion
@@ -43,6 +44,15 @@ namespace PlatformerGamePipeline
             {
                 input.Background = context.BuildAsset<Texture2DContent, Texture2DContent>(input.Background, null);
             }
+
+            //Build the level music
+            if (null != input.LevelSong)
+            {
+                ExternalReference<AudioContent> audio = new ExternalReference<AudioContent>(input.LevelSong.Filename);
+                input.LevelSong = context.BuildAsset<AudioContent, SongContent>(audio, "SongProcessor");
+                audio = null;
+            }
+
             // Cycle through all LevelTilesContents contained in LevelContent
             foreach (TileContent tile in input.TileTypes)
             {

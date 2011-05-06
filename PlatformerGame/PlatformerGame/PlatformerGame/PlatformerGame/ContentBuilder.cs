@@ -29,6 +29,10 @@ namespace PlatformerGame
     /// It then builds the project, which will create compiled .xnb content files
     /// in a temporary directory. After the build finishes, you can use a regular
     /// ContentManager to load these temporary .xnb files in the usual way.
+    /// 
+    /// Modified: It also copies the generated xnb file to a base output directory
+    /// specified in the constructor so the files are maintained after the temp folder
+    /// is deleted.
     /// </summary>
     class ContentBuilder : IDisposable
     {
@@ -44,7 +48,11 @@ namespace PlatformerGame
             "Microsoft.Xna.Framework.Content.Pipeline.XImporter" + xnaVersion,
             "Microsoft.Xna.Framework.Content.Pipeline.TextureImporter" + xnaVersion,
             "Microsoft.Xna.Framework.Content.Pipeline.EffectImporter" + xnaVersion,
-            "Microsoft.Xna.Framework.Content.Pipeline.XmlImporter" + xnaVersion,
+            "Microsoft.Xna.Framework.Content.Pipeline.XmlImporter" + xnaVersion, 
+            "Microsoft.Xna.Framework.Content.Pipeline.AudioImporters" + xnaVersion,
+            "Microsoft.Xna.Framework.Content.Pipeline.Audio" + xnaVersion,
+            "Microsoft.Xna.Framework.Content.Pipeline.Processors" + xnaVersion,
+
 
             // Add our Level Specification
             "C:/Users/Matthew/Desktop/cis598/Project/PlatformerGame/PlatformerGame/PlatformerGamePipeline/bin/x86/Debug/PlatformerGamePipeline.dll",
@@ -245,29 +253,32 @@ namespace PlatformerGame
         /// </summary>
         public string Build()
         {
-            // Clear any previous errors.
-            errorLogger.Errors.Clear();
-
-            // Create and submit a new asynchronous build request.
-            BuildManager.DefaultBuildManager.BeginBuild(buildParameters);
-            
-            BuildRequestData request = new BuildRequestData(buildProject.CreateProjectInstance(), new string[0]);
-            BuildSubmission submission = BuildManager.DefaultBuildManager.PendBuildRequest(request);
-
-            submission.ExecuteAsync(null, null);
-
-            // Wait for the build to finish.
-            submission.WaitHandle.WaitOne();
-
-            BuildManager.DefaultBuildManager.EndBuild();
-
-            // If the build failed, return an error string.
-            if (submission.BuildResult.OverallResult == BuildResultCode.Failure)
+            if (projectItems.Count > 0)
             {
-                return string.Join("\n", errorLogger.Errors.ToArray());
-            }
+                // Clear any previous errors.
+                errorLogger.Errors.Clear();
 
-            CopyToOutputDirectory();
+                // Create and submit a new asynchronous build request.
+                BuildManager.DefaultBuildManager.BeginBuild(buildParameters);
+
+                BuildRequestData request = new BuildRequestData(buildProject.CreateProjectInstance(), new string[0]);
+                BuildSubmission submission = BuildManager.DefaultBuildManager.PendBuildRequest(request);
+
+                submission.ExecuteAsync(null, null);
+
+                // Wait for the build to finish.
+                submission.WaitHandle.WaitOne();
+
+                BuildManager.DefaultBuildManager.EndBuild();
+
+                // If the build failed, return an error string.
+                if (submission.BuildResult.OverallResult == BuildResultCode.Failure)
+                {
+                    return string.Join("\n", errorLogger.Errors.ToArray());
+                }
+
+                CopyToOutputDirectory();
+            }
 
             return null;
         }
@@ -281,9 +292,9 @@ namespace PlatformerGame
                 string[] files = Directory.GetFiles(outputDir);
                 foreach (string file in files)
                 {
-                    string fileName = Path.GetFileNameWithoutExtension(file);
+                    string fileName = Path.GetFileName(file);
                     string filePath = Path.GetFullPath(file);
-                    File.Copy(filePath, baseOutputDirectory + "/" + fileName + ".xnb", true);
+                    File.Copy(filePath, baseOutputDirectory + "/" + fileName, true);
                 }
             }
         }

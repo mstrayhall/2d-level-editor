@@ -13,6 +13,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Content.Pipeline;
+using Microsoft.Xna.Framework.Content.Pipeline.Audio;
 using Microsoft.Xna.Framework.Content.Pipeline.Graphics;
 using Microsoft.Xna.Framework.Content.Pipeline.Processors;
 #endregion
@@ -30,6 +31,9 @@ namespace PlatformerGamePipeline
 
         [ContentSerializer(Optional=true)]
         public ExternalReference<Texture2DContent> Background;
+
+        [ContentSerializer(Optional = true)]
+        public ExternalReference<SongContent> LevelSong;
 
         [ContentSerializer]
         public TileContent[] TileTypes;
