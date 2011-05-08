@@ -31,7 +31,7 @@ namespace PlatformerGame
         Song menuMusic;
 
         public MainMenuScreen()
-            : base("2D Platformer -- DIY")
+            : base("DIY 2D Platformer")
         {
            
             // Create our menu entries

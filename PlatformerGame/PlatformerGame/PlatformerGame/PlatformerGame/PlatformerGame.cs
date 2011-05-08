@@ -54,7 +54,7 @@ namespace PlatformerGame
             Components.Add(screenManager);
 
             // Activate the first screen
-            screenManager.AddScreen(new SplashScreen(), null);
+            screenManager.AddScreen(new MainMenuScreen(), null);
 
             // Set the ScreenManager's graphics properties to be used throughout the game
             screenManager.GraphicsDeviceManager = graphics;
