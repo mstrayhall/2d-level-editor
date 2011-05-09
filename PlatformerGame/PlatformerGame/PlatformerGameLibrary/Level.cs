@@ -225,32 +225,21 @@ namespace PlatformerGameLibrary
 
                 //-------------- PLATFORMS --------------//
                 // Solid block
-                case "Solid Platform":
+                case "Ground":
                     return LoadTile(curTile.Name, TileCollision.Impassable, false);
 
                 // Platform
-                case "Passthrough Platform":
+                case "Platform":
                     return LoadTile(curTile.Name, TileCollision.Platform, false);
 
                 // Exit
-                case "End Level Platform":
+                case "LevelEnd":
                     return LoadExitTile(curTile.Name, x, y);
 
                 //-------------- ENEMIES --------------//
-                //
-                case "Stationary Enemy":
-                    return LoadTile(curTile.Name, TileCollision.Passable, true);
 
                 //
-                case "Walking Enemy":
-                    return LoadTile(curTile.Name, TileCollision.Passable, true);
-
-                //
-                case "Jumping Enemy":
-                    return LoadTile(curTile.Name, TileCollision.Passable, true);
-
-                //
-                case "Tough Enemy":
+                case "WalkingEnemy":
                     return LoadTile(curTile.Name, TileCollision.Passable, true);
 
                 // Error for unsupported tile found

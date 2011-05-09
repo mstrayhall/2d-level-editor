@@ -87,7 +87,7 @@ namespace PlatformerGame
         /// </summary>
         void OnEditLevels(object sender, PlayerIndexEventArgs e)
         {
-            Form1 form = new Form1(ScreenManager.Game.Services);
+            uxForm1 form = new uxForm1(ScreenManager.Game.Services);
             form.ShowDialog();
         }
 

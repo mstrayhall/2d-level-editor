@@ -34,7 +34,6 @@ C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\Platformer
 C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\PlatformerGamePipeline.pdb
 C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\obj\x86\Debug\PlatformerGame.Form1.resources
 C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\obj\x86\Debug\PlatformerGame.NewLevel.resources
 C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\obj\x86\Debug\GenerateResource.write.1.tlog
@@ -44,3 +43,5 @@ C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\Platformer
 C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\menuFont.xnb
 C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\dieOverlay.xnb
 C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\bin\x86\Debug\Content\winOverlay.xnb
+C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\obj\x86\Debug\PlatformerGame.uxForm1.resources
+C:\Users\Matthew\Desktop\cis598\Project\PlatformerGame\PlatformerGame\PlatformerGame\PlatformerGame\obj\x86\Debug\PlatformerGame.SetContent.resources

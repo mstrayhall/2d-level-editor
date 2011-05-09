@@ -30,6 +30,7 @@ namespace PlatformerGame
         int height;
         Tile[,] board;
         string[] tiles;
+        string[] tileTypes;
         int displayW;
         int displayH;
         int currentX;
@@ -60,6 +61,7 @@ namespace PlatformerGame
             string relativePath = Path.Combine(assemblyLocation, "../../../../../PlatformerGameContent/Tiles/");
             string contentPath = Path.GetFullPath(relativePath);
             tiles = new string[] { contentPath + "purple.png", contentPath + "red.png", contentPath + "black.png", contentPath + "blue.png", contentPath + "green.png" };
+            tileTypes = new string[] { "Player", "WalkingEnemy", "Ground", "Platform", "LevelEnd" };
             
             board = new Tile[height, width];
             for(int i = 0; i < height; i++)
@@ -249,8 +251,6 @@ namespace PlatformerGame
             }
 
             // Set the music
-            // TODO: not hardcoded..
-            levelSong = @"C:\Users\Matthew\Desktop\One.mp3";
             if (!String.IsNullOrEmpty(levelSong))
             {
                 levelSpec.LevelSong = new ExternalReference<SongContent>(levelSong);
@@ -258,13 +258,10 @@ namespace PlatformerGame
 
             // Create the list of all tile types
             Dictionary<string, string> tileToTextureDict = new Dictionary<string, string>();
-            foreach (TreeNode node in treeView1.Nodes)
+            for (int a = 0; a < tileTypes.Length; a++)
             {
-                foreach (TreeNode childNode in node.Nodes)
-                {
-                    // Then this is a child of someone and we want to add its info
-                    tileToTextureDict.Add(childNode.Text, childNode.ImageKey);
-                }
+                // Then this is a child of someone and we want to add its info
+                tileToTextureDict.Add(tileTypes[a], tiles[a]);
             }
             levelSpec.TileTypes = new TileContent[tileToTextureDict.Keys.Count];
 
@@ -274,7 +271,7 @@ namespace PlatformerGame
             {
                 TileContent tileContent = new TileContent();
                 tileContent.Name = tileName;
-                tileContent.Texture = new ExternalReference<Texture2DContent>("../../../../PlatformerGameContent/Tiles/" + tileToTextureDict[tileName]);
+                tileContent.Texture = new ExternalReference<Texture2DContent>(tileToTextureDict[tileName]);
                 levelSpec.TileTypes[index++] = tileContent;
             }
 

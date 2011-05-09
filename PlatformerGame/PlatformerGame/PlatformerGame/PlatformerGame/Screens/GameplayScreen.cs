@@ -313,10 +313,10 @@ namespace PlatformerGame
 
         public void ReloadCurrentLevel()
         {
-            // Just build the level again
-            // Unload old level first
-            if (level != null) level.Dispose();
+            levelIndex--;
+            LoadNextLevel();
 
+            /*
             // Reload the current level
             string levelName = allLevels[levelIndex];
             string levelPath = Path.Combine(tempLevelXNBPath, levelName);
@@ -334,6 +334,7 @@ namespace PlatformerGame
             }
             level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services, isTimed);
             SetLevelMusic();
+             * */
         }
 
         /// <summary>
@@ -376,7 +377,7 @@ namespace PlatformerGame
             if (level.TimeRemaining == TimeSpan.Zero || !level.Player.IsAlive)
             {
                 // if the Player is dead or time ran out, see if they can respawn (and wait for their input)
-                if (numLives >= 0)
+                if (numLives > 0)
                 {
                     if (playerInput.IsKeyDown(Keys.Space, null, out playerIndex))
                     {
