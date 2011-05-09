@@ -24,32 +24,60 @@ using PlatformerGameLibrary;
 namespace PlatformerGame
 {
 
-    public partial class Form1 : Form
+    public partial class uxForm1 : Form
     {
         int width;
         int height;
         Tile[,] board;
+        string[] tiles;
+        int displayW;
+        int displayH;
+        int currentX;
+        int currentY;
 
         string levelName;
         string levelSong;
 
-        public Form1(IServiceProvider services)
+        public uxForm1(IServiceProvider services)
         {
             InitializeComponent();
             
             width = 30;
             height = 20;
+            displayW = 30;
+            displayH = 20;
+            currentX = 0;
+            currentY = 0;
+            if (width > displayW)
+            {
+                uxRight.Enabled = true;
+            }
+            if (height > displayH)
+            {
+                uxDown.Enabled = true;
+            }
+            string assemblyLocation = Assembly.GetExecutingAssembly().Location;
+            string relativePath = Path.Combine(assemblyLocation, "../../../../../PlatformerGameContent/Tiles/");
+            string contentPath = Path.GetFullPath(relativePath);
+            tiles = new string[] { contentPath + "purple.png", contentPath + "red.png", contentPath + "black.png", contentPath + "blue.png", contentPath + "green.png" };
+            
             board = new Tile[height, width];
             for(int i = 0; i < height; i++)
             {
                 for (int j = 0; j < width; j++)
                 {
                     board[i,j] = new Tile();
-                    board[i, j].TileType = "Blank Tile";
                 }
             }
-
             levelName = "";
+        }
+
+        public string[] Tiles
+        {
+            get
+            {
+                return tiles;
+            }
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -70,23 +98,32 @@ namespace PlatformerGame
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             TreeNode current = treeView1.SelectedNode;
-            int X = e.X / 32;
-            int Y = e.Y / 32;
-            board[Y, X].ImageFile = current.SelectedImageKey;
-            board[Y, X].TileType = current.Text;
-            Image pic = pictureBox1.Image;
-            if (pic == null)
+            if (current.Level != 0)
             {
-                pic = new Bitmap(width*32, height*32);
+                int X = (e.X / 32) + currentX;
+                int Y = (e.Y / 32) + currentY;
+                Image pic = pictureBox1.Image;
+                if (pic == null)
+                {
+                    pic = new Bitmap(width * 32, height * 32);
+                }
+                Graphics level = Graphics.FromImage(pic);
+                if (current.Name != "Delete")
+                {
+                    board[Y, X].ImageFile = tiles[current.SelectedImageIndex - 1];
+                    board[Y, X].TileType = current.Name;
+                    Bitmap tile = new Bitmap(board[Y, X].ImageFile);
+                    System.Drawing.Rectangle area = new System.Drawing.Rectangle((X - currentX) * 32, (Y - currentY) * 32, 32, 32);
+                    level.DrawImage(tile, area);
+                    pictureBox1.Image = pic;
+                }
+                else
+                {
+                    board[Y, X].ImageFile = "";
+                    board[Y, X].TileType = "Blank Tile";
+                    Repaint();
+                }
             }
-            Graphics level = Graphics.FromImage(pic);
-            string assemblyLocation = Assembly.GetExecutingAssembly().Location;
-            string relativePath = Path.Combine(assemblyLocation, "../../../../../PlatformerGameContent/Tiles/");
-            string contentPath = Path.GetFullPath(relativePath);
-            Bitmap tile = new Bitmap(contentPath + current.SelectedImageKey);
-            System.Drawing.Rectangle area = new System.Drawing.Rectangle(X*32, Y*32, 32, 32);
-            level.DrawImage(tile, area);
-            pictureBox1.Image = pic;
         }
 
         private void newLevelToolStripMenuItem_Click(object sender, EventArgs e)
@@ -97,6 +134,8 @@ namespace PlatformerGame
             {
                 width = newlevel.FindWidth;
                 height = newlevel.FindHeight;
+                currentX = 0;
+                currentY = 0;
                 string bgimage = newlevel.FindImage;
                 if (bgimage != "")
                 {
@@ -107,7 +146,29 @@ namespace PlatformerGame
                 // TODO: do we need this?
                 //this.Text = newlevel.FindName;
                 levelName = newlevel.FindName;
-                FormSet(width*32, height*32);
+                int wid = width * 32;
+                int heig = height * 32;
+                displayW = width;
+                displayH = height;
+                if (wid > SystemInformation.PrimaryMonitorSize.Width * 4 / 5)
+                {
+                    wid = SystemInformation.PrimaryMonitorSize.Width * 4 / 5;
+                    displayW = wid / 32;
+                }
+                if (heig > SystemInformation.PrimaryMonitorSize.Height * 4 / 5)
+                {
+                    heig = SystemInformation.PrimaryMonitorSize.Height * 4 / 5;
+                    displayH = heig / 32;
+                }
+                FormSet(wid, heig);
+                if (width > displayW)
+                {
+                    uxRight.Enabled = true;
+                }
+                if (height > displayH)
+                {
+                    uxDown.Enabled = true;
+                }
             }
         }
 
@@ -117,16 +178,23 @@ namespace PlatformerGame
             panel1.Width = w;
             pictureBox1.Height = h;
             pictureBox1.Width = w;
-            treeView1.Height = h;
+            treeView1.Height = h - 60;
             treeView1.Left = w + 1;
-
+            uxLeft.Left = w + 1;
+            uxLeft.Top = h - 60 + 24;
+            uxUp.Left = w + 1 + 39;
+            uxUp.Top = h - 60 + 24;
+            uxDown.Left = w + 1 + 39;
+            uxDown.Top = h - 30 + 24;
+            uxRight.Left = w + 1 + 39 + 89;
+            uxRight.Top = h - 60 + 24;
+            pictureBox1.Image = new Bitmap(w, h);
             board = new Tile[height, width];
             for (int i = 0; i < height; i++)
             {
                 for (int j = 0; j < width; j++)
                 {
                     board[i, j] = new Tile();
-                    board[i, j].TileType = "Blank Tile";
                 }
             }
         }
@@ -340,5 +408,205 @@ namespace PlatformerGame
             Cursor = Cursors.Arrow;
         }
 
+        private void setContentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetContent form = new SetContent();
+            form.SetFields(tiles);
+            DialogResult result = form.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                imageList1.Images.Clear();
+                tiles = form.Tiles;
+                Image thing = new Bitmap("../../../../PlatformerGameContent/Tiles/clear.png");
+                imageList1.Images.Add(thing);
+                foreach (string s in tiles)
+                {
+                    Image pict = new Bitmap(s);
+                    imageList1.Images.Add(pict);
+                }
+                Image pic = new Bitmap(displayW * 32, displayH * 32);
+                levelSong = form.Music;
+                Graphics level = Graphics.FromImage(pic);
+                for (int a = 0; a < displayH; a++)
+                {
+                    for (int b = 0; b < displayW; b++)
+                    {
+                        int i = a + currentY;
+                        int j = b + currentX;
+                        if (board[i, j].TileType == "Player")
+                        {
+                            board[i, j].ImageFile = tiles[0];
+                        }
+                        else if (board[i, j].TileType == "LevelEnd")
+                        {
+                            board[i, j].ImageFile = tiles[4];
+                        }
+                        else if (board[i, j].TileType == "Ground")
+                        {
+                            board[i, j].ImageFile = tiles[2];
+                        }
+                        else if (board[i, j].TileType == "Platform")
+                        {
+                            board[i, j].ImageFile = tiles[3];
+                        }
+                        else if (board[i, j].TileType == "WalkingEnemy")
+                        {
+                            board[i, j].ImageFile = tiles[1];
+                        }
+                        if (board[i, j].ImageFile != "")
+                        {
+                            Bitmap tile = new Bitmap(board[i, j].ImageFile);
+                            System.Drawing.Rectangle area = new System.Drawing.Rectangle(b * 32, a * 32, 32, 32);
+                            level.DrawImage(tile, area);
+                        }
+                    }
+                }
+                pictureBox1.Image = pic;
+            }
+        }
+
+        private void uxForm1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void uxLeft_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void uxForm1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Left)
+            {
+                uxLeft_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Right)
+            {
+                uxRight_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                uxUp_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                uxDown_Click(sender, e);
+            }
+        }
+
+        private void uxLeft_Click(object sender, EventArgs e)
+        {
+            if (currentX > 0)
+            {
+                currentX--;
+                uxRight.Enabled = true;
+                Repaint();
+            }
+            else
+            {
+                uxLeft.Enabled = false;
+            }
+        }
+
+        private void uxUp_Click(object sender, EventArgs e)
+        {
+            if (currentY > 0)
+            {
+                currentY--;
+                uxDown.Enabled = true;
+                Repaint();
+            }
+            else
+            {
+                uxUp.Enabled = false;
+            }
+        }
+
+        private void uxDown_Click(object sender, EventArgs e)
+        {
+            if (currentY + displayH < height)
+            {
+                currentY++;
+                uxUp.Enabled = true;
+                Repaint();
+            }
+            else
+            {
+                uxDown.Enabled = false;
+            }
+        }
+
+        private void uxRight_Click(object sender, EventArgs e)
+        {
+            if (currentX + displayW < width)
+            {
+                currentX++;
+                uxLeft.Enabled = true;
+                Repaint();
+            }
+            else
+            {
+                uxRight.Enabled = false;
+            }
+        }
+
+        private void Repaint()
+        {
+            Image pic = new Bitmap(displayW * 32, displayH * 32);
+            Graphics level = Graphics.FromImage(pic);
+            for (int a = 0; a < displayH; a++)
+            {
+                for (int b = 0; b < displayW; b++)
+                {
+                    int i = a + currentY;
+                    int j = b + currentX;
+                    if (board[i, j].TileType == "Player")
+                    {
+                        board[i, j].ImageFile = tiles[0];
+                    }
+                    else if (board[i, j].TileType == "LevelEnd")
+                    {
+                        board[i, j].ImageFile = tiles[4];
+                    }
+                    else if (board[i, j].TileType == "Ground")
+                    {
+                        board[i, j].ImageFile = tiles[2];
+                    }
+                    else if (board[i, j].TileType == "Platform")
+                    {
+                        board[i, j].ImageFile = tiles[3];
+                    }
+                    else if (board[i, j].TileType == "WalkingEnemy")
+                    {
+                        board[i, j].ImageFile = tiles[1];
+                    }
+                    if (board[i, j].ImageFile != "")
+                    {
+                        Bitmap tile = new Bitmap(board[i, j].ImageFile);
+                        System.Drawing.Rectangle area = new System.Drawing.Rectangle(b * 32, a * 32, 32, 32);
+                        level.DrawImage(tile, area);
+                    }
+                }
+            }
+            pictureBox1.Image = pic;
+            if (currentX == 0)
+            {
+                uxLeft.Enabled = false;
+            }
+            if (currentX + displayW == width)
+            {
+                uxRight.Enabled = false;
+            }
+            if (currentY == 0)
+            {
+                uxUp.Enabled = false;
+            }
+            if (currentY + displayH == height)
+            {
+                uxDown.Enabled = false;
+            }
+        }
+        
     }
 }

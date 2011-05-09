@@ -59,17 +59,21 @@ namespace PlatformerGameLibrary
         public string ImageFile;
         [ContentSerializerIgnore]
         public string TileType;
-
-        public Tile()
-        {
-        }
-
+        
         public Tile(Texture2D texture, TileCollision collision, bool damageTile)
         {
             Texture = texture;
             Collision = collision;
-
             IsDamage = damageTile;
+        }
+
+        public Tile()
+        {
+            Texture = null;
+            Collision = TileCollision.Passable;
+            IsDamage = false;
+            ImageFile = "";
+            TileType = "Blank Tile";
         }
     }
 
