@@ -166,9 +166,9 @@ namespace PlatformerGameLibrary
 
             cameraTransform = Matrix.CreateTranslation(-cameraPos.X, -cameraPos.Y, 0f);
 
-            scrollBoundaryLeft = 300;
+            scrollBoundaryLeft = (int)(graphicsDevice.Viewport.Width * (0.4));
             scrollBoundaryRight = graphicsDevice.Viewport.Width - scrollBoundaryLeft;
-            scrollBoundaryTop = 300;
+            scrollBoundaryTop = (int)(graphicsDevice.Viewport.Height * (0.4));
             scrollBoundaryBottom = graphicsDevice.Viewport.Height - scrollBoundaryTop;
         }
 

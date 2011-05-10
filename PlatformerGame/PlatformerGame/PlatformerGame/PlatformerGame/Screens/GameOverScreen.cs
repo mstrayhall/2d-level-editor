@@ -80,11 +80,11 @@ namespace PlatformerGame
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
 
             // Clear to black
-            ScreenManager.GraphicsDevice.Clear(Color.Black);
+            ScreenManager.GraphicsDevice.Clear(Color.White);
 
             spriteBatch.Begin();
 
-            spriteBatch.DrawString(gameOverFont, "GAME OVER", new Vector2((ScreenManager.GraphicsDevice.Viewport.Width / 2) - 100, (ScreenManager.GraphicsDevice.Viewport.Height / 3)), Color.Snow);
+            spriteBatch.DrawString(gameOverFont, "GAME OVER", new Vector2((ScreenManager.GraphicsDevice.Viewport.Width / 2) - 100, (ScreenManager.GraphicsDevice.Viewport.Height / 3)), Color.Black);
 
             spriteBatch.End();
 
