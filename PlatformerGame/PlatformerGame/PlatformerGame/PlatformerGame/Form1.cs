@@ -134,6 +134,7 @@ namespace PlatformerGame
                 {
                     board[Y, X].ImageFile = tiles[current.SelectedImageIndex - 1];
                     board[Y, X].TileType = current.Name;
+                    board[Y, X].ImageIndex = current.SelectedImageIndex - 1;
                     Bitmap tile = tileImages[current.SelectedImageIndex - 1];
                     System.Drawing.Rectangle area = new System.Drawing.Rectangle((X - currentX) * 32, (Y - currentY) * 32, 32, 32);
                     level.DrawImage(tile, area);
@@ -404,11 +405,37 @@ namespace PlatformerGame
             NewLevel level = new NewLevel();
             levelName = levelSpec.Name;
             level.Name = levelName;
+            this.Text = levelName + " - DIY 2D Platformer";
             height = (int)levelSpec.MapSize.X;
             width = (int)levelSpec.MapSize.Y;
 
+            int wid = width * 32;
+            int heig = height * 32;
+            displayW = width;
+            displayH = height;
+            if (wid > SystemInformation.PrimaryMonitorSize.Width * 4 / 5)
+            {
+                wid = SystemInformation.PrimaryMonitorSize.Width * 4 / 5;
+                displayW = wid / 32;
+            }
+            if (heig > SystemInformation.PrimaryMonitorSize.Height * 4 / 5)
+            {
+                heig = SystemInformation.PrimaryMonitorSize.Height * 4 / 5;
+                displayH = heig / 32;
+            }
+            FormSet(wid, heig);
+
+            if (width > displayW)
+            {
+                uxRight.Enabled = true;
+            }
+            if (height > displayH)
+            {
+                uxDown.Enabled = true;
+            }
+
             // Reset the background image so we can draw over it.
-            pictureBox1.Image = new Bitmap(width * 32, height * 32);
+            pictureBox1.Image = new Bitmap(displayW * 32, displayH * 32);
 
             // Get the rest of the level information
             string bgimage = "";
@@ -420,8 +447,8 @@ namespace PlatformerGame
             if (bgimage != "")
             {
                 pictureBox1.BackgroundImage = new Bitmap(bgimage);
+                backimage = new Bitmap(pictureBox1.BackgroundImage, width * 32, height * 32);
             }
-            FormSet(width * 32, height * 32);
 
 
             // Create the list of all tile types
@@ -439,9 +466,12 @@ namespace PlatformerGame
                 tile.Name = tileMapSpec.Name;
                 tile.TileType = tileMapSpec.Name;
                 tile.ImageFile = tileToTextureDict[tile.Name];
+                if (tile.ImageFile != "")
+                {
+                    tileImages[Array.IndexOf(tiles, tile.ImageFile)] = new Bitmap(new Bitmap(tile.ImageFile), 32, 32);
+                }
 
                 // TODO: this part was broken, quick fix copy/paste
-                tile.ImageIndex = 0;
                 if (tile.TileType == "Player")
                 {
                     tile.ImageIndex = 0;
@@ -655,36 +685,8 @@ namespace PlatformerGame
                 {
                     int i = a + currentY;
                     int j = b + currentX;
-
-                    // TODO: this part was broken, quick fix copy/paste
-                    if (board[i, j].ImageFile != "")
+                    if (board[i, j].ImageIndex >= 0)
                     {
-                        board[i, j].ImageIndex = 0;
-                        if (board[i, j].TileType == "Player")
-                        {
-                            board[i, j].ImageFile = tiles[0];
-                            board[i, j].ImageIndex = 0;
-                        }
-                        else if (board[i, j].TileType == "LevelEnd")
-                        {
-                            board[i, j].ImageFile = tiles[4];
-                            board[i, j].ImageIndex = 4;
-                        }
-                        else if (board[i, j].TileType == "Ground")
-                        {
-                            board[i, j].ImageFile = tiles[2];
-                            board[i, j].ImageIndex = 2;
-                        }
-                        else if (board[i, j].TileType == "Platform")
-                        {
-                            board[i, j].ImageFile = tiles[3];
-                            board[i, j].ImageIndex = 3;
-                        }
-                        else if (board[i, j].TileType == "WalkingEnemy")
-                        {
-                            board[i, j].ImageFile = tiles[1];
-                            board[i, j].ImageIndex = 1;
-                        }
                         Bitmap tile = tileImages[board[i, j].ImageIndex];
                         System.Drawing.Rectangle area = new System.Drawing.Rectangle(b * 32, a * 32, 32, 32);
                         level.DrawImage(tile, area);
