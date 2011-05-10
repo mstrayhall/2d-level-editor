@@ -439,6 +439,28 @@ namespace PlatformerGame
                 tile.Name = tileMapSpec.Name;
                 tile.TileType = tileMapSpec.Name;
                 tile.ImageFile = tileToTextureDict[tile.Name];
+                tile.ImageIndex = 0;
+
+                if (tile.TileType == "Player")
+                {
+                    tile.ImageIndex = 0;
+                }
+                else if (tile.TileType == "LevelEnd")
+                {
+                    tile.ImageIndex = 4;
+                }
+                else if (tile.TileType == "Ground")
+                {
+                    tile.ImageIndex = 2;
+                }
+                else if (tile.TileType == "Platform")
+                {
+                    tile.ImageIndex = 3;
+                }
+                else if (tile.TileType == "WalkingEnemy")
+                {
+                    tile.ImageIndex = 1;
+                }
 
                 Vector2 position = tileMapSpec.Position;
                 int posX = (int)position.X;

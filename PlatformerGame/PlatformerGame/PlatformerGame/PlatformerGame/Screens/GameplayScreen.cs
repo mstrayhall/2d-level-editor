@@ -128,7 +128,7 @@ namespace PlatformerGame
             CreateLevelXNB();
 
             // Set the number of lives for the player and the position for lives on the HUD
-            numLives = 10;
+            numLives = allLevels.Count * 3;
             livesPos = new Vector2(20, 15);
 
             // Position for timer on the HUD
