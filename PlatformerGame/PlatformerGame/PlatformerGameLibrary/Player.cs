@@ -118,7 +118,10 @@ namespace PlatformerGameLibrary
                 return new Rectangle(left, top, localBounds.Width, localBounds.Height);
             }
         }
-        
+
+        Rectangle sourceImageSize;
+        int playerWidth;
+        int playerHeight;
         
         #endregion
 
@@ -153,6 +156,10 @@ namespace PlatformerGameLibrary
             origin = new Vector2(width / 2, height);
 
             sprite = textureName;
+
+            sourceImageSize = new Rectangle(0, 0, sprite.Width, sprite.Height);
+            playerWidth = sizeX;
+            playerHeight = sizeY;
         }
 
         #endregion
@@ -329,7 +336,9 @@ namespace PlatformerGameLibrary
                 flip = SpriteEffects.None;
             }
 
-            spriteBatch.Draw(sprite, position, localBounds, Color.White, 0f, origin, 1f, flip, 0f);
+            // Draw all of the source image compressed to the dest player rectangle.
+            Rectangle destRect = new Rectangle((int)(position.X - playerWidth/2), (int)(position.Y - playerHeight), playerWidth, playerHeight);
+            spriteBatch.Draw(sprite, destRect, sourceImageSize, Color.White, 0f, Vector2.Zero, flip, 0f);
         }
         
         private float Jump(float velocityY, GameTime gameTime)
