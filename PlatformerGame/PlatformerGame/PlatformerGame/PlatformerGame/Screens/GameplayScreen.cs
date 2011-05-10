@@ -27,7 +27,6 @@ namespace PlatformerGame
     {
         #region Fields
 
-        // TODO: MERGE CONTENTS TO USE SAME PATH (or at least know how to navigate to both)
         ContentManager gameOverlayContent;
         ContentManager levelContent;
         SpriteBatch spriteBatch;
@@ -370,8 +369,6 @@ namespace PlatformerGame
         }
 
 
-
-        // TODO: Implement
         public void DrawHUD(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();

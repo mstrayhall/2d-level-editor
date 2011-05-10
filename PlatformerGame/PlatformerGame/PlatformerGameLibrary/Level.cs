@@ -173,7 +173,7 @@ namespace PlatformerGameLibrary
         }
 
         /// <summary>
-        /// TODO: MODIFY TO LOAD BASED ON XML
+        /// 
         /// </summary>
         /// <param name="path"></param>
         private void LoadTiles()
@@ -206,10 +206,14 @@ namespace PlatformerGameLibrary
 
         }
 
+        /// <summary>
+        /// This loads tiles based on their names in the form. 
+        /// NOTE: If you change a tilename in the form, you must change it here.
+        /// </summary>
+        /// <param name="curTile"></param>
+        /// <returns></returns>
         private Tile LoadTileType(TileMap curTile)
         {
-            // TODO: This will need to handle loading of all tile types, loading each type appropriately
-
             int y = (int)curTile.Position.X;
             int x = (int)curTile.Position.Y;
 
@@ -250,9 +254,7 @@ namespace PlatformerGameLibrary
 
         private Tile LoadTile(string name, TileCollision collision, bool isDamage)
         {
-            // TODO: for multiple tilesets, add in "Tiles/" + the tileset name we're using..add this variable
             return new Tile(tileTextureDict[name], collision, isDamage);            
-            //return new Tile(content.Load<Texture2D>(name), collision, isDamage);
         }
 
         private Tile LoadStartTile(string name, int x, int y)
@@ -329,11 +331,27 @@ namespace PlatformerGameLibrary
         }
 
         /// <summary>
+        /// Width of level measured in pixels
+        /// </summary>
+        public int PixelWidth
+        {
+            get { return Width * Tile.Width; }
+        }
+
+        /// <summary>
         /// Height of the level measured in tiles.
         /// </summary>
         public int Height
         {
             get { return tiles.GetLength(1); }
+        }
+
+        /// <summary>
+        /// Height of level measured in pixels
+        /// </summary>
+        public int PixelHeight
+        {
+            get { return Height * Tile.Height; }
         }
 
         #endregion
@@ -493,8 +511,12 @@ namespace PlatformerGameLibrary
             int left = (int)Math.Floor(cameraPos.X / Tile.Width);
             int right = left + (graphicsDevice.Viewport.Width / Tile.Width) + 1;
             right = Math.Min(right, Width);
-            // TODO: Culling for top and bottom
-            for (int y = 0; y < Height; y++)
+
+            int top = (int)Math.Floor(cameraPos.Y / Tile.Height);
+            int bottom = top + (graphicsDevice.Viewport.Height / Tile.Height) + 1;
+            bottom = Math.Min(bottom, Height);
+
+            for (int y = top; y < bottom; y++)
             {
                 for (int x = left; x < right; x++)
                 {

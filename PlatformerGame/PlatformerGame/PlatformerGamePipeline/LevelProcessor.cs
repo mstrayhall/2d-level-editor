@@ -17,7 +17,6 @@ using Microsoft.Xna.Framework.Content.Pipeline.Graphics;
 using Microsoft.Xna.Framework.Content.Pipeline.Processors;
 #endregion
 
-// TODO: replace these with the processor input and output types.
 using TInput = PlatformerGamePipeline.LevelContent;
 using TOutput = PlatformerGamePipeline.LevelContent;
 
@@ -31,8 +30,6 @@ namespace PlatformerGamePipeline
     ///
     /// This should be part of a Content Pipeline Extension Library project.
     ///
-    /// TODO: change the ContentProcessor attribute to specify the correct
-    /// display name for this processor.
     /// </summary>
     [ContentProcessor(DisplayName = "LevelProcessor")]
     public class LevelProcessor : ContentProcessor<TInput, TOutput>
