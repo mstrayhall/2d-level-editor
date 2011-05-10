@@ -34,6 +34,10 @@ namespace PlatformerGame
 
         bool isLevelTimed;
         MenuEntry timeLimitMenuEntry;
+
+        bool isMusicOn;
+        MenuEntry musicMenuEntry;
+
         MenuEntry backMenuEntry;
 
         #endregion
@@ -47,6 +51,7 @@ namespace PlatformerGame
             // Create our menu entries
             //fullscreenMenuEntry = new MenuEntry(String.Empty);
             timeLimitMenuEntry = new MenuEntry(String.Empty);
+            musicMenuEntry = new MenuEntry(String.Empty);
             backMenuEntry = new MenuEntry("Back");
 
             SetMenuEntryText();
@@ -54,11 +59,13 @@ namespace PlatformerGame
             // Hook up menu event handlers
             //fullscreenMenuEntry.Selected += FullscreenMenuEntrySelected;
             timeLimitMenuEntry.Selected += TimeLimitMenuEntrySelected;
+            musicMenuEntry.Selected += MusicMenuEntrySelected;
             backMenuEntry.Selected += OnCancel;
 
             // Add entries to the menu
             //MenuEntries.Add(fullscreenMenuEntry);
             MenuEntries.Add(timeLimitMenuEntry);
+            MenuEntries.Add(musicMenuEntry);
             MenuEntries.Add(backMenuEntry);
 
             TransitionOnTime = TimeSpan.FromSeconds(0.3);
@@ -72,6 +79,7 @@ namespace PlatformerGame
             //isFullscreen = ScreenManager.GraphicsDeviceManager.IsFullScreen;
 
             isLevelTimed = ScreenManager.IsTimeLimit;
+            isMusicOn = ScreenManager.IsMusicOn;
 
             // Update the menu entry text
             SetMenuEntryText();
@@ -90,6 +98,7 @@ namespace PlatformerGame
         {
             //fullscreenMenuEntry.Text = "Fullscreen: " + (isFullscreen ? "Enabled" : "Disabled");
             timeLimitMenuEntry.Text = "Time Limit: " + (isLevelTimed ? "On" : "Off");
+            musicMenuEntry.Text = "Music: " + (isMusicOn ? "On" : "Off");
         }
 
         /// <summary>
@@ -102,6 +111,20 @@ namespace PlatformerGame
             // Toggle the time limit boolean
             isLevelTimed = !isLevelTimed;
             ScreenManager.IsTimeLimit = isLevelTimed;
+
+            SetMenuEntryText();
+        }
+
+        /// <summary>
+        /// Event handler for when the Music menu entry is selected.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void MusicMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        {
+            // Toggle the time limit boolean
+            isMusicOn = !isMusicOn;
+            ScreenManager.IsMusicOn = isMusicOn;
 
             SetMenuEntryText();
         }

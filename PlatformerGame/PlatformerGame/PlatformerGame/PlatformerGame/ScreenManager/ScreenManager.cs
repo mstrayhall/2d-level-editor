@@ -28,6 +28,14 @@ namespace PlatformerGame
     {
         #region Fields and Properties
 
+        // Keeps track of if the player wants music to play or not
+        private bool isMusicOn;
+        public bool IsMusicOn
+        {
+            get { return isMusicOn; }
+            set { isMusicOn = value; }
+        }
+
         // Keeps track of if our levels are timed or not
         private bool isTimeLimit;
         public bool IsTimeLimit
@@ -126,6 +134,8 @@ namespace PlatformerGame
         public ScreenManager(Game game)
             : base(game)
         {
+            isTimeLimit = true;
+            isMusicOn = true;
         }
 
 

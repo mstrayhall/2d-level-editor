@@ -44,6 +44,7 @@ namespace PlatformerGame
 
         // Audio
         Song levelMusic;
+        bool isMusicOn;
 
         // Generate list of levels so we know where to go next.
         // Store the folder containing all the levels for this game
@@ -91,12 +92,13 @@ namespace PlatformerGame
         {
             contentBuilder = new ContentBuilder(baseLevelsPath);
 
-            gameOverlayContent = new ContentManager(ScreenManager.Game.Services, "Content");
-
             // If we don't yet have a reference to the content manager, 
             // grab one from the game
-            if (levelContent == null)
-                levelContent = new ContentManager(ScreenManager.Game.Services, contentBuilder.BaseOutputDirectory);
+            // This one loads assets for drawing the HUD and overlays
+            gameOverlayContent = new ContentManager(ScreenManager.Game.Services, "Content");
+
+            // This one loads levels using the level processor
+            levelContent = new ContentManager(ScreenManager.Game.Services, contentBuilder.BaseOutputDirectory);
             tempLevelXNBPath = contentBuilder.BaseOutputDirectory;
 
             spriteBatch = ScreenManager.SpriteBatch;
@@ -126,10 +128,6 @@ namespace PlatformerGame
             // Create the level
             CreateLevelXNB();
 
-            // Load the first level from allLevels
-            levelIndex--;
-            LoadNextLevel();
-
             // Set the number of lives for the player and the position for lives on the HUD
             numLives = 10;
             livesPos = new Vector2(20, 15);
@@ -150,6 +148,14 @@ namespace PlatformerGame
                                                 ScreenManager.GraphicsDevice.Viewport.Height / 2);
             winOverlayPos = screenCenter - (winOverlaySize / 2);
             dieOverlayPos = screenCenter - (dieOverlaySize / 2);
+
+            // Audio
+            isMusicOn = ScreenManager.IsMusicOn;
+
+
+            // Load the first level from allLevels -- this should be done last.
+            levelIndex--;
+            LoadNextLevel();
 
             base.LoadContent();
         }
@@ -216,7 +222,7 @@ namespace PlatformerGame
         private void SetLevelMusic()
         {
             // If this level had any music listed to play
-            if (level.LevelSong != null)
+            if (level.LevelSong != null && isMusicOn)
             {
                 Song songName = level.LevelSong;
                 // If we dont have any music playing yet 
