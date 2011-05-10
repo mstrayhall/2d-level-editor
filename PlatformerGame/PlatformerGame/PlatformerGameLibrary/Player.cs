@@ -278,7 +278,6 @@ namespace PlatformerGameLibrary
                             float absDepthY = Math.Abs(depth.Y);
 
                             // Resolve the collision along the shallow axis. Force it to resolve X if the player is out of bounds of the level.
-                            // TODO: replace 0 and 1280 with actual level width and heights in case we change screen size or have scrolling levels.
                             if ((absDepthY <= absDepthX || collision == TileCollision.Platform) && bounds.Left >= 0 && bounds.Right <= Level.PixelWidth)
                             {
                                 // If we crossed the top of a tile, we are on the ground.
@@ -323,9 +322,6 @@ namespace PlatformerGameLibrary
             lastHurt += gameTime.ElapsedGameTime;
 
             HandleInput(gameTime);
-
-            // TODO: update animation if necessary
-
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)

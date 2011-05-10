@@ -32,10 +32,6 @@ namespace PlatformerGameLibrary
         [ContentSerializer(Optional = true)]
         public Texture2D Background;
 
-        //[ContentSerializer(Optional = true)]
-        //public string LevelMusic;
-//        public Song LevelMusic;
-
         [ContentSerializer(Optional = true)]
         public Song LevelSong;
 
@@ -59,7 +55,9 @@ namespace PlatformerGameLibrary
         Texture2D[] layers;
         // Blank Texture to serve as the background if none are provided
         Texture2D blankLayer;
-        // Rectangle representing the entire level size (not the viewport size)
+        // Rectangle representing the entire level size and the extra vertical space (not the viewport size)
+        Rectangle levelAndExtraVertRectangle;
+        // Rectange containing the entire level size
         Rectangle levelRectangle;
 
         // Player, enemies, and items in the level
@@ -144,8 +142,9 @@ namespace PlatformerGameLibrary
             else
             {
                 layers = new Texture2D[0];
-                blankLayer = content.Load<Texture2D>("blank");
             }
+            // A blank layer to wipe the screen clean white first
+            blankLayer = content.Load<Texture2D>("blank");
             
             // Build a dictionary of all tile names and their texture locations
             tileTextureDict = new Dictionary<string, Texture2D>();
@@ -157,11 +156,14 @@ namespace PlatformerGameLibrary
             // Load the tiles
             LoadTiles();
 
-            levelRectangle = new Rectangle(0, 0, Tile.Width * Width, graphicsDevice.Viewport.Height);
+            // The rectangle containing the level and any extra vertical space
+            levelAndExtraVertRectangle = new Rectangle(0, 0, PixelWidth, graphicsDevice.Viewport.Height);
+            // The rectangle containing the entire level
+            levelRectangle = new Rectangle(0, 0, PixelWidth, PixelHeight);
 
             cameraPos = new Vector2(Player.Position.X, Player.Position.Y);
-            float maxCamX = Tile.Width * Width - graphicsDevice.Viewport.Width;
-            float maxCamY = Tile.Height * Height - graphicsDevice.Viewport.Height;
+            float maxCamX = PixelWidth - graphicsDevice.Viewport.Width;
+            float maxCamY = PixelHeight - graphicsDevice.Viewport.Height;
             maxCameraPos = new Vector2(maxCamX, maxCamY);
 
             cameraTransform = Matrix.CreateTranslation(-cameraPos.X, -cameraPos.Y, 0f);
@@ -466,18 +468,17 @@ namespace PlatformerGameLibrary
         {
             // Draw the background
             spriteBatch.Begin();
+
+            // Clear the background of the level and extra vertical space to white
+            spriteBatch.Draw(blankLayer, levelAndExtraVertRectangle, Color.White);
+
             // If they have provided one or more backgrounds, draw them
-            // Otherwise clear the screen to white
             if (layers.Length > 0)
             {
                 foreach (Texture2D layer in layers)
                 {
-                    spriteBatch.Draw(layer, graphicsDevice.Viewport.Bounds, Color.White);
+                    spriteBatch.Draw(layer, levelRectangle, Color.White);
                 }
-            }
-            else
-            {
-                spriteBatch.Draw(blankLayer, levelRectangle, Color.White);
             }
             spriteBatch.End();
 

@@ -369,20 +369,33 @@ namespace PlatformerGame
         }
 
 
+        /// <summary>
+        /// Draws shadowed strings of information for the player to see.
+        /// </summary>
+        /// <param name="spriteBatch"></param>
         public void DrawHUD(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
 
-            spriteBatch.DrawString(hudFont, "Lives\n" + numLives, livesPos, Color.Black);
+            spriteBatch.DrawString(hudFont, "Lives\n" + numLives, livesPos - new Vector2(1, 1), Color.White);
+            spriteBatch.DrawString(hudFont, "Lives\n" + numLives, livesPos, new Color(10, 10, 10));
 
-            if (isTimed) spriteBatch.DrawString(hudFont, "Time Left\n" + (int)(level.TimeRemaining.TotalSeconds), timerPos, Color.Black);
-            else spriteBatch.DrawString(hudFont, "Time Left\n" + "Unlimited", timerPos, Color.Black);
+            if (isTimed)
+            {
+                spriteBatch.DrawString(hudFont, "Time Left\n" + (int)(level.TimeRemaining.TotalSeconds), timerPos - new Vector2(1, 1), Color.White);
+                spriteBatch.DrawString(hudFont, "Time Left\n" + (int)(level.TimeRemaining.TotalSeconds), timerPos, new Color(10,10,10));
+            }
+            else
+            {
+                spriteBatch.DrawString(hudFont, "Time Left\n" + "Unlimited", timerPos - new Vector2(1, 1), Color.White);
+                spriteBatch.DrawString(hudFont, "Time Left\n" + "Unlimited", timerPos, new Color(10, 10, 10));
+            }
 
-            spriteBatch.DrawString(hudFont, "Level Name\n" + allLevels[levelIndex], levelNamePos, Color.Black);
+            spriteBatch.DrawString(hudFont, "Level Name\n" + allLevels[levelIndex], levelNamePos - new Vector2(1, 1), Color.White);
+            spriteBatch.DrawString(hudFont, "Level Name\n" + allLevels[levelIndex], levelNamePos, new Color(10, 10, 10));
 
             spriteBatch.End();
         }
-
 
 
         /// <summary>
@@ -427,7 +440,7 @@ namespace PlatformerGame
             level.DrawPlayerAndEnemies(gameTime, spriteBatch);
 
             spriteBatch.Begin();
-            if (!level.Player.IsAlive)
+            if (!level.Player.IsAlive || level.TimeRemaining == TimeSpan.Zero)
             {
                 spriteBatch.Draw(dieOverlay, dieOverlayPos, Color.White);
             }

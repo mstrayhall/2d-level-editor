@@ -114,14 +114,10 @@ namespace PlatformerGame
                 pictureBox1.Capture = true;
                 int X = (e.X / 32) + currentX;
                 int Y = (e.Y / 32) + currentY;
-                if (X >= width)
-                {
-                    X = width - 1;
-                }
-                if (Y >= height)
-                {
-                    Y = height - 1;
-                }
+
+                X = (int)MathHelper.Clamp(X, 0, width - 1);
+                Y = (int)MathHelper.Clamp(Y, 0, height - 1);
+                
                 Image pic = pictureBox1.Image;
                 if (pic == null)
                 {
@@ -184,10 +180,8 @@ namespace PlatformerGame
                 {
                     pictureBox1.BackgroundImage = null;
                 }
-                // TODO: set the song as well
                 levelSong = "";
-                // TODO: do we need this?
-                //this.Text = newlevel.FindName;
+                this.Text = newlevel.FindName;
                 levelName = newlevel.FindName;
                 int wid = width * 32;
                 int heig = height * 32;
@@ -281,14 +275,9 @@ namespace PlatformerGame
             levelSpec.MapSize.Y = width;
 
             // Set the background
-            // TODO: implement a background field somewhere for this optional attribute
-            if (pictureBox1.BackgroundImage != null)
+            if (!String.IsNullOrEmpty(bgimage))
             {
-                string bgImage = pictureBox1.BackgroundImage.ToString();
-                if (!String.IsNullOrEmpty(bgImage))
-                {
-                    levelSpec.Background = new ExternalReference<Texture2DContent>(bgImage);
-                }
+                levelSpec.Background = new ExternalReference<Texture2DContent>(bgimage);
             }
 
             // Set the music
@@ -326,7 +315,6 @@ namespace PlatformerGame
                     Tile curTile = board[i,j];
                     TileMapContent tileMapContent = new TileMapContent();
                     tileMapContent.Name = curTile.TileType;
-                    // TODO: get rid of tileType everywhere and replace it with Name field
                     tileMapContent.Position.X = i;
                     tileMapContent.Position.Y = j;
                     levelSpec.TileArray[index++] = tileMapContent;
@@ -431,7 +419,6 @@ namespace PlatformerGame
                 tileToTextureDict.Add(tileSpec.Name, tileSpec.Texture.Filename);
             }
             tileToTextureDict.Add("Blank Tile", "");
-            // TODO: add Blank Tile to official list when saving the data?
 
             // Load in the tile information and draw them.
             foreach (TileMapContent tileMapSpec in levelSpec.TileArray)
@@ -459,7 +446,6 @@ namespace PlatformerGame
                     System.Drawing.Rectangle area = new System.Drawing.Rectangle(posY * 32, posX * 32, 32, 32);
                     levelPic.DrawImage(tileToDraw, area);
                     pictureBox1.Image = pic;
-                    // TODO: Loop through tiles again to draw this stuff all at once?
                 }
             }
 
