@@ -35,7 +35,7 @@ namespace PlatformerGame
         {
             graphics = new GraphicsDeviceManager(this);
 
-            graphics.PreferredBackBufferWidth = 880; //1280
+            graphics.PreferredBackBufferWidth = 1080; //1280
             graphics.PreferredBackBufferHeight = 704; //704
 
             Content.RootDirectory = "Content";

@@ -322,6 +322,26 @@ namespace PlatformerGame
                 IntermediateSerializer.Serialize<LevelContent>(writer, levelSpec, null);
             }
 
+
+            // Check to see if we have already created an xnb file of a level with this same name.
+            // It would be in the folder XNB_Files inside the folder we chose to save this level in.
+            // We need to delete it so it will be rebuilt in game with the edits.
+            string directoryPath = Path.GetDirectoryName(fileName) + "/XNB_Files";
+
+            // If the XNB directory exists, check if a file of this level name is there.
+            if (Directory.Exists(directoryPath))
+            {
+                string[] files = Directory.GetFiles(directoryPath);
+                foreach (string file in files)
+                {
+                    string nameOnly = Path.GetFileNameWithoutExtension(file);
+                    if (nameOnly == fileNameOnly)
+                    {
+                        File.Delete(file);
+                    }
+                }
+            }
+
             Cursor = Cursors.Arrow;
         }
 

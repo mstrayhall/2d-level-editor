@@ -25,9 +25,11 @@ namespace PlatformerGame
 {
     class GameplayScreen : GameScreen
     {
+        #region Fields
+
         // TODO: MERGE CONTENTS TO USE SAME PATH (or at least know how to navigate to both)
-        ContentManager content2;
-        ContentManager content;
+        ContentManager gameOverlayContent;
+        ContentManager levelContent;
         SpriteBatch spriteBatch;
         SpriteFont hudFont;
 
@@ -42,9 +44,6 @@ namespace PlatformerGame
 
         // Audio
         Song levelMusic;
-
-        //bool checkpointHit;
-        
 
         // Generate list of levels so we know where to go next.
         // Store the folder containing all the levels for this game
@@ -76,6 +75,10 @@ namespace PlatformerGame
 
         InputManager playerInput;
 
+        #endregion
+
+        #region Initialization
+
         public GameplayScreen(int levelIndex, string gameLevelsPath)
         {
             this.levelIndex = levelIndex;
@@ -88,20 +91,17 @@ namespace PlatformerGame
         {
             contentBuilder = new ContentBuilder(baseLevelsPath);
 
-            content2 = new ContentManager(ScreenManager.Game.Services, "Content");
+            gameOverlayContent = new ContentManager(ScreenManager.Game.Services, "Content");
 
             // If we don't yet have a reference to the content manager, 
             // grab one from the game
-            if (content == null)
-                content = new ContentManager(ScreenManager.Game.Services, contentBuilder.BaseOutputDirectory);
+            if (levelContent == null)
+                levelContent = new ContentManager(ScreenManager.Game.Services, contentBuilder.BaseOutputDirectory);
             tempLevelXNBPath = contentBuilder.BaseOutputDirectory;
 
             spriteBatch = ScreenManager.SpriteBatch;
-            //string assemblyLocation = Assembly.GetExecutingAssembly().Location;
-            //string relativePath = Path.Combine(assemblyLocation, "../../../../../PlatformerGameContent/Tiles/");
-            //string contentPath = Path.GetFullPath(relativePath);
 
-            hudFont = content2.Load<SpriteFont>("hudFont");
+            hudFont = gameOverlayContent.Load<SpriteFont>("hudFont");
 
             // Given the folder path specified by the user, load all levels in that folder
             allLevels = new List<string>();
@@ -123,16 +123,15 @@ namespace PlatformerGame
                 }
             }
 
+            // Create the level
             CreateLevelXNB();
 
             // Load the first level from allLevels
             levelIndex--;
-            //LoadNextLevel();
-            //LoadLevelName("level0.txt");
-
+            LoadNextLevel();
 
             // Set the number of lives for the player and the position for lives on the HUD
-            numLives = 3;
+            numLives = 10;
             livesPos = new Vector2(20, 15);
 
             // Position for timer on the HUD
@@ -142,9 +141,9 @@ namespace PlatformerGame
             // Position for level name on HUD
             levelNamePos = new Vector2(400, 15);
            
-
-            winOverlay = content2.Load<Texture2D>("winOverlay");
-            dieOverlay = content2.Load<Texture2D>("dieOverlay");
+            // Overlay positioning
+            winOverlay = gameOverlayContent.Load<Texture2D>("winOverlay");
+            dieOverlay = gameOverlayContent.Load<Texture2D>("dieOverlay");
             winOverlaySize = new Vector2(winOverlay.Width, winOverlay.Height);
             dieOverlaySize = new Vector2(dieOverlay.Width, dieOverlay.Height);
             Vector2 screenCenter = new Vector2(ScreenManager.GraphicsDevice.Viewport.Width / 2,
@@ -272,14 +271,14 @@ namespace PlatformerGame
                 string fileNameOnly = Path.GetFileNameWithoutExtension(levelPath);
                 try
                 {
-                    level = content.Load<Level>(fileNameOnly);
+                    level = levelContent.Load<Level>(fileNameOnly);
                 }
                 catch (Exception e)
                 {
                     contentBuilder.Clear();
                     contentBuilder.Add(baseLevelsPath + levelName + ".xml", levelName, null, "LevelProcessor");
                     contentBuilder.Build();
-                    level = content.Load<Level>(levelPath);
+                    level = levelContent.Load<Level>(levelPath);
                 }
                 level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services, isTimed);
                 SetLevelMusic();
@@ -287,55 +286,16 @@ namespace PlatformerGame
             }
         }
 
-        public void LoadLevelName(string levelName)
-        {
-            string levelPath = Path.Combine(tempLevelXNBPath, levelName);
-            string fileNameOnly = Path.GetFileNameWithoutExtension(levelPath);
-
-            // Unload old level first
-            if (level != null) level.Dispose();
-
-            // Load the new level
-            try
-            {
-                level = content.Load<Level>(levelPath);
-            }
-            catch (Exception e)
-            {
-                contentBuilder.Clear();
-                contentBuilder.Add(baseLevelsPath + levelName + ".xml", levelName, null, "LevelProcessor");
-                contentBuilder.Build();
-                level = content.Load<Level>(levelPath);
-            }
-            level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services, isTimed);
-            SetLevelMusic();
-        }
-
         public void ReloadCurrentLevel()
         {
+            // Just reload the level by setting the level counter back.
             levelIndex--;
             LoadNextLevel();
-
-            /*
-            // Reload the current level
-            string levelName = allLevels[levelIndex];
-            string levelPath = Path.Combine(tempLevelXNBPath, levelName);
-            string fileNameOnly = Path.GetFileNameWithoutExtension(levelPath);
-            try
-            {
-                level = content.Load<Level>(levelPath);
-            }
-            catch (Exception e)
-            {
-                contentBuilder.Clear();
-                contentBuilder.Add(baseLevelsPath + levelName + ".xml", levelName, null, "LevelProcessor");
-                contentBuilder.Build();
-                level = content.Load<Level>(levelPath);
-            }
-            level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services, isTimed);
-            SetLevelMusic();
-             * */
         }
+
+        #endregion
+
+        #region Update and Draw
 
         /// <summary>
         /// Processes the user's input, to skip the splash screen.
@@ -476,5 +436,8 @@ namespace PlatformerGame
 
             base.Draw(gameTime);
         }
+
+        #endregion
+
     }
 }
