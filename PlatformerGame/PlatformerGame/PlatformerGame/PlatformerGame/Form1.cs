@@ -439,8 +439,9 @@ namespace PlatformerGame
                 tile.Name = tileMapSpec.Name;
                 tile.TileType = tileMapSpec.Name;
                 tile.ImageFile = tileToTextureDict[tile.Name];
-                tile.ImageIndex = 0;
 
+                // TODO: this part was broken, quick fix copy/paste
+                tile.ImageIndex = 0;
                 if (tile.TileType == "Player")
                 {
                     tile.ImageIndex = 0;
@@ -654,8 +655,36 @@ namespace PlatformerGame
                 {
                     int i = a + currentY;
                     int j = b + currentX;
+
+                    // TODO: this part was broken, quick fix copy/paste
                     if (board[i, j].ImageFile != "")
                     {
+                        board[i, j].ImageIndex = 0;
+                        if (board[i, j].TileType == "Player")
+                        {
+                            board[i, j].ImageFile = tiles[0];
+                            board[i, j].ImageIndex = 0;
+                        }
+                        else if (board[i, j].TileType == "LevelEnd")
+                        {
+                            board[i, j].ImageFile = tiles[4];
+                            board[i, j].ImageIndex = 4;
+                        }
+                        else if (board[i, j].TileType == "Ground")
+                        {
+                            board[i, j].ImageFile = tiles[2];
+                            board[i, j].ImageIndex = 2;
+                        }
+                        else if (board[i, j].TileType == "Platform")
+                        {
+                            board[i, j].ImageFile = tiles[3];
+                            board[i, j].ImageIndex = 3;
+                        }
+                        else if (board[i, j].TileType == "WalkingEnemy")
+                        {
+                            board[i, j].ImageFile = tiles[1];
+                            board[i, j].ImageIndex = 1;
+                        }
                         Bitmap tile = tileImages[board[i, j].ImageIndex];
                         System.Drawing.Rectangle area = new System.Drawing.Rectangle(b * 32, a * 32, 32, 32);
                         level.DrawImage(tile, area);
