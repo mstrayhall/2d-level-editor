@@ -255,29 +255,36 @@ namespace PlatformerGame
         {
             if (projectItems.Count > 0)
             {
-                // Clear any previous errors.
-                errorLogger.Errors.Clear();
+                try
+                {
+                    // Clear any previous errors.
+                    errorLogger.Errors.Clear();
 
-                // Create and submit a new asynchronous build request.
-                BuildManager.DefaultBuildManager.BeginBuild(buildParameters);
+                    // Create and submit a new asynchronous build request.
+                    BuildManager.DefaultBuildManager.BeginBuild(buildParameters);
 
-                BuildRequestData request = new BuildRequestData(buildProject.CreateProjectInstance(), new string[0]);
-                BuildSubmission submission = BuildManager.DefaultBuildManager.PendBuildRequest(request);
+                    BuildRequestData request = new BuildRequestData(buildProject.CreateProjectInstance(), new string[0]);
+                    BuildSubmission submission = BuildManager.DefaultBuildManager.PendBuildRequest(request);
 
-                submission.ExecuteAsync(null, null);
+                    submission.ExecuteAsync(null, null);
 
-                // Wait for the build to finish.
-                submission.WaitHandle.WaitOne();
+                    // Wait for the build to finish.
+                    submission.WaitHandle.WaitOne();
 
-                BuildManager.DefaultBuildManager.EndBuild();
+                    BuildManager.DefaultBuildManager.EndBuild();
 
-                // If the build failed, return an error string.
-                if (submission.BuildResult.OverallResult == BuildResultCode.Failure)
+                    // If the build failed, return an error string.
+                    if (submission.BuildResult.OverallResult == BuildResultCode.Failure)
+                    {
+                        return string.Join("\n", errorLogger.Errors.ToArray());
+                    }
+
+                    CopyToOutputDirectory();
+                }
+                catch (Exception e)
                 {
                     return string.Join("\n", errorLogger.Errors.ToArray());
                 }
-
-                CopyToOutputDirectory();
             }
 
             return null;

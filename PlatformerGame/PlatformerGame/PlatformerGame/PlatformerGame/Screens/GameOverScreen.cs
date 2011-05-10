@@ -66,8 +66,9 @@ namespace PlatformerGame
         {
             PlayerIndex playerIndex;
 
-            // If the user presses the space bar, start a new game
-            if (input.IsNewKeyPress(Keys.Space, ControllingPlayer, out playerIndex))
+            // If the user preses the space bar or escape, exit the screen to return to the menu
+            if (input.IsNewKeyPress(Keys.Space, ControllingPlayer, out playerIndex)
+                || input.IsNewKeyPress(Keys.Escape, ControllingPlayer, out playerIndex))
             {
                 ScreenManager.RemoveScreen(this);
             }

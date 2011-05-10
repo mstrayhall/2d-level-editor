@@ -8,6 +8,7 @@
 #region Using Statements
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -36,26 +37,37 @@ namespace PlatformerGamePipeline
     {
         public override TOutput Process(TInput input, ContentProcessorContext context)
         {
-            // Build the background texture
-            if (input.Background != null)
+            try
             {
-                input.Background = context.BuildAsset<Texture2DContent, Texture2DContent>(input.Background, null);
-            }
+                // Build the background texture
+                if (input.Background != null)
+                {
+                    input.Background = context.BuildAsset<Texture2DContent, Texture2DContent>(input.Background, null);
+                }
 
-            //Build the level music
-            if (null != input.LevelSong)
-            {
-                ExternalReference<AudioContent> audio = new ExternalReference<AudioContent>(input.LevelSong.Filename);
-                input.LevelSong = context.BuildAsset<AudioContent, SongContent>(audio, "SongProcessor");
-                audio = null;
-            }
+                //Build the level music
+                if (null != input.LevelSong)
+                {
+                    ExternalReference<AudioContent> audio = new ExternalReference<AudioContent>(input.LevelSong.Filename);
+                    input.LevelSong = context.BuildAsset<AudioContent, SongContent>(audio, "SongProcessor");
+                    audio = null;
+                }
 
-            // Cycle through all LevelTilesContents contained in LevelContent
-            foreach (TileContent tile in input.TileTypes)
+                // Cycle through all LevelTilesContents contained in LevelContent
+                foreach (TileContent tile in input.TileTypes)
+                {
+                    // Build the texture associated with each tile so it can be included in the .xnb file
+                    // to be created by the Content Pipeline.
+                    if (!File.Exists(tile.Texture.Filename))
+                    {
+                        throw new Exception();
+                    }
+                    else tile.Texture = context.BuildAsset<Texture2DContent, Texture2DContent>(tile.Texture, null);
+                }
+            }
+            catch (Exception e)
             {
-                // Build the texture associated with each tile so it can be included in the .xnb file
-                // to be created by the Content Pipeline.
-                tile.Texture = context.BuildAsset<Texture2DContent, Texture2DContent>(tile.Texture, null);
+
             }
             return input;
         }

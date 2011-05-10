@@ -36,11 +36,6 @@ namespace PlatformerGame
         // at runtime through the Content Pipeline
         ContentBuilder contentBuilder;
 
-        /*
-        // health bars
-        Texture2D healthBar;
-        */
-
         // Audio
         Song levelMusic;
         bool isMusicOn;
@@ -73,7 +68,12 @@ namespace PlatformerGame
         Vector2 dieOverlaySize;
         Vector2 dieOverlayPos;
 
+        // Input
         InputManager playerInput;
+
+        // Errors
+        bool foundError;
+        string errorMessage;
 
         #endregion
 
@@ -102,6 +102,11 @@ namespace PlatformerGame
 
             spriteBatch = ScreenManager.SpriteBatch;
 
+            // Errors
+            foundError = false;
+            errorMessage = "";
+
+            // HUD
             hudFont = gameOverlayContent.Load<SpriteFont>("hudFont");
 
             // Given the folder path specified by the user, load all levels in that folder
@@ -211,41 +216,49 @@ namespace PlatformerGame
             }
             else
             {
-                buildError = "Error building level XNB files. All .xml files in the selected directory must be in a format compatible with this level editor.";
-                // Show the error
-                //TODO: SHOW ERROR
-                //MessageBox.Show(buildError, "Build Error");
+                errorMessage = "Error building level XNB files.\n"
+                                + "All .xml files in the selected directory must be\n"
+                                + "in a format compatible with this level editor.";
+                foundError = true;
             }
         }
 
         private void SetLevelMusic()
         {
-            // If this level had any music listed to play
-            if (level.LevelSong != null && isMusicOn)
+            try
             {
-                Song songName = level.LevelSong;
-                // If we dont have any music playing yet 
-                if (levelMusic == null)
+                // If this level had any music listed to play
+                if (level.LevelSong != null && isMusicOn)
                 {
-                    levelMusic = songName;
-                    MediaPlayer.Play(levelMusic);
-                    MediaPlayer.IsRepeating = true;
-                }
-                // If we want to play a different song than the one playing, do so.
-                else if (levelMusic != null)
-                {
-                    string curLevelSongName = Path.GetFileNameWithoutExtension(levelMusic.Name); 
-                    string curPlayingSongName = Path.GetFileNameWithoutExtension(songName.Name);
-                    if (curLevelSongName != curPlayingSongName)
+                    Song songName = level.LevelSong;
+                    // If we dont have any music playing yet 
+                    if (levelMusic == null)
                     {
                         levelMusic = songName;
                         MediaPlayer.Play(levelMusic);
                         MediaPlayer.IsRepeating = true;
                     }
+                    // If we want to play a different song than the one playing, do so.
+                    else if (levelMusic != null)
+                    {
+                        string curLevelSongName = Path.GetFileNameWithoutExtension(levelMusic.Name);
+                        string curPlayingSongName = Path.GetFileNameWithoutExtension(songName.Name);
+                        if (curLevelSongName != curPlayingSongName)
+                        {
+                            levelMusic = songName;
+                            MediaPlayer.Play(levelMusic);
+                            MediaPlayer.IsRepeating = true;
+                        }
+                    }
+                    // Else just continue playing the same song
                 }
-                // Else just continue playing the same song
+                // Else continue playing any music we had playing
             }
-            // Else continue playing any music we had playing
+            catch (Exception e)
+            {
+                foundError = true;
+                errorMessage = "Error loading level music";
+            }
         }
 
         // Returns true if a new level was successfully loaded
@@ -283,11 +296,25 @@ namespace PlatformerGame
                     contentBuilder.Clear();
                     contentBuilder.Add(baseLevelsPath + levelName + ".xml", levelName, null, "LevelProcessor");
                     contentBuilder.Build();
-                    level = levelContent.Load<Level>(levelPath);
+                    try
+                    {
+                        level = levelContent.Load<Level>(levelPath);
+                    }
+                    catch (Exception e2)
+                    {
+                        foundError = true;
+                        errorMessage = "Error loading level.\n"
+                                        + "Please check " + levelName + ".xml\n"
+                                        + "to make sure all asset paths are correct";
+                    }
                 }
-                level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services, isTimed);
-                SetLevelMusic();
-                return true;
+                if (!foundError)
+                {
+                    level.Initialize(ScreenManager.GraphicsDevice, ScreenManager.Game.Services, isTimed);
+                    SetLevelMusic();
+                    return true;
+                }
+                else return false;
             }
         }
 
@@ -328,6 +355,14 @@ namespace PlatformerGame
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
+            if (foundError)
+            {
+                foundError = false; // reset so we dont load multiple error screens
+                ScreenManager.AddScreen(new ErrorScreen(errorMessage), null);
+                this.ExitScreen();
+                return;
+            }
+
             PlayerIndex playerIndex;
             playerInput.Update(gameTime);
 
@@ -342,18 +377,18 @@ namespace PlatformerGame
             if (level.TimeRemaining == TimeSpan.Zero || !level.Player.IsAlive)
             {
                 // if the Player is dead or time ran out, see if they can respawn (and wait for their input)
-                if (numLives > 0)
+                if (playerInput.IsKeyDown(Keys.Space, null, out playerIndex))
                 {
-                    if (playerInput.IsKeyDown(Keys.Space, null, out playerIndex))
+                    if (numLives > 0)
                     {
                         numLives--;
                         ReloadCurrentLevel();
                     }
-                }
-                else
-                {
-                    ScreenManager.AddScreen(new GameOverScreen(), null);
-                    this.ExitScreen();
+                    else
+                    {
+                        ScreenManager.AddScreen(new GameOverScreen(), null);
+                        this.ExitScreen();
+                    }
                 }
             }
             else if (level.ReachedExit)
@@ -404,6 +439,14 @@ namespace PlatformerGame
         /// <param name="gameTime"></param>
         public override void Draw(Microsoft.Xna.Framework.GameTime gameTime)
         {
+            if (foundError)
+            {
+                foundError = false; // reset so we dont load multiple error screens
+                ScreenManager.AddScreen(new ErrorScreen(errorMessage), null);
+                this.ExitScreen();
+                return;
+            }
+
             if (level == null)
             {
                 bool haveNewLevel = LoadNextLevel();

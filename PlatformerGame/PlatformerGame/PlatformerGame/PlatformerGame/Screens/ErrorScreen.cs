@@ -1,4 +1,13 @@
-﻿#region Using Statements
+﻿#region File Description
+//-----------------------------------------------------------------------------
+// ErrorScreen.cs
+//
+// This prints errors out to handle them "gracefully" so the player doesn't have
+// to deal with a straight up crash.
+//-----------------------------------------------------------------------------
+#endregion
+
+#region Using Statements
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,17 +17,29 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-#endregion;
+using System.Windows.Forms;
+#endregion
 
 namespace PlatformerGame
 {
-    class WinGameScreen : GameScreen
+    class ErrorScreen : GameScreen
     {
-        SpriteFont gameOverFont;
+        SpriteFont errorFont;
 
         ContentManager content;
 
-        TimeSpan displayTime;
+        string errorMessage;
+        Vector2 errorPos;
+
+        public ErrorScreen(string message)
+        {
+            errorMessage = "Error\n\n"
+                + message
+                + "\n\n"
+                + "Press Space or Escape to return to the main menu.";
+
+            errorPos = new Vector2(20, 20);
+        }
 
         public override void LoadContent()
         {
@@ -27,9 +48,7 @@ namespace PlatformerGame
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
 
-            gameOverFont = content.Load<SpriteFont>("gameFont");
-
-            displayTime = TimeSpan.FromSeconds(0);
+            errorFont = content.Load<SpriteFont>("errorFont");
 
             base.LoadContent();
         }
@@ -42,14 +61,6 @@ namespace PlatformerGame
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
-            // Add our elapsed time to the total time we've been displaying
-            displayTime += gameTime.ElapsedGameTime;
-
-            // If we've reached three seconds, transition to the next screen
-            if (displayTime > TimeSpan.FromSeconds(10.0))
-            {
-                ScreenManager.RemoveScreen(this);
-            }
 
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
         }
@@ -59,8 +70,8 @@ namespace PlatformerGame
             PlayerIndex playerIndex;
 
             // If the user preses the space bar or escape, exit the screen to return to the menu
-            if (input.IsNewKeyPress(Keys.Space, ControllingPlayer, out playerIndex)
-                || input.IsNewKeyPress(Keys.Escape, ControllingPlayer, out playerIndex))
+            if (input.IsNewKeyPress(Microsoft.Xna.Framework.Input.Keys.Space, ControllingPlayer, out playerIndex)
+                || input.IsNewKeyPress(Microsoft.Xna.Framework.Input.Keys.Escape, ControllingPlayer, out playerIndex))
             {
                 ScreenManager.RemoveScreen(this);
             }
@@ -72,16 +83,17 @@ namespace PlatformerGame
         {
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
 
-            // Clear to white
+            // Clear to black
             ScreenManager.GraphicsDevice.Clear(Color.White);
 
             spriteBatch.Begin();
 
-            spriteBatch.DrawString(gameOverFont, "You Win!!", new Vector2((ScreenManager.GraphicsDevice.Viewport.Width / 2) - 100, (ScreenManager.GraphicsDevice.Viewport.Height / 3)), Color.Black);
+            spriteBatch.DrawString(errorFont, errorMessage, errorPos, Color.Black);
 
             spriteBatch.End();
 
             base.Draw(gameTime);
         }
+
     }
 }

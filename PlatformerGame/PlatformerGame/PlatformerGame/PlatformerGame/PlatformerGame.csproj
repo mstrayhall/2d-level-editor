@@ -125,6 +125,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screens\ErrorScreen.cs" />
     <Compile Include="SetContent.cs">
       <SubType>Form</SubType>
     </Compile>
