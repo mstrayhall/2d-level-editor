@@ -114,6 +114,14 @@ namespace PlatformerGame
                 pictureBox1.Capture = true;
                 int X = (e.X / 32) + currentX;
                 int Y = (e.Y / 32) + currentY;
+                if (X >= width)
+                {
+                    X = width - 1;
+                }
+                if (Y >= height)
+                {
+                    Y = height - 1;
+                }
                 Image pic = pictureBox1.Image;
                 if (pic == null)
                 {
@@ -135,9 +143,16 @@ namespace PlatformerGame
                     board[Y, X].TileType = "Blank Tile";
                     if (bgimage != "")
                     {
-                        Bitmap tile = new Bitmap(bgimage);
+                        Bitmap blah = new Bitmap(32, 32);
+                        Graphics temp = Graphics.FromImage(blah);
+                        System.Drawing.Rectangle ar1 = new System.Drawing.Rectangle(0, 0, 32, 32);
+                        System.Drawing.Rectangle ar2 = new System.Drawing.Rectangle(X*32, Y*32, 32, 32);
+                        temp.DrawImage(backimage, ar1, ar2, GraphicsUnit.Pixel);
+
+                        Bitmap tile = new Bitmap(contentPath + "white.png");
                         System.Drawing.Rectangle area = new System.Drawing.Rectangle((X - currentX) * 32, (Y - currentY) * 32, 32, 32);
-                        level.DrawImage(tile, area, area, GraphicsUnit.Pixel);
+                        level.DrawImage(tile, area);
+                        level.DrawImage(blah, area);
                     }
                     else
                     {
@@ -164,6 +179,10 @@ namespace PlatformerGame
                 if (bgimage != "")
                 {
                     pictureBox1.BackgroundImage = new Bitmap(bgimage);
+                }
+                else
+                {
+                    pictureBox1.BackgroundImage = null;
                 }
                 // TODO: set the song as well
                 levelSong = "";
@@ -457,8 +476,13 @@ namespace PlatformerGame
                 bgimage = form.BG;
                 if (bgimage != "")
                 {
-                    Bitmap l = new Bitmap(new Bitmap(bgimage), width*32, height*32);
-                    pictureBox1.BackgroundImage = l;
+                    backimage = new Bitmap(new Bitmap(bgimage), width*32, height*32);
+                    Bitmap area = new Bitmap(displayW*32, displayH*32);
+                    Graphics temp = Graphics.FromImage(area);
+                    System.Drawing.Rectangle first = new System.Drawing.Rectangle(0, 0, displayW*32, displayH*32);
+                    System.Drawing.Rectangle second = new System.Drawing.Rectangle(currentX * 32, currentY * 32, displayW * 32, displayH * 32);
+                    temp.DrawImage(backimage, second, first, GraphicsUnit.Pixel);
+                    pictureBox1.BackgroundImage = area;
                 }
                 levelSong = form.Music;
                 Repaint();
@@ -605,6 +629,16 @@ namespace PlatformerGame
             if (currentY + displayH == height)
             {
                 uxDown.Enabled = false;
+            }
+            if (bgimage != "")
+            {
+                backimage = new Bitmap(new Bitmap(bgimage), width * 32, height * 32);
+                Bitmap area = new Bitmap(displayW * 32, displayH * 32);
+                Graphics temp = Graphics.FromImage(area);
+                System.Drawing.Rectangle first = new System.Drawing.Rectangle(0, 0, displayW * 32, displayH * 32);
+                System.Drawing.Rectangle second = new System.Drawing.Rectangle(currentX*32, currentY*32, displayW * 32, displayH * 32);
+                temp.DrawImage(backimage, first, second, GraphicsUnit.Pixel);
+                pictureBox1.BackgroundImage = area;
             }
         }
 
