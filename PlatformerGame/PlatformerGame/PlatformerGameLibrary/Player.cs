@@ -141,11 +141,6 @@ namespace PlatformerGameLibrary
 
         public void LoadContent(Texture2D textureName)
         {
-            // Calculate the local edges of the texture
-            //int width = (int)(64 * 0.4);
-            //int height = (int)(64 * 0.4);
-            //int left = (64 - width) / 2;
-            //int top = 64 - height;
             int sizeX = 32;
             int sizeY = 32;
 
@@ -158,7 +153,6 @@ namespace PlatformerGameLibrary
             origin = new Vector2(width / 2, height);
 
             sprite = textureName;
-            //sprite = level.Content.Load<Texture2D>(textureName);
         }
 
         #endregion
@@ -335,7 +329,6 @@ namespace PlatformerGameLibrary
                 flip = SpriteEffects.None;
             }
 
-            //spriteBatch.Draw(sprite, position, Color.White);
             spriteBatch.Draw(sprite, position, localBounds, Color.White, 0f, origin, 1f, flip, 0f);
         }
         
@@ -383,14 +376,11 @@ namespace PlatformerGameLibrary
             Position = startPosition;
             Velocity = Vector2.Zero;
             isAlive = true;
-
-
         }
 
         public void Die(Enemy killedBy)
         {
             isAlive = false;
-
         }
 
         public void BeatLevel()

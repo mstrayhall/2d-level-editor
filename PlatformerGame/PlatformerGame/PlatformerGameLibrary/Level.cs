@@ -246,7 +246,7 @@ namespace PlatformerGameLibrary
 
                 //
                 case "WalkingEnemy":
-                    return LoadTile(curTile.Name, TileCollision.Passable, true);
+                    return LoadEnemyTile(curTile.Name, x, y);
 
                 // Error for unsupported tile found
                 default:
@@ -282,6 +282,17 @@ namespace PlatformerGameLibrary
             exitPos = GetBounds(x, y).Center;
 
             return LoadTile(name, TileCollision.Passable, false);
+        }
+
+        /// <summary>
+        /// Instantiates an enemy and puts him in the level.
+        /// </summary>
+        private Tile LoadEnemyTile(string name, int x, int y)
+        {
+            Vector2 position = RectangleExtensions.GetBottomCenter(GetBounds(x, y));
+            enemies.Add(new Enemy(this, position, tileTextureDict[name]));
+
+            return new Tile(null, TileCollision.Passable, false);
         }
 
 
@@ -400,12 +411,15 @@ namespace PlatformerGameLibrary
 
         private void UpdateEnemies(GameTime gameTime)
         {
-            foreach (Enemy e in enemies)
+            foreach (Enemy enemy in enemies)
             {
-                e.Update(gameTime);
+                enemy.Update(gameTime);
 
-                // TODO: see if an enemy hits a player
-
+                // Touching an enemy instantly kills the player
+                if (enemy.BoundingRectangle.Intersects(Player.BoundingRectangle))
+                {
+                    PlayerDeath(enemy);
+                }
             }
         }
 
@@ -496,12 +510,12 @@ namespace PlatformerGameLibrary
         {
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, null, null, null, null, cameraTransform);
 
-            player.Draw(gameTime, spriteBatch);
-
             foreach (Enemy e in enemies)
             {
                 e.Draw(gameTime, spriteBatch);
             }
+
+            player.Draw(gameTime, spriteBatch);
 
             spriteBatch.End();
         }

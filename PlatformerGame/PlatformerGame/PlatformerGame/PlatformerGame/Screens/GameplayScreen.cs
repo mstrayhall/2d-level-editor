@@ -417,22 +417,6 @@ namespace PlatformerGame
 
             ScreenManager.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
 
-            /*
-            //--------Health Bar drawing--------//
-            spriteBatch.Begin();
-
-            // draw the health bar border
-            spriteBatch.Draw(healthBar, new Rectangle(ScreenManager.GraphicsDevice.Viewport.Width / 4 - healthBar.Width / 2, 25,
-                healthBar.Width, 32), new Rectangle(0, 0, healthBar.Width, healthBar.Height), Color.White);
-
-            // draw the health bar inside
-            spriteBatch.Draw(healthBar, new Rectangle((ScreenManager.GraphicsDevice.Viewport.Width / 4 - healthBar.Width / 2) + 4, 25 + 5,
-                (int)((healthBar.Width - 10) * (raptor.health / 100.0f)) + 2, 32 - 10),
-                new Rectangle(8, 10, healthBar.Width - 15, healthBar.Height - 20), Color.Red);
-
-            spriteBatch.End();
-            */
-
             level.Draw(gameTime, spriteBatch);
 
             DrawHUD(spriteBatch);
