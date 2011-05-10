@@ -42,31 +42,7 @@ namespace PlatformerGame
         // What importers or processors should we load?
         const string xnaVersion = ", Version=4.0.0.0, PublicKeyToken=842cf8be1de50553";
 
-        static string[] pipelineAssemblies =
-        {
-            "Microsoft.Xna.Framework.Content.Pipeline.FBXImporter" + xnaVersion,
-            "Microsoft.Xna.Framework.Content.Pipeline.XImporter" + xnaVersion,
-            "Microsoft.Xna.Framework.Content.Pipeline.TextureImporter" + xnaVersion,
-            "Microsoft.Xna.Framework.Content.Pipeline.EffectImporter" + xnaVersion,
-            "Microsoft.Xna.Framework.Content.Pipeline.XmlImporter" + xnaVersion, 
-            "Microsoft.Xna.Framework.Content.Pipeline.AudioImporters" + xnaVersion,
-            "Microsoft.Xna.Framework.Content.Pipeline.Audio" + xnaVersion,
-            "Microsoft.Xna.Framework.Content.Pipeline.Processors" + xnaVersion,
-
-
-            // Add our Level Specification
-            "C:/Users/Matthew/Desktop/cis598/Project/PlatformerGame/PlatformerGame/PlatformerGamePipeline/bin/x86/Debug/PlatformerGamePipeline.dll",
-            "C:/Users/Matthew/Desktop/cis598/Project/PlatformerGame/PlatformerGame/PlatformerGamePipeline/bin/x86/Debug/PlatformerGameLibrary.dll",
-
-            // If you want to use custom importers or processors from
-            // a Content Pipeline Extension Library, add them here.
-            //
-            // If your extension DLL is installed in the GAC, you should refer to it by assembly
-            // name, eg. "MyPipelineExtension, Version=1.0.0.0, PublicKeyToken=1234567812345678".
-            //
-            // If the extension DLL is not in the GAC, you should refer to it by
-            // file path, eg. "c:/MyProject/bin/MyPipelineExtension.dll".
-        };
+        string[] pipelineAssemblies;
 
 
         // MSBuild objects used to dynamically build content.
@@ -123,12 +99,46 @@ namespace PlatformerGame
         /// <summary>
         /// Creates a new content builder.
         /// </summary>
-        public ContentBuilder(string buildPath)
+        public ContentBuilder(string buildPath, string[] dllsToAdd)
         {
-            baseOutputDirectory = Path.Combine(buildPath, "XNB_Files");
+            // Make the intitial assemblies for XNA
+            pipelineAssemblies = new string[]
+            {
+                "Microsoft.Xna.Framework.Content.Pipeline.FBXImporter" + xnaVersion,
+                "Microsoft.Xna.Framework.Content.Pipeline.XImporter" + xnaVersion,
+                "Microsoft.Xna.Framework.Content.Pipeline.TextureImporter" + xnaVersion,
+                "Microsoft.Xna.Framework.Content.Pipeline.EffectImporter" + xnaVersion,
+                "Microsoft.Xna.Framework.Content.Pipeline.XmlImporter" + xnaVersion, 
+                "Microsoft.Xna.Framework.Content.Pipeline.AudioImporters" + xnaVersion,
+                "Microsoft.Xna.Framework.Content.Pipeline.Audio" + xnaVersion,
+                "Microsoft.Xna.Framework.Content.Pipeline.Processors" + xnaVersion,
 
-            //baseDirectory = buildPath;
-            //buildDirectory = Path.Combine(buildPath, "XNB_Files");
+                // If you want to use custom importers or processors from
+                // a Content Pipeline Extension Library, add them here.
+                //
+                // If your extension DLL is installed in the GAC, you should refer to it by assembly
+                // name, eg. "MyPipelineExtension, Version=1.0.0.0, PublicKeyToken=1234567812345678".
+                //
+                // If the extension DLL is not in the GAC, you should refer to it by
+                // file path, eg. "c:/MyProject/bin/MyPipelineExtension.dll".
+            };
+            
+            // Add the custom dll assemblies from the users.
+            string[] originalAssemblies = pipelineAssemblies;
+            pipelineAssemblies = new string[originalAssemblies.Length + dllsToAdd.Length];
+
+            // Compose it of the original assemblies;
+            for (int i = 0; i < originalAssemblies.Length; i++)
+            {
+                pipelineAssemblies[i] = originalAssemblies[i];
+            }
+            // And add the new assemblies
+            for (int i = 0; i < dllsToAdd.Length; i++)
+            {
+                pipelineAssemblies[originalAssemblies.Length + i] = dllsToAdd[i];
+            }
+
+            baseOutputDirectory = Path.Combine(buildPath, "XNB_Files");
 
             CreateTempDirectory();
             CreateBuildProject();

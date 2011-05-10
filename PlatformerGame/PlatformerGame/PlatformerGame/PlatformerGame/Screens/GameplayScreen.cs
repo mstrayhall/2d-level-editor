@@ -89,7 +89,15 @@ namespace PlatformerGame
 
         public override void LoadContent()
         {
-            contentBuilder = new ContentBuilder(baseLevelsPath);
+            string currentDirectory = Directory.GetCurrentDirectory() + "/";
+            string[] assembliesToAdd = new string[]
+            {
+                // Add our Level Specification
+                currentDirectory + "PlatformerGamePipeline.dll",
+                currentDirectory + "PlatformerGameLibrary.dll",
+            };
+
+            contentBuilder = new ContentBuilder(baseLevelsPath, assembliesToAdd);
 
             // If we don't yet have a reference to the content manager, 
             // grab one from the game

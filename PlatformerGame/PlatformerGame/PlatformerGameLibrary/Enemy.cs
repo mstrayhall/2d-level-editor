@@ -73,7 +73,7 @@ namespace PlatformerGameLibrary
         private float waitTime;
 
         // How long to wait before turning around.
-        private const float MaxWaitTime = 0.5f;
+        private const float MaxWaitTime = 0.1f;
 
         // How fast it moves in X direction.
         private const float MoveSpeed = 128.0f;
