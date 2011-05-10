@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Walking Enemy", 2, 2);
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Enemies", -2, -2, new System.Windows.Forms.TreeNode[] {
-            treeNode1});
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Ground", 3, 3);
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Platform", 4, 4);
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Level End", 5, 5);
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Platforms", -2, -2, new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode4,
-            treeNode5});
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Player", 1, 1);
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Player", -2, -2, new System.Windows.Forms.TreeNode[] {
-            treeNode7});
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Erase Tile");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Delete", new System.Windows.Forms.TreeNode[] {
-            treeNode9});
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Walking Enemy", 2, 2);
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Enemies", -2, -2, new System.Windows.Forms.TreeNode[] {
+            treeNode11});
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Ground", 3, 3);
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Platform", 4, 4);
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Level End", 5, 5);
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Platforms", -2, -2, new System.Windows.Forms.TreeNode[] {
+            treeNode13,
+            treeNode14,
+            treeNode15});
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Player", 1, 1);
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Player", -2, -2, new System.Windows.Forms.TreeNode[] {
+            treeNode17});
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Erase Tile");
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Delete", new System.Windows.Forms.TreeNode[] {
+            treeNode19});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uxForm1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,10 +62,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.uxLeft = new System.Windows.Forms.Button();
+            this.uxDirectionsImages = new System.Windows.Forms.ImageList(this.components);
             this.uxRight = new System.Windows.Forms.Button();
             this.uxUp = new System.Windows.Forms.Button();
             this.uxDown = new System.Windows.Forms.Button();
-            this.uxDirectionsImages = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -135,7 +135,7 @@
             // setContentToolStripMenuItem
             // 
             this.setContentToolStripMenuItem.Name = "setContentToolStripMenuItem";
-            this.setContentToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.setContentToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.setContentToolStripMenuItem.Text = "Set Content";
             this.setContentToolStripMenuItem.Click += new System.EventHandler(this.setContentToolStripMenuItem_Click);
             // 
@@ -165,47 +165,47 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(963, 24);
             this.treeView1.Name = "treeView1";
-            treeNode1.ImageIndex = 2;
-            treeNode1.Name = "WalkingEnemy";
-            treeNode1.SelectedImageIndex = 2;
-            treeNode1.Text = "Walking Enemy";
-            treeNode2.ImageIndex = -2;
-            treeNode2.Name = "Enemies";
-            treeNode2.SelectedImageIndex = -2;
-            treeNode2.Text = "Enemies";
-            treeNode3.ImageIndex = 3;
-            treeNode3.Name = "Ground";
-            treeNode3.SelectedImageIndex = 3;
-            treeNode3.Text = "Ground";
-            treeNode4.ImageIndex = 4;
-            treeNode4.Name = "Platform";
-            treeNode4.SelectedImageIndex = 4;
-            treeNode4.Text = "Platform";
-            treeNode5.ImageIndex = 5;
-            treeNode5.Name = "LevelEnd";
-            treeNode5.SelectedImageIndex = 5;
-            treeNode5.Text = "Level End";
-            treeNode6.ImageIndex = -2;
-            treeNode6.Name = "Platforms";
-            treeNode6.SelectedImageIndex = -2;
-            treeNode6.Text = "Platforms";
-            treeNode7.ImageIndex = 1;
-            treeNode7.Name = "Player";
-            treeNode7.SelectedImageIndex = 1;
-            treeNode7.Text = "Player";
-            treeNode8.ImageIndex = -2;
-            treeNode8.Name = "Player";
-            treeNode8.SelectedImageIndex = -2;
-            treeNode8.Text = "Player";
-            treeNode9.Name = "Delete";
-            treeNode9.Text = "Erase Tile";
-            treeNode10.Name = "Delete";
-            treeNode10.Text = "Delete";
+            treeNode11.ImageIndex = 2;
+            treeNode11.Name = "WalkingEnemy";
+            treeNode11.SelectedImageIndex = 2;
+            treeNode11.Text = "Walking Enemy";
+            treeNode12.ImageIndex = -2;
+            treeNode12.Name = "Enemies";
+            treeNode12.SelectedImageIndex = -2;
+            treeNode12.Text = "Enemies";
+            treeNode13.ImageIndex = 3;
+            treeNode13.Name = "Ground";
+            treeNode13.SelectedImageIndex = 3;
+            treeNode13.Text = "Ground";
+            treeNode14.ImageIndex = 4;
+            treeNode14.Name = "Platform";
+            treeNode14.SelectedImageIndex = 4;
+            treeNode14.Text = "Platform";
+            treeNode15.ImageIndex = 5;
+            treeNode15.Name = "LevelEnd";
+            treeNode15.SelectedImageIndex = 5;
+            treeNode15.Text = "Level End";
+            treeNode16.ImageIndex = -2;
+            treeNode16.Name = "Platforms";
+            treeNode16.SelectedImageIndex = -2;
+            treeNode16.Text = "Platforms";
+            treeNode17.ImageIndex = 1;
+            treeNode17.Name = "Player";
+            treeNode17.SelectedImageIndex = 1;
+            treeNode17.Text = "Player";
+            treeNode18.ImageIndex = -2;
+            treeNode18.Name = "Player";
+            treeNode18.SelectedImageIndex = -2;
+            treeNode18.Text = "Player";
+            treeNode19.Name = "Delete";
+            treeNode19.Text = "Erase Tile";
+            treeNode20.Name = "Delete";
+            treeNode20.Text = "Delete";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2,
-            treeNode6,
-            treeNode8,
-            treeNode10});
+            treeNode12,
+            treeNode16,
+            treeNode18,
+            treeNode20});
             this.treeView1.SelectedImageIndex = 0;
             this.treeView1.Size = new System.Drawing.Size(168, 574);
             this.treeView1.TabIndex = 3;
@@ -244,6 +244,8 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
+            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
             // 
             // uxLeft
             // 
@@ -259,6 +261,15 @@
             this.uxLeft.UseVisualStyleBackColor = true;
             this.uxLeft.Click += new System.EventHandler(this.uxLeft_Click);
             this.uxLeft.KeyDown += new System.Windows.Forms.KeyEventHandler(this.uxLeft_KeyDown);
+            // 
+            // uxDirectionsImages
+            // 
+            this.uxDirectionsImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("uxDirectionsImages.ImageStream")));
+            this.uxDirectionsImages.TransparentColor = System.Drawing.Color.Transparent;
+            this.uxDirectionsImages.Images.SetKeyName(0, "up.png");
+            this.uxDirectionsImages.Images.SetKeyName(1, "down.png");
+            this.uxDirectionsImages.Images.SetKeyName(2, "left.png");
+            this.uxDirectionsImages.Images.SetKeyName(3, "right.png");
             // 
             // uxRight
             // 
@@ -301,15 +312,6 @@
             this.uxDown.TabIndex = 8;
             this.uxDown.UseVisualStyleBackColor = true;
             this.uxDown.Click += new System.EventHandler(this.uxDown_Click);
-            // 
-            // uxDirectionsImages
-            // 
-            this.uxDirectionsImages.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("uxDirectionsImages.ImageStream")));
-            this.uxDirectionsImages.TransparentColor = System.Drawing.Color.Transparent;
-            this.uxDirectionsImages.Images.SetKeyName(0, "up.png");
-            this.uxDirectionsImages.Images.SetKeyName(1, "down.png");
-            this.uxDirectionsImages.Images.SetKeyName(2, "left.png");
-            this.uxDirectionsImages.Images.SetKeyName(3, "right.png");
             // 
             // uxForm1
             // 

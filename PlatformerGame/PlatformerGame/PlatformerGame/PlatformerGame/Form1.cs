@@ -28,6 +28,8 @@ namespace PlatformerGame
     {
         int width;
         int height;
+        string bgimage;
+        Bitmap backimage;
         Tile[,] board;
         string[] tiles;
         string[] tileTypes;
@@ -35,7 +37,7 @@ namespace PlatformerGame
         int displayH;
         int currentX;
         int currentY;
-
+        string contentPath;
         string levelName;
         string levelSong;
 
@@ -49,6 +51,8 @@ namespace PlatformerGame
             displayH = 20;
             currentX = 0;
             currentY = 0;
+            bgimage = "";
+            backimage = new Bitmap(width, height);
             if (width > displayW)
             {
                 uxRight.Enabled = true;
@@ -59,7 +63,7 @@ namespace PlatformerGame
             }
             string assemblyLocation = Assembly.GetExecutingAssembly().Location;
             string relativePath = Path.Combine(assemblyLocation, "../../../../../PlatformerGameContent/Tiles/");
-            string contentPath = Path.GetFullPath(relativePath);
+            contentPath = Path.GetFullPath(relativePath);
             tiles = new string[] { contentPath + "purple.png", contentPath + "red.png", contentPath + "black.png", contentPath + "blue.png", contentPath + "green.png" };
             tileTypes = new string[] { "Player", "WalkingEnemy", "Ground", "Platform", "LevelEnd" };
             
@@ -99,9 +103,15 @@ namespace PlatformerGame
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
+            PlaceTile(e);
+        }
+
+        private void PlaceTile(MouseEventArgs e)
+        {
             TreeNode current = treeView1.SelectedNode;
             if (current.Level != 0)
             {
+                pictureBox1.Capture = true;
                 int X = (e.X / 32) + currentX;
                 int Y = (e.Y / 32) + currentY;
                 Image pic = pictureBox1.Image;
@@ -123,7 +133,19 @@ namespace PlatformerGame
                 {
                     board[Y, X].ImageFile = "";
                     board[Y, X].TileType = "Blank Tile";
-                    Repaint();
+                    if (bgimage != "")
+                    {
+                        Bitmap tile = new Bitmap(bgimage);
+                        System.Drawing.Rectangle area = new System.Drawing.Rectangle((X - currentX) * 32, (Y - currentY) * 32, 32, 32);
+                        level.DrawImage(tile, area, area, GraphicsUnit.Pixel);
+                    }
+                    else
+                    {
+                        Bitmap tile = new Bitmap(contentPath + "white.png");
+                        System.Drawing.Rectangle area = new System.Drawing.Rectangle((X - currentX) * 32, (Y - currentY) * 32, 32, 32);
+                        level.DrawImage(tile, area);
+                    }
+                    pictureBox1.Image = pic;
                 }
             }
         }
@@ -412,53 +434,14 @@ namespace PlatformerGame
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
-                imageList1.Images.Clear();
-                tiles = form.Tiles;
-                Image thing = new Bitmap("../../../../PlatformerGameContent/Tiles/clear.png");
-                imageList1.Images.Add(thing);
-                foreach (string s in tiles)
+                bgimage = form.BG;
+                if (bgimage != "")
                 {
-                    Image pict = new Bitmap(s);
-                    imageList1.Images.Add(pict);
+                    Bitmap l = new Bitmap(new Bitmap(bgimage), width*32, height*32);
+                    pictureBox1.BackgroundImage = l;
                 }
-                Image pic = new Bitmap(displayW * 32, displayH * 32);
                 levelSong = form.Music;
-                Graphics level = Graphics.FromImage(pic);
-                for (int a = 0; a < displayH; a++)
-                {
-                    for (int b = 0; b < displayW; b++)
-                    {
-                        int i = a + currentY;
-                        int j = b + currentX;
-                        if (board[i, j].TileType == "Player")
-                        {
-                            board[i, j].ImageFile = tiles[0];
-                        }
-                        else if (board[i, j].TileType == "LevelEnd")
-                        {
-                            board[i, j].ImageFile = tiles[4];
-                        }
-                        else if (board[i, j].TileType == "Ground")
-                        {
-                            board[i, j].ImageFile = tiles[2];
-                        }
-                        else if (board[i, j].TileType == "Platform")
-                        {
-                            board[i, j].ImageFile = tiles[3];
-                        }
-                        else if (board[i, j].TileType == "WalkingEnemy")
-                        {
-                            board[i, j].ImageFile = tiles[1];
-                        }
-                        if (board[i, j].ImageFile != "")
-                        {
-                            Bitmap tile = new Bitmap(board[i, j].ImageFile);
-                            System.Drawing.Rectangle area = new System.Drawing.Rectangle(b * 32, a * 32, 32, 32);
-                            level.DrawImage(tile, area);
-                        }
-                    }
-                }
-                pictureBox1.Image = pic;
+                Repaint();
             }
         }
 
@@ -603,6 +586,19 @@ namespace PlatformerGame
             {
                 uxDown.Enabled = false;
             }
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pictureBox1.Capture == true)
+            {
+                PlaceTile(e);
+            }
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            pictureBox1.Capture = false;
         }
         
     }
