@@ -27,13 +27,13 @@ namespace PlatformerGame
     {
         ContentManager content;
 
-        // Menu Music
-        Song menuMusic;
+        bool isEditorOpen;
 
         public MainMenuScreen()
             : base("DIY 2D Platformer")
         {
-           
+            isEditorOpen = false;
+
             // Create our menu entries
             MenuEntry playGameMenuEntry = new MenuEntry("Play Game");
             MenuEntry editLevelsMenuEntry = new MenuEntry("Create/Modify Levels");
@@ -66,11 +66,6 @@ namespace PlatformerGame
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
 
-            // Menu Music
-            //menuMusic = content.Load<Song>("ZeroTheUltimateWarrior");
-            //MediaPlayer.Play(menuMusic);
-            //MediaPlayer.IsRepeating = true;
-
             base.LoadContent();
         }
 
@@ -79,7 +74,10 @@ namespace PlatformerGame
         /// </summary>
         void OnPlayGame(object sender, PlayerIndexEventArgs e)
         {
-            ScreenManager.AddScreen(new LoadGameScreen(), e.PlayerIndex);
+            if (!isEditorOpen)
+            {
+                ScreenManager.AddScreen(new LoadGameScreen(), e.PlayerIndex);
+            }
         }
 
         /// <summary>
@@ -87,8 +85,13 @@ namespace PlatformerGame
         /// </summary>
         void OnEditLevels(object sender, PlayerIndexEventArgs e)
         {
-            uxForm1 form = new uxForm1(ScreenManager.Game.Services);
-            form.ShowDialog();
+            if (!isEditorOpen)
+            {
+                isEditorOpen = true;
+                uxForm1 form = new uxForm1(ScreenManager.Game.Services);
+                DialogResult result = form.ShowDialog();
+                isEditorOpen = false;
+            }
         }
 
         /// <summary>
@@ -96,7 +99,10 @@ namespace PlatformerGame
         /// </summary>
         void OptionsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            ScreenManager.AddScreen(new OptionsMenuScreen(), e.PlayerIndex);
+            if (!isEditorOpen)
+            {
+                ScreenManager.AddScreen(new OptionsMenuScreen(), e.PlayerIndex);
+            }
         }
 
         /// <summary>
@@ -106,7 +112,10 @@ namespace PlatformerGame
         /// <param name="e"></param>
         void OnViewCredits(object sender, PlayerIndexEventArgs e)
         {
-            ScreenManager.AddScreen(new CreditsScreen(), e.PlayerIndex);
+            if (!isEditorOpen)
+            {
+                ScreenManager.AddScreen(new CreditsScreen(), e.PlayerIndex);
+            }
         }
 
         /// <summary>
@@ -114,7 +123,10 @@ namespace PlatformerGame
         /// </summary>
         protected override void OnCancel(PlayerIndex playerIndex)
         {
-            ScreenManager.Game.Exit();
+            if (!isEditorOpen)
+            {
+                ScreenManager.Game.Exit();
+            }
         }
 
     }
