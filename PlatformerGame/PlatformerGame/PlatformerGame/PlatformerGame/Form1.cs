@@ -236,7 +236,13 @@ namespace PlatformerGame
             }
         }
 
-        // TODO: add credit for this code
+        /// <summary>
+        /// Opens a menu to save the level file.
+        /// 
+        /// Code based on a Windows Forms sample from create.msdn.com used with permission.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SaveMenuClicked(object sender, EventArgs e)
         {
             SaveFileDialog fileDialog = new SaveFileDialog();
