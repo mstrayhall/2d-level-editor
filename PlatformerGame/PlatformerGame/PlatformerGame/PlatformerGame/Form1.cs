@@ -32,6 +32,7 @@ namespace PlatformerGame
         Bitmap backimage;
         Tile[,] board;
         string[] tiles;
+        Bitmap[] tileImages;
         string[] tileTypes;
         int displayW;
         int displayH;
@@ -66,6 +67,11 @@ namespace PlatformerGame
             contentPath = Path.GetFullPath(relativePath);
             tiles = new string[] { contentPath + "purple.png", contentPath + "red.png", contentPath + "black.png", contentPath + "blue.png", contentPath + "green.png" };
             tileTypes = new string[] { "Player", "WalkingEnemy", "Ground", "Platform", "LevelEnd" };
+            tileImages = new Bitmap[5];
+            for (int j = 0; j < tiles.Length; j++)
+            {
+                tileImages[j] = new Bitmap(tiles[j]);
+            }
             
             board = new Tile[height, width];
             for(int i = 0; i < height; i++)
@@ -128,7 +134,7 @@ namespace PlatformerGame
                 {
                     board[Y, X].ImageFile = tiles[current.SelectedImageIndex - 1];
                     board[Y, X].TileType = current.Name;
-                    Bitmap tile = new Bitmap(board[Y, X].ImageFile);
+                    Bitmap tile = tileImages[current.SelectedImageIndex - 1];
                     System.Drawing.Rectangle area = new System.Drawing.Rectangle((X - currentX) * 32, (Y - currentY) * 32, 32, 32);
                     level.DrawImage(tile, area);
                     pictureBox1.Image = pic;
@@ -181,7 +187,7 @@ namespace PlatformerGame
                     pictureBox1.BackgroundImage = null;
                 }
                 levelSong = "";
-                this.Text = newlevel.FindName;
+                this.Text = newlevel.FindName + " - DIY 2D Platformer";
                 levelName = newlevel.FindName;
                 int wid = width * 32;
                 int heig = height * 32;
@@ -448,7 +454,7 @@ namespace PlatformerGame
                         pic = new Bitmap(width * 32, height * 32);
                     }
                     Graphics levelPic = Graphics.FromImage(pic);
-                    Bitmap tileToDraw = new Bitmap(tile.ImageFile);
+                    Bitmap tileToDraw = tileImages[tile.ImageIndex];
                     System.Drawing.Rectangle area = new System.Drawing.Rectangle(posY * 32, posX * 32, 32, 32);
                     levelPic.DrawImage(tileToDraw, area);
                     pictureBox1.Image = pic;
@@ -461,10 +467,20 @@ namespace PlatformerGame
         private void setContentToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SetContent form = new SetContent();
-            form.SetFields(tiles);
+            form.SetFields(tiles, bgimage, levelSong);
             DialogResult result = form.ShowDialog();
             if (result == DialogResult.OK)
             {
+                imageList1.Images.Clear();
+                tiles = form.Tiles;
+                Image thing = new Bitmap(contentPath+"clear.png");
+                imageList1.Images.Add(thing);
+                for (int s = 0; s < tiles.Length; s++)
+                {
+                    Bitmap pict = new Bitmap(tiles[s]);
+                    imageList1.Images.Add(pict);
+                    tileImages[s] = new Bitmap(pict, 32, 32);
+                }
                 bgimage = form.BG;
                 if (bgimage != "")
                 {
@@ -477,7 +493,9 @@ namespace PlatformerGame
                     pictureBox1.BackgroundImage = area;
                 }
                 levelSong = form.Music;
+                UpdateBoard();
                 Repaint();
+                treeView1.Update();
             }
         }
 
@@ -567,6 +585,43 @@ namespace PlatformerGame
             }
         }
 
+        private void UpdateBoard()
+        {
+            for (int a = 0; a < displayH; a++)
+            {
+                for (int b = 0; b < displayW; b++)
+                {
+                    int i = a + currentY;
+                    int j = b + currentX;
+                    if (board[i, j].TileType == "Player")
+                    {
+                        board[i, j].ImageFile = tiles[0];
+                        board[i, j].ImageIndex = 0;
+                    }
+                    else if (board[i, j].TileType == "LevelEnd")
+                    {
+                        board[i, j].ImageFile = tiles[4];
+                        board[i, j].ImageIndex = 4;
+                    }
+                    else if (board[i, j].TileType == "Ground")
+                    {
+                        board[i, j].ImageFile = tiles[2];
+                        board[i, j].ImageIndex = 2;
+                    }
+                    else if (board[i, j].TileType == "Platform")
+                    {
+                        board[i, j].ImageFile = tiles[3];
+                        board[i, j].ImageIndex = 3;
+                    }
+                    else if (board[i, j].TileType == "WalkingEnemy")
+                    {
+                        board[i, j].ImageFile = tiles[1];
+                        board[i, j].ImageIndex = 1;
+                    }
+                }
+            }
+        }
+
         private void Repaint()
         {
             Image pic = new Bitmap(displayW * 32, displayH * 32);
@@ -577,29 +632,9 @@ namespace PlatformerGame
                 {
                     int i = a + currentY;
                     int j = b + currentX;
-                    if (board[i, j].TileType == "Player")
-                    {
-                        board[i, j].ImageFile = tiles[0];
-                    }
-                    else if (board[i, j].TileType == "LevelEnd")
-                    {
-                        board[i, j].ImageFile = tiles[4];
-                    }
-                    else if (board[i, j].TileType == "Ground")
-                    {
-                        board[i, j].ImageFile = tiles[2];
-                    }
-                    else if (board[i, j].TileType == "Platform")
-                    {
-                        board[i, j].ImageFile = tiles[3];
-                    }
-                    else if (board[i, j].TileType == "WalkingEnemy")
-                    {
-                        board[i, j].ImageFile = tiles[1];
-                    }
                     if (board[i, j].ImageFile != "")
                     {
-                        Bitmap tile = new Bitmap(board[i, j].ImageFile);
+                        Bitmap tile = tileImages[board[i, j].ImageIndex];
                         System.Drawing.Rectangle area = new System.Drawing.Rectangle(b * 32, a * 32, 32, 32);
                         level.DrawImage(tile, area);
                     }
@@ -645,6 +680,18 @@ namespace PlatformerGame
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
             pictureBox1.Capture = false;
+        }
+
+        private void DeleteBackground_Click(object sender, EventArgs e)
+        {
+            pictureBox1.BackgroundImage = new Bitmap(displayW * 32, displayH * 32);
+            bgimage = "";
+            backimage = new Bitmap(width * 32, height * 32);
+        }
+
+        private void DeleteMusic_Click(object sender, EventArgs e)
+        {
+            levelSong = "";
         }
         
     }

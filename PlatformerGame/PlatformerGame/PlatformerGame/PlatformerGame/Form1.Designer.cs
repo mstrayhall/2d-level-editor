@@ -54,9 +54,6 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setContentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
@@ -66,6 +63,8 @@
             this.uxRight = new System.Windows.Forms.Button();
             this.uxUp = new System.Windows.Forms.Button();
             this.uxDown = new System.Windows.Forms.Button();
+            this.DeleteBackground = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteMusic = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -76,10 +75,7 @@
             this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
-            this.editToolStripMenuItem,
-            this.viewToolStripMenuItem,
-            this.toolsToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.editToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1131, 24);
@@ -100,34 +96,36 @@
             // newLevelToolStripMenuItem
             // 
             this.newLevelToolStripMenuItem.Name = "newLevelToolStripMenuItem";
-            this.newLevelToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.newLevelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newLevelToolStripMenuItem.Text = "New Level";
             this.newLevelToolStripMenuItem.Click += new System.EventHandler(this.newLevelToolStripMenuItem_Click);
             // 
             // openLevelToolStripMenuItem
             // 
             this.openLevelToolStripMenuItem.Name = "openLevelToolStripMenuItem";
-            this.openLevelToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.openLevelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openLevelToolStripMenuItem.Text = "Open Level";
             this.openLevelToolStripMenuItem.Click += new System.EventHandler(this.OpenMenuClicked);
             // 
             // saveLevelToolStripMenuItem
             // 
             this.saveLevelToolStripMenuItem.Name = "saveLevelToolStripMenuItem";
-            this.saveLevelToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.saveLevelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveLevelToolStripMenuItem.Text = "Save Level";
             this.saveLevelToolStripMenuItem.Click += new System.EventHandler(this.SaveMenuClicked);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.setContentToolStripMenuItem});
+            this.setContentToolStripMenuItem,
+            this.DeleteBackground,
+            this.DeleteMusic});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "Edit";
@@ -135,27 +133,9 @@
             // setContentToolStripMenuItem
             // 
             this.setContentToolStripMenuItem.Name = "setContentToolStripMenuItem";
-            this.setContentToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.setContentToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.setContentToolStripMenuItem.Text = "Set Content";
             this.setContentToolStripMenuItem.Click += new System.EventHandler(this.setContentToolStripMenuItem_Click);
-            // 
-            // viewToolStripMenuItem
-            // 
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.viewToolStripMenuItem.Text = "View";
-            // 
-            // toolsToolStripMenuItem
-            // 
-            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.toolsToolStripMenuItem.Text = "Tools";
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
             // 
             // treeView1
             // 
@@ -313,6 +293,20 @@
             this.uxDown.UseVisualStyleBackColor = true;
             this.uxDown.Click += new System.EventHandler(this.uxDown_Click);
             // 
+            // DeleteBackground
+            // 
+            this.DeleteBackground.Name = "DeleteBackground";
+            this.DeleteBackground.Size = new System.Drawing.Size(174, 22);
+            this.DeleteBackground.Text = "Delete Background";
+            this.DeleteBackground.Click += new System.EventHandler(this.DeleteBackground_Click);
+            // 
+            // DeleteMusic
+            // 
+            this.DeleteMusic.Name = "DeleteMusic";
+            this.DeleteMusic.Size = new System.Drawing.Size(174, 22);
+            this.DeleteMusic.Text = "Delete Music";
+            this.DeleteMusic.Click += new System.EventHandler(this.DeleteMusic_Click);
+            // 
             // uxForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -331,7 +325,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "uxForm1";
-            this.Text = "2-D Level Editor";
+            this.Text = "DIY 2D Platformer";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.uxForm1_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.uxForm1_KeyPress);
             this.menuStrip1.ResumeLayout(false);
@@ -348,9 +342,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newLevelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openLevelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveLevelToolStripMenuItem;
@@ -365,6 +356,8 @@
         private System.Windows.Forms.Button uxRight;
         private System.Windows.Forms.Button uxUp;
         private System.Windows.Forms.Button uxDown;
+        private System.Windows.Forms.ToolStripMenuItem DeleteBackground;
+        private System.Windows.Forms.ToolStripMenuItem DeleteMusic;
     }
 }
 

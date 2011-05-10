@@ -53,5 +53,13 @@ namespace PlatformerGame
         {
             
         }
+
+        private void uxBrowseButton_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.OK == OpenBGImage.ShowDialog())
+            {
+                uxBackground.Text = OpenBGImage.FileName;
+            }
+        }
     }
 }

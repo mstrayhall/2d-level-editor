@@ -59,6 +59,8 @@ namespace PlatformerGameLibrary
         public string ImageFile;
         [ContentSerializerIgnore]
         public string TileType;
+        [ContentSerializerIgnore]
+        public int ImageIndex;
         
         public Tile(Texture2D texture, TileCollision collision, bool damageTile)
         {
@@ -74,6 +76,7 @@ namespace PlatformerGameLibrary
             IsDamage = false;
             ImageFile = "";
             TileType = "Blank Tile";
+            ImageIndex = -1;
         }
     }
 

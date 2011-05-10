@@ -53,6 +53,7 @@
             this.uxCancel = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.uxOpenFile = new System.Windows.Forms.OpenFileDialog();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -105,18 +106,18 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(12, 138);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(97, 13);
+            this.label6.Size = new System.Drawing.Size(101, 13);
             this.label6.TabIndex = 5;
-            this.label6.Text = "Background Image";
+            this.label6.Text = "Background Image*";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 164);
+            this.label7.Location = new System.Drawing.Point(13, 179);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(68, 13);
+            this.label7.Size = new System.Drawing.Size(72, 13);
             this.label7.TabIndex = 6;
-            this.label7.Text = "Level Music*";
+            this.label7.Text = "Level Music**";
             // 
             // uxPlayerImage
             // 
@@ -168,7 +169,7 @@
             // 
             // uxMusicFile
             // 
-            this.uxMusicFile.Location = new System.Drawing.Point(120, 161);
+            this.uxMusicFile.Location = new System.Drawing.Point(120, 176);
             this.uxMusicFile.Name = "uxMusicFile";
             this.uxMusicFile.ReadOnly = true;
             this.uxMusicFile.Size = new System.Drawing.Size(148, 20);
@@ -236,7 +237,7 @@
             // 
             // uxMusicBrowse
             // 
-            this.uxMusicBrowse.Location = new System.Drawing.Point(274, 159);
+            this.uxMusicBrowse.Location = new System.Drawing.Point(274, 174);
             this.uxMusicBrowse.Name = "uxMusicBrowse";
             this.uxMusicBrowse.Size = new System.Drawing.Size(75, 23);
             this.uxMusicBrowse.TabIndex = 20;
@@ -247,7 +248,7 @@
             // uxOK
             // 
             this.uxOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.uxOK.Location = new System.Drawing.Point(86, 201);
+            this.uxOK.Location = new System.Drawing.Point(86, 216);
             this.uxOK.Name = "uxOK";
             this.uxOK.Size = new System.Drawing.Size(75, 23);
             this.uxOK.TabIndex = 21;
@@ -257,7 +258,7 @@
             // uxCancel
             // 
             this.uxCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.uxCancel.Location = new System.Drawing.Point(193, 201);
+            this.uxCancel.Location = new System.Drawing.Point(193, 216);
             this.uxCancel.Name = "uxCancel";
             this.uxCancel.Size = new System.Drawing.Size(75, 23);
             this.uxCancel.TabIndex = 22;
@@ -267,17 +268,28 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 185);
+            this.label8.Location = new System.Drawing.Point(13, 199);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(310, 13);
+            this.label8.Size = new System.Drawing.Size(314, 13);
             this.label8.TabIndex = 23;
-            this.label8.Text = "*Note: Level Music must be in MP3, WMA, MIDI, or WAV format";
+            this.label8.Text = "**Note: Level Music must be in MP3, WMA, MIDI, or WAV format";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 158);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(332, 13);
+            this.label9.TabIndex = 24;
+            this.label9.Text = "*Note: Background image cannot exceed 2000 pixels in width/height";
             // 
             // SetContent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(365, 231);
+            this.ClientSize = new System.Drawing.Size(365, 246);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.uxCancel);
             this.Controls.Add(this.uxOK);
@@ -302,6 +314,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "SetContent";
             this.Text = "Load Personal Content";
             this.ResumeLayout(false);
@@ -336,5 +349,6 @@
         private System.Windows.Forms.Button uxCancel;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.OpenFileDialog uxOpenFile;
+        private System.Windows.Forms.Label label9;
     }
 }

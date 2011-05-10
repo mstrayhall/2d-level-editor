@@ -40,13 +40,15 @@ namespace PlatformerGame
             }
         }
 
-        public void SetFields(string[] stuff)
+        public void SetFields(string[] stuff, string bg, string song)
         {
             uxPlayerImage.Text = stuff[0];
             uxLevelEndImage.Text = stuff[4];
             uxGroundImage.Text = stuff[2];
             uxPlatformImage.Text = stuff[3];
             uxWalkingImage.Text = stuff[1];
+            uxBackgroundImage.Text = bg;
+            uxMusicFile.Text = song;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -131,6 +133,11 @@ namespace PlatformerGame
                     uxMusicFile.Text = uxOpenFile.FileName;
                 }
             }
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

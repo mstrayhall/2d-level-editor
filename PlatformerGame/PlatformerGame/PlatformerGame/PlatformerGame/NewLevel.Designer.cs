@@ -39,6 +39,8 @@
             this.uxLevelName = new System.Windows.Forms.TextBox();
             this.uxOKButton = new System.Windows.Forms.Button();
             this.uxCancelButton = new System.Windows.Forms.Button();
+            this.OpenBGImage = new System.Windows.Forms.OpenFileDialog();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.uxHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uxWidth)).BeginInit();
             this.SuspendLayout();
@@ -68,7 +70,7 @@
             this.uxHeight.Location = new System.Drawing.Point(109, 28);
             this.uxHeight.Name = "uxHeight";
             this.uxHeight.Size = new System.Drawing.Size(90, 20);
-            this.uxHeight.TabIndex = 4;
+            this.uxHeight.TabIndex = 2;
             this.uxHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.uxHeight.Value = new decimal(new int[] {
             20,
@@ -81,7 +83,7 @@
             this.uxWidth.Location = new System.Drawing.Point(15, 28);
             this.uxWidth.Name = "uxWidth";
             this.uxWidth.Size = new System.Drawing.Size(85, 20);
-            this.uxWidth.TabIndex = 5;
+            this.uxWidth.TabIndex = 1;
             this.uxWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.uxWidth.Value = new decimal(new int[] {
             30,
@@ -104,8 +106,10 @@
             // 
             this.uxBackground.Location = new System.Drawing.Point(15, 77);
             this.uxBackground.Name = "uxBackground";
+            this.uxBackground.ReadOnly = true;
             this.uxBackground.Size = new System.Drawing.Size(146, 20);
-            this.uxBackground.TabIndex = 7;
+            this.uxBackground.TabIndex = 15;
+            this.uxBackground.TabStop = false;
             // 
             // uxBrowseButton
             // 
@@ -113,15 +117,16 @@
             this.uxBrowseButton.Location = new System.Drawing.Point(167, 77);
             this.uxBrowseButton.Name = "uxBrowseButton";
             this.uxBrowseButton.Size = new System.Drawing.Size(75, 23);
-            this.uxBrowseButton.TabIndex = 8;
+            this.uxBrowseButton.TabIndex = 3;
             this.uxBrowseButton.Text = "Browse...";
             this.uxBrowseButton.UseVisualStyleBackColor = true;
+            this.uxBrowseButton.Click += new System.EventHandler(this.uxBrowseButton_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 107);
+            this.label4.Location = new System.Drawing.Point(12, 121);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 16);
             this.label4.TabIndex = 9;
@@ -129,18 +134,18 @@
             // 
             // uxLevelName
             // 
-            this.uxLevelName.Location = new System.Drawing.Point(99, 106);
+            this.uxLevelName.Location = new System.Drawing.Point(99, 120);
             this.uxLevelName.Name = "uxLevelName";
             this.uxLevelName.Size = new System.Drawing.Size(143, 20);
-            this.uxLevelName.TabIndex = 10;
+            this.uxLevelName.TabIndex = 4;
             // 
             // uxOKButton
             // 
             this.uxOKButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.uxOKButton.Location = new System.Drawing.Point(39, 132);
+            this.uxOKButton.Location = new System.Drawing.Point(39, 146);
             this.uxOKButton.Name = "uxOKButton";
             this.uxOKButton.Size = new System.Drawing.Size(75, 23);
-            this.uxOKButton.TabIndex = 11;
+            this.uxOKButton.TabIndex = 5;
             this.uxOKButton.Text = "OK";
             this.uxOKButton.UseVisualStyleBackColor = true;
             this.uxOKButton.Click += new System.EventHandler(this.OKButton_Click);
@@ -148,12 +153,26 @@
             // uxCancelButton
             // 
             this.uxCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.uxCancelButton.Location = new System.Drawing.Point(141, 132);
+            this.uxCancelButton.Location = new System.Drawing.Point(141, 146);
             this.uxCancelButton.Name = "uxCancelButton";
             this.uxCancelButton.Size = new System.Drawing.Size(75, 23);
-            this.uxCancelButton.TabIndex = 12;
+            this.uxCancelButton.TabIndex = 6;
             this.uxCancelButton.Text = "Cancel";
             this.uxCancelButton.UseVisualStyleBackColor = true;
+            // 
+            // OpenBGImage
+            // 
+            this.OpenBGImage.FileName = "openFileDialog1";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(23, 100);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(207, 12);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Note: Background must be <2000 pixels wide/tall.";
             // 
             // NewLevel
             // 
@@ -162,8 +181,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(255, 160);
+            this.ClientSize = new System.Drawing.Size(255, 176);
             this.ControlBox = false;
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.uxCancelButton);
             this.Controls.Add(this.uxOKButton);
             this.Controls.Add(this.uxLevelName);
@@ -175,6 +195,7 @@
             this.Controls.Add(this.uxHeight);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NewLevel";
@@ -200,6 +221,8 @@
         private System.Windows.Forms.TextBox uxLevelName;
         private System.Windows.Forms.Button uxOKButton;
         private System.Windows.Forms.Button uxCancelButton;
+        private System.Windows.Forms.OpenFileDialog OpenBGImage;
+        private System.Windows.Forms.Label label5;
 
     }
 }
