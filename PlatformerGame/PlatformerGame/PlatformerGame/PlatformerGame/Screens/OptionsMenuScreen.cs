@@ -38,6 +38,9 @@ namespace PlatformerGame
         bool isMusicOn;
         MenuEntry musicMenuEntry;
 
+        bool isUnlimitedLives;
+        MenuEntry livesMenuEntry;
+
         MenuEntry backMenuEntry;
 
         #endregion
@@ -52,6 +55,7 @@ namespace PlatformerGame
             //fullscreenMenuEntry = new MenuEntry(String.Empty);
             timeLimitMenuEntry = new MenuEntry(String.Empty);
             musicMenuEntry = new MenuEntry(String.Empty);
+            livesMenuEntry = new MenuEntry(String.Empty);
             backMenuEntry = new MenuEntry("Back");
 
             SetMenuEntryText();
@@ -60,12 +64,14 @@ namespace PlatformerGame
             //fullscreenMenuEntry.Selected += FullscreenMenuEntrySelected;
             timeLimitMenuEntry.Selected += TimeLimitMenuEntrySelected;
             musicMenuEntry.Selected += MusicMenuEntrySelected;
+            livesMenuEntry.Selected += LivesMenuEntrySelected;
             backMenuEntry.Selected += OnCancel;
 
             // Add entries to the menu
             //MenuEntries.Add(fullscreenMenuEntry);
             MenuEntries.Add(timeLimitMenuEntry);
             MenuEntries.Add(musicMenuEntry);
+            MenuEntries.Add(livesMenuEntry);
             MenuEntries.Add(backMenuEntry);
 
             TransitionOnTime = TimeSpan.FromSeconds(0.3);
@@ -80,6 +86,7 @@ namespace PlatformerGame
 
             isLevelTimed = ScreenManager.IsTimeLimit;
             isMusicOn = ScreenManager.IsMusicOn;
+            isUnlimitedLives = ScreenManager.IsUnlimitedLives;
 
             // Update the menu entry text
             SetMenuEntryText();
@@ -99,6 +106,7 @@ namespace PlatformerGame
             //fullscreenMenuEntry.Text = "Fullscreen: " + (isFullscreen ? "Enabled" : "Disabled");
             timeLimitMenuEntry.Text = "Time Limit: " + (isLevelTimed ? "On" : "Off");
             musicMenuEntry.Text = "Music: " + (isMusicOn ? "On" : "Off");
+            livesMenuEntry.Text = "Lives: " + (isUnlimitedLives ? "Unlimited" : "3 per level");
         }
 
         /// <summary>
@@ -125,6 +133,20 @@ namespace PlatformerGame
             // Toggle the time limit boolean
             isMusicOn = !isMusicOn;
             ScreenManager.IsMusicOn = isMusicOn;
+
+            SetMenuEntryText();
+        }
+
+        /// <summary>
+        /// Event handler for when the Lives menu entry is selected.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void LivesMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        {
+            // Toggle the time limit boolean
+            isUnlimitedLives = !isUnlimitedLives;
+            ScreenManager.IsUnlimitedLives = isUnlimitedLives;
 
             SetMenuEntryText();
         }

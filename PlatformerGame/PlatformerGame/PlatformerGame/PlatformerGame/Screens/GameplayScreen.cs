@@ -52,6 +52,7 @@ namespace PlatformerGame
         // HUD Stuff: lives
         Vector2 livesPos;
         int numLives;
+        bool isUmlimitedLives;
 
         // Timer
         Vector2 timerPos;
@@ -143,6 +144,7 @@ namespace PlatformerGame
             // Set the number of lives for the player and the position for lives on the HUD
             numLives = allLevels.Count * 3;
             livesPos = new Vector2(20, 15);
+            isUmlimitedLives = ScreenManager.IsUnlimitedLives;
 
             // Position for timer on the HUD
             timerPos = new Vector2(200, 15);
@@ -387,7 +389,7 @@ namespace PlatformerGame
                 // if the Player is dead or time ran out, see if they can respawn (and wait for their input)
                 if (playerInput.IsKeyDown(Keys.Space, null, out playerIndex))
                 {
-                    if (numLives > 0)
+                    if (numLives > 0 || isUmlimitedLives == true)
                     {
                         numLives--;
                         ReloadCurrentLevel();
@@ -420,8 +422,16 @@ namespace PlatformerGame
         {
             spriteBatch.Begin();
 
-            spriteBatch.DrawString(hudFont, "Lives\n" + numLives, livesPos - new Vector2(1, 1), Color.White);
-            spriteBatch.DrawString(hudFont, "Lives\n" + numLives, livesPos, new Color(10, 10, 10));
+            if (isUmlimitedLives)
+            {
+                spriteBatch.DrawString(hudFont, "Lives\n" + "Unlimited", livesPos - new Vector2(1, 1), Color.White);
+                spriteBatch.DrawString(hudFont, "Lives\n" + "Unlimited", livesPos, new Color(10, 10, 10));
+            }
+            else
+            {
+                spriteBatch.DrawString(hudFont, "Lives\n" + numLives, livesPos - new Vector2(1, 1), Color.White);
+                spriteBatch.DrawString(hudFont, "Lives\n" + numLives, livesPos, new Color(10, 10, 10));
+            }
 
             if (isTimed)
             {

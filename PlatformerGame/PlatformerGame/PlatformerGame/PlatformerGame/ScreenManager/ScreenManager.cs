@@ -29,6 +29,14 @@ namespace PlatformerGame
         #region Fields and Properties
 
         // Keeps track of if the player wants music to play or not
+        private bool isUmlimitedLives;
+        public bool IsUnlimitedLives
+        {
+            get { return isUmlimitedLives; }
+            set { isUmlimitedLives = value; }
+        }
+
+        // Keeps track of if the player wants music to play or not
         private bool isMusicOn;
         public bool IsMusicOn
         {
@@ -136,6 +144,7 @@ namespace PlatformerGame
         {
             isTimeLimit = true;
             isMusicOn = true;
+            isUmlimitedLives = false;
         }
 
 
