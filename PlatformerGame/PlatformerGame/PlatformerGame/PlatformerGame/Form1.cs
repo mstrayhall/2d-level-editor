@@ -130,6 +130,25 @@ namespace PlatformerGame
                     pic = new Bitmap(width * 32, height * 32);
                 }
                 Graphics level = Graphics.FromImage(pic);
+                if (bgimage != "")
+                {
+                    Bitmap blah = new Bitmap(32, 32);
+                    Graphics temp = Graphics.FromImage(blah);
+                    System.Drawing.Rectangle ar1 = new System.Drawing.Rectangle(0, 0, 32, 32);
+                    System.Drawing.Rectangle ar2 = new System.Drawing.Rectangle(X * 32, Y * 32, 32, 32);
+                    temp.DrawImage(backimage, ar1, ar2, GraphicsUnit.Pixel);
+
+                    Bitmap tile = new Bitmap(contentPath + "white.png");
+                    System.Drawing.Rectangle area = new System.Drawing.Rectangle((X - currentX) * 32, (Y - currentY) * 32, 32, 32);
+                    level.DrawImage(tile, area);
+                    level.DrawImage(blah, area);
+                }
+                else
+                {
+                    Bitmap tile = new Bitmap(contentPath + "white.png");
+                    System.Drawing.Rectangle area = new System.Drawing.Rectangle((X - currentX) * 32, (Y - currentY) * 32, 32, 32);
+                    level.DrawImage(tile, area);
+                }
                 if (current.Name != "Delete")
                 {
                     board[Y, X].ImageFile = tiles[current.SelectedImageIndex - 1];
@@ -145,25 +164,6 @@ namespace PlatformerGame
                     board[Y, X].ImageFile = "";
                     board[Y, X].TileType = "Blank Tile";
                     board[Y, X].ImageIndex = -1;
-                    if (bgimage != "")
-                    {
-                        Bitmap blah = new Bitmap(32, 32);
-                        Graphics temp = Graphics.FromImage(blah);
-                        System.Drawing.Rectangle ar1 = new System.Drawing.Rectangle(0, 0, 32, 32);
-                        System.Drawing.Rectangle ar2 = new System.Drawing.Rectangle(X*32, Y*32, 32, 32);
-                        temp.DrawImage(backimage, ar1, ar2, GraphicsUnit.Pixel);
-
-                        Bitmap tile = new Bitmap(contentPath + "white.png");
-                        System.Drawing.Rectangle area = new System.Drawing.Rectangle((X - currentX) * 32, (Y - currentY) * 32, 32, 32);
-                        level.DrawImage(tile, area);
-                        level.DrawImage(blah, area);
-                    }
-                    else
-                    {
-                        Bitmap tile = new Bitmap(contentPath + "white.png");
-                        System.Drawing.Rectangle area = new System.Drawing.Rectangle((X - currentX) * 32, (Y - currentY) * 32, 32, 32);
-                        level.DrawImage(tile, area);
-                    }
                     pictureBox1.Image = pic;
                 }
             }
