@@ -464,7 +464,7 @@ namespace PlatformerGame
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
             
             // Clear to Black
-            ScreenManager.GraphicsDevice.Clear(Color.Black);
+            //ScreenManager.GraphicsDevice.Clear(Color.Black);
 
             ScreenManager.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
 

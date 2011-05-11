@@ -55,10 +55,17 @@ namespace PlatformerGameLibrary
         Texture2D[] layers;
         // Blank Texture to serve as the background if none are provided
         Texture2D blankLayer;
+
         // Rectangle representing the entire level size and the extra vertical space (not the viewport size)
         Rectangle levelAndExtraVertRectangle;
         // Rectange containing the entire level size
         Rectangle levelRectangle;
+        // The extra horizontal rectangle only
+        Rectangle extraHorizRectangle;
+        // The viewport rectangle
+        Rectangle viewportRect;
+        // The level portion of the viewport we want to draw backgrounds to
+        Rectangle backgroundLevelViewportRect;
 
         // Player, enemies, and items in the level
         [ContentSerializerIgnore]
@@ -145,7 +152,7 @@ namespace PlatformerGameLibrary
             }
             // A blank layer to wipe the screen clean white first
             blankLayer = content.Load<Texture2D>("blank");
-            
+
             // Build a dictionary of all tile names and their texture locations
             tileTextureDict = new Dictionary<string, Texture2D>();
             foreach (Tile tile in TileTypes)
@@ -160,6 +167,24 @@ namespace PlatformerGameLibrary
             levelAndExtraVertRectangle = new Rectangle(0, 0, PixelWidth, graphicsDevice.Viewport.Height);
             // The rectangle containing the entire level
             levelRectangle = new Rectangle(0, 0, PixelWidth, PixelHeight);
+            // Extra horizontal space to be black
+            int extraHorizWidth = graphicsDevice.Viewport.Width - PixelWidth;
+            if (extraHorizWidth < 0) extraHorizWidth = 0;
+            extraHorizRectangle = new Rectangle(graphicsDevice.Viewport.Width - extraHorizWidth, 0, extraHorizWidth, PixelHeight);
+            // Rectangle for the whole viewport
+            viewportRect = new Rectangle(0, 0, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height);
+
+            // Rectangle for drawing backgrounds
+            int right = viewportRect.Right - levelRectangle.Right;
+            int bottom = viewportRect.Bottom - levelRectangle.Bottom;
+
+            if (right < 0) right = viewportRect.Right;
+            else right = levelRectangle.Right;
+
+            if (bottom < 0) bottom = viewportRect.Bottom;
+            else bottom = levelRectangle.Bottom;
+
+            backgroundLevelViewportRect = new Rectangle(0, 0, right, bottom);
 
             cameraPos = new Vector2(Player.Position.X, Player.Position.Y);
             float maxCamX = PixelWidth - graphicsDevice.Viewport.Width;
@@ -483,6 +508,9 @@ namespace PlatformerGameLibrary
             // Draw the background
             spriteBatch.Begin();
 
+            // Scroll the camera if needed before drawing anything
+            UpdateCamera(spriteBatch.GraphicsDevice.Viewport);
+
             // Clear the background of the level and extra vertical space to white
             spriteBatch.Draw(blankLayer, levelAndExtraVertRectangle, Color.White);
 
@@ -491,13 +519,16 @@ namespace PlatformerGameLibrary
             {
                 foreach (Texture2D layer in layers)
                 {
-                    spriteBatch.Draw(layer, levelRectangle, Color.White);
+                    Rectangle sourceRect = new Rectangle(levelRectangle.Left + (int)cameraPos.X, levelRectangle.Top + (int)cameraPos.Y, graphicsDevice.Viewport.Width, graphicsDevice.Viewport.Height);
+                    spriteBatch.Draw(layer, backgroundLevelViewportRect, sourceRect, Color.White);
                 }
             }
+
+            // Clear the extra horizontal space to black
+            spriteBatch.Draw(blankLayer, extraHorizRectangle, Color.Black);
+
             spriteBatch.End();
 
-            // Scroll the camera if needed.
-            UpdateCamera(spriteBatch.GraphicsDevice.Viewport);
             cameraTransform = Matrix.CreateTranslation(-cameraPos.X, -cameraPos.Y, 0f);
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, null, null, null, null, cameraTransform);
 
