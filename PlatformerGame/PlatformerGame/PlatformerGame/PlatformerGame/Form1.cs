@@ -179,10 +179,16 @@ namespace PlatformerGame
                 height = newlevel.FindHeight;
                 currentX = 0;
                 currentY = 0;
-                string bgimage = newlevel.FindImage;
+                bgimage = newlevel.FindImage;
                 if (bgimage != "")
                 {
-                    pictureBox1.BackgroundImage = new Bitmap(bgimage);
+                    backimage = new Bitmap(new Bitmap(bgimage), width * 32, height * 32);
+                    Bitmap area = new Bitmap(displayW * 32, displayH * 32);
+                    Graphics temp = Graphics.FromImage(area);
+                    System.Drawing.Rectangle first = new System.Drawing.Rectangle(0, 0, displayW * 32, displayH * 32);
+                    System.Drawing.Rectangle second = new System.Drawing.Rectangle(currentX * 32, currentY * 32, displayW * 32, displayH * 32);
+                    temp.DrawImage(backimage, second, first, GraphicsUnit.Pixel);
+                    pictureBox1.BackgroundImage = area;
                 }
                 else
                 {
