@@ -409,6 +409,12 @@ namespace PlatformerGame
             height = (int)levelSpec.MapSize.X;
             width = (int)levelSpec.MapSize.Y;
 
+            if (levelSpec.LevelSong != null)
+            {
+                levelSong = levelSpec.LevelSong.Filename;
+                // TODO: load in background too? or are we already doing that
+            }
+
             int wid = width * 32;
             int heig = height * 32;
             displayW = width;
@@ -470,7 +476,7 @@ namespace PlatformerGame
                 {
                     tileImages[Array.IndexOf(tiles, tile.ImageFile)] = new Bitmap(new Bitmap(tile.ImageFile), 32, 32);
                 }
-
+                // TODO: Above gives Index out of bounds because custom images are not loaded correctly/are not in the tiles array
                 // TODO: this part was broken, quick fix copy/paste
                 if (tile.TileType == "Player")
                 {
