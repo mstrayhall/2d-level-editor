@@ -1,0 +1,3411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent>
+  <Asset Type="PlatformerGamePipeline.LevelContent">
+    <Name>bridget</Name>
+    <LevelSong>
+      <Reference>#External1</Reference>
+    </LevelSong>
+    <TileTypes>
+      <Item>
+        <Name>Player</Name>
+        <Texture>
+          <Reference>#External2</Reference>
+        </Texture>
+      </Item>
+      <Item>
+        <Name>WalkingEnemy</Name>
+        <Texture>
+          <Reference>#External3</Reference>
+        </Texture>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Texture>
+          <Reference>#External4</Reference>
+        </Texture>
+      </Item>
+      <Item>
+        <Name>Platform</Name>
+        <Texture>
+          <Reference>#External4</Reference>
+        </Texture>
+      </Item>
+      <Item>
+        <Name>LevelEnd</Name>
+        <Texture>
+          <Reference>#External5</Reference>
+        </Texture>
+      </Item>
+    </TileTypes>
+    <MapSize>21 40</MapSize>
+    <TileArray>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 0</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 1</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 2</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 3</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 4</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 5</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 6</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 7</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 8</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>0 9</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 10</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 11</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 12</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 13</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 14</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 15</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 16</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 17</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 18</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 19</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 20</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 21</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 22</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 23</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 24</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 25</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 26</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 27</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 28</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 29</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 30</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>0 31</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>0 32</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 33</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 34</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 35</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 36</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 37</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 38</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>0 39</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 0</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 1</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 2</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 3</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 4</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 5</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 6</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 7</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 8</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>1 9</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 10</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 11</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 12</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 13</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 14</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 15</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 16</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 17</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 18</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 19</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 20</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 21</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 22</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 23</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 24</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 25</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 26</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 27</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 28</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 29</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 30</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>1 31</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>1 32</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 33</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 34</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 35</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 36</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 37</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 38</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>1 39</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 0</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 1</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 2</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 3</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 4</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 5</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 6</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 7</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 8</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>2 9</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 10</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 11</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 12</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 13</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 14</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 15</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 16</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 17</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 18</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 19</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 20</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 21</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 22</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 23</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 24</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 25</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 26</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 27</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 28</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 29</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 30</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>2 31</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>2 32</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 33</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 34</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 35</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 36</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 37</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>2 38</Position>
+      </Item>
+      <Item>
+        <Name>LevelEnd</Name>
+        <Position>2 39</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 0</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 1</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 2</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 3</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 4</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 5</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 6</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 7</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 8</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>3 9</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 10</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 11</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 12</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 13</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 14</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 15</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 16</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 17</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 18</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 19</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 20</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 21</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 22</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 23</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 24</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 25</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 26</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 27</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 28</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 29</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 30</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>3 31</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>3 32</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 33</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>3 34</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>3 35</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>3 36</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>3 37</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>3 38</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>3 39</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 0</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 1</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 2</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 3</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 4</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 5</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 6</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 7</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 8</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>4 9</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 10</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 11</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 12</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 13</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 14</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 15</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 16</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 17</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 18</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 19</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 20</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 21</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 22</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 23</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 24</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 25</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 26</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 27</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 28</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 29</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 30</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>4 31</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>4 32</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 33</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 34</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 35</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 36</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 37</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 38</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>4 39</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 0</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 1</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 2</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 3</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 4</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 5</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 6</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 7</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 8</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>5 9</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>5 10</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 11</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 12</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 13</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 14</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 15</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 16</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 17</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 18</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 19</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 20</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 21</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 22</Position>
+      </Item>
+      <Item>
+        <Name>WalkingEnemy</Name>
+        <Position>5 23</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 24</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 25</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 26</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 27</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 28</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 29</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 30</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>5 31</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>5 32</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 33</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 34</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 35</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 36</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 37</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 38</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>5 39</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 0</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 1</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 2</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 3</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 4</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 5</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 6</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 7</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 8</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>6 9</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 10</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 11</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 12</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 13</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>6 14</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 15</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 16</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 17</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 18</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>6 19</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>6 20</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>6 21</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 22</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>6 23</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 24</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>6 25</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>6 26</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>6 27</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 28</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 29</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 30</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>6 31</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>6 32</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 33</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 34</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 35</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 36</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 37</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 38</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>6 39</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 0</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 1</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 2</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 3</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 4</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 5</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 6</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 7</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 8</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>7 9</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 10</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 11</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 12</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 13</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>7 14</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 15</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 16</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 17</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 18</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 19</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 20</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 21</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 22</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 23</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 24</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 25</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 26</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 27</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 28</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 29</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 30</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>7 31</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>7 32</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 33</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 34</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 35</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 36</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 37</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 38</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>7 39</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 0</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 1</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 2</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 3</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 4</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 5</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 6</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 7</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 8</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>8 9</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 10</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 11</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 12</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 13</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>8 14</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 15</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 16</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 17</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 18</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 19</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 20</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 21</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 22</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 23</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 24</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 25</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 26</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 27</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 28</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 29</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 30</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>8 31</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>8 32</Position>
+      </Item>
+      <Item>
+        <Name>WalkingEnemy</Name>
+        <Position>8 33</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 34</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 35</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 36</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 37</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 38</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>8 39</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 0</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 1</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 2</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 3</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 4</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 5</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 6</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 7</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 8</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>9 9</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 10</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 11</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 12</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 13</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>9 14</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 15</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 16</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 17</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 18</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 19</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 20</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 21</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 22</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 23</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 24</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 25</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 26</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 27</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 28</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 29</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 30</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>9 31</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>9 32</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>9 33</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>9 34</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>9 35</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>9 36</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>9 37</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 38</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>9 39</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 0</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 1</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 2</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 3</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 4</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 5</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 6</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 7</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 8</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>10 9</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 10</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 11</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 12</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>10 13</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>10 14</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 15</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 16</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 17</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 18</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 19</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 20</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 21</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 22</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 23</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 24</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 25</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 26</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 27</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 28</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 29</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 30</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 31</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 32</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 33</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 34</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 35</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 36</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 37</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 38</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>10 39</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 0</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 1</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 2</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 3</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 4</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 5</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 6</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 7</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 8</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>11 9</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 10</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 11</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 12</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 13</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>11 14</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 15</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 16</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 17</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 18</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 19</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 20</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 21</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 22</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 23</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 24</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 25</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 26</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 27</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 28</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 29</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 30</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 31</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 32</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 33</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 34</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 35</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 36</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 37</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 38</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>11 39</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 0</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 1</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 2</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 3</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 4</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 5</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 6</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 7</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 8</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>12 9</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 10</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 11</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 12</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 13</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>12 14</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 15</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 16</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 17</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 18</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 19</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 20</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 21</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 22</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 23</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 24</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 25</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 26</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 27</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 28</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 29</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 30</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 31</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 32</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 33</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 34</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 35</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 36</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 37</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 38</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>12 39</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 0</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 1</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 2</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 3</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 4</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 5</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 6</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 7</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 8</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>13 9</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 10</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 11</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 12</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 13</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>13 14</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 15</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 16</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 17</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 18</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 19</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 20</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 21</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 22</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 23</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 24</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 25</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 26</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 27</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 28</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 29</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 30</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 31</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 32</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 33</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 34</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 35</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 36</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 37</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 38</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>13 39</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 0</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 1</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 2</Position>
+      </Item>
+      <Item>
+        <Name>Player</Name>
+        <Position>14 3</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 4</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 5</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 6</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 7</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 8</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>14 9</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 10</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 11</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 12</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 13</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>14 14</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 15</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 16</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 17</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 18</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 19</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 20</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 21</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 22</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 23</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 24</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 25</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 26</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 27</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 28</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 29</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 30</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 31</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 32</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 33</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 34</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 35</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 36</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 37</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 38</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>14 39</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 0</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>15 1</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>15 2</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>15 3</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>15 4</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>15 5</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 6</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 7</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 8</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>15 9</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>15 10</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 11</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 12</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 13</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>15 14</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 15</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 16</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 17</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 18</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 19</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 20</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 21</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 22</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 23</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 24</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 25</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 26</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 27</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 28</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 29</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 30</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 31</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 32</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 33</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 34</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 35</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 36</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 37</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 38</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>15 39</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 0</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 1</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 2</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 3</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 4</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 5</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 6</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 7</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 8</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>16 9</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 10</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 11</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 12</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 13</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>16 14</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 15</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 16</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 17</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 18</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 19</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 20</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 21</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 22</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 23</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 24</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 25</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 26</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 27</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 28</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 29</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 30</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 31</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>16 32</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>16 33</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>16 34</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>16 35</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>16 36</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>16 37</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>16 38</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>16 39</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 0</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 1</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 2</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 3</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 4</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 5</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 6</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 7</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 8</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 9</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 10</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 11</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 12</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 13</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>17 14</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 15</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 16</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 17</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 18</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 19</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 20</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 21</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 22</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 23</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 24</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 25</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 26</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 27</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 28</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 29</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 30</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 31</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 32</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 33</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 34</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 35</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 36</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 37</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 38</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>17 39</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 0</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 1</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 2</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 3</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 4</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 5</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 6</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 7</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 8</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 9</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 10</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 11</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 12</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 13</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>18 14</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 15</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 16</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 17</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 18</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 19</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 20</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 21</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 22</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 23</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 24</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 25</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 26</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 27</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 28</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 29</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 30</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 31</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 32</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 33</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 34</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 35</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 36</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 37</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 38</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>18 39</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 0</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 1</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 2</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 3</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 4</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 5</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 6</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 7</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 8</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 9</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 10</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 11</Position>
+      </Item>
+      <Item>
+        <Name>WalkingEnemy</Name>
+        <Position>19 12</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 13</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>19 14</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 15</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 16</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 17</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 18</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 19</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 20</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 21</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 22</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 23</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 24</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 25</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 26</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 27</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 28</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 29</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 30</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 31</Position>
+      </Item>
+      <Item>
+        <Name>WalkingEnemy</Name>
+        <Position>19 32</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 33</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 34</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 35</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 36</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 37</Position>
+      </Item>
+      <Item>
+        <Name>WalkingEnemy</Name>
+        <Position>19 38</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>19 39</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 0</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 1</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 2</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 3</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 4</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 5</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 6</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 7</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 8</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 9</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 10</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 11</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 12</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 13</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 14</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>20 15</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>20 16</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>20 17</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>20 18</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>20 19</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>20 20</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>20 21</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>20 22</Position>
+      </Item>
+      <Item>
+        <Name>Blank Tile</Name>
+        <Position>20 23</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 24</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 25</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 26</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 27</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 28</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 29</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 30</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 31</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 32</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 33</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 34</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 35</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 36</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 37</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 38</Position>
+      </Item>
+      <Item>
+        <Name>Ground</Name>
+        <Position>20 39</Position>
+      </Item>
+    </TileArray>
+  </Asset>
+  <ExternalReferences>
+    <ExternalReference ID="#External1" TargetType="Microsoft.Xna.Framework.Content.Pipeline.Processors.SongContent">C:\Users\Matthew\Desktop\Bridget\04 At the Beach.mp3</ExternalReference>
+    <ExternalReference ID="#External2" TargetType="Microsoft.Xna.Framework.Content.Pipeline.Graphics.Texture2DContent">C:\Users\Matthew\Desktop\Bridget\bridget.png</ExternalReference>
+    <ExternalReference ID="#External3" TargetType="Microsoft.Xna.Framework.Content.Pipeline.Graphics.Texture2DContent">C:\Users\Matthew\Desktop\Bridget\monster.png</ExternalReference>
+    <ExternalReference ID="#External4" TargetType="Microsoft.Xna.Framework.Content.Pipeline.Graphics.Texture2DContent">C:\Users\Matthew\Desktop\Bridget\tree.png</ExternalReference>
+    <ExternalReference ID="#External5" TargetType="Microsoft.Xna.Framework.Content.Pipeline.Graphics.Texture2DContent">C:\Users\Matthew\Desktop\Bridget\tent.png</ExternalReference>
+  </ExternalReferences>
+</XnaContent>
