@@ -144,6 +144,7 @@ namespace PlatformerGame
                 {
                     board[Y, X].ImageFile = "";
                     board[Y, X].TileType = "Blank Tile";
+                    board[Y, X].ImageIndex = -1;
                     if (bgimage != "")
                     {
                         Bitmap blah = new Bitmap(32, 32);
@@ -401,7 +402,6 @@ namespace PlatformerGame
             }
 
             // Set the level name, background image, and size
-            // TODO: Should we also repopulate the TreeView based on the tiles included in the XML?
             NewLevel level = new NewLevel();
             levelName = levelSpec.Name;
             level.Name = levelName;
@@ -409,12 +409,45 @@ namespace PlatformerGame
             height = (int)levelSpec.MapSize.X;
             width = (int)levelSpec.MapSize.Y;
 
+            foreach(TileContent tilespec in levelSpec.TileTypes)
+            {
+                if (tilespec.Texture.Name == "Player")
+                {
+                    tiles[0] = tilespec.Texture.Filename;
+                }
+                if (tilespec.Texture.Name == "WalkingEnemy")
+                {
+                    tiles[1] = tilespec.Texture.Filename;
+                }
+                if (tilespec.Texture.Name == "Ground")
+                {
+                    tiles[2] = tilespec.Texture.Filename;
+                }
+                if (tilespec.Texture.Name == "Platform")
+                {
+                    tiles[3] = tilespec.Texture.Filename;
+                }
+                if (tilespec.Texture.Name == "LevelEnd")
+                {
+                    tiles[4] = tilespec.Texture.Filename;
+                }
+            }
+
+            imageList1.Images.Clear();
+            Image thing = new Bitmap(contentPath + "clear.png");
+            imageList1.Images.Add(thing);
+            for (int s = 0; s < tiles.Length; s++)
+            {
+                Bitmap pict = new Bitmap(tiles[s]);
+                imageList1.Images.Add(pict);
+                tileImages[s] = new Bitmap(pict, 32, 32);
+            }
+            treeView1.Update();
+
             if (levelSpec.LevelSong != null)
             {
                 levelSong = levelSpec.LevelSong.Filename;
-                // TODO: load in background too? or are we already doing that
             }
-
             int wid = width * 32;
             int heig = height * 32;
             displayW = width;
@@ -449,13 +482,17 @@ namespace PlatformerGame
             {
                 // if we even have a background texture, store it here
                 bgimage = levelSpec.Background.Filename;
-            }
+            } 
             if (bgimage != "")
             {
-                pictureBox1.BackgroundImage = new Bitmap(bgimage);
-                backimage = new Bitmap(pictureBox1.BackgroundImage, width * 32, height * 32);
+                backimage = new Bitmap(new Bitmap(bgimage), width * 32, height * 32);
+                Bitmap area = new Bitmap(displayW * 32, displayH * 32);
+                Graphics temp = Graphics.FromImage(area);
+                System.Drawing.Rectangle first = new System.Drawing.Rectangle(0, 0, displayW * 32, displayH * 32);
+                System.Drawing.Rectangle second = new System.Drawing.Rectangle(currentX * 32, currentY * 32, displayW * 32, displayH * 32);
+                temp.DrawImage(backimage, second, first, GraphicsUnit.Pixel);
+                pictureBox1.BackgroundImage = area;
             }
-
 
             // Create the list of all tile types
             Dictionary<string, string> tileToTextureDict = new Dictionary<string, string>();
@@ -472,12 +509,8 @@ namespace PlatformerGame
                 tile.Name = tileMapSpec.Name;
                 tile.TileType = tileMapSpec.Name;
                 tile.ImageFile = tileToTextureDict[tile.Name];
-                if (tile.ImageFile != "")
-                {
-                    tileImages[Array.IndexOf(tiles, tile.ImageFile)] = new Bitmap(new Bitmap(tile.ImageFile), 32, 32);
-                }
-                // TODO: Above gives Index out of bounds because custom images are not loaded correctly/are not in the tiles array
-                // TODO: this part was broken, quick fix copy/paste
+               
+                
                 if (tile.TileType == "Player")
                 {
                     tile.ImageIndex = 0;
