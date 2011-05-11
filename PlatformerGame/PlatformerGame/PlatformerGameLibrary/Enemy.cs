@@ -159,7 +159,7 @@ namespace PlatformerGameLibrary
             // Draw facing the way the enemy is moving.
             SpriteEffects flip = direction > 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
-            spriteBatch.Draw(sprite, position, localBounds, Color.White, 0f, origin, 1f, flip, 0f);
+            //spriteBatch.Draw(sprite, position, localBounds, Color.White, 0f, origin, 1f, flip, 0f);
 
             // Draw all of the source image compressed to the dest player rectangle.
             Rectangle destRect = new Rectangle((int)(position.X - enemyWidth / 2), (int)(position.Y - enemyHeight), enemyWidth, enemyHeight);
