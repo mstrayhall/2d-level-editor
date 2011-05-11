@@ -530,7 +530,7 @@ namespace PlatformerGameLibrary
             spriteBatch.End();
 
             cameraTransform = Matrix.CreateTranslation(-cameraPos.X, -cameraPos.Y, 0f);
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, null, null, null, null, cameraTransform);
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, cameraTransform);
 
             DrawTiles(spriteBatch);
 
@@ -539,7 +539,7 @@ namespace PlatformerGameLibrary
 
         public void DrawPlayerAndEnemies(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.Opaque, null, null, null, null, cameraTransform);
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, null, null, null, cameraTransform);
 
             foreach (Enemy e in enemies)
             {
