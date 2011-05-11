@@ -411,23 +411,23 @@ namespace PlatformerGame
 
             foreach(TileContent tilespec in levelSpec.TileTypes)
             {
-                if (tilespec.Texture.Name == "Player")
+                if (tilespec.Name == "Player")
                 {
                     tiles[0] = tilespec.Texture.Filename;
                 }
-                if (tilespec.Texture.Name == "WalkingEnemy")
+                if (tilespec.Name == "WalkingEnemy")
                 {
                     tiles[1] = tilespec.Texture.Filename;
                 }
-                if (tilespec.Texture.Name == "Ground")
+                if (tilespec.Name == "Ground")
                 {
                     tiles[2] = tilespec.Texture.Filename;
                 }
-                if (tilespec.Texture.Name == "Platform")
+                if (tilespec.Name == "Platform")
                 {
                     tiles[3] = tilespec.Texture.Filename;
                 }
-                if (tilespec.Texture.Name == "LevelEnd")
+                if (tilespec.Name == "LevelEnd")
                 {
                     tiles[4] = tilespec.Texture.Filename;
                 }
@@ -477,7 +477,7 @@ namespace PlatformerGame
             pictureBox1.Image = new Bitmap(displayW * 32, displayH * 32);
 
             // Get the rest of the level information
-            string bgimage = "";
+            bgimage = "";
             if (levelSpec.Background != null)
             {
                 // if we even have a background texture, store it here
@@ -784,6 +784,11 @@ namespace PlatformerGame
         private void DeleteMusic_Click(object sender, EventArgs e)
         {
             levelSong = "";
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
         
     }

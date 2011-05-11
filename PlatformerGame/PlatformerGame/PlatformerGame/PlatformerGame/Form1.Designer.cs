@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Walking Enemy", 2, 2);
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Enemies", -2, -2, new System.Windows.Forms.TreeNode[] {
-            treeNode11});
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Ground", 3, 3);
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Platform", 4, 4);
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Level End", 5, 5);
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Platforms", -2, -2, new System.Windows.Forms.TreeNode[] {
-            treeNode13,
-            treeNode14,
-            treeNode15});
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Player", 1, 1);
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Player", -2, -2, new System.Windows.Forms.TreeNode[] {
-            treeNode17});
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Erase Tile");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Delete", new System.Windows.Forms.TreeNode[] {
-            treeNode19});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Walking Enemy", 2, 2);
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Enemies", -2, -2, new System.Windows.Forms.TreeNode[] {
+            treeNode1});
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Ground", 3, 3);
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Platform", 4, 4);
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Level End", 5, 5);
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Platforms", -2, -2, new System.Windows.Forms.TreeNode[] {
+            treeNode3,
+            treeNode4,
+            treeNode5});
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Player", 1, 1);
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Player", -2, -2, new System.Windows.Forms.TreeNode[] {
+            treeNode7});
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Erase Tile");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Delete", new System.Windows.Forms.TreeNode[] {
+            treeNode9});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uxForm1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +54,8 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setContentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteBackground = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteMusic = new System.Windows.Forms.ToolStripMenuItem();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
@@ -63,8 +65,6 @@
             this.uxRight = new System.Windows.Forms.Button();
             this.uxUp = new System.Windows.Forms.Button();
             this.uxDown = new System.Windows.Forms.Button();
-            this.DeleteBackground = new System.Windows.Forms.ToolStripMenuItem();
-            this.DeleteMusic = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -119,6 +119,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -137,6 +138,20 @@
             this.setContentToolStripMenuItem.Text = "Set Content";
             this.setContentToolStripMenuItem.Click += new System.EventHandler(this.setContentToolStripMenuItem_Click);
             // 
+            // DeleteBackground
+            // 
+            this.DeleteBackground.Name = "DeleteBackground";
+            this.DeleteBackground.Size = new System.Drawing.Size(174, 22);
+            this.DeleteBackground.Text = "Delete Background";
+            this.DeleteBackground.Click += new System.EventHandler(this.DeleteBackground_Click);
+            // 
+            // DeleteMusic
+            // 
+            this.DeleteMusic.Name = "DeleteMusic";
+            this.DeleteMusic.Size = new System.Drawing.Size(174, 22);
+            this.DeleteMusic.Text = "Delete Music";
+            this.DeleteMusic.Click += new System.EventHandler(this.DeleteMusic_Click);
+            // 
             // treeView1
             // 
             this.treeView1.BackColor = System.Drawing.SystemColors.Control;
@@ -145,47 +160,47 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(963, 24);
             this.treeView1.Name = "treeView1";
-            treeNode11.ImageIndex = 2;
-            treeNode11.Name = "WalkingEnemy";
-            treeNode11.SelectedImageIndex = 2;
-            treeNode11.Text = "Walking Enemy";
-            treeNode12.ImageIndex = -2;
-            treeNode12.Name = "Enemies";
-            treeNode12.SelectedImageIndex = -2;
-            treeNode12.Text = "Enemies";
-            treeNode13.ImageIndex = 3;
-            treeNode13.Name = "Ground";
-            treeNode13.SelectedImageIndex = 3;
-            treeNode13.Text = "Ground";
-            treeNode14.ImageIndex = 4;
-            treeNode14.Name = "Platform";
-            treeNode14.SelectedImageIndex = 4;
-            treeNode14.Text = "Platform";
-            treeNode15.ImageIndex = 5;
-            treeNode15.Name = "LevelEnd";
-            treeNode15.SelectedImageIndex = 5;
-            treeNode15.Text = "Level End";
-            treeNode16.ImageIndex = -2;
-            treeNode16.Name = "Platforms";
-            treeNode16.SelectedImageIndex = -2;
-            treeNode16.Text = "Platforms";
-            treeNode17.ImageIndex = 1;
-            treeNode17.Name = "Player";
-            treeNode17.SelectedImageIndex = 1;
-            treeNode17.Text = "Player";
-            treeNode18.ImageIndex = -2;
-            treeNode18.Name = "Player";
-            treeNode18.SelectedImageIndex = -2;
-            treeNode18.Text = "Player";
-            treeNode19.Name = "Delete";
-            treeNode19.Text = "Erase Tile";
-            treeNode20.Name = "Delete";
-            treeNode20.Text = "Delete";
+            treeNode1.ImageIndex = 2;
+            treeNode1.Name = "WalkingEnemy";
+            treeNode1.SelectedImageIndex = 2;
+            treeNode1.Text = "Walking Enemy";
+            treeNode2.ImageIndex = -2;
+            treeNode2.Name = "Enemies";
+            treeNode2.SelectedImageIndex = -2;
+            treeNode2.Text = "Enemies";
+            treeNode3.ImageIndex = 3;
+            treeNode3.Name = "Ground";
+            treeNode3.SelectedImageIndex = 3;
+            treeNode3.Text = "Ground";
+            treeNode4.ImageIndex = 4;
+            treeNode4.Name = "Platform";
+            treeNode4.SelectedImageIndex = 4;
+            treeNode4.Text = "Platform";
+            treeNode5.ImageIndex = 5;
+            treeNode5.Name = "LevelEnd";
+            treeNode5.SelectedImageIndex = 5;
+            treeNode5.Text = "Level End";
+            treeNode6.ImageIndex = -2;
+            treeNode6.Name = "Platforms";
+            treeNode6.SelectedImageIndex = -2;
+            treeNode6.Text = "Platforms";
+            treeNode7.ImageIndex = 1;
+            treeNode7.Name = "Player";
+            treeNode7.SelectedImageIndex = 1;
+            treeNode7.Text = "Player";
+            treeNode8.ImageIndex = -2;
+            treeNode8.Name = "Player";
+            treeNode8.SelectedImageIndex = -2;
+            treeNode8.Text = "Player";
+            treeNode9.Name = "Delete";
+            treeNode9.Text = "Erase Tile";
+            treeNode10.Name = "Delete";
+            treeNode10.Text = "Delete";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode12,
-            treeNode16,
-            treeNode18,
-            treeNode20});
+            treeNode2,
+            treeNode6,
+            treeNode8,
+            treeNode10});
             this.treeView1.SelectedImageIndex = 0;
             this.treeView1.Size = new System.Drawing.Size(168, 574);
             this.treeView1.TabIndex = 3;
@@ -292,20 +307,6 @@
             this.uxDown.TabIndex = 8;
             this.uxDown.UseVisualStyleBackColor = true;
             this.uxDown.Click += new System.EventHandler(this.uxDown_Click);
-            // 
-            // DeleteBackground
-            // 
-            this.DeleteBackground.Name = "DeleteBackground";
-            this.DeleteBackground.Size = new System.Drawing.Size(174, 22);
-            this.DeleteBackground.Text = "Delete Background";
-            this.DeleteBackground.Click += new System.EventHandler(this.DeleteBackground_Click);
-            // 
-            // DeleteMusic
-            // 
-            this.DeleteMusic.Name = "DeleteMusic";
-            this.DeleteMusic.Size = new System.Drawing.Size(174, 22);
-            this.DeleteMusic.Text = "Delete Music";
-            this.DeleteMusic.Click += new System.EventHandler(this.DeleteMusic_Click);
             // 
             // uxForm1
             // 
