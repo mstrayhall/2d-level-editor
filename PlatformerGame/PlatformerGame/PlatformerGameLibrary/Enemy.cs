@@ -78,6 +78,10 @@ namespace PlatformerGameLibrary
         // How fast it moves in X direction.
         private const float MoveSpeed = 128.0f;
 
+        Rectangle sourceImageSize;
+        int enemyWidth;
+        int enemyHeight;
+
         #endregion
 
         #region Initialization
@@ -104,6 +108,10 @@ namespace PlatformerGameLibrary
             origin = new Vector2(width / 2, height);
 
             sprite = textureName;
+
+            sourceImageSize = new Rectangle(0, 0, sprite.Width, sprite.Height);
+            enemyWidth = sizeX;
+            enemyHeight = sizeY;
         }
 
         #endregion
@@ -152,6 +160,10 @@ namespace PlatformerGameLibrary
             SpriteEffects flip = direction > 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
             spriteBatch.Draw(sprite, position, localBounds, Color.White, 0f, origin, 1f, flip, 0f);
+
+            // Draw all of the source image compressed to the dest player rectangle.
+            Rectangle destRect = new Rectangle((int)(position.X - enemyWidth / 2), (int)(position.Y - enemyHeight), enemyWidth, enemyHeight);
+            spriteBatch.Draw(sprite, destRect, sourceImageSize, Color.White, 0f, Vector2.Zero, flip, 0f);
         }
 
         #endregion
