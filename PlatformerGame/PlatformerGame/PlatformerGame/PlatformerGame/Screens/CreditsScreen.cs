@@ -42,18 +42,22 @@ namespace PlatformerGame
             scrollSpeed = 0.1f;
 
             // Build the credit text here
-            creditText = "CREDITS\n\n" 
-                         + "Matt Hudson\n"
-                         + "--Level Editor\n\n"
-                         + "Matthew Strayhall\n"
-                         + "--Platformer Game\n\n"
+            creditText = "CREDITS\n\n"
+                         + "Level Editor\n"
+                         + "--Matt Hudson\n\n"
+                         + "Platformer Game\n"
+                         + "--Matthew Strayhall\n\n"
                          + "\n\n"
                          + "XNA Creator's Club Tutorials\n"
                          + "--Starter code for menu system\n"
-                         + "--Inspiration for level and player class base structure"
+                         + "--Inspiration for level, player, and enemy class base structure"
                          + "\n\n"
-                         + "Sound Effects and Music\n"
-                         + "--\n";
+                         + "Testers\n"
+                         + "--Ben Kern\n"
+                         + "--Kevin Schwarz"
+                         + "\n\n"
+                         + "Special Thanks\n"
+                         + "--Nathan Bean";
 
         }
 
