@@ -37,7 +37,8 @@ namespace PlatformerGame
             // Create our menu entries
             MenuEntry playGameMenuEntry = new MenuEntry("Play Game");
             MenuEntry editLevelsMenuEntry = new MenuEntry("Create/Modify Levels");
-            MenuEntry optionsMenuEntry = new MenuEntry("Options");            
+            MenuEntry optionsMenuEntry = new MenuEntry("Options");
+            MenuEntry controlsMenuEntry = new MenuEntry("Controls");
             MenuEntry creditsMenuEntry = new MenuEntry("Credits");
             MenuEntry exitMenuEntry = new MenuEntry("Exit");
 
@@ -45,6 +46,7 @@ namespace PlatformerGame
             playGameMenuEntry.Selected += OnPlayGame;
             editLevelsMenuEntry.Selected += OnEditLevels;
             optionsMenuEntry.Selected += OptionsMenuEntrySelected;
+            controlsMenuEntry.Selected += ControlsMenuEntrySelected;
             creditsMenuEntry.Selected += OnViewCredits;
             exitMenuEntry.Selected += OnCancel;
 
@@ -52,6 +54,7 @@ namespace PlatformerGame
             MenuEntries.Add(playGameMenuEntry);
             MenuEntries.Add(editLevelsMenuEntry);
             MenuEntries.Add(optionsMenuEntry);
+            MenuEntries.Add(controlsMenuEntry);
             MenuEntries.Add(creditsMenuEntry);
             MenuEntries.Add(exitMenuEntry);
 
@@ -102,6 +105,17 @@ namespace PlatformerGame
             if (!isEditorOpen)
             {
                 ScreenManager.AddScreen(new OptionsMenuScreen(), e.PlayerIndex);
+            }
+        }
+
+        /// <summary>
+        /// Event handler for when the Controls menu entry is selected.
+        /// </summary>
+        void ControlsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        {
+            if (!isEditorOpen)
+            {
+                ScreenManager.AddScreen(new ControlsMenuScreen(), e.PlayerIndex);
             }
         }
 

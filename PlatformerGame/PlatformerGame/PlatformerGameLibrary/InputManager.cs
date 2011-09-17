@@ -126,7 +126,8 @@ namespace PlatformerGameLibrary
         {
             PlayerIndex playerIndex;
 
-            return (IsKeyDown(Keys.LeftShift, controllingPlayer, out playerIndex));
+            return (IsKeyDown(Keys.LeftShift, controllingPlayer, out playerIndex) ||
+                    IsKeyDown(Keys.RightShift, controllingPlayer, out playerIndex));
         }
     }
 }
