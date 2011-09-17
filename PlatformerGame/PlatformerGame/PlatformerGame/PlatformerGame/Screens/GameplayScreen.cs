@@ -68,6 +68,11 @@ namespace PlatformerGame
         Vector2 winOverlayPos;
         Vector2 dieOverlaySize;
         Vector2 dieOverlayPos;
+        // Paused
+        Texture2D pauseOverlay;
+        Vector2 pauseOverlaySize;
+        Vector2 pauseOverlayPos;
+        bool isPaused;
 
         // Input
         InputManager playerInput;
@@ -163,10 +168,14 @@ namespace PlatformerGame
             winOverlayPos = screenCenter - (winOverlaySize / 2);
             dieOverlayPos = screenCenter - (dieOverlaySize / 2);
 
+            pauseOverlay = gameOverlayContent.Load<Texture2D>("pauseOverlay");
+            pauseOverlaySize = new Vector2(pauseOverlay.Width, pauseOverlay.Height);
+            pauseOverlayPos = screenCenter - (pauseOverlaySize / 2);
+            isPaused = false;
+
             // Audio
             isMusicOn = ScreenManager.IsMusicOn;
-
-
+            
             // Load the first level from allLevels -- this should be done last.
             levelIndex--;
             LoadNextLevel();
@@ -340,27 +349,56 @@ namespace PlatformerGame
         #region Update and Draw
 
         /// <summary>
-        /// Processes the user's input, to skip the splash screen.
+        /// Processes the user's input
         /// </summary>
         /// <param name="input">The InputState for the current frame</param>
         public override void HandleInput(InputState input)
         {
             PlayerIndex playerIndex;
 
-            if (input.IsPauseGame(null))
+            // If we don't have any level terminating conditions, we can accept input
+            if (!(level.ReachedExit || !level.Player.IsAlive || level.TimeRemaining == TimeSpan.Zero))
             {
-                // TODO: Actually pause and ask if they want to return to title screen instead of just doing it.
-                // TODO: Also, dont decrement the timer if we do this. Need to tell the Level that we're paused.
-
-                this.ExitScreen();
-            }
-
-            if (input.IsNewKeyPress(Keys.E, null, out playerIndex))
-            {
-                level.PlayerDeath(null);
+                // TODO move this functionality into its own screen
+                // If the game is paused...
+                if (isPaused)
+                {
+                    // If they press pause again, unpause
+                    if (input.IsUnpauseGame(null))
+                    {
+                        PauseGameToggle();
+                    }
+                    // If they want to exit, then quit
+                    else if (input.IsExitGame(null))
+                    {
+                        this.ExitScreen();
+                    }
+                }
+                // If the game is not paused...
+                else
+                {
+                    if (input.IsPauseGame(null))
+                    {
+                        PauseGameToggle();
+                    }
+                }
             }
 
             base.HandleInput(input);
+        }
+
+        /// <summary>
+        /// Updates pause state and music volume depending on the current pause state
+        /// </summary>
+        private void PauseGameToggle()
+        {
+            isPaused = !isPaused;
+
+            if (isMusicOn)
+            {
+                // Lower music volume if paused, else make it max
+                MediaPlayer.Volume = isPaused ? 0.2f : 1.0f;
+            }
         }
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
@@ -374,39 +412,43 @@ namespace PlatformerGame
             }
 
             PlayerIndex playerIndex;
-            playerInput.Update(gameTime);
 
-            if (level == null)
+            if (!isPaused)
             {
-                bool haveNewLevel = LoadNextLevel();
-                if (!haveNewLevel) return;
-            }
+                playerInput.Update(gameTime);
 
-            level.Update(gameTime);
-
-            if (level.TimeRemaining == TimeSpan.Zero || !level.Player.IsAlive)
-            {
-                // if the Player is dead or time ran out, see if they can respawn (and wait for their input)
-                if (playerInput.IsKeyDown(Keys.Space, null, out playerIndex))
+                if (level == null)
                 {
-                    if (numLives > 0 || isUmlimitedLives == true)
+                    bool haveNewLevel = LoadNextLevel();
+                    if (!haveNewLevel) return;
+                }
+
+                level.Update(gameTime);
+
+                if (level.TimeRemaining == TimeSpan.Zero || !level.Player.IsAlive)
+                {
+                    // if the Player is dead or time ran out, see if they can respawn (and wait for their input)
+                    if (playerInput.IsKeyDown(Keys.Space, null, out playerIndex))
                     {
-                        numLives--;
-                        ReloadCurrentLevel();
-                    }
-                    else
-                    {
-                        ScreenManager.AddScreen(new GameOverScreen(), null);
-                        this.ExitScreen();
+                        if (numLives > 0 || isUmlimitedLives == true)
+                        {
+                            numLives--;
+                            ReloadCurrentLevel();
+                        }
+                        else
+                        {
+                            ScreenManager.AddScreen(new GameOverScreen(), null);
+                            this.ExitScreen();
+                        }
                     }
                 }
-            }
-            else if (level.ReachedExit)
-            {
-                // If player reached the exit, pause until they choose to continue
-                if (playerInput.IsKeyDown(Keys.Space, null, out playerIndex))
+                else if (level.ReachedExit)
                 {
-                    LoadNextLevel();
+                    // If player reached the exit, pause until they choose to continue
+                    if (playerInput.IsKeyDown(Keys.Space, null, out playerIndex))
+                    {
+                        LoadNextLevel();
+                    }
                 }
             }
 
@@ -472,18 +514,18 @@ namespace PlatformerGame
             }
 
             SpriteBatch spriteBatch = ScreenManager.SpriteBatch;
-            
-            // Clear to Black
-            //ScreenManager.GraphicsDevice.Clear(Color.Black);
-
             ScreenManager.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
 
+            // Draw level first
             level.Draw(gameTime, spriteBatch);
 
+            // Draw HUD on top
             DrawHUD(spriteBatch);
 
+            // Draw characters over this
             level.DrawPlayerAndEnemies(gameTime, spriteBatch);
 
+            // Finally draw overlays on very top
             spriteBatch.Begin();
             if (!level.Player.IsAlive || level.TimeRemaining == TimeSpan.Zero)
             {
@@ -492,6 +534,10 @@ namespace PlatformerGame
             else if (level.ReachedExit)
             {
                 spriteBatch.Draw(winOverlay, winOverlayPos, Color.White);
+            }
+            else if (isPaused)
+            {
+                spriteBatch.Draw(pauseOverlay, pauseOverlayPos, Color.White);
             }
             spriteBatch.End();
 

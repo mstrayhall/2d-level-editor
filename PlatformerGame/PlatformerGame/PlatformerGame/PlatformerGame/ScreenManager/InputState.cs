@@ -215,9 +215,38 @@ namespace PlatformerGame
         {
             PlayerIndex playerIndex;
 
-            return IsNewKeyPress(Keys.Escape, controllingPlayer, out playerIndex) ||
+            return IsNewKeyPress(Keys.P, controllingPlayer, out playerIndex) ||
+                   IsNewKeyPress(Keys.Q, controllingPlayer, out playerIndex) ||
+                   IsNewKeyPress(Keys.Escape, controllingPlayer, out playerIndex) ||
                    IsNewButtonPress(Buttons.Back, controllingPlayer, out playerIndex) ||
                    IsNewButtonPress(Buttons.Start, controllingPlayer, out playerIndex);
+        }
+
+        /// <summary>
+        /// Checks for a "uppause the game" input action.
+        /// The controllingPlayer parameter specifies which player to read
+        /// input for. If this is null, it will accept input from any player.
+        /// </summary>
+        public bool IsUnpauseGame(PlayerIndex? controllingPlayer)
+        {
+            PlayerIndex playerIndex;
+
+            return IsNewKeyPress(Keys.P, controllingPlayer, out playerIndex) ||
+                   IsNewKeyPress(Keys.Q, controllingPlayer, out playerIndex) ||
+                   IsNewButtonPress(Buttons.Start, controllingPlayer, out playerIndex);
+        }
+
+        /// <summary>
+        /// Checks for a "quit the game" input action.
+        /// The controllingPlayer parameter specifies which player to read
+        /// input for. If this is null, it will accept input from any player.
+        /// </summary>
+        public bool IsExitGame(PlayerIndex? controllingPlayer)
+        {
+            PlayerIndex playerIndex;
+
+            return IsNewKeyPress(Keys.Escape, controllingPlayer, out playerIndex) ||
+                   IsNewButtonPress(Buttons.Back, controllingPlayer, out playerIndex);
         }
 
 
