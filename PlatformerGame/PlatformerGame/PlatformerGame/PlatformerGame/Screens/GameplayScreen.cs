@@ -356,30 +356,33 @@ namespace PlatformerGame
         {
             PlayerIndex playerIndex;
 
-            // If we don't have any level terminating conditions, we can accept input
-            if (!(level.ReachedExit || !level.Player.IsAlive || level.TimeRemaining == TimeSpan.Zero))
+            if (level != null)
             {
-                // TODO move this functionality into its own screen
-                // If the game is paused...
-                if (isPaused)
+                // If we don't have any level terminating conditions, we can accept input
+                if (!(level.ReachedExit || !level.Player.IsAlive || level.TimeRemaining == TimeSpan.Zero))
                 {
-                    // If they press pause again, unpause
-                    if (input.IsUnpauseGame(null))
+                    // TODO move this functionality into its own screen
+                    // If the game is paused...
+                    if (isPaused)
                     {
-                        PauseGameToggle();
+                        // If they press pause again, unpause
+                        if (input.IsUnpauseGame(null))
+                        {
+                            PauseGameToggle();
+                        }
+                        // If they want to exit, then quit
+                        else if (input.IsExitGame(null))
+                        {
+                            this.ExitScreen();
+                        }
                     }
-                    // If they want to exit, then quit
-                    else if (input.IsExitGame(null))
+                    // If the game is not paused...
+                    else
                     {
-                        this.ExitScreen();
-                    }
-                }
-                // If the game is not paused...
-                else
-                {
-                    if (input.IsPauseGame(null))
-                    {
-                        PauseGameToggle();
+                        if (input.IsPauseGame(null))
+                        {
+                            PauseGameToggle();
+                        }
                     }
                 }
             }
