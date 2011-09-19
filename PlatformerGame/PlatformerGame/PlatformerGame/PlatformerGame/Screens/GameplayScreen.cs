@@ -348,6 +348,7 @@ namespace PlatformerGame
 
         #region Update and Draw
 
+
         /// <summary>
         /// Processes the user's input
         /// </summary>
@@ -390,6 +391,7 @@ namespace PlatformerGame
             base.HandleInput(input);
         }
 
+
         /// <summary>
         /// Updates pause state and music volume depending on the current pause state
         /// </summary>
@@ -403,6 +405,7 @@ namespace PlatformerGame
                 MediaPlayer.Volume = isPaused ? 0.2f : 1.0f;
             }
         }
+
 
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
@@ -465,34 +468,48 @@ namespace PlatformerGame
         /// <param name="spriteBatch"></param>
         public void DrawHUD(SpriteBatch spriteBatch)
         {
+            // Main color for our HUD items
+            Color hudColor = new Color(10, 10, 10);
+
             spriteBatch.Begin();
 
+            // Lives
             if (isUmlimitedLives)
             {
-                spriteBatch.DrawString(hudFont, "Lives\n" + "Unlimited", livesPos - new Vector2(1, 1), Color.White);
-                spriteBatch.DrawString(hudFont, "Lives\n" + "Unlimited", livesPos, new Color(10, 10, 10));
+                DrawShadowedString(hudFont, "Lives\n" + "Unlimited", livesPos, hudColor);
             }
             else
             {
-                spriteBatch.DrawString(hudFont, "Lives\n" + numLives, livesPos - new Vector2(1, 1), Color.White);
-                spriteBatch.DrawString(hudFont, "Lives\n" + numLives, livesPos, new Color(10, 10, 10));
+                DrawShadowedString(hudFont, "Lives\n" + numLives, livesPos, hudColor);
             }
 
+            // Timer
             if (isTimed)
             {
-                spriteBatch.DrawString(hudFont, "Time Left\n" + (int)(level.TimeRemaining.TotalSeconds), timerPos - new Vector2(1, 1), Color.White);
-                spriteBatch.DrawString(hudFont, "Time Left\n" + (int)(level.TimeRemaining.TotalSeconds), timerPos, new Color(10,10,10));
+                DrawShadowedString(hudFont, "Time Left\n" + (int)(level.TimeRemaining.TotalSeconds), timerPos, hudColor);
             }
             else
             {
-                spriteBatch.DrawString(hudFont, "Time Left\n" + "Unlimited", timerPos - new Vector2(1, 1), Color.White);
-                spriteBatch.DrawString(hudFont, "Time Left\n" + "Unlimited", timerPos, new Color(10, 10, 10));
+                DrawShadowedString(hudFont, "Time Left\n" + "Unlimited", timerPos, hudColor);
             }
 
-            spriteBatch.DrawString(hudFont, "Level Name\n" + allLevels[levelIndex], levelNamePos - new Vector2(1, 1), Color.White);
-            spriteBatch.DrawString(hudFont, "Level Name\n" + allLevels[levelIndex], levelNamePos, new Color(10, 10, 10));
+            // Level name
+            DrawShadowedString(hudFont, "Level Name\n" + allLevels[levelIndex], levelNamePos, hudColor);
 
             spriteBatch.End();
+        }
+
+
+        /// <summary>
+        /// Draw a shadowed string -- a message with a white shadow behind it
+        /// </summary>
+        private void DrawShadowedString(SpriteFont font, string text, Vector2 position, Color color)
+        {
+            // Draw the shadow part a little up and left in white
+            spriteBatch.DrawString(font, text, position - Vector2.One, Color.White);
+
+            // Draw the real message on top in the given color
+            spriteBatch.DrawString(font, text, position, color);
         }
 
 
