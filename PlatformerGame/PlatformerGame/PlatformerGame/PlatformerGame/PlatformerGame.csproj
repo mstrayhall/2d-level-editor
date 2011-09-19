@@ -139,6 +139,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screens\ControlsMenuScreen.cs" />
     <Compile Include="Screens\ErrorScreen.cs" />
     <Compile Include="SetContent.cs">
       <SubType>Form</SubType>
