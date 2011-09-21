@@ -24,14 +24,14 @@ namespace PlatformerGameLibrary
     {
         #region Constants
 
-        private const float WalkSpeed = 400f;
-        private const float RunSpeed = 600f;
+        private const float WALKSPEED = 300f;
+        private const float RUNSPEED = 500f;
 
-        private const float MaxJumpTime = 0.5f;
-        private const float JumpLaunchSpeed = -4000f;
-        private const float GravityAccel = 4000f;
-        private const float MaxFallSpeed = 1000f;
-        private const float JumpControlPower = 0.15f;
+        private const float MAXJUMPTIME = 0.45f;
+        private const float JUMPLAUNCHSPEED = -4000f;
+        private const float GRAVITYACCEL = 4000f;
+        private const float MAXFALLSPEED = 1000f;
+        private const float JUMPCONTROLPOWER = 0.15f;
 
         #endregion
 
@@ -210,19 +210,20 @@ namespace PlatformerGameLibrary
             // Update velocity based on the input
             if (playerInput.Run)
             {
-                 velocity.X = movement * RunSpeed;
+                velocity.X = movement * RUNSPEED;
             }
             else
             {
-                velocity.X = movement * WalkSpeed;
+                velocity.X = movement * WALKSPEED;
             }
-            velocity.Y += GravityAccel * elapsed;
 
-            velocity.Y = MathHelper.Clamp(velocity.Y, -MaxFallSpeed, MaxFallSpeed);
-
+            // Calculate velocity from jumping
             velocity.Y = Jump(velocity.Y, gameTime);
+            // Add gravity's force to this
+            velocity.Y += GRAVITYACCEL * elapsed;
+            velocity.Y = MathHelper.Clamp(velocity.Y, -MAXFALLSPEED, MAXFALLSPEED);
 
-            velocity.X = MathHelper.Clamp(velocity.X, -RunSpeed, RunSpeed);
+            velocity.X = MathHelper.Clamp(velocity.X, -RUNSPEED, RUNSPEED);
 
             // Apply the velocity to the position
             position += velocity * elapsed;
@@ -359,11 +360,12 @@ namespace PlatformerGameLibrary
                 }
 
                 // If we are in the ascent of the jump
-                if (0.0f < jumpTime && jumpTime <= MaxJumpTime)
+                if (0.0f < jumpTime && jumpTime <= MAXJUMPTIME)
                 {
                     // Fully override the vertical velocity with a power curve that gives players more control over the top of the jump
-                    velocityY = JumpLaunchSpeed * (1.0f - (float)Math.Pow(jumpTime / MaxJumpTime, JumpControlPower));
+                    velocityY = JUMPLAUNCHSPEED * (1.0f - (float)Math.Pow(jumpTime / MAXJUMPTIME, JUMPCONTROLPOWER));
                 }
+                // We are descending
                 else
                 {
                     // Reached the apex of the jump
@@ -373,6 +375,9 @@ namespace PlatformerGameLibrary
             else
             {
                 // Continues not jumping or cancels a jump in progress
+                // and sets velocity to zero if we were previously ascending.
+                // NOTE: this might not play well if we introduced other game elements that propel the player upward.
+                if (wasJumping && velocityY < 0f) velocityY = 0f;
                 jumpTime = 0.0f;
             }
             wasJumping = isJumping;
