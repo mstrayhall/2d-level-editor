@@ -97,7 +97,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Background.cs" />
     <Compile Include="Enemy.cs" />
+    <Compile Include="HorizontalScrollingBackground.cs" />
     <Compile Include="InputManager.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="Player.cs" />
