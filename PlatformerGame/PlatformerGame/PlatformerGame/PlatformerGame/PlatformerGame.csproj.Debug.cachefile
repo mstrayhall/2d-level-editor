@@ -19,6 +19,7 @@ Content\Tiles\white.xnb
 Content\Tiles\yellow.xnb
 Content\dieOverlay.xnb
 Content\winOverlay.xnb
+Content\pauseOverlay.xnb
 Content\gameFont.xnb
 Content\creditFont.xnb
 Content\hudFont.xnb

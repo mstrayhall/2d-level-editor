@@ -65,7 +65,7 @@ namespace PlatformerGamePipeline
                     else tile.Texture = context.BuildAsset<Texture2DContent, Texture2DContent>(tile.Texture, null);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
             }

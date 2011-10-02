@@ -273,7 +273,7 @@ namespace PlatformerGame
                 }
                 // Else continue playing any music we had playing
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 foundError = true;
                 errorMessage = "Error loading level music";
@@ -310,7 +310,7 @@ namespace PlatformerGame
                 {
                     level = levelContent.Load<Level>(fileNameOnly);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     contentBuilder.Clear();
                     contentBuilder.Add(baseLevelsPath + levelName + ".xml", levelName, null, "LevelProcessor");
@@ -319,12 +319,13 @@ namespace PlatformerGame
                     {
                         level = levelContent.Load<Level>(levelPath);
                     }
-                    catch (Exception e2)
+                    catch (Exception e)
                     {
                         foundError = true;
                         errorMessage = "Error loading level.\n"
                                         + "Please check " + levelName + ".xml\n"
-                                        + "to make sure all asset paths are correct";
+                                        + "to make sure all asset paths are correct."
+                                        + "\nError: " + e.Message; // TODO test how long this message is...probably wanna stick with just mine.
                     }
                 }
                 if (!foundError)
@@ -355,8 +356,6 @@ namespace PlatformerGame
         /// <param name="input">The InputState for the current frame</param>
         public override void HandleInput(InputState input)
         {
-            PlayerIndex playerIndex;
-
             if (level != null)
             {
                 // If we don't have any level terminating conditions, we can accept input

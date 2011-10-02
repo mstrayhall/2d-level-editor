@@ -291,7 +291,7 @@ namespace PlatformerGame
 
                     CopyToOutputDirectory();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     return string.Join("\n", errorLogger.Errors.ToArray());
                 }
