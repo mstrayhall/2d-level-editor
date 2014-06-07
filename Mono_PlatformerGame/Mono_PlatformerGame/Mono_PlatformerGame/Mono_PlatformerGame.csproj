@@ -99,6 +99,10 @@
     <EmbeddedResource Include="SetContent.resx" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Mono_PlatformerGameContent\Mono_PlatformerGameContent\Mono_PlatformerGameContent.csproj">
+      <Project>{a24f2352-c9ba-4aad-9055-51c23fc55a7e}</Project>
+      <Name>Mono_PlatformerGameContent</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Mono_PlatformerGameLibrary\Mono_PlatformerGameLibrary.csproj">
       <Project>{838379ff-e214-40ae-8148-7fa34867e3cc}</Project>
       <Name>Mono_PlatformerGameLibrary</Name>
