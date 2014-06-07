@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0C530010-F922-4B84-BBED-B8DAEBCDF5EF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mono_PlatformerGame</RootNamespace>
+    <AssemblyName>Mono_PlatformerGame</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Windows\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Windows\Release\</OutputPath>
+    <DefineConstants>TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="ContentBuilder.cs" />
+    <Compile Include="ErrorLogger.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs" />
+    <Compile Include="Game1.cs" />
+    <Compile Include="NewLevel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewLevel.Designer.cs" />
+    <Compile Include="PlatformerGame.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScreenManager\GameScreen.cs" />
+    <Compile Include="ScreenManager\InputState.cs" />
+    <Compile Include="ScreenManager\ScreenManager.cs" />
+    <Compile Include="Screens\BackgroundScreen.cs" />
+    <Compile Include="Screens\ControlsMenuScreen.cs" />
+    <Compile Include="Screens\CreditsScreen.cs" />
+    <Compile Include="Screens\ErrorScreen.cs" />
+    <Compile Include="Screens\GameOverScreen.cs" />
+    <Compile Include="Screens\GameplayScreen.cs" />
+    <Compile Include="Screens\LoadGameScreen.cs" />
+    <Compile Include="Screens\MainMenuScreen.cs" />
+    <Compile Include="Screens\MenuEntry.cs" />
+    <Compile Include="Screens\MenuScreen.cs" />
+    <Compile Include="Screens\OptionsMenuScreen.cs" />
+    <Compile Include="Screens\PlayerIndexEventArgs.cs" />
+    <Compile Include="Screens\SplashScreen.cs" />
+    <Compile Include="Screens\WinGameScreen.cs" />
+    <Compile Include="SetContent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetContent.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Build" />
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="MonoGame.Framework, Version=3.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\MSBuild\MonoGame\v3.0\MGCB\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework.Content.Pipeline">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\MSBuild\MonoGame\v3.0\MGCB\MonoGame.Framework.Content.Pipeline.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form1.resx" />
+    <EmbeddedResource Include="NewLevel.resx" />
+    <EmbeddedResource Include="SetContent.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mono_PlatformerGameLibrary\Mono_PlatformerGameLibrary.csproj">
+      <Project>{838379ff-e214-40ae-8148-7fa34867e3cc}</Project>
+      <Name>Mono_PlatformerGameLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mono_PlatformerGamePipeline\Mono_PlatformerGamePipeline.csproj">
+      <Project>{630a8982-5d1a-4361-b8ce-65608f682919}</Project>
+      <Name>Mono_PlatformerGamePipeline</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
