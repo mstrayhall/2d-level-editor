@@ -95,12 +95,12 @@ namespace Mono_PlatformerGame
 
         public override void LoadContent()
         {
-            string currentDirectory = Directory.GetCurrentDirectory() + "/";
+            string currentDirectory = Directory.GetCurrentDirectory();
             string[] assembliesToAdd = new string[]
             {
                 // Add our Level Specification
-                currentDirectory + "PlatformerGamePipeline.dll",
-                currentDirectory + "PlatformerGameLibrary.dll",
+                Path.Combine(currentDirectory, "Mono_PlatformerGamePipeline.dll"),
+                Path.Combine(currentDirectory, "Mono_PlatformerGameLibrary.dll"),
             };
 
             contentBuilder = new ContentBuilder(baseLevelsPath, assembliesToAdd);
@@ -212,7 +212,7 @@ namespace Mono_PlatformerGame
             foreach (string file in allLevels)
             {
                 string levelName = file;
-                string levelPath = baseLevelsPath + file + ".xml";
+                string levelPath = Path.Combine(baseLevelsPath, file + ".xml");
                 if (foundXNBFiles)
                 {
                     if (!dirFileNames.Contains(file))
@@ -313,8 +313,8 @@ namespace Mono_PlatformerGame
                 catch (Exception)
                 {
                     contentBuilder.Clear();
-                    contentBuilder.Add(baseLevelsPath + levelName + ".xml", levelName, null, "LevelProcessor");
-                    contentBuilder.Build();
+                    contentBuilder.Add(Path.Combine(baseLevelsPath, levelName + ".xml"), levelName, null, "LevelProcessor");
+                    string error = contentBuilder.Build();
                     try
                     {
                         level = levelContent.Load<Level>(levelPath);
@@ -325,7 +325,8 @@ namespace Mono_PlatformerGame
                         errorMessage = "Error loading level.\n"
                                         + "Please check " + levelName + ".xml\n"
                                         + "to make sure all asset paths are correct."
-                                        + "\nError: " + e.Message; // TODO test how long this message is...probably wanna stick with just mine.
+                                        + "\nBuild error: " + error
+                                        + "\n\nError: " + e.Message; // TODO test how long this message is...probably wanna stick with just mine.
                     }
                 }
                 if (!foundError)

@@ -25,13 +25,13 @@ namespace Mono_PlatformerGamePipeline
 {
 
     //[ContentSerializerRuntimeType("Mono_PlatformerGameLibrary.Level, Mono_PlatformerGameLibrary")] //TODO
-    [ContentTypeWriter()]
+    //[ContentTypeWriter()]
     public class LevelContent
     {
         [ContentSerializer]
         public string Name;
 
-        [ContentSerializer(Optional=true)]
+        [ContentSerializer(Optional = true)]
         public ExternalReference<Texture2DContent> Background;
 
         [ContentSerializer(Optional = true)]
@@ -45,7 +45,7 @@ namespace Mono_PlatformerGamePipeline
 
         [ContentSerializer]
         public TileMapContent[] TileArray;
-        
+
     }
 
     //[ContentSerializerRuntimeType("Mono_PlatformerGameLibrary.Tile, Mono_PlatformerGameLibrary")] //TODO

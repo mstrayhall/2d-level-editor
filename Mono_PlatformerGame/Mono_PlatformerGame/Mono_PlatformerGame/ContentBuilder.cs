@@ -41,6 +41,7 @@ namespace Mono_PlatformerGame
         
         // What importers or processors should we load?
         const string xnaVersion = ", Version=4.0.0.0, PublicKeyToken=842cf8be1de50553";
+        const string monoVersion = ", Version=3.1.2.0, PublicKeyToken=null";
 
         string[] pipelineAssemblies;
 
@@ -104,14 +105,17 @@ namespace Mono_PlatformerGame
             // Make the intitial assemblies for XNA
             pipelineAssemblies = new string[]
             {
-                "Microsoft.Xna.Framework.Content.Pipeline.FBXImporter" + xnaVersion,
-                "Microsoft.Xna.Framework.Content.Pipeline.XImporter" + xnaVersion,
-                "Microsoft.Xna.Framework.Content.Pipeline.TextureImporter" + xnaVersion,
-                "Microsoft.Xna.Framework.Content.Pipeline.EffectImporter" + xnaVersion,
-                "Microsoft.Xna.Framework.Content.Pipeline.XmlImporter" + xnaVersion, 
                 "Microsoft.Xna.Framework.Content.Pipeline.AudioImporters" + xnaVersion,
-                "Microsoft.Xna.Framework.Content.Pipeline.Audio" + xnaVersion,
-                "Microsoft.Xna.Framework.Content.Pipeline.Processors" + xnaVersion,
+                "Microsoft.Xna.Framework.Content.Pipeline.EffectImporter" + xnaVersion,
+                "Microsoft.Xna.Framework.Content.Pipeline.FBXImporter" + xnaVersion,
+                "Microsoft.Xna.Framework.Content.Pipeline.TextureImporter" + xnaVersion,
+                "Microsoft.Xna.Framework.Content.Pipeline.XImporter" + xnaVersion,
+                "Microsoft.Xna.Framework.Content.Pipeline.XmlImporter" + xnaVersion, 
+                //"Microsoft.Xna.Framework.Content.Pipeline.Audio" + xnaVersion, //TODO
+                //"Microsoft.Xna.Framework.Content.Pipeline.Processors" + xnaVersion, //TODO
+                "MonoGameContentProcessors" + monoVersion, //TODO
+                "MonoGame.Framework" + monoVersion, //TODO
+                "MonoGame.Framework.Content.Pipeline" + monoVersion, //TODO
 
                 // If you want to use custom importers or processors from
                 // a Content Pipeline Extension Library, add them here.
@@ -197,8 +201,8 @@ namespace Mono_PlatformerGame
             projectRootElement = ProjectRootElement.Create(projectPath);
 
             // Include the standard targets file that defines how to build XNA Framework content.
-            projectRootElement.AddImport("$(MSBuildExtensionsPath)\\Microsoft\\XNA Game Studio\\" +
-                                         "v4.0\\Microsoft.Xna.GameStudio.ContentPipeline.targets");
+            projectRootElement.AddImport("$(MSBuildExtensionsPath)\\Microsoft\\XNA Game Studio\\v4.0\\Microsoft.Xna.GameStudio.ContentPipeline.targets");
+            projectRootElement.AddImport(@"$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.ContentPipeline.targets");
 
             buildProject = new Project(projectRootElement);
 

@@ -67,14 +67,15 @@ namespace Mono_PlatformerGame
 
             // Default to the directory which contains our content files.
             string executingPath = AppDomain.CurrentDomain.BaseDirectory;
-            string gameContentPath = Path.Combine(executingPath, "../../../../PlatformerGameContent");
+            string gameContentPath = executingPath;
+            //string gameContentPath = Path.Combine(executingPath, "../../../../Mono_PlatformerGameContent"); //TODO
 
-            fbd.SelectedPath = gameContentPath;
+            //fbd.SelectedPath = gameContentPath;
             fbd.Description = "Select a folder containing level files";
 
             if (fbd.ShowDialog() == DialogResult.OK)
             {
-                string folderPath = fbd.SelectedPath + "/";
+                string folderPath = fbd.SelectedPath;
                 directoryFound = true;
                 return folderPath;
             }
@@ -111,7 +112,7 @@ namespace Mono_PlatformerGame
         public override void Draw(GameTime gameTime)
         {
             ScreenManager.GraphicsDevice.Clear(Color.White);
-            
+
             spriteBatch.Begin();
 
             if (directoryFound)
