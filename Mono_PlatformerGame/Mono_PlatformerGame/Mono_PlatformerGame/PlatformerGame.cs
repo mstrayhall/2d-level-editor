@@ -8,16 +8,9 @@
 #endregion
 
 #region Using Statements
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 #endregion
 
 namespace Mono_PlatformerGame
@@ -61,7 +54,7 @@ namespace Mono_PlatformerGame
             screenManager.WindowedWidth = graphics.PreferredBackBufferWidth;
             screenManager.WindowedHeight = graphics.PreferredBackBufferHeight;
             screenManager.IsTimeLimit = true;
-            
+
             base.Initialize();
         }
 
@@ -93,7 +86,9 @@ namespace Mono_PlatformerGame
         {
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
+            {
+                //Exit(); // TODO exit!
+            }
 
             base.Update(gameTime);
         }
@@ -105,7 +100,7 @@ namespace Mono_PlatformerGame
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-            
+
             base.Draw(gameTime);
         }
     }

@@ -593,7 +593,7 @@ namespace Mono_PlatformerGameLibrary
         public Vector2 Position;
 
         // grab texture from tiletype dict in level class
-        Texture2D texture;
+        Texture2D texture = null;
         [ContentSerializerIgnore]
         public Texture2D Texture
         {

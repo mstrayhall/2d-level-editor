@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -11,9 +11,11 @@
     <RootNamespace>Mono_PlatformerGame</RootNamespace>
     <AssemblyName>Mono_PlatformerGame</AssemblyName>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -21,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -30,6 +33,7 @@
     <DefineConstants>TRACE;WINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Icon.ico</ApplicationIcon>
@@ -79,7 +83,7 @@
       <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\MSBuild\MonoGame\v3.0\MGCB\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Framework.Content.Pipeline">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\MSBuild\MonoGame\v3.0\MGCB\MonoGame.Framework.Content.Pipeline.dll</HintPath>
+      <HintPath>..\..\..\..\..\Program Files (x86)\MSBuild\MonoGame\v3.0\Tools\MonoGame.Framework.Content.Pipeline.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -99,10 +103,6 @@
     <EmbeddedResource Include="SetContent.resx" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Mono_PlatformerGameContent\Mono_PlatformerGameContent\Mono_PlatformerGameContent.csproj">
-      <Project>{a24f2352-c9ba-4aad-9055-51c23fc55a7e}</Project>
-      <Name>Mono_PlatformerGameContent</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Mono_PlatformerGameLibrary\Mono_PlatformerGameLibrary.csproj">
       <Project>{838379ff-e214-40ae-8148-7fa34867e3cc}</Project>
       <Name>Mono_PlatformerGameLibrary</Name>
@@ -111,6 +111,9 @@
       <Project>{630a8982-5d1a-4361-b8ce-65608f682919}</Project>
       <Name>Mono_PlatformerGamePipeline</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
