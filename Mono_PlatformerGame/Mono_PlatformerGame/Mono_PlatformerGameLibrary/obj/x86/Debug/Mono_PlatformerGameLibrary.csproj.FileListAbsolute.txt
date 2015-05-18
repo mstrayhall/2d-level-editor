@@ -16,12 +16,8 @@ C:\Code\2d-level-editor\Mono_PlatformerGame\Mono_PlatformerGame\Mono_PlatformerG
 C:\Code\2d-level-editor\Mono_PlatformerGame\Mono_PlatformerGame\Mono_PlatformerGameLibrary\bin\Windows\Debug\ManagedPVRTC.dll
 C:\Code\2d-level-editor\Mono_PlatformerGame\Mono_PlatformerGame\Mono_PlatformerGameLibrary\bin\Windows\Debug\SharpDX.dll
 C:\Code\2d-level-editor\Mono_PlatformerGame\Mono_PlatformerGame\Mono_PlatformerGameLibrary\bin\Windows\Debug\FreeImageNET.dll
-C:\Code\2d-level-editor\Mono_PlatformerGame\Mono_PlatformerGame\Mono_PlatformerGameLibrary\bin\Windows\Debug\MonoGame.Framework.xml
-C:\Code\2d-level-editor\Mono_PlatformerGame\Mono_PlatformerGame\Mono_PlatformerGameLibrary\bin\Windows\Debug\SharpDX.XAudio2.xml
-C:\Code\2d-level-editor\Mono_PlatformerGame\Mono_PlatformerGame\Mono_PlatformerGameLibrary\bin\Windows\Debug\SharpDX.Direct3D11.xml
-C:\Code\2d-level-editor\Mono_PlatformerGame\Mono_PlatformerGame\Mono_PlatformerGameLibrary\bin\Windows\Debug\SharpDX.Direct2D1.xml
-C:\Code\2d-level-editor\Mono_PlatformerGame\Mono_PlatformerGame\Mono_PlatformerGameLibrary\bin\Windows\Debug\SharpDX.DXGI.xml
-C:\Code\2d-level-editor\Mono_PlatformerGame\Mono_PlatformerGame\Mono_PlatformerGameLibrary\bin\Windows\Debug\SharpDX.XInput.xml
-C:\Code\2d-level-editor\Mono_PlatformerGame\Mono_PlatformerGame\Mono_PlatformerGameLibrary\bin\Windows\Debug\SharpDX.MediaFoundation.xml
 C:\Code\2d-level-editor\Mono_PlatformerGame\Mono_PlatformerGame\Mono_PlatformerGameLibrary\obj\x86\Debug\Mono_PlatformerGameLibrary.dll
 C:\Code\2d-level-editor\Mono_PlatformerGame\Mono_PlatformerGame\Mono_PlatformerGameLibrary\obj\x86\Debug\Mono_PlatformerGameLibrary.pdb
+C:\Code\2d-level-editor\Mono_PlatformerGame\Mono_PlatformerGame\Mono_PlatformerGameLibrary\bin\Windows\Debug\SharpDX.RawInput.dll
+C:\Code\2d-level-editor\Mono_PlatformerGame\Mono_PlatformerGame\Mono_PlatformerGameLibrary\bin\Windows\Debug\SharpDX.Direct3D9.dll
+C:\Code\2d-level-editor\Mono_PlatformerGame\Mono_PlatformerGame\Mono_PlatformerGameLibrary\obj\x86\Debug\Mono_PlatformerGameLibrary.csprojResolveAssemblyReference.cache
