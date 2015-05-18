@@ -40,7 +40,7 @@ namespace Mono_PlatformerGame
 
             content = new ContentManager(ScreenManager.Game.Services, "Content");
             spriteBatch = ScreenManager.SpriteBatch;
-            font = content.Load<SpriteFont>("hudFont");
+            font = content.Load<SpriteFont>(@"bin\hudFont");
             messagePos = new Vector2(20, 20);
 
             waitTimer = TimeSpan.FromMilliseconds(30);

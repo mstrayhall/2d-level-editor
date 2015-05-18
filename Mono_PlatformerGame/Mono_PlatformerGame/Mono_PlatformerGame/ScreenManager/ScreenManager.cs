@@ -168,9 +168,9 @@ namespace Mono_PlatformerGame
             ContentManager content = Game.Content;
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            gameFont = content.Load<SpriteFont>("gameFont");
-            menuFont = content.Load<SpriteFont>("menuFont");
-            blankTexture = content.Load<Texture2D>("blank");
+            gameFont = content.Load<SpriteFont>(@"bin\gameFont");
+            menuFont = content.Load<SpriteFont>(@"bin\menuFont");
+            blankTexture = content.Load<Texture2D>(@"bin\blank");
 
             // Tell each of the screens to load their content.
             foreach (GameScreen screen in screens)
