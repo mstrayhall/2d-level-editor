@@ -38,10 +38,10 @@ namespace Mono_PlatformerGame
     {
         #region Fields
 
-        
+
         // What importers or processors should we load?
-        const string xnaVersion = ", Version=4.0.0.0, PublicKeyToken=842cf8be1de50553";
-        const string monoVersion = ", Version=3.1.2.0, PublicKeyToken=null";
+        const string xnaVersion = ", Version=3.4.0.456, PublicKeyToken=null";
+        const string monoVersion = ", Version=3.4.0.456, PublicKeyToken=null";
 
         string[] pipelineAssemblies;
 
@@ -105,17 +105,33 @@ namespace Mono_PlatformerGame
             // Make the intitial assemblies for XNA
             pipelineAssemblies = new string[]
             {
-                "Microsoft.Xna.Framework.Content.Pipeline.AudioImporters" + xnaVersion,
-                "Microsoft.Xna.Framework.Content.Pipeline.EffectImporter" + xnaVersion,
-                "Microsoft.Xna.Framework.Content.Pipeline.FBXImporter" + xnaVersion,
-                "Microsoft.Xna.Framework.Content.Pipeline.TextureImporter" + xnaVersion,
-                "Microsoft.Xna.Framework.Content.Pipeline.XImporter" + xnaVersion,
-                "Microsoft.Xna.Framework.Content.Pipeline.XmlImporter" + xnaVersion, 
-                //"Microsoft.Xna.Framework.Content.Pipeline.Audio" + xnaVersion, //TODO
-                //"Microsoft.Xna.Framework.Content.Pipeline.Processors" + xnaVersion, //TODO
-                "MonoGameContentProcessors" + monoVersion, //TODO
-                "MonoGame.Framework" + monoVersion, //TODO
-                "MonoGame.Framework.Content.Pipeline" + monoVersion, //TODO
+                //"Microsoft.Xna.Framework.Content.Pipeline.Mp3Importer" + xnaVersion,
+                ////"Microsoft.Xna.Framework.Content.Pipeline.AudioImporters" + xnaVersion,
+                //"Microsoft.Xna.Framework.Content.Pipeline.EffectImporter" + xnaVersion,
+                //"Microsoft.Xna.Framework.Content.Pipeline.FbxImporter" + xnaVersion,
+                //"Microsoft.Xna.Framework.Content.Pipeline.TextureImporter" + xnaVersion,
+                //"Microsoft.Xna.Framework.Content.Pipeline.XImporter" + xnaVersion,
+                //"Microsoft.Xna.Framework.Content.Pipeline.XmlImporter" + xnaVersion,
+                ////"Microsoft.Xna.Framework.Content.Pipeline.Audio" + xnaVersion, //TODO
+                ////"Microsoft.Xna.Framework.Content.Pipeline.Processors" + xnaVersion, //TODO
+                ////"MonoGameContentProcessors" + monoVersion, //TODO
+                //"MonoGame.Framework" + monoVersion, //TODO
+                //"MonoGame.Framework.Content.Pipeline" + monoVersion, //TODO
+                @"C:\Program Files (x86)\MSBuild\MonoGame\v3.0\Tools\MonoGame.Framework.dll",
+                @"C:\Program Files (x86)\MSBuild\MonoGame\v3.0\Tools\MonoGame.Framework.Content.Pipeline.dll",
+
+                //                "Microsoft.Xna.Framework.Content.Pipeline.Mp3Importer" + xnaVersion,
+                ////"Microsoft.Xna.Framework.Content.Pipeline.AudioImporters" + xnaVersion,
+                //"Microsoft.Xna.Framework.Content.Pipeline.EffectImporter" + xnaVersion,
+                //"Microsoft.Xna.Framework.Content.Pipeline.FbxImporter" + xnaVersion,
+                //"Microsoft.Xna.Framework.Content.Pipeline.TextureImporter" + xnaVersion,
+                //"Microsoft.Xna.Framework.Content.Pipeline.XImporter" + xnaVersion,
+                //"Microsoft.Xna.Framework.Content.Pipeline.XmlImporter" + xnaVersion,
+                ////"Microsoft.Xna.Framework.Content.Pipeline.Audio" + xnaVersion, //TODO
+                ////"Microsoft.Xna.Framework.Content.Pipeline.Processors" + xnaVersion, //TODO
+                //"MonoGameContentProcessors" + monoVersion, //TODO
+                //"MonoGame.Framework" + monoVersion, //TODO
+                //"MonoGame.Framework.Content.Pipeline" + monoVersion, //TODO
 
                 // If you want to use custom importers or processors from
                 // a Content Pipeline Extension Library, add them here.
@@ -126,7 +142,7 @@ namespace Mono_PlatformerGame
                 // If the extension DLL is not in the GAC, you should refer to it by
                 // file path, eg. "c:/MyProject/bin/MyPipelineExtension.dll".
             };
-            
+
             // Add the custom dll assemblies from the users.
             string[] originalAssemblies = pipelineAssemblies;
             pipelineAssemblies = new string[originalAssemblies.Length + dllsToAdd.Length];
@@ -164,7 +180,7 @@ namespace Mono_PlatformerGame
         public void Dispose()
         {
             Dispose(true);
-            
+
             GC.SuppressFinalize(this);
         }
 
@@ -194,23 +210,41 @@ namespace Mono_PlatformerGame
         /// </summary>
         void CreateBuildProject()
         {
-            string projectPath = Path.Combine(buildDirectory, "content.contentproj");
+            string projectPath = Path.Combine(buildDirectory, "content.mgcb");
+            //string projectPath = Path.Combine(buildDirectory, "content.contentproj"); // TODO
             string outputPath = Path.Combine(buildDirectory, "bin");
 
             // Create the build project.
             projectRootElement = ProjectRootElement.Create(projectPath);
 
             // Include the standard targets file that defines how to build XNA Framework content.
-            projectRootElement.AddImport("$(MSBuildExtensionsPath)\\Microsoft\\XNA Game Studio\\v4.0\\Microsoft.Xna.GameStudio.ContentPipeline.targets");
-            projectRootElement.AddImport(@"$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.ContentPipeline.targets");
+            //projectRootElement.AddImport("$(MSBuildExtensionsPath)\\Microsoft\\XNA Game Studio\\v4.0\\Microsoft.Xna.GameStudio.ContentPipeline.targets"); // TODO
+            //projectRootElement.AddImport("$(MSBuildExtensionsPath)\\Microsoft\\XNA Game Studio\\v4.0\\Microsoft.Xna.GameStudio.ContentPipeline.targets"); // TODO
+            projectRootElement.AddImport(@"$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets"); // TODO
+            //projectRootElement.AddImport(@"$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.ContentPipeline.targets"); // TODO
 
             buildProject = new Project(projectRootElement);
 
-            buildProject.SetProperty("XnaPlatform", "Windows");
-            buildProject.SetProperty("XnaProfile", "Reach");
-            buildProject.SetProperty("XnaFrameworkVersion", "v4.0");
-            buildProject.SetProperty("Configuration", "Release");
-            buildProject.SetProperty("OutputPath", outputPath);
+            //buildProject.SetProperty("XnaPlatform", "Windows");
+            //buildProject.SetProperty("XnaProfile", "Reach");
+            //buildProject.SetProperty("XnaFrameworkVersion", "v4.0");
+            //buildProject.SetProperty("Configuration", "Release");
+            //buildProject.SetProperty("OutputPath", outputPath);
+
+            buildProject.SetProperty("outputDir", "bin");
+            buildProject.SetProperty("intermediateDir", "obj");
+            buildProject.SetProperty("platform", "Windows");
+            buildProject.SetProperty("profile", "Reach");
+            //buildProject.SetProperty("compress", "False");
+
+            /*
+            /outputDir:bin
+            /intermediateDir:obj
+            /platform:Windows
+            /config:
+            /profile:Reach
+            /compress:False
+            */
 
             // Register any custom importers or processors.
             foreach (string pipelineAssembly in pipelineAssemblies)
@@ -380,7 +414,7 @@ namespace Mono_PlatformerGame
             }
         }
 
-        
+
         /// <summary>
         /// Deletes our temporary directory when we are finished with it.
         /// </summary>
@@ -402,9 +436,9 @@ namespace Mono_PlatformerGame
                 }
             }
         }
-        
 
-        
+
+
         /// <summary>
         /// Ideally, we want to delete our temp directory when we are finished using
         /// it. The DeleteTempDirectory method (called by whichever happens first out
@@ -439,7 +473,7 @@ namespace Mono_PlatformerGame
                 }
             }
         }
-        
+
 
         #endregion
     }

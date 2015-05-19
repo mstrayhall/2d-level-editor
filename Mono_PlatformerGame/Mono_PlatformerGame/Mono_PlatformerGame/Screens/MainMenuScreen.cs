@@ -82,10 +82,18 @@ namespace Mono_PlatformerGame
         {
             if (!isEditorOpen)
             {
-                isEditorOpen = true;
-                uxForm1 form = new uxForm1(ScreenManager.Game.Services);
-                DialogResult result = form.ShowDialog();
-                isEditorOpen = false;
+                try
+                {
+                    isEditorOpen = true;
+                    using (uxForm1 form = new uxForm1(ScreenManager.Game.Services))
+                    {
+                        DialogResult result = form.ShowDialog();
+                    }
+                }
+                finally
+                {
+                    isEditorOpen = false;
+                }
             }
         }
 

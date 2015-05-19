@@ -118,7 +118,7 @@ namespace Mono_PlatformerGame
             errorMessage = "";
 
             // HUD
-            hudFont = gameOverlayContent.Load<SpriteFont>("hudFont");
+            hudFont = gameOverlayContent.Load<SpriteFont>(@"bin\hudFont");
 
             // Given the folder path specified by the user, load all levels in that folder
             allLevels = new List<string>();
@@ -156,8 +156,8 @@ namespace Mono_PlatformerGame
             levelNamePos = new Vector2(400, 15);
            
             // Overlay positioning
-            winOverlay = gameOverlayContent.Load<Texture2D>("winOverlay");
-            dieOverlay = gameOverlayContent.Load<Texture2D>("dieOverlay");
+            winOverlay = gameOverlayContent.Load<Texture2D>(@"bin\winOverlay");
+            dieOverlay = gameOverlayContent.Load<Texture2D>(@"bin\dieOverlay");
             winOverlaySize = new Vector2(winOverlay.Width, winOverlay.Height);
             dieOverlaySize = new Vector2(dieOverlay.Width, dieOverlay.Height);
             Vector2 screenCenter = new Vector2(ScreenManager.GraphicsDevice.Viewport.Width / 2,
@@ -165,7 +165,7 @@ namespace Mono_PlatformerGame
             winOverlayPos = screenCenter - (winOverlaySize / 2);
             dieOverlayPos = screenCenter - (dieOverlaySize / 2);
 
-            pauseOverlay = gameOverlayContent.Load<Texture2D>("pauseOverlay");
+            pauseOverlay = gameOverlayContent.Load<Texture2D>(@"bin\pauseOverlay");
             pauseOverlaySize = new Vector2(pauseOverlay.Width, pauseOverlay.Height);
             pauseOverlayPos = screenCenter - (pauseOverlaySize / 2);
             isPaused = false;

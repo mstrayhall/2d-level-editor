@@ -61,7 +61,7 @@ namespace Mono_PlatformerGame
             // Default to the directory which contains our content files.
             string executingPath = AppDomain.CurrentDomain.BaseDirectory;
             string gameContentPath = executingPath;
-            //string gameContentPath = Path.Combine(executingPath, "../../../../Mono_PlatformerGameContent"); //TODO
+            //gameContentPath = System.IO.Path.Combine(executingPath, "../../../../Mono_PlatformerGameContent"); //TODO
 
             //fbd.SelectedPath = gameContentPath;
             fbd.Description = "Select a folder containing level files";

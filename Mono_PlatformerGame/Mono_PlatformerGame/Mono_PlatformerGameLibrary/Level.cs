@@ -138,7 +138,7 @@ namespace Mono_PlatformerGameLibrary
             exitPos = InvalidPosition;
 
             isTimed = isTimeLimit;
-            timeRemaining = TimeSpan.FromSeconds(100);
+            timeRemaining = TimeSpan.FromSeconds(60);
 
             // Load the background(s)
             if (Background != null)
@@ -151,7 +151,7 @@ namespace Mono_PlatformerGameLibrary
                 layers = new Texture2D[0];
             }
             // A blank layer to wipe the screen clean white first
-            blankLayer = content.Load<Texture2D>("blank");
+            blankLayer = content.Load<Texture2D>(@"bin\blank");
 
             // Build a dictionary of all tile names and their texture locations
             tileTextureDict = new Dictionary<string, Texture2D>();

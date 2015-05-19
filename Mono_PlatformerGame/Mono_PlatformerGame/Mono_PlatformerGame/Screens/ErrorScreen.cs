@@ -48,7 +48,7 @@ namespace Mono_PlatformerGame
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
 
-            errorFont = content.Load<SpriteFont>("errorFont");
+            errorFont = content.Load<SpriteFont>(@"bin\errorFont");
 
             base.LoadContent();
         }

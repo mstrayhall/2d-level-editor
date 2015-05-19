@@ -25,7 +25,8 @@ namespace Mono_PlatformerGamePipeline
 {
 
     //[ContentSerializerRuntimeType("Mono_PlatformerGameLibrary.Level, Mono_PlatformerGameLibrary")] //TODO
-    //[ContentTypeWriter()]
+    [ContentSerializerRuntimeType("Mono_PlatformerGameLibrary.Level")] //TODO
+    [ContentTypeWriter]
     public class LevelContent
     {
         [ContentSerializer]
@@ -49,6 +50,8 @@ namespace Mono_PlatformerGamePipeline
     }
 
     //[ContentSerializerRuntimeType("Mono_PlatformerGameLibrary.Tile, Mono_PlatformerGameLibrary")] //TODO
+    [ContentSerializerRuntimeType("Mono_PlatformerGameLibrary.Tile")] //TODO
+    [ContentTypeWriter]
     public class TileContent
     {
         [ContentSerializer]
@@ -60,6 +63,8 @@ namespace Mono_PlatformerGamePipeline
     }
 
     //[ContentSerializerRuntimeType("Mono_PlatformerGameLibrary.TileMap, Mono_PlatformerGameLibrary")] //TODO
+    [ContentSerializerRuntimeType("Mono_PlatformerGameLibrary.TileMap")] //TODO
+    [ContentTypeWriter]
     public class TileMapContent
     {
         [ContentSerializer]
