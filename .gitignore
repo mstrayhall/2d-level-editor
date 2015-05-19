@@ -6,7 +6,7 @@
 *.so
 *.pdb
 *.suo
-*.cache
+*.Cache
 *.dll
 *.pdb
 *.exe

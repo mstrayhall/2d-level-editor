@@ -1,9 +1,0 @@
-C:\Users\Matthew\Desktop\WinFormTest\WinFormTest\WinFormTest\bin\Debug\WinFormTest.exe
-C:\Users\Matthew\Desktop\WinFormTest\WinFormTest\WinFormTest\bin\Debug\WinFormTest.pdb
-C:\Users\Matthew\Desktop\WinFormTest\WinFormTest\WinFormTest\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Matthew\Desktop\WinFormTest\WinFormTest\WinFormTest\obj\x86\Debug\WinFormTest.Form1.resources
-C:\Users\Matthew\Desktop\WinFormTest\WinFormTest\WinFormTest\obj\x86\Debug\WinFormTest.Properties.Resources.resources
-C:\Users\Matthew\Desktop\WinFormTest\WinFormTest\WinFormTest\obj\x86\Debug\GenerateResource.read.1.tlog
-C:\Users\Matthew\Desktop\WinFormTest\WinFormTest\WinFormTest\obj\x86\Debug\GenerateResource.write.1.tlog
-C:\Users\Matthew\Desktop\WinFormTest\WinFormTest\WinFormTest\obj\x86\Debug\WinFormTest.exe
-C:\Users\Matthew\Desktop\WinFormTest\WinFormTest\WinFormTest\obj\x86\Debug\WinFormTest.pdb
