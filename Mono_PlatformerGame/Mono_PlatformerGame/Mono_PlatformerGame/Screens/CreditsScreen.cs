@@ -66,7 +66,7 @@ namespace Mono_PlatformerGame
 
             // Set the initial text position
             textPos = new Vector2(100, ScreenManager.GraphicsDevice.Viewport.Height);
-            font = content.Load<SpriteFont>("creditFont");
+            font = content.Load<SpriteFont>(@"bin\creditFont");
 
             // See how many lines we have so we know how long to scroll before returning to menu
             string[] tokens = creditText.Split('\n');

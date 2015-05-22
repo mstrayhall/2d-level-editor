@@ -216,14 +216,25 @@ namespace Mono_PlatformerGame
                     {
                         // If we don't have the xnb of this xml file here, go ahead and build it
                         contentBuilder.Add(levelPath, levelName, null, "LevelProcessor");
+
+                        // TODO build mgcb
+
+
                     }
                 }
                 else
                 {
                     // If we found no xnb files, just build everything
+                    
+                    // TODO build mgcb
+
+
                     contentBuilder.Add(levelPath, levelName, null, "LevelProcessor");
                 }
             }
+            
+            // TODO build mgcb
+
 
             string buildError = contentBuilder.Build();
             if (string.IsNullOrEmpty(buildError))

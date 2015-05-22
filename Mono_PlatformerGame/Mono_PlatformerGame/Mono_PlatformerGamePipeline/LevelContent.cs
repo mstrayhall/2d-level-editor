@@ -17,6 +17,7 @@ using Microsoft.Xna.Framework.Content.Pipeline.Audio;
 using Microsoft.Xna.Framework.Content.Pipeline.Graphics;
 using Microsoft.Xna.Framework.Content.Pipeline.Processors;
 using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Compiler;
+using Mono_PlatformerGameLibrary;
 #endregion
 
 using Tile = Mono_PlatformerGameLibrary.Tile;
@@ -24,9 +25,9 @@ using Tile = Mono_PlatformerGameLibrary.Tile;
 namespace Mono_PlatformerGamePipeline
 {
 
-    //[ContentSerializerRuntimeType("Mono_PlatformerGameLibrary.Level, Mono_PlatformerGameLibrary")] //TODO
-    [ContentSerializerRuntimeType("Mono_PlatformerGameLibrary.Level")] //TODO
-    [ContentTypeWriter]
+    [ContentSerializerRuntimeType("Mono_PlatformerGameLibrary.Level, Mono_PlatformerGameLibrary")] //TODO
+    //[ContentSerializerRuntimeType("Mono_PlatformerGameLibrary.Level")] //TODO
+    //[ContentTypeWriter]
     public class LevelContent
     {
         [ContentSerializer]
@@ -49,10 +50,10 @@ namespace Mono_PlatformerGamePipeline
 
     }
 
-    //[ContentSerializerRuntimeType("Mono_PlatformerGameLibrary.Tile, Mono_PlatformerGameLibrary")] //TODO
-    [ContentSerializerRuntimeType("Mono_PlatformerGameLibrary.Tile")] //TODO
-    [ContentTypeWriter]
-    public class TileContent
+    [ContentSerializerRuntimeType("Mono_PlatformerGameLibrary.Tile, Mono_PlatformerGameLibrary")] //TODO
+    //[ContentSerializerRuntimeType("Mono_PlatformerGameLibrary.Tile")] //TODO
+    //[ContentTypeWriter]
+    public class TileContent //: ContentTypeWriter<Tile>
     {
         [ContentSerializer]
         public string Name;
@@ -60,11 +61,20 @@ namespace Mono_PlatformerGamePipeline
         [ContentSerializer]
         public ExternalReference<Texture2DContent> Texture;
 
+        //public override string GetRuntimeReader(TargetPlatform targetPlatform)
+        //{
+        //    return typeof(Tile).AssemblyQualifiedName;
+        //}
+
+        //protected override void Write(ContentWriter output, Tile value)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 
-    //[ContentSerializerRuntimeType("Mono_PlatformerGameLibrary.TileMap, Mono_PlatformerGameLibrary")] //TODO
-    [ContentSerializerRuntimeType("Mono_PlatformerGameLibrary.TileMap")] //TODO
-    [ContentTypeWriter]
+    [ContentSerializerRuntimeType("Mono_PlatformerGameLibrary.TileMap, Mono_PlatformerGameLibrary")] //TODO
+    //[ContentSerializerRuntimeType("Mono_PlatformerGameLibrary.TileMap")] //TODO
+    //[ContentTypeWriter]
     public class TileMapContent
     {
         [ContentSerializer]

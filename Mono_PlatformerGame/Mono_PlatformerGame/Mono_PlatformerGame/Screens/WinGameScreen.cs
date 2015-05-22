@@ -27,7 +27,7 @@ namespace Mono_PlatformerGame
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
 
-            gameOverFont = content.Load<SpriteFont>("gameFont");
+            gameOverFont = content.Load<SpriteFont>(@"bin\gameFont");
 
             displayTime = TimeSpan.FromSeconds(0);
 

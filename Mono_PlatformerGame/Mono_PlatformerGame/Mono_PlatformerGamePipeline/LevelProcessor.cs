@@ -60,13 +60,17 @@ namespace Mono_PlatformerGamePipeline
                     // to be created by the Content Pipeline.
                     if (!File.Exists(tile.Texture.Filename))
                     {
-                        throw new Exception();
+                        throw new Exception(String.Format("File doesn't exist: {0}", tile.Texture.Filename));
                     }
-                    else tile.Texture = context.BuildAsset<Texture2DContent, Texture2DContent>(tile.Texture, null);
+                    else
+                    {
+                        tile.Texture = context.BuildAsset<Texture2DContent, Texture2DContent>(tile.Texture, "TextureProcessor");
+                    }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                System.Windows.Forms.MessageBox.Show(String.Format("Exception: {0}", ex.Message + ex.ToString()));
 
             }
             return input;
